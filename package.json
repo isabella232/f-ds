@@ -1,0 +1,19 @@
+{
+  "name": "dynamicstory-frontend",
+  "version": "0.1.0",
+  "description": "Web Application for DynamicStory.org",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "DynamicStory",
+  "license": "Proprietary",
+  "dependencies": {
+    "body-parser": "^1.12.2",
+    "browserify": "^9.0.3",
+    "cookie-parser": "^1.3.4",
+    "express": "^4.12.3",
+    "nunjucks": "^1.2.0",
+    "request": "^2.53.0"
+  }
+}
