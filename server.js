@@ -1,5 +1,11 @@
 'use strict';
 
+if (!process.env.API_VERSION) {
+  if (process.env.NODE_ENV === 'production') {
+    throw new Error('API version not defined.')
+  }
+}
+
 // Include all our packages
 var bodyParser  = require('body-parser')
   , express     = require('express')
@@ -12,7 +18,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 // Set up routers
-var router = express.Router()
+var routerFeed = express.Router()
 
 // Set variables that will change when in production
 var serverPort = process.env.DS_PORT || 9000
@@ -26,6 +32,10 @@ env.express(app)
 
 // Tell Express to serve static objects from the /public/ directory
 app.use(express.static(path.join(__dirname, 'public')))
+
+require('./routes/feed')(routerFeed)
+
+app.use('/', routerFeed)
 
 // Handle server exceptions
 app.use(function(err, req, res, next) {
