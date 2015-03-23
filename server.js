@@ -1,11 +1,5 @@
 'use strict';
 
-if (!process.env.API_VERSION) {
-  if (process.env.NODE_ENV === 'production') {
-    throw new Error('API version not defined.')
-  }
-}
-
 // Include all our packages
 var bodyParser  = require('body-parser')
   , express     = require('express')
