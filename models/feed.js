@@ -1,15 +1,15 @@
 'use strict';
 
-var request = require('request')
-
-var BASEURL = require('../baseurl')
+var Request = require('../baserequest')
 
 function getFeed(callback) {
-  request(BASEURL + '/feed', function (err, response, body) {
-    if (!err && response.statusCode == 200) {
-      console.log(body) // Show the JSON response
+  Request.get(
+    { uri: '/feed'
+    }, function (err, response, body) {
+
+      callback(err, body)
     }
-  })
+  )
 }
 
 var FeedModel =

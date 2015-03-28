@@ -1,5 +1,7 @@
 'use strict';
 
+var request = require('request')
+
 var API_VERSION = process.env.API_VERSION
 var API_PORT
 
@@ -23,6 +25,9 @@ if (process.env.NODE_ENV == 'production') {
   API_PORT = 3000
 }
 
-var baseUrl = 'http://localhost:' + API_PORT + '/' + API_VERSION
+var baseUrl = 'http://localhost:' + API_PORT + '/' + API_VERSION + '/'
 
-module.exports = baseUrl
+module.exports = request.defaults({
+  baseUrl: baseUrl,
+  json: true
+})

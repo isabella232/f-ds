@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block page %}
+
+{% for item in feed %}
+
+<li>Title: {{ item.title }} | Narrative: {{ item.narrative }}</li>
+
+{% endfor %}
+
+{% endblock %}
