@@ -13,7 +13,7 @@ module.exports = function(router) {
         console.error(err)
       } else {
 
-        res.render('index.html', { feed: feed })
+        res.render('feedView.html', { feed: feed })
 
       }
 

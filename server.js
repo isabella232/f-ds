@@ -24,7 +24,7 @@ var env = new nunjucks.Environment(
 
 env.express(app)
 
-// Tell Express to serve static objects from the /public/ directory
+// Tell Express to serve static objects from the /pub/ directory
 app.use(express.static(path.join(__dirname, 'pub')))
 
 require('./routes/feed')(routerFeed)
