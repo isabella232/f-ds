@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block page %}
+<div class="bodyView bodyView-login">
+	<div class="text">
+		<p>Login</p>
+		<form>
+			<div class="inputFields">
+				<input name="emailUser" type="text" maxlength="254" placeholder=" email/username" required>
+				<input name="password" type="password" maxlength="512" placeholder=" password" required autocapitalize="off">
+			</div>
+			<div class="buttons">
+				<button class="clickable">Log in</button>
+			</div>
+		</form>
+	</div>
+</div>	
+{% endblock %}
+

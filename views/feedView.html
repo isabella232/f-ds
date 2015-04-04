@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block page %}
+
+<div class="bodyView feedView">
+    {% for story in stories %}
+     <div class="feedElement">
+          <div class="title title-feedView">
+            <p>{{ story.title }}</p>
+          </div>
+          <div class="text text-feedView">
+              <p>{{ story.narrative }}</p>
+          </div>
+       <div class="date">
+           <span>{{ story.creationDate }}</span>
+        </div>
+       <div class="votes">
+            <span>{{ story.voteCount? }}</span>
+       </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+

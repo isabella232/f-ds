@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block page %}
+<div class="profileView">
+
+    <div class="userHeader">
+        <div class="username">
+            <h3>{{ sessUser.username }}</h3>
+        </div>
+    </div>
+    <div class="buttonProtector">
+        <button class="clickable">
+            <a href="#.." data-toggle="modal">Delete Account</a>
+        </button>
+    </div>
+    <div class="buttonProtector">
+        <button class="clickable">
+            <a href="#.." data-toggle="modal">Log Out</a>
+        </button>
+    </div>
+    <div class="buttonProtector">
+        <button class="clickable">
+            <a href="#change-pword" data-toggle="modal">Change Password</a>
+        </button>
+    </div>
+
+{% include "partials/change-pword.html" %}
+{% endblock %}
+</div>
+
