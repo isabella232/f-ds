@@ -11,7 +11,7 @@ module.exports = function(router) {
   router.get('/feed', renderStatic('feed.html'))
   router.get('/user/profile', renderStatic('profile.html'))
   router.get('/user/login', renderStatic('login.html'))
-  router.get('/user/signup', renderStatic('createAccount.html'))
+  router.get('/user/signup', renderStatic('signup.html'))
   router.get('/story/create', renderStatic('create.html'))
   router.get('/story/:story', renderStatic('story.html'))
   router.get('/about', renderStatic('about.html'))
