@@ -12,7 +12,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 // Set up routers
-var router = express.Router()
+var routerFeed = express.Router()
 
 // Set variables that will change when in production
 var serverPort = process.env.DS_PORT || 9000
@@ -24,8 +24,12 @@ var env = new nunjucks.Environment(
 
 env.express(app)
 
-// Tell Express to serve static objects from the /public/ directory
-app.use(express.static(path.join(__dirname, 'public')))
+// Tell Express to serve static objects from the /pub/ directory
+app.use(express.static(path.join(__dirname, 'pub')))
+
+require('./routes/feed')(routerFeed)
+
+app.use('/', routerFeed)
 
 // Handle server exceptions
 app.use(function(err, req, res, next) {
