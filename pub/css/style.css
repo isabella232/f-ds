@@ -459,3 +459,68 @@ textarea{
 	float:left;
 	width:100%;
 }
+
+/*about us page*/
+.aboutView {
+	width:76%;
+	padding-top:5.5em;
+	margin: 0 auto;
+}
+
+.section{
+margin-top:1.8em;
+ border-radius:1em;
+ padding:1.3em;
+ background-color:white;
+}
+
+.content{
+	margin-top:1em;
+}
+
+.field{
+	margin-top:1em;
+	width:100%;
+	border-color:lightgray;
+}
+
+
+.body{
+	height:7em;
+}
+.portrait-section{
+	margin-bottom:1em;
+}
+
+.founders{
+		background-color:white;
+}
+
+.bio{
+	margin-top:2em;
+	margin-left:2em;
+	height:15em;
+	background-color:white;
+}
+.portrait-container{
+margin:0 auto;
+}
+.portrait{
+	border-radius:20em;
+	float:left;
+	margin-right:2em;
+
+}
+.bio-info{
+	float:left;
+	margin-top:2em;
+	width:95%;
+		margin-bottom:3em;
+
+}
+.div-trick{
+	color:white;
+	font-size: .2em;
+}
+
+

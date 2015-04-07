@@ -1,19 +1,64 @@
 {% extends "base.html" %}
 
 {% block page %}
+
 <div class="aboutView">
     <div class="section">
-     <div class="keyPoint">About Us</div>
+     <div class="keyPoint"><h2>About Us</h2></div>
       <div class="content">
-       DynamicStory is a website created by a handful of student. The majority of us study at De Anza College. We created this website because we were tired of seeing people struggling to get their point across. Our founding team came together in January of 2015. Since them we have met twice a week so we can bring this website to you.
-      </div>
+       <span class="general-info">DynamicStory is a website created by a handful of student. The majority of us study at De Anza College. We created this website because we were tired of seeing people struggling to get their point across. Our founding team came together in January of 2015. Since them we have met twice a week so we can bring this website to you.</span>
+        </div>
     </div>
     <div class="section">
-       <div class="keyPoint">Legal</div>
+      <div class="keyPoint portrait-section"><h3>Meet the Team</h3></div>
+      <div class="founders col-lg-3 col-sm-6 col-xs-12">
+       <div class="bio ">
+        <div class="portait-container"><img class="portrait" src="/images/Alex.jpg"> "The most important thing is to see the other person point of view"</div>
+        <div class="bio-info"> Alexander McNulty, founder and project manager of DynamicStory.
+        </div>
+        </div>
+        </div>
+      <div class="founders col-lg-3 col-sm-6 col-xs-12">
+       <div class="bio ">
+        <div class="portait-container"><img class="portrait" src="/images/Paul.jpg">"Appeal to nobler motives"</div>
+        <div class="bio-info"> Paul Merrill, lead developer and product guy.
+        </div>
+        </div>
+        </div>
+      <div class="founders col-lg-3 col-sm-6 col-xs-12">
+       <div class="bio ">
+        <div class="portait-container"><img class="portrait" src="/images/Chris.jpg">"Laugh whenever appropriate"</div>
+        <div class="bio-info"> Christopher Banh, MVD (Most Valuable Developer).
+        </div>
+        </div>
+        </div>
+      <div class="founders col-lg-3 col-sm-6 col-xs-12">
+       <div class="bio ">
+        <div class="portait-container"><img class="portrait" src="/images/Brandon.jpg">"The successful live to work, they do not work to live"</div>
+        <div class="bio-info"> Brandon Chai, frontend developer and most improved.
+        </div>
+        </div>
+        </div><span class="div-trick">hehe</span>
+    </div>
+    <div class="section">
+       <div class="keyPoint"><h3>Legal</h3></div>
        <div class="content">
-         <a href="/about/toupp">Terms of Use & Privacy Policy</a>
+         <a href="../legalDocs/toupp.html">Terms of Use & Privacy Policy</a>
          <br>
-         <a href="/about/dmca">DMCA policy</a>
+         <a href="../legalDocs/dmca.html">DMCA policy</a>
+        </div>
+    </div>
+    <div class="section">
+       <div class="keyPoint"><h3>Contact Us</h3></div>
+        <div class="content">
+         <p>Questions, Comments, Concerns?</p>
+         <p>Please share your thoughts with us.</p>
+         <div class="title keyPoint"> Email forum </div>
+         <textarea class="field subject" name="subject" placeholder=" Subject"></textarea> 
+         <textarea class="field body" name="body" placeholder=" Body"></textarea> 
+
+        <button class="finish clickable">Send feedback!</button>
+
         </div>
     </div>
 </div>
