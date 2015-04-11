@@ -62,6 +62,13 @@ body {
 	margin-top:.3em;
 }
 
+.error{
+	color: #FF0000;
+	text-align: center;
+	position: relative; 
+	top: 3em; 
+}
+
 .feedView {
 	width:76%;
 	padding-top:5.5em;
