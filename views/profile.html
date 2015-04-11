@@ -10,13 +10,16 @@
     </div>
     <div class="buttonProtector">
         <button class="clickable">
-            <a href="#.." data-toggle="modal">Delete Account</a>
+            <a href="#" data-toggle="modal">Delete Account</a>
         </button>
     </div>
     <div class="buttonProtector">
-        <button class="clickable">
-            <a href="#.." data-toggle="modal">Log Out</a>
-        </button>
+        <form action="/user/logout" method="POST">
+          <button class="clickable">
+            Log Out
+              <!--a href="/user/logout" data-toggle="modal">Log Out</a-->
+          </button>
+        </form>
     </div>
     <div class="buttonProtector">
         <button class="clickable">

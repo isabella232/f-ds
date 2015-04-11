@@ -1,14 +1,16 @@
 'use strict';
 
-var bodyParser  = require('body-parser')
-  , express     = require('express')
-  , nunjucks    = require('nunjucks')
-  , path        = require('path')
+var bodyParser    = require('body-parser')
+  , cookieParser  = require('cookie-parser')
+  , express       = require('express')
+  , nunjucks      = require('nunjucks')
+  , path          = require('path')
 
 var app = express()
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(cookieParser())
 
 // Set variables that will change when in production
 var serverPort = process.env.DS_PORT || 9000
@@ -22,6 +24,13 @@ env.express(app)
 
 // Tell Express to serve static objects from the /pub/ directory
 app.use(express.static(path.join(__dirname, 'pub')))
+
+app.use(function(req, res, next) {
+
+  env.addGlobal('session', req.cookies.token);
+
+  next();
+});
 
 // Set up routes.
 var router = express.Router()
