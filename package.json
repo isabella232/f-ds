@@ -4,7 +4,8 @@
   "description": "Web Application for DynamicStory.org",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "hint": "jshint $(find . -name \\*.js | egrep -v '(node_modules|pub/lib)')"
   },
   "author": "DynamicStory",
   "license": "Proprietary",
