@@ -8,6 +8,10 @@ function makeReq(method, url, reqKeys, resKeys) {
 
     var formKeys = _.keys(form)
 
+    // It's easy to miscall functions.  If this function is invoked with a
+    // difference between form's keys and reqKeys, then one of them is probably
+    // wrong.  Let's be defensive and check for this, throwing an error if
+    // found.
     if (!_.isEmpty(_.difference(formKeys, reqKeys))) {
       callback(
         new Error(
@@ -21,7 +25,7 @@ function makeReq(method, url, reqKeys, resKeys) {
 
     // Replace Express-ish URL variables using key of same name from `form`.
     // Goes from '/story/:story' to '/story/' + form['story']
-    url.replace(/:(\w+)/, function(match, key) {
+    url = url.replace(/:(\w+)/, function(match, key) {
       return form[key]
     })
 
@@ -31,11 +35,14 @@ function makeReq(method, url, reqKeys, resKeys) {
     , function(err, res, body) {
 
         if (err) {
+          // This could happen if the backend is not running.
           callback(new Error('Backend HTTP request failed: ' + err))
           return
         }
 
         if (!body) {
+          // This could probably only happen if backend code has a bug.  It's
+          // unlikely (we hope), but let's handle it anyway.
           callback(new Error('Backend returned no body'))
           return
         }
@@ -58,7 +65,7 @@ function makeReq(method, url, reqKeys, resKeys) {
             })
             if (isResponseMissingKeys) {
               callback(new Error(
-                'Backend missing some of: ' + JSON.stringify(resFields)
+                'Backend missing some of: ' + JSON.stringify(resKeys)
               ))
               return
             }
@@ -108,27 +115,41 @@ function makeReq(method, url, reqKeys, resKeys) {
  */
 module.exports =
   { feed:
-    { get: makeReq('GET', '/feed', [], ['feed'])
+    { get: makeReq('GET', '/feed',
+      [], ['feed'])
     }
   , feedback:
-    { create: makeReq('POST', '/feedback', ['token', 'feedback'], [])
+    { create: makeReq('POST', '/feedback',
+      ['token', 'feedback'], [])
     }
   , question:
-    { create: makeReq('POST', '/question', ['token', 'title', 'answers'], ['question'])
-    , get: makeReq('GET', '/question/:question', ['question'], ['title', 'answers'])
-    , vote: makeReq('POST', '/question/:question/vote', ['token', 'question', 'answer', 'story'], ['question'])
+    { create: makeReq('POST', '/question',
+      ['token', 'title', 'answers'], ['question'])
+    , get: makeReq('GET', '/question/:question',
+      ['question'], ['title', 'answers'])
+    , vote: makeReq('POST', '/question/:question/vote',
+      ['token', 'question', 'answer', 'story'], ['question'])
     }
   , story:
-    { create: makeReq('POST', '/story', ['token', 'title', 'narrative', 'question'], ['story'])
-    , get: makeReq('GET', '/story/:story', ['story'], ['title', 'narrative', 'question'])
-    , delete: makeReq('DELETE', '/story/:story', ['token', 'story'], [])
+    { create: makeReq('POST', '/story',
+      ['token', 'title', 'narrative', 'question'], ['story'])
+    , get: makeReq('GET', '/story/:story',
+      ['story'], ['title', 'narrative', 'question'])
+    , delete: makeReq('DELETE', '/story/:story',
+      ['token', 'story'], [])
     }
   , user:
-    { create: makeReq('POST', '/user', ['username', 'email', 'password'], ['token', 'ttl'])
-    , login: makeReq('POST', '/user/authenticate', ['usernameemail', 'password'], ['token', 'ttl'])
-    , refreshSession: makeReq('POST', '/user/reauthenticate', ['token'], ['token', 'ttl'])
-    , changePassword: makeReq('PUT', '/user/password', ['token', 'oldPassword', 'newPassword', 'confirmPassword'], [])
-    , logout: makeReq('POST', '/user/logout', ['token'], [])
-    , delete: makeReq('DELETE', '/user', ['token'], [])
+    { create: makeReq('POST', '/user',
+      ['username', 'email', 'password'], ['token', 'ttl'])
+    , login: makeReq('POST', '/user/authenticate',
+      ['usernameemail', 'password'], ['token', 'ttl'])
+    , refreshSession: makeReq('POST', '/user/reauthenticate',
+      ['token'], ['token', 'ttl'])
+    , changePassword: makeReq('PUT', '/user/password',
+      ['token', 'oldPassword', 'newPassword', 'confirmPassword'], [])
+    , logout: makeReq('POST', '/user/logout',
+      ['token'], [])
+    , delete: makeReq('DELETE', '/user',
+      ['token'], [])
     }
   }
