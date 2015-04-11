@@ -1,3 +1,7 @@
+{
+	border:1px solid black;
+}
+
 a{
 	color:#316029;
 }
@@ -368,7 +372,7 @@ textarea{
 }
 
 .text{
-	font-size: 2em;
+	font-size: 1.5em;
 }
 
 .text-storyView {
@@ -466,3 +470,75 @@ textarea{
 	float:left;
 	width:100%;
 }
+
+/*about us page*/
+.aboutView {
+	width:76%;
+	padding-top:5.5em;
+	margin: 0 auto;
+}
+
+.section{
+margin-top:1.8em;
+ border-radius:1em;
+ padding:1.3em;
+ background-color:white;
+}
+
+.section:nth-child(2){
+	padding:1.3em 1.3em 0em 1.3em;
+}
+
+.content{
+	margin-top:1em;
+}
+
+.field{
+	margin-top:1em;
+	width:100%;
+	border-color:lightgray;
+}
+
+
+.body{
+	height:7em;
+}
+.portrait-section{
+	margin-bottom:1em;
+}
+
+.founders{
+		background-color:white;
+}
+
+.bio{
+	margin-top:1em;
+	margin-left:0em;
+	height:15em;
+	background-color:white;
+}
+.portrait-container{
+}
+.quote{
+padding-left:115px;
+}
+
+.portrait{
+	border-radius:20em;
+	float:left;
+	margin-right:1em;
+
+}
+.bio-info{
+	float:left;
+	margin-top:2em;
+	width:100%;
+		margin-bottom:3em;
+
+}
+.div-trick{
+	color:white;
+	font-size: .2em;
+}
+
+
