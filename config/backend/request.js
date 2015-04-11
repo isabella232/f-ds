@@ -18,7 +18,4 @@ if (process.env.NODE_ENV == 'production') {
 
 var baseUrl = 'http://localhost:' + API_PORT + '/' + API_VERSION
 
-module.exports = request.defaults({
-  baseUrl: baseUrl,
-  json: true
-})
+module.exports = request.defaults({ baseUrl: baseUrl, json: true })
