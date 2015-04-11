@@ -8,7 +8,6 @@ function renderStatic(template) {
 
 module.exports = function(router) {
   router.get('/', renderStatic('welcome.html'))
-  router.get('/feed', renderStatic('feed.html'))
   router.get('/user/profile', renderStatic('profile.html'))
   router.get('/user/login', renderStatic('login.html'))
   router.get('/user/signup', renderStatic('signup.html'))
