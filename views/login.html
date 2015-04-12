@@ -5,9 +5,9 @@
 <div class="bodyView bodyView-welcome">
 	<div class="text">
 		<p>Login</p>
-		<form>
+		<form action="/user/login" method="POST">
 			<div class="inputFields">
-				<input name="emailUser" type="text" maxlength="254" placeholder=" email/username" required>
+				<input name="usernameEmail" type="text" maxlength="254" placeholder=" username/email" required>
 				<input name="password" type="password" maxlength="512" placeholder=" password" required autocapitalize="off">
 			</div>
 			<div class="buttons">
@@ -15,6 +15,6 @@
 			</div>
 		</form>
 	</div>
-</div>	
+</div>
 {% endblock %}
 

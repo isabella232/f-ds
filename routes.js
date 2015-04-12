@@ -36,9 +36,9 @@ module.exports = function(router) {
 
   function userCreate(req, res) {
 
-    var username        = req.body.username
-      , email           = req.body.email
-      , password        = req.body.password
+    var username  = req.body.username
+      , email     = req.body.email
+      , password  = req.body.password
 
     API.user.create({username: username, email: email, password: password}
     , function(err, clientErr, user) {
@@ -56,13 +56,75 @@ module.exports = function(router) {
     )
   }
 
+  function userLogin(req, res) {
+
+    var usernameEmail = req.body.usernameEmail
+      , password      = req.body.password
+
+    API.user.login({usernameemail: usernameEmail, password: password}
+    , function(err, clientErr, user) {
+        if (err) {
+          throw err
+        } else if (clientErr) {
+          res.render('login.html', { error: clientErr })
+        } else {
+          res.cookie('token', user.token)
+          res.redirect('/feed')
+
+        }
+      }
+    )
+  }
+
+  function userDelete(req, res) {
+    API.user.delete({token: req.cookies.token}
+    , function(err, clientErr, user) {
+        if (err) {
+          throw err
+        } else if (clientErr) {
+          res.render('profile.html', { error: clientErr })
+        } else {
+
+          res.clearCookie('token')
+          res.redirect('/feed')
+
+        }
+      }
+    )
+  }
+
+  function userChangePassword(req, res) {
+
+    var oldPassword     = req.body.oldPassword
+      , newPassword     = req.body.newPassword
+      , confirmPassword = req.body.confirmPassword
+
+    API.user.changePassword(
+      { token           : req.cookies.token
+      , oldPassword     : oldPassword
+      , newPassword     : newPassword
+      , confirmPassword : confirmPassword
+      }
+    , function(err, clientErr, user) {
+        if (err) {
+          throw err
+        } else if (clientErr) {
+          res.render('profile.html', { error: clientErr })
+        } else {
+          res.redirect('/feed')
+
+        }
+      }
+    )
+  }
+
   function userLogout(req, res) {
 
     if (req.cookies.token) {
       res.clearCookie('token')
     }
 
-    res.redirect('back')
+    res.redirect('/feed')
   }
 
 
@@ -76,8 +138,11 @@ module.exports = function(router) {
   router.get('/about/toupp', renderStatic('legalDocs/toupp.html'))
   router.get('/about/dmca', renderStatic('legalDocs/dmca.html'))
 
-  router.post('/user/signup', userCreate)
+  router.post('/user/changepassword', userChangePassword)
+  router.post('/user/delete', userDelete)
+  router.post('/user/login', userLogin)
   router.post('/user/logout', userLogout)
+  router.post('/user/signup', userCreate)
 }
 
 
