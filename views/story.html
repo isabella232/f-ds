@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
 {% block page %}
-<div class="bodyView">
+<div class="storyView">
   <div class=" title title-storyView">{{ story.title }}</div>
   <div class="date">
-    <span>{{ story.creationDate }}</span>
+    <span>{{ story.creationDate.split('T')[0] }}</span>
   </div>
   <div class="text text-storyView">
     <p>{{ story.narrative }}</p>
@@ -12,43 +12,27 @@
   <div class="question">
     <div class="questionText keyPoint">{{ question.title }}</div>
     <div class="answers">
-      <button class="answer clickable">{{ question.answer[0] }}</button>
-      <button class="answer clickable">{{ question.answer[1] }}</button>
-      <button class="answer clickable">{{ question.answer[2] }}</button>
-      <button class="answer clickable">{{ question.answer[3] }}</button>
-      <button class="answer clickable">{{ question.answer[4] }}</button>
+    {% for answer in question.answers %}
+      <button class="answer clickable">{{loop.index}}. {{ answer.name }}</button>
+    {% endfor %}
     </div>
   </div>
-  <div class="statistics statistics-storyView">
+  <div class="statistics">
     <div class="totalVotes">
       <span class="total keyPoint">Total Votes</span>
-      <span class="statistic keyPoint">{{ vote.count }}</span>
+      <span class="statistic keyPoint">{{ question.totalVotes }} votes</span>
     </div>
 
     <div class="superWrapper supperWrapper-storyView">
       <div class="demographicGrid">
+      {% for answer in question.answers %}
         <div class="dataPoint">
-          <span class="rank">1</span>
-          <div class="votes votes-storyView">{{ vote }}</div>
+          <span class="rank">{{loop.index}}</span>
+          <div class="votes votes-storyView">{{ answer.votes }}</div>
         </div>
-        <div class="dataPoint">
-          <span class="rank">2</span>
-          <div class="votes votes-storyView">{{ vote }}</div>
-        </div>
-        <div class="dataPoint">
-          <span class="rank">3</span>
-          <div class="votes votes-storyView">{{ vote }}</div>
-        </div>
-        <div class="dataPoint">
-          <span class="rank">4</span>
-          <div class="votes votes-storyView">{{ vote }}</div>
-        </div>
-        <div class="dataPoint">
-          <span class="rank">5</span>
-          <div class="votes votes-storyView">{{ vote }}</div>
+      {% endfor %}
       </div>
     </div>
   </div>
-</div>
 {% endblock %}
 

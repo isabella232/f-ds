@@ -1,9 +1,10 @@
 {% extends "base.html" %}
+{% include "partials/error.html" %}
 
 {% block page %}
-<div class="bodyView bodyView-signup">
+<div class="bodyView bodyView-welcome">
 	<div class="text">
-		<p>Create an account</p>
+		<p>Sign Up</p>
 		<form>
 			<div class="inputFields">
 				<input name="username" type="text" placeholder=" username" pattern="^[A-Za-z0-9]{3,20}$" title="please enter a combination of 3-20 alphabetic characters/numeric digits" required autocapitalize="off">
@@ -11,7 +12,7 @@
 				<input id="password" name="password" type="password" placeholder=" password" maxlength="512" pattern=".{5,512}" title="please enter a password between 5-512 characters" required autocapitalize="off" onkeyup="checkPass(); return false;"> 
 				<input id="password2" name="password2" type="password" placeholder=" confirm password" maxlength="512" pattern=".{5,512}" title="please enter a password between 5-512 characters" required autocapitalize="off" onkeyup="checkPass(); return false;">
 				<div class="buttons">
-					<button class="clickable" type="submit">Create</button>
+					<button class="clickable" type="submit">Sign Up</button>
 				</div>
 			</div>
 		</form>

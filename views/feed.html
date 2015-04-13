@@ -2,20 +2,20 @@
 
 {% block page %}
 
-<div class="bodyView feedView">
+<div class="feedView">
     {% for story in feed %}
      <div class="feedElement">
-          <div class="title title-feedView">
-            <p>{{ story.title }}</p>
+          <div class="title-feedView">
+            <p><a href="/story/{{ story.story }}">{{ story.title }}</a></p>
           </div>
           <div class="text text-feedView">
               <p>{{ story.narrative }}</p>
           </div>
        <div class="date">
-           <span>{{ story.creationDate }}</span>
+           <span>{{ story.creationDate.split('T')[0] }}</span>
         </div>
        <div class="votes">
-            <span>{{ story.voteCount? }}</span>
+            <span>{{ story.totalVotes }} votes</span>
        </div>
     </div>
     {% endfor %}

@@ -25,8 +25,9 @@ app.use(express.static(path.join(__dirname, 'pub')))
 
 // Set up routes.
 var router = express.Router()
+require('./routes')(router)
 require('./routes/feed')(router)
-require('./routes.js')(router)
+require('./routes/story')(router)
 app.use(router)
 
 // Handle server exceptions

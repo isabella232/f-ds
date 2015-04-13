@@ -69,8 +69,8 @@ body {
 .error{
 	color: #FF0000;
 	text-align: center;
-	position: relative; 
-	top: 3em; 
+	position: relative;
+	top: 3em;
 }
 
 .feedView {
@@ -85,6 +85,7 @@ body {
 }
 
 .buttons {
+	font-size: 14px;
 	margin-top:2em;
 }
 
@@ -100,6 +101,13 @@ button{
 	background-color: white;
 	margin-top: .3em;
 	width: 100%;
+}
+
+.buttonProtector{
+	margin-right: 2%;
+	margin-top: 1em;
+	float: right;
+	height: 2em;
 }
 
 .category{
@@ -243,6 +251,7 @@ input {
 
 .inputFields input{
 	margin-top:1em;
+	font-size: 14px;
 }
 
 /*Key Point*/
@@ -363,8 +372,14 @@ select {
 	margin-top:4em;
 }
 
-.statistic-storyView{
+.statistic{
 	float:right;
+}
+
+.storyView{
+	width: 76%;
+	padding-top: 5.5em;
+	margin: 0 auto;
 }
 
 textarea{
@@ -382,6 +397,7 @@ textarea{
 	padding: 2em;
 	border-radius:2em;
 	margin-top:2em;
+	font-size: 14px;
 }
 
 .text-feedView{
