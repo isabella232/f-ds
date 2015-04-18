@@ -3,7 +3,7 @@
 var _              = require('lodash')
 var backendRequest = require('./request')
 
-function makeReq(method, url, reqKeys, resKeys) {
+function makeReq(method, urlPattern, reqKeys, resKeys) {
   return function(form, callback) {
 
     var formKeys = _.keys(form)
@@ -25,7 +25,7 @@ function makeReq(method, url, reqKeys, resKeys) {
 
     // Replace Express-ish URL variables using key of same name from `form`.
     // Goes from '/story/:story' to '/story/' + form['story']
-    url = url.replace(/:(\w+)/, function(match, key) {
+    var url = urlPattern.replace(/:(\w+)/, function(match, key) {
       return form[key]
     })
 
