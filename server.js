@@ -6,26 +6,14 @@ var bodyParser    = require('body-parser')
   , nunjucks      = require('nunjucks')
   , path          = require('path')
 
+var cookieConfig  = require('./config/cookie')
+
 var app = express()
 
-var cookieOptions =
-  { secure: true
-  , httpOnly: true
-  }
-
-var cookieSecret = process.env.cookieSecret
-
-if (!cookieSecret) {
-  if (app.get('env') === 'production' ) {
-    throw new Error('Cookie secret configuration required.')
-  } else {
-    cookieSecret = 'https://youtu.be/t-7mQhSZRgM'
-  }
-}
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(cookieParser(cookieSecret, cookieOptions)
+app.use(cookieParser(cookieConfig.secret, cookieConfig.options)
 )
 
 // Set variables that will change when in production
