@@ -8,9 +8,25 @@ var bodyParser    = require('body-parser')
 
 var app = express()
 
+var cookieOptions =
+  { secure: true
+  , httpOnly: true
+  }
+
+var cookieSecret = process.env.cookieSecret
+
+if (!cookieSecret) {
+  if (app.get('env') === 'production' ) {
+    throw new Error('Cookie secret configuration required.')
+  } else {
+    cookieSecret = 'https://youtu.be/t-7mQhSZRgM'
+  }
+}
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(cookieParser())
+app.use(cookieParser(cookieSecret, cookieOptions)
+)
 
 // Set variables that will change when in production
 var serverPort = process.env.DS_PORT || 9000

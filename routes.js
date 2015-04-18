@@ -48,7 +48,7 @@ module.exports = function(router) {
           res.render('signup.html', { error: clientErr })
         } else {
 
-          res.cookie('token', user.token)
+          res.cookie('token', user.token, {maxAge: user.ttl})
           res.redirect('/feed')
 
         }
@@ -68,7 +68,7 @@ module.exports = function(router) {
         } else if (clientErr) {
           res.render('login.html', { error: clientErr })
         } else {
-          res.cookie('token', user.token)
+          res.cookie('token', user.token, {maxAge: user.ttl})
           res.redirect('/feed')
 
         }
