@@ -1,14 +1,20 @@
 'use strict';
 
-var bodyParser  = require('body-parser')
-  , express     = require('express')
-  , nunjucks    = require('nunjucks')
-  , path        = require('path')
+var bodyParser    = require('body-parser')
+  , cookieParser  = require('cookie-parser')
+  , express       = require('express')
+  , nunjucks      = require('nunjucks')
+  , path          = require('path')
+
+var CookieConfig  = require('./config/cookie')
 
 var app = express()
 
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(cookieParser(CookieConfig.secret)
+)
 
 // Set variables that will change when in production
 var serverPort = process.env.DS_PORT || 9000
