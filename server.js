@@ -29,13 +29,6 @@ env.express(app)
 // Tell Express to serve static objects from the /pub/ directory
 app.use(express.static(path.join(__dirname, 'pub')))
 
-app.use(function(req, res, next) {
-
-  env.addGlobal('session', req.cookies.token);
-
-  next();
-});
-
 // Set up routes.
 var router = express.Router()
 require('./routes')(router)
