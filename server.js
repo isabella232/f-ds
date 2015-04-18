@@ -6,14 +6,14 @@ var bodyParser    = require('body-parser')
   , nunjucks      = require('nunjucks')
   , path          = require('path')
 
-var cookieConfig  = require('./config/cookie')
+var CookieConfig  = require('./config/cookie')
 
 var app = express()
 
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(cookieParser(cookieConfig.secret, cookieConfig.options)
+app.use(cookieParser(CookieConfig.secret)
 )
 
 // Set variables that will change when in production

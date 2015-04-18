@@ -1,20 +1,28 @@
 'use strict';
 
-var cookieConfig = {}
+var CookieConfig = {}
 
-cookieConfig.options =
-  { secure: true
+CookieConfig.options =
+  { secure  : false
   , httpOnly: true
+  , signed  : true
   }
 
-cookieConfig.secret = process.env.cookieSecret
+// Secure cookies won't be set unless the server is HTTPS-enabled, so
+// we'll use insecure cookies unless the server is running in production
+if (process.env.NODE_ENV === 'production' ) {
+  CookieConfig.options.secure = true
+}
 
-if (!cookieConfig.secret) {
+
+CookieConfig.secret = process.env.cookieSecret
+
+if (!CookieConfig.secret) {
   if (process.env.NODE_ENV === 'production' ) {
     throw new Error('Cookie secret configuration required.')
   } else {
-    cookieConfig.secret = 'https://youtu.be/t-7mQhSZRgM'
+    CookieConfig.secret = 'https://youtu.be/t-7mQhSZRgM'
   }
 }
 
-module.exports = cookieConfig
+module.exports = CookieConfig
