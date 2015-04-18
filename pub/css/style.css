@@ -557,4 +557,57 @@ padding-left:115px;
 	font-size: .2em;
 }
 
+.modal-dialog {
+	width: 315px;
+	margin: 0 auto;
+	top: 50%;
+	left: 50%;
+	margin-left: -157.5px;
+	position: fixed;
+	text-align: center;
+	background-color: #f3f3f3;
+	border-radius: 0 14px 14px 14px;
+	padding: 15px;
+}
+
+#login .modal-dialog{
+	margin-top: -185.5px;
+}
+
+#signup .modal-dialog{
+	margin-top: -235.5px;
+}
+
+.modal .clickable{
+	width: 100%;
+	border-style: 1px #D3D5DA solid; 
+	border: 1px #95a5a6 solid;
+	background-color: #7B9677;
+	height: 50px;
+	font-size: 19px;
+	color: white;
+	margin-bottom: 48px;
+}
+
+.modal .clickable:hover{
+	background-color: #B0C0AD;
+}
+
+input {
+	margin-top: 10px;
+	padding: 10px;
+	height: 40px;
+	width: 100%;
+}
+
+form {
+	width: 80%;
+	margin: 0 auto;
+}
+
+.modal p{
+	margin-top: 48px;
+	margin-bottom: 30px;
+	font-size: 17px;
+}
 

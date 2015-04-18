@@ -7,8 +7,34 @@
 	<p>Join to effectively share your opinion with the world.</p>
 	</div>
 	<div class="buttons">
-		<a href="/user/signup"><button class="clickable">Sign up</button></a>
-		<a href="/user/login"><button class="clickable">Log in</button></a>
+		<button class="clickable"><a href="#" data-toggle="modal" data-target="#signup">Sign up</a></button>
+		<button class="clickable"><a href="#" data-toggle="modal" data-target="#login">Log in</a></button>
+	</div>
+</div>
+
+<div class="modal fade" id="login" role="dialog">
+	<div class="modal-dialog">
+	<p>Sign in to your account</p>
+	<form autocomplete="off">
+		<input name="emailUser" type="text" maxlength="254" placeholder=" email/username" required>
+		<input name="password" type="password" maxlength="512" placeholder=" password" required autocapitalize="off">
+		<hr/>
+		<button type="button" id="login-btn" class="btn btn-default clickable">Log in</button>
+	</form>
+	</div>
+</div>
+
+<div class="modal fade" id="signup" role="dialog">
+	<div class="modal-dialog">
+	<p>Create a new account</p>
+	<form autocomplete="off">
+		<input name="username" type="text" placeholder="username" pattern="^[A-Za-z0-9]{3,20}$" title="please enter a combination of 3-20 alphabetic characters/numeric digits" required autocapitalize="off">
+		<input name="email" type="email" placeholder="email" maxlength="254"pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$" title="please enter a valid email address" required autocapitalize="off">
+		<input id="password" name="password" type="password" placeholder="password" maxlength="512" pattern=".{5,512}" title="please enter a password between 5-512 characters" required autocapitalize="off" onkeyup="checkPass(); return false;"> 
+		<input id="password2" name="password2" type="password" placeholder="confirm password" maxlength="512" pattern=".{5,512}" title="please enter a password between 5-512 characters" required autocapitalize="off" onkeyup="checkPass(); return false;">
+		<hr/>
+		<button type="button" id="signup-btn" class="btn btn-default clickable">Sign up</button>
+	</form>
 	</div>
 </div>
 {% endblock %}
