@@ -1,18 +1,225 @@
+/* KEY KEY KEY
+1. debug
+2. universal css
+	a.html tags
+	b.error
+	c.shadow
+	d.keypoints
+	e.clickables
+	f.modals
+3. navigation bar
+4. mess
+*/
+
+
+
+/* ***********************
+Debug
+************************* */
 {
 	border:1px solid black;
 }
 
-a{
+/* ***********************
+Univerasl CSS
+************************* */
+body {
+	background-color:#D3D5DA;
+}
+button{
+	background-color:white;
 	color:#316029;
 }
+input {
+	display: block;
+	margin-top:.9em;
+	margin-bottom:.9em;
+	width:60%;
+	margin: 0 auto;
+}
+p{
+	margin: 1em;
+}
 
-/*feedView attributes*/
+textarea{
+	resize:none;
+}
 a {
 	color:#333;
 }
+select {
+	margin-top:.9em;
+	margin-bottom:.9em;
+	width:100%;
+}
+input {
+	margin-top: 10px;
+	padding: 10px;
+	height: 40px;
+	width: 100%;
+}
+
+form {
+	width: 80%;
+	margin: 0 auto;
+}
+
 a:hover {
 	color:#300;
 }
+
+/*shadow ---------------------*/
+
+
+.shadow{
+	box-shadow:1px 1px  4px 1px  #888888;
+}
+
+.shadow2{
+	box-shadow:1px 1px  10px 1px  #B5B5B5;
+}
+
+/*error ---------------------*/
+
+.error{
+	color: #FF0000;
+	text-align: center;
+	position: relative;
+	top: 3em;
+}
+
+/*Key Point ---------------------*/
+
+.keyPoint {
+	font-size:1.2em;
+	background-color:#f3f3f3;
+	text-align:center;
+	border-radius:.7em;
+}
+.keyPoint-inside {
+	font-size:1.2em;
+	background-color:#eeeeee;
+	text-align:center;
+	border-radius:.7em;
+}
+
+/*Clickables ------------------- */
+
+
+.clickable{
+	border-radius:0em .5em .5em .5em;
+	border:none;
+	margin:.4em;
+}
+
+.clickable:hover{
+	background-color:#95a5a6;
+	color:white;
+}
+
+.button{
+	float: left;
+	border-radius: .5em;
+	padding: .4em 1.3em;
+	background-color: white;
+	margin-top: .3em;
+	width: 100%;
+}
+
+/* modals ------------------------- */
+
+.modal-dialog {
+	width: 315px;
+	margin: 0 auto;
+	top: 50%;
+	left: 50%;
+	margin-left: -157.5px;
+	position: fixed;
+	text-align: center;
+	background-color: #f3f3f3;
+	border-radius: 0 14px 14px 14px;
+	padding: 15px;
+}
+
+#login .modal-dialog{
+	margin-top: -185.5px;
+}
+
+#signup .modal-dialog{
+	margin-top: -235.5px;
+}
+
+.modal .clickable{
+	width: 100%;
+	border-style: 1px #D3D5DA solid; 
+	border: 1px #95a5a6 solid;
+	background-color: #7B9677;
+	height: 50px;
+	font-size: 19px;
+	color: white;
+	margin-bottom: 48px;
+}
+
+.modal .clickable:hover{
+	background-color: #B0C0AD;
+}
+
+
+.modal p{
+	margin-top: 48px;
+	margin-bottom: 30px;
+	font-size: 17px;
+}
+
+
+
+
+/* **************************
+navigation bar
+ *********************** */
+
+.logoIcon{
+	height:3em;
+	float:left;
+}
+
+.logoIcon img{
+	margin-top:.3em;
+	height:80%;
+}
+
+.navigationIcons {
+	height:1.5em;
+	float:right;
+}
+
+.navigationIcons img {
+	height:100%;
+	margin:.5em;
+}
+
+.narrative{
+	padding:0 .4em;
+	width:100%;
+	height:15em;
+	text-align: top;
+}
+
+
+/* *************************
+Mess
+*********************** */
+
+
+.buttons-welcome {
+	font-size: 14px;
+	width:200px;
+margin: 0 auto;
+}
+
+
+
+/*feedView attributes*/
 
 .answers {
 	width:90%;
@@ -40,9 +247,6 @@ a:hover {
 	background-color: #E5E5E5;
 }
 
-body {
-	background-color:#D3D5DA;
-}
 
 .body{
 	height:7em;
@@ -53,7 +257,7 @@ body {
 	border-radius:1em;
 	padding:2em 0.2em 2em 0.2em;
 	text-align: center;
-	margin: 6em auto;
+	margin: 6em auto 0em auto;
 	background-color: #f3f3f3;
 }
 
@@ -66,13 +270,6 @@ body {
 	margin-top:.3em;
 }
 
-.error{
-	color: #FF0000;
-	text-align: center;
-	position: relative;
-	top: 3em;
-}
-
 .feedView {
 	width:76%;
 	padding-top:5.5em;
@@ -81,27 +278,9 @@ body {
 
 .bodyView-signup, .bodyView-login, .bodyView-welcome{
 	width:220px;
-	margin: 5.5em auto;
+	margin: 5.5em auto 1em auto;
 }
 
-.buttons {
-	font-size: 14px;
-	margin-top:2em;
-}
-
-button{
-	background-color:white;
-	color:#316029;
-}
-
-.button{
-	float: left;
-	border-radius: .5em;
-	padding: .4em 1.3em;
-	background-color: white;
-	margin-top: .3em;
-	width: 100%;
-}
 
 .buttonProtector{
 	margin-right: 2%;
@@ -148,18 +327,6 @@ button{
 	margin-bottom:.5em;
 }
 
-/*Clickables*/
-
-
-.clickable{
-	border-radius:0em .5em .5em .5em;
-	border:none;
-}
-
-.clickable:hover{
-	background-color:#95a5a6;
-	color:white;
-}
 
 .content{
 	margin-top:1em;
@@ -220,9 +387,6 @@ button{
 	width: 55%;
 }
 
-.field{
-	margin-bottom:2.3em;
-}
 
 .feedElement {
 	margin-bottom:6em;
@@ -237,13 +401,6 @@ button{
 	padding:1em;
 }
 
-input {
-	display: block;
-	margin-top:.9em;
-	margin-bottom:.9em;
-	width:60%;
-	margin: 0 auto;
-}
 
 .inputFields {
 	margin-top:2em;
@@ -254,54 +411,18 @@ input {
 	font-size: 14px;
 }
 
-/*Key Point*/
-
-.keyPoint {
-	font-size:1.2em;
-	background-color:#f3f3f3;
-	text-align:center;
-	border-radius:.7em;
-}
 
 .level{
-	background-color:white;
+	background-color:#e2e2e2;
 	float:right;
 	width:20%;
-	height:1.9em;
+	height:2.9em;
 	border-radius:1em 0em 0em 1em;
-	padding:.1em 1em;
+	padding:.7em .1em .1em .1em;
 	text-align:center;
 	margin-top:.7em;
 }
 
-/*navigation bar*/
-
-.logoIcon{
-	height:3em;
-	float:left;
-}
-
-.logoIcon img{
-	margin-top:.3em;
-	height:80%;
-}
-
-.navigationIcons {
-	height:1.5em;
-	float:right;
-}
-
-.navigationIcons img {
-	height:100%;
-	margin:.5em;
-}
-
-.narrative{
-	padding:0 .4em;
-	width:100%;
-	height:10em;
-	text-align: top;
-}
 
 .option{
 	float: right;
@@ -311,10 +432,6 @@ input {
 	padding: .1em 1em;
 	background-color: white;
 	margin-top: .7em;
-}
-
-p{
-	margin: 1em;
 }
 
 .profileView {
@@ -351,12 +468,6 @@ p{
 	background-color:white;
 }
 
-select {
-	margin-top:.9em;
-	margin-bottom:.9em;
-	width:100%;
-}
-
 .superWrapper{
 	float:left;
 	width:100%;
@@ -382,13 +493,11 @@ select {
 	margin: 0 auto;
 }
 
-textarea{
-	resize:none;
-}
+
 
 .text{
 	font-size: 1.5em;
-}
+    }
 
 .text-storyView {
 	background-color:white;
@@ -495,14 +604,22 @@ textarea{
 }
 
 .section{
-margin-top:1.8em;
+margin-top: 1.8em;
  border-radius:1em;
  padding:1.3em;
  background-color:white;
 }
 
-.section:nth-child(2){
-	padding:1.3em 1.3em 0em 1.3em;
+.gap{
+	margin-top:5em;
+}
+
+.section-create-question{
+	margin-top: 1.8em;
+	border-radius:1em;
+	padding:1.3em 1.3em 19em 1.3em;
+	background-color:white;
+
 }
 
 .content{
@@ -556,58 +673,3 @@ padding-left:115px;
 	color:white;
 	font-size: .2em;
 }
-
-.modal-dialog {
-	width: 315px;
-	margin: 0 auto;
-	top: 50%;
-	left: 50%;
-	margin-left: -157.5px;
-	position: fixed;
-	text-align: center;
-	background-color: #f3f3f3;
-	border-radius: 0 14px 14px 14px;
-	padding: 15px;
-}
-
-#login .modal-dialog{
-	margin-top: -185.5px;
-}
-
-#signup .modal-dialog{
-	margin-top: -235.5px;
-}
-
-.modal .clickable{
-	width: 100%;
-	border-style: 1px #D3D5DA solid; 
-	border: 1px #95a5a6 solid;
-	background-color: #7B9677;
-	height: 50px;
-	font-size: 19px;
-	color: white;
-	margin-bottom: 48px;
-}
-
-.modal .clickable:hover{
-	background-color: #B0C0AD;
-}
-
-input {
-	margin-top: 10px;
-	padding: 10px;
-	height: 40px;
-	width: 100%;
-}
-
-form {
-	width: 80%;
-	margin: 0 auto;
-}
-
-.modal p{
-	margin-top: 48px;
-	margin-bottom: 30px;
-	font-size: 17px;
-}
-

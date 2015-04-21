@@ -1,3 +1,5 @@
+$("narrative").css("resizable()");
+
 // confirm password for create account
 
 function checkPass(){
