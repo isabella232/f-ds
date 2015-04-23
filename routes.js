@@ -146,7 +146,7 @@ module.exports = function(router) {
   router.get('/user/profile', renderIfToken  ('profile.html', '/'))
   router.get('/user/login',   renderIfNoToken('login.html',   '/feed'))
   router.get('/user/signup',  renderIfNoToken('signup.html',  '/feed'))
-  router.get('/story/create', renderStatic   ('create.html'))
+  router.get('/story/create', renderIfToken  ('create.html',  '/'))
   router.get('/about',        renderStatic   ('about.html'))
   router.get('/about/toupp',  renderStatic   ('legalDocs/toupp.html'))
   router.get('/about/dmca',   renderStatic   ('legalDocs/dmca.html'))
