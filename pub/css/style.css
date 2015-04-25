@@ -640,7 +640,10 @@ margin-top: 1.8em;
 .portrait-section{
 	margin-bottom:1em;
 }
-
+.video{
+	display:block;
+	margin:0 auto;
+}
 .founders{
 		background-color:white;
 }
@@ -651,6 +654,7 @@ margin-top: 1.8em;
 	height:15em;
 	background-color:white;
 }
+.portrait-container img{}
 .portrait-container{
 }
 .quote{
@@ -659,18 +663,20 @@ padding-left:115px;
 
 .portrait{
 	border-radius:20em;
-	float:left;
-	margin-right:1em;
-
+	display:block;
+	margin:0 auto;
 }
 .bio-info{
-	float:left;
+	float:;
 	margin-top:2em;
 	width:100%;
 		margin-bottom:3em;
+		text-align: center;
 
 }
 .div-trick{
 	color:white;
 	font-size: .2em;
+	margin:0 auto;
+	width:30px;
 }
