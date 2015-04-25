@@ -40,13 +40,13 @@ function renderFeed(res, previousClientError) {
   API.feed.get({}, function(err, clientErr, feed) {
     if (err) {
       console.error(err.stack)
-      res.render('500.html', { error: err })
+      res.render('500.html')
     } else if (clientErr) {
       // Backend's route of "GET /feed" is specified to never return a client
       // error.  It should never happen.  If we get one, then this is an
       // internal server error.
       console.trace('Error: client error on feed: ' + clientErr)
-      res.render('500.html', { error: clientErr })
+      res.render('500.html')
     } else {
       var questionIds = []
       for (var i = 0; i < feed.feed.length; i++) {
@@ -106,6 +106,7 @@ function userCreate(req, res) {
   API.user.create({username: username, email: email, password: password}
   , function(err, clientErr, user) {
       if (err) {
+        console.error(err.stack)
         res.render('500.html')
       } else if (clientErr) {
         res.render('signup.html', { error: clientErr })
@@ -128,6 +129,7 @@ function userLogin(req, res) {
   API.user.login({usernameemail: usernameEmail, password: password}
   , function(err, clientErr, user) {
       if (err) {
+        console.error(err.stack)
         res.render('500.html')
       } else if (clientErr) {
         res.render('login.html', { error: clientErr })
@@ -147,6 +149,7 @@ function userDelete(req, res) {
   API.user.delete({token: req.signedCookies.token}
   , function(err, clientErr, user) {
       if (err) {
+        console.error(err.stack)
         res.render('500.html')
       } else if (clientErr) {
         res.render('profile.html', { error: clientErr })
@@ -174,6 +177,7 @@ function userChangePassword(req, res) {
     }
   , function(err, clientErr) {
       if (err) {
+        console.error(err.stack)
         res.render('500.html')
       } else if (clientErr) {
         res.render('profile.html', { error: clientErr })
@@ -192,6 +196,7 @@ function userLogout(req, res) {
     API.user.logout({ token: req.signedCookies.token }
     , function(err) {
       if (err) {
+        console.error(err.stack)
         res.render('500.html')
         return
       } else {
@@ -222,6 +227,7 @@ function storyCreate(req, res) {
     }
   , function(err, clientErr, question) {
       if (err) {
+        console.error(err.stack)
         res.render('500.html')
       } else if (clientErr) {
         res.render('create.html', { error: clientErr })
@@ -234,6 +240,7 @@ function storyCreate(req, res) {
           }
         , function(err, clientErr, story) {
             if (err) {
+              console.error(err.stack)
               res.render('500.html')
             } else if (clientErr) {
               res.render('create.html', { error: clientErr })
@@ -253,7 +260,7 @@ function renderStoryFetch(storyId, res, previousClientError) {
   , function(err, clientErr, story) {
       if (err) {
         console.error(err.stack)
-        res.render('500.html', { error: err })
+        res.render('500.html')
       } else if (clientErr) {
         console.trace('Error: client error on story: ' + clientErr)
         res.render('404.html', { error: clientErr })
@@ -263,7 +270,7 @@ function renderStoryFetch(storyId, res, previousClientError) {
         , function(err, clientErr, question) {
             if (err) {
               console.error(err.stack)
-              res.render('500.html', { error: err })
+              res.render('500.html')
             } else if (clientErr) {
               console.trace('Error: client error on question: ' + clientErr)
               res.render('404.html', { error: clientErr })
@@ -313,21 +320,21 @@ function storyVote(req, res) {
   , function(err, clientErr, story) {
       if (err) {
         console.error(err.stack)
-        res.render('500.html', { error: err })
+        res.render('500.html')
       } else if (clientErr) {
         // The user tried to vote on a story that doesn't exist anymore.
         res.render('404.html', { error: err })
       } else {
         API.question.vote(
-          { 'token'    : req.signedCookies.token
-          , 'question' : story.question
-          , 'answer'   : req.params.answer
-          , 'story'    : req.params.storyId
+          { token    : req.signedCookies.token
+          , question : story.question
+          , answer   : req.params.answer
+          , story    : req.params.storyId
           }
         , function(err, clientErr) {
             if (err) {
               console.error(err.stack)
-              res.render('500.html', { error: err })
+              res.render('500.html')
             } else if (clientErr) {
               // There was a problem with the user voting on this question.
               renderStoryFetch(req.params.storyId, res, clientErr)
@@ -336,6 +343,24 @@ function storyVote(req, res) {
             }
           }
         )
+      }
+    }
+  )
+}
+
+function feedback(req, res) {
+  API.feedback.create(
+    { token    : req.signedCookies.token
+    , feedback : req.body.feedback
+    }
+  , function(err, clientErr) {
+      if (err) {
+        console.error(err.stack)
+        res.render('500.html')
+      } else if (clientErr) {
+        res.render('about.html', { error: clientErr })
+      } else {
+        res.render('about.html', { error: 'Thanks for your feedback!' })
       }
     }
   )
@@ -363,8 +388,9 @@ module.exports = function(router) {
 
   router.post('/story/create',                storyCreate)
   router.post('/story/:storyId/vote/:answer', storyVote)
+  router.post('/story/:storyId/delete',       storyDelete)
 
-  router.post('/story/:storyId/delete', storyDelete)
+  router.post('/about', feedback)
 
 }
 
