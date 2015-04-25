@@ -69,6 +69,11 @@ a:hover {
 	color:#300;
 }
 
+.top{
+	z-index: 100;
+	position: relative;
+}
+
 /*shadow ---------------------*/
 
 
@@ -679,4 +684,15 @@ padding-left:115px;
 	font-size: .2em;
 	margin:0 auto;
 	width:30px;
+}
+
+.page-background{
+	position: fixed;
+	background-size: cover;
+	background-position:center;
+	background-image:url("/img/puzzle.jpg");
+	height:100%;
+	width:100%;
+	min-height:720px;
+	background-attachment:fixed;
 }
