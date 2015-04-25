@@ -12,7 +12,7 @@ function renderStatic(template) {
 function renderIfToken(template, redirectTo) {
   return function(req, res) {
     if (req.signedCookies.token) {
-      res.render(tempate)
+      res.render(template)
     } else {
       res.redirect(redirectTo)
     }
@@ -22,7 +22,7 @@ function renderIfToken(template, redirectTo) {
 function renderIfNoToken(template, redirectTo) {
   return function(req, res) {
     if (!req.signedCookies.token) {
-      res.render(tempate)
+      res.render(template)
     } else {
       res.redirect(redirectTo)
     }
