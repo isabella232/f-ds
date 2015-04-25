@@ -140,6 +140,45 @@ function userLogout(req, res) {
   }
 }
 
+function storyCreate(req, res) {
+  API.question.create(
+    { token   : req.signedCookies.token
+    , title   : req.body.question
+    , answers :
+      [ req.body.answer0
+      , req.body.answer1
+      , req.body.answer2
+      , req.body.answer3
+      , req.body.answer4
+      ]
+    }
+  , function(err, clientErr, question) {
+      if (err) {
+        throw err
+      } else if (clientErr) {
+        res.render('create.html', { error: clientErr })
+      } else {
+        API.story.create(
+          { token     : req.signedCookies.token
+          , title     : req.body.title
+          , narrative : req.body.narrative
+          , question  : question.question
+          }
+        , function(err, clientErr, story) {
+            if (err) {
+              throw err
+            } else if (clientErr) {
+              res.render('create.html', { error: clientErr })
+            } else {
+              res.redirect('/story/' + story.story)
+            }
+          }
+        )
+      }
+    }
+  )
+}
+
 module.exports = function(router) {
 
   router.get('/',             renderIfNoToken('welcome.html', '/feed'))
@@ -156,6 +195,8 @@ module.exports = function(router) {
   router.post('/user/login',          userLogin)
   router.post('/user/logout',         userLogout)
   router.post('/user/signup',         userCreate)
+
+  router.post('/story/create', storyCreate)
 }
 
 
