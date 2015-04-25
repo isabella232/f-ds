@@ -38,7 +38,7 @@ function userCreate(req, res) {
   API.user.create({username: username, email: email, password: password}
   , function(err, clientErr, user) {
       if (err) {
-        throw err
+        res.render('500.html')
       } else if (clientErr) {
         res.render('signup.html', { error: clientErr })
       } else {
@@ -60,7 +60,7 @@ function userLogin(req, res) {
   API.user.login({usernameemail: usernameEmail, password: password}
   , function(err, clientErr, user) {
       if (err) {
-        throw err
+        res.render('500.html')
       } else if (clientErr) {
         res.render('login.html', { error: clientErr })
       } else {
@@ -79,7 +79,7 @@ function userDelete(req, res) {
   API.user.delete({token: req.signedCookies.token}
   , function(err, clientErr, user) {
       if (err) {
-        throw err
+        res.render('500.html')
       } else if (clientErr) {
         res.render('profile.html', { error: clientErr })
       } else {
@@ -106,7 +106,7 @@ function userChangePassword(req, res) {
     }
   , function(err, clientErr) {
       if (err) {
-        throw err
+        res.render('500.html')
       } else if (clientErr) {
         res.render('profile.html', { error: clientErr })
       } else {
@@ -124,7 +124,7 @@ function userLogout(req, res) {
     API.user.logout({ token: req.signedCookies.token }
     , function(err) {
       if (err) {
-        throw err
+        res.render('500.html')
         return
       } else {
 
@@ -154,7 +154,7 @@ function storyCreate(req, res) {
     }
   , function(err, clientErr, question) {
       if (err) {
-        throw err
+        res.render('500.html')
       } else if (clientErr) {
         res.render('create.html', { error: clientErr })
       } else {
@@ -166,7 +166,7 @@ function storyCreate(req, res) {
           }
         , function(err, clientErr, story) {
             if (err) {
-              throw err
+              res.render('500.html')
             } else if (clientErr) {
               res.render('create.html', { error: clientErr })
             } else {
