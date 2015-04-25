@@ -34,8 +34,6 @@ app.use(express.static('node_modules/bootstrap/dist'))
 // Set up routes.
 var router = express.Router()
 require('./routes')(router)
-require('./routes/feed')(router)
-require('./routes/story')(router)
 app.use(router)
 
 // Handle server exceptions

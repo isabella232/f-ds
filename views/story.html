@@ -13,7 +13,9 @@
     <div class="questionText keyPoint shadow">{{ question.title }}</div>
     <div class="answers">
     {% for answer in question.answers %}
-      <button class="answer clickable shadow">{{loop.index}}. {{ answer.name }}</button>
+      <form action="/story/{{ story.storyId }}/vote/{{ loop.index - 1 }}" method="POST">
+        <button class="answer clickable shadow">{{ loop.index }}. {{ answer.name }}</button>
+      </form>
     {% endfor %}
     </div>
   </div>
@@ -27,7 +29,7 @@
       <div class="demographicGrid">
       {% for answer in question.answers %}
         <div class="dataPoint">
-          <span class="rank shadow">{{loop.index}}</span>
+          <span class="rank shadow">{{ loop.index }}</span>
           <div class="votes votes-storyView shadow">{{ answer.votes }}</div>
         </div>
       {% endfor %}

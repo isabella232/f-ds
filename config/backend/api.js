@@ -128,7 +128,7 @@ module.exports =
     , get: makeReq('GET', '/question/:question',
       ['question'], ['title', 'answers'])
     , vote: makeReq('POST', '/question/:question/vote',
-      ['token', 'question', 'answer', 'story'], ['question'])
+      ['token', 'question', 'answer', 'story'], [])
     }
   , story:
     { create: makeReq('POST', '/story',
