@@ -2,23 +2,23 @@
 
 {% block page %}
 <div class="storyView">
-  <div class=" title title-storyView">{{ story.title }}</div>
-  <div class="date">
+  <div class="title-storyView shadow2">{{ story.title }}</div>
+  <div class="s-date shadow">
     <span>{{ story.creationDate.split('T')[0] }}</span>
   </div>
-  <div class="text text-storyView">
+  <div class="text text-storyView shadow2">
     <p>{{ story.narrative }}</p>
   </div>
   <div class="question">
-    <div class="questionText keyPoint">{{ question.title }}</div>
+    <div class="questionText keyPoint shadow2">{{ question.title }}</div>
     <div class="answers">
     {% for answer in question.answers %}
-      <button class="answer clickable">{{loop.index}}. {{ answer.name }}</button>
+      <button class="answer clickable shadow2">{{loop.index}}. {{ answer.name }}</button>
     {% endfor %}
     </div>
   </div>
   <div class="statistics">
-    <div class="totalVotes">
+    <div class="totalVotes shadow2">
       <span class="total keyPoint">Total Votes</span>
       <span class="statistic keyPoint">{{ question.totalVotes }} votes</span>
     </div>
@@ -27,8 +27,8 @@
       <div class="demographicGrid">
       {% for answer in question.answers %}
         <div class="dataPoint">
-          <span class="rank">{{loop.index}}</span>
-          <div class="votes votes-storyView">{{ answer.votes }}</div>
+          <span class="rank shadow2">{{loop.index}}</span>
+          <div class="votes votes-storyView shadow2">{{ answer.votes }}</div>
         </div>
       {% endfor %}
       </div>
