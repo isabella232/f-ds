@@ -25,8 +25,14 @@ Debug
 Univerasl CSS
 ************************* */
 body {
-	background-color:#D3D5DA;
+	background-size: cover;
+	background-attachment:fixed;
+  background: -webkit-linear-gradient(lightgray, #49517B); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(lightgray, #49517B); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(lightgray, #49517B); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(lightgray, #49517B); /* Standard syntax */
 }
+
 button{
 	background-color:white;
 	color:#316029;
@@ -403,7 +409,7 @@ margin: 0 auto;
 .header {
 	height:5em;
 	width:100%;
-	background-color:#42693C;
+	background-color:#494949;
 	padding:1em;
 }
 
