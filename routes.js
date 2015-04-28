@@ -5,29 +5,27 @@ var CookieConfig  = require('./config/cookie')
 
 function renderStatic(template) {
   return function(req, res) {
-    switch (template) {
-      case 'login.html':
-      case 'signup.html':
-      case 'welcome.html':
-        if (req.signedCookies.token) {
+    res.render(template)
+  }
+}
 
-          res.redirect('/feed')
-        } else {
-          res.render(template)
-        }
-        break;
-      case 'profile.html':
-        if (!req.signedCookies.token) {
-          res.redirect('/feed')
-        } else {
-
-          res.render(template)
-        }
-        break;
-      default:
-        res.render(template)
+function renderIfToken(template, redirectTo) {
+  return function(req, res) {
+    if (req.signedCookies.token) {
+      res.render(template)
+    } else {
+      res.redirect(redirectTo)
     }
+  }
+}
 
+function renderIfNoToken(template, redirectTo) {
+  return function(req, res) {
+    if (!req.signedCookies.token) {
+      res.render(template)
+    } else {
+      res.redirect(redirectTo)
+    }
   }
 }
 
@@ -144,20 +142,20 @@ function userLogout(req, res) {
 
 module.exports = function(router) {
 
-  router.get('/', renderStatic('welcome.html'))
-  router.get('/user/profile', renderStatic('profile.html'))
-  router.get('/user/login', renderStatic('login.html'))
-  router.get('/user/signup', renderStatic('signup.html'))
-  router.get('/story/create', renderStatic('create.html'))
-  router.get('/about', renderStatic('about.html'))
-  router.get('/about/toupp', renderStatic('legalDocs/toupp.html'))
-  router.get('/about/dmca', renderStatic('legalDocs/dmca.html'))
+  router.get('/',             renderIfNoToken('welcome.html', '/feed'))
+  router.get('/user/profile', renderIfToken  ('profile.html', '/'))
+  router.get('/user/login',   renderIfNoToken('login.html',   '/feed'))
+  router.get('/user/signup',  renderIfNoToken('signup.html',  '/feed'))
+  router.get('/story/create', renderIfToken  ('create.html',  '/'))
+  router.get('/about',        renderStatic   ('about.html'))
+  router.get('/about/toupp',  renderStatic   ('legalDocs/toupp.html'))
+  router.get('/about/dmca',   renderStatic   ('legalDocs/dmca.html'))
 
   router.post('/user/changepassword', userChangePassword)
-  router.post('/user/delete', userDelete)
-  router.post('/user/login', userLogin)
-  router.post('/user/logout', userLogout)
-  router.post('/user/signup', userCreate)
+  router.post('/user/delete',         userDelete)
+  router.post('/user/login',          userLogin)
+  router.post('/user/logout',         userLogout)
+  router.post('/user/signup',         userCreate)
 }
 
 
