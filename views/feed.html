@@ -4,17 +4,17 @@
 
 <div class="feedView">
     {% for story in feed %}
-     <div class="feedElement">
+     <div class="feedElement shadow">
           <div class="title-feedView">
             <p><a href="/story/{{ story.story }}">{{ story.title }}</a></p>
           </div>
           <div class="text text-feedView">
               <p>{{ story.narrative }}</p>
           </div>
-       <div class="date">
+       <div class="date shadow">
            <span>{{ story.creationDate.split('T')[0] }}</span>
         </div>
-       <div class="votes">
+       <div class="votes shadow">
             <span>{{ story.totalVotes }} votes</span>
        </div>
     </div>

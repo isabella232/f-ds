@@ -1,16 +1,17 @@
 {% extends "base.html" %}
 
 {% block page %}
-<div class="bodyView bodyView-welcome">
+<div class="page-background"></div>
+<div class="bodyView bodyView-welcome shadow top">
 	<div class="text">
 	<p>Welcome to DynamicStory</p>
 	<p>Join to effectively share your opinion with the world.</p>
 	</div>
-	<div class="buttons">
-		<button class="clickable"><a href="#" data-toggle="modal" data-target="#signup">Sign up</a></button>
-		<button class="clickable"><a href="#" data-toggle="modal" data-target="#login">Log in</a></button>
-	</div>
 </div>
+	<div class="buttons-welcome top">
+		<a href="#" data-toggle="modal" data-target="#signup"><button class="clickable pull-right shadow">Sign up</button></a>
+		<a href="#" data-toggle="modal" data-target="#login"><button class="clickable pull-right shadow">Log in</button></a>
+	</div>
 
 <div class="modal fade" id="login" role="dialog">
 	<div class="modal-dialog">

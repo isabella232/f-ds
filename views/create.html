@@ -4,13 +4,16 @@
 {% block page %}
 <div class="createView">
     <form>
-        <div class="class keyPoint"> Title </div>
-        <textarea class="title title-createView field" name="title" placeholder="Title" pattern="^.{10,50}$" title="please enter a title between 10-50 characters" required></textarea>
-        <div class="class keyPoint"> Narrative </div>
-
+    <div class="section shadow">
+        <div class="class keyPoint-inside"> Title </div>
+        <textarea class="title title-createView field fixed" name="title" placeholder="Title" pattern="^.{10,50}$" title="please enter a title between 10-50 characters" required></textarea>
+    </div>
+    <div class="section shadow">
+        <div class="class keyPoint-inside"> Narrative </div>
         <textarea  class="narrative field" name="narrative" placeholder="Narrative" pattern="^.{50,100000}$" title="please enter a narrative between 50-100,000 characters" required></textarea>
-
-        <div class="class keyPoint"> Question </div>    
+    </div>
+    <div class="section-create-question shadow">
+        <div class="class keyPoint-inside"> Question </div>    
             <input class="createfield" type="text" placeholder="Question" pattern="^.{10,100000}$" title="please enter a question between __ characters" required>
 
         <div class="wrapper">
@@ -37,8 +40,8 @@
             <input class="option" type="text" placeholder="Strongly Agree" pattern="^.{10,100000}$" title="please enter an option between __ characters" required>
             <div class="level">5</div>
         </div>
-
-        <button class="finish clickable" type="submit">Finish Story!</button>
+    </div>
+        <button class="finish clickable shadow" type="submit">Finish Story!</button>
     </form>
 </div>
 {% endblock %}
