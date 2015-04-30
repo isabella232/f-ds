@@ -163,11 +163,16 @@ a:hover {
   margin-top: -222.5px;
 }
 
-.modal--fade p{
+.welcome-form .modal-inner{
+  top: auto;
+  margin-top: 48px;
+}
+
+.modal--fade p, .welcome-form p{
   font-size: 21px;
 }
 
-.modal--fade .clickable{
+.modal--fade .clickable, .welcome-form .clickable{
   width: 100%;
   border: 0 #95a5a6 solid;
   background-color: #979797;
@@ -177,11 +182,11 @@ a:hover {
   margin-bottom: 24px;
 }
 
-.modal--fade .clickable:hover{
+.modal--fade .clickable:hover, .welcome-form .clickable:hover{
   background-color: #bdbdbd;
 }
 
-.modal-content, .modal--fade .modal-content{
+.modal-content, .modal--fade .modal-content, .welcome-form .modal-content{
   box-shadow: none;
   border: 0;
   overflow: hidden;
@@ -189,9 +194,25 @@ a:hover {
   background-color: #f3f3f3;
 }
 
+#welcome-buttonsModal {
+  display: block;
+}
+
+#welcome-buttonsLink {
+  display: none;
+}
+
 @media (max-width: 480px) {
   .modal--fade {
     display: none;
+  }
+
+  #welcome-buttonsModal {
+    display: none;
+  }
+
+  #welcome-buttonsLink {
+    display: block;
   }
 }
 
@@ -235,7 +256,7 @@ Mess
 .buttons-welcome {
 	font-size: 14px;
 	width:200px;
-margin: 0 auto;
+  margin: 0 auto;
 }
 
 
@@ -515,7 +536,7 @@ margin: 0 auto;
 
 .text{
 	font-size: 1.5em;
-    }
+}
 
 .text-storyView {
 	background-color:white;
@@ -651,7 +672,7 @@ margin-top: 1.8em;
 	margin:0 auto;
 }
 .founders{
-		background-color:white;
+	background-color:white;
 }
 
 .bio{
@@ -663,8 +684,9 @@ margin-top: 1.8em;
 .portrait-container img{}
 .portrait-container{
 }
+
 .quote{
-padding-left:115px;
+  padding-left:115px;
 }
 
 .portrait{
@@ -672,14 +694,15 @@ padding-left:115px;
 	display:block;
 	margin:0 auto;
 }
+
 .bio-info{
 	float:;
 	margin-top:2em;
 	width:100%;
-		margin-bottom:3em;
-		text-align: center;
-
+	margin-bottom:3em;
+	text-align: center;
 }
+
 .div-trick{
 	color:white;
 	font-size: .2em;
@@ -702,6 +725,3 @@ padding-left:115px;
 .buttons a {
   text-decoration: none;
 }
-
-
-

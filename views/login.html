@@ -6,19 +6,18 @@
 
 {% include "partials/error.html" %}
 
-<div class="bodyView bodyView-welcome top">
-	<div class="text">
-		<p>Welcome Back!</p>
-		<form action="/user/login" method="POST">
-			<div class="inputFields">
-				<input name="usernameEmail" type="text" maxlength="254" placeholder=" username/email" required>
-				<input name="password" type="password" maxlength="512" placeholder=" password" required autocapitalize="off">
-			</div>
-			<div class="buttons">
-				<button class="clickable">Log in</button>
-			</div>
-		</form>
-	</div>
-</div>
+<section class="welcome-form">
+  <div class="modal-inner">
+    <p>Welcome Back!</p>
+    <div class="modal-content">
+      <form autocomplete="off" action="/user/login" method="POST">
+        <input name="usernameEmail" type="text" maxlength="254" placeholder="email/username" required>
+        <input name="password" type="password" maxlength="512" placeholder="password" required autocapitalize="off">
+        <hr/>
+        <button class="clickable">Log in</button>
+      </form>
+    </div>
+  </div>
+</section>
 {% endblock %}
 
