@@ -214,16 +214,20 @@ function userLogout(req, res) {
 }
 
 function storyCreate(req, res) {
+
+  var question  = req.body.question // Question title
+    , answer0   = req.body.answer0
+    , answer1   = req.body.answer1
+    , answer2   = req.body.answer2
+    , answer3   = req.body.answer3
+    , answer4   = req.body.answer4
+    , title     = req.body.title // Story title
+    , narrative = req.body.narrative
+
   API.question.create(
     { token   : req.signedCookies.token
-    , title   : req.body.question
-    , answers :
-      [ req.body.answer0
-      , req.body.answer1
-      , req.body.answer2
-      , req.body.answer3
-      , req.body.answer4
-      ]
+    , title   : question
+    , answers : [answer0, answer1, answer2, answer3, answer4]
     }
   , function(err, clientErr, question) {
       if (err) {
@@ -234,8 +238,8 @@ function storyCreate(req, res) {
       } else {
         API.story.create(
           { token     : req.signedCookies.token
-          , title     : req.body.title
-          , narrative : req.body.narrative
+          , title     : title
+          , narrative : narrative
           , question  : question.question
           }
         , function(err, clientErr, story) {
@@ -252,6 +256,7 @@ function storyCreate(req, res) {
       }
     }
   )
+
 }
 
 function renderStoryFetch(storyId, res, previousClientError) {
@@ -293,16 +298,19 @@ function renderStoryFetch(storyId, res, previousClientError) {
 }
 
 function storyDelete(req, res) {
+
+  var storyId = req.params.storyId
+
   API.story.delete(
     { token : req.signedCookies.token
-    , story : req.params.storyId
+    , story : storyId
     }
   , function(err, clientErr) {
       if (err) {
         console.error(err.stack)
         res.render('500.html')
       } else if (clientErr) {
-        renderStoryFetch(req.params.storyId, res, clientErr)
+        renderStoryFetch(storyId, res, clientErr)
       } else {
         renderFeed(res, 'Story deleted.')
       }
@@ -311,10 +319,17 @@ function storyDelete(req, res) {
 }
 
 function storyFetch(req, res) {
-  renderStoryFetch(req.params.storyId, res)
+
+  var storyId = req.params.storyId
+
+  renderStoryFetch(storyId, res)
 }
 
 function storyVote(req, res) {
+
+  var storyId = req.params.storyId
+    , answer  = req.params.answer
+
   API.story.get(
     { story: req.params.storyId }
   , function(err, clientErr, story) {
@@ -328,8 +343,8 @@ function storyVote(req, res) {
         API.question.vote(
           { token    : req.signedCookies.token
           , question : story.question
-          , answer   : req.params.answer
-          , story    : req.params.storyId
+          , answer   : answer
+          , story    : storyId
           }
         , function(err, clientErr) {
             if (err) {
@@ -337,9 +352,9 @@ function storyVote(req, res) {
               res.render('500.html')
             } else if (clientErr) {
               // There was a problem with the user voting on this question.
-              renderStoryFetch(req.params.storyId, res, clientErr)
+              renderStoryFetch(storyId, res, clientErr)
             } else {
-              res.redirect('/story/' + req.params.storyId)
+              res.redirect('/story/' + storyId)
             }
           }
         )
@@ -349,9 +364,12 @@ function storyVote(req, res) {
 }
 
 function feedback(req, res) {
+
+  var feedback = req.body.feedback
+
   API.feedback.create(
     { token    : req.signedCookies.token
-    , feedback : req.body.feedback
+    , feedback : feedback
     }
   , function(err, clientErr) {
       if (err) {
