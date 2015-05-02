@@ -556,6 +556,7 @@ Mess
 }
 
 .title-storyView {
+  width: 100%;
 	padding:1.4em 1.2em;
 	float:left;
 	font-size:1.5em;
