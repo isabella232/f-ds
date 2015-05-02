@@ -26,8 +26,9 @@ var env = new nunjucks.Environment(
 
 env.express(app)
 
-// Tell Express to serve static objects from the /pub/ directory
-app.use(express.static(path.join(__dirname, 'pub')))
+// Tell Express to serve static objects from these directories
+app.use(express.static('pub'))
+app.use(express.static('node_modules'))
 
 // Set up routes.
 var router = express.Router()
