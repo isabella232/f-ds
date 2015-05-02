@@ -29,7 +29,7 @@ env.express(app)
 // Tell Express to serve static objects from these directories
 app.use(express.static('pub'))
 app.use(express.static('node_modules/css-modal/build'))
-app.use(express.static('node_modules'))
+app.use(express.static('node_modules/bootstrap/dist'))
 
 // Set up routes.
 var router = express.Router()
