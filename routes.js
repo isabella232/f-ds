@@ -99,9 +99,18 @@ function renderFeed(res, previousClientError) {
 
 function userCreate(req, res) {
 
-  var username  = req.body.username
-    , email     = req.body.email
-    , password  = req.body.password
+  var username        = req.body.username
+    , email           = req.body.email
+    , password        = req.body.password
+    , confirmPassword = req.body.confirmPassword
+
+  if (password !== confirmPassword) {
+    res.render(
+      'signup.html'
+    , { error: 'Password and its confirmation did not match!' }
+    )
+    return
+  }
 
   API.user.create({username: username, email: email, password: password}
   , function(err, clientErr, user) {
@@ -168,6 +177,14 @@ function userChangePassword(req, res) {
   var oldPassword     = req.body.oldPassword
     , newPassword     = req.body.newPassword
     , confirmPassword = req.body.confirmPassword
+
+  if (newPassword !== confirmPassword) {
+    res.render(
+      'profile.html'
+    , { error: 'New password and its confirmation did not match!' }
+    )
+    return
+  }
 
   API.user.changePassword(
     { token           : req.signedCookies.token
