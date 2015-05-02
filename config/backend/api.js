@@ -75,7 +75,7 @@ function makeReq(method, urlPattern, reqKeys, resKeys) {
               return _.indexOf(resKeys, key) != -1
             })
 
-            callback(null, null, requestedFields)
+            callback(null, null, body.message, requestedFields)
             break;
         }
       }
@@ -97,7 +97,7 @@ function makeReq(method, urlPattern, reqKeys, resKeys) {
  * The second parameter is a callback that takes three arguments: err,
  * clientErr, and response.
  *
- *   callback(err, clientErr, res)
+ *   callback(err, clientErr, message, res)
  *
  * If err is present, then the frontend could not connect to the backend, the
  * backend did not respond properly, or the backend returned a { code: 500 }

@@ -3,19 +3,29 @@
 var Async        = require('async')
 
 var API          = require('./config/backend/api')
-var CookieConfig = require('./config/cookie')
+  , CookieConfig = require('./config/cookie')
 
 function renderStatic(template) {
   return function(req, res) {
-    res.render(template)
+
+    res.render(template,
+      { message:  req.flashMessage()
+      , error   : req.flashError()
+      }
+    )
   }
 }
 
 function renderIfToken(template, redirectTo) {
   return function(req, res) {
     if (req.signedCookies.token) {
-      res.render(template)
+      res.render(template,
+        { message:  req.flashMessage()
+        , error   : req.flashError()
+        }
+      )
     } else {
+      //req.flashError('You are not logged in.')
       res.redirect(redirectTo)
     }
   }
@@ -24,20 +34,21 @@ function renderIfToken(template, redirectTo) {
 function renderIfNoToken(template, redirectTo) {
   return function(req, res) {
     if (!req.signedCookies.token) {
-      res.render(template)
+      res.render(template,
+        { message:  req.flashMessage()
+        , error   : req.flashError()
+        }
+      )
     } else {
+      //req.flashError('You are already logged in.')
       res.redirect(redirectTo)
     }
   }
 }
 
-function feed(req, res) {
-  renderFeed(res)
-}
-
-function renderFeed(res, previousClientError) {
+function renderFeed(req, res) {
   // Get the list of stories.
-  API.feed.get({}, function(err, clientErr, feed) {
+  API.feed.get({}, function(err, clientErr, message, feed) {
     if (err) {
       console.error(err.stack)
       res.render('500.html')
@@ -58,7 +69,7 @@ function renderFeed(res, previousClientError) {
       , function(questionId, callback) {
           API.question.get(
             { question: questionId }
-          , function(err, clientErr, question) {
+          , function(err, clientErr, message, question) {
               if (err) {
                 console.error(err.stack)
                 res.render('500.html')
@@ -88,7 +99,10 @@ function renderFeed(res, previousClientError) {
             }
             res.render(
               'feed.html'
-            , { feed: feed.feed, error: previousClientError }
+            , { feed    : feed.feed
+              , message : req.flashMessage()
+              , error   : req.flashError()
+              }
             )
           }
         }
@@ -113,18 +127,20 @@ function userCreate(req, res) {
   }
 
   API.user.create({username: username, email: email, password: password}
-  , function(err, clientErr, user) {
+  , function(err, clientErr, message, user) {
       if (err) {
         console.error(err.stack)
         res.render('500.html')
       } else if (clientErr) {
-        res.render('signup.html', { error: clientErr })
+        req.flashError(clientErr)
+        res.redirect('/user/signup')
       } else {
         var options = CookieConfig.options
         options.maxAge = user.ttl
         res.cookie('token', user.token, options)
-        res.redirect('/feed')
 
+        req.flashMessage(message)
+        res.redirect('/feed')
       }
     }
   )
@@ -136,18 +152,20 @@ function userLogin(req, res) {
     , password      = req.body.password
 
   API.user.login({usernameemail: usernameEmail, password: password}
-  , function(err, clientErr, user) {
+  , function(err, clientErr, message, user) {
       if (err) {
         console.error(err.stack)
         res.render('500.html')
       } else if (clientErr) {
-        res.render('login.html', { error: clientErr })
+        req.flashError(clientErr)
+        res.redirect('/user/login')
       } else {
 
         var options = CookieConfig.options
         options.maxAge = user.ttl
         res.cookie('token', user.token, options)
 
+        req.flashMessage(message)
         res.redirect('/feed')
       }
     }
@@ -156,15 +174,18 @@ function userLogin(req, res) {
 
 function userDelete(req, res) {
   API.user.delete({token: req.signedCookies.token}
-  , function(err, clientErr, user) {
+  , function(err, clientErr, message, user) {
       if (err) {
         console.error(err.stack)
         res.render('500.html')
       } else if (clientErr) {
-        res.render('profile.html', { error: clientErr })
+        req.flashError(clientErr)
+        res.redirect('/user/profile')
       } else {
 
         res.clearCookie('token')
+
+        req.flashMessage(message)
         res.redirect('/feed')
 
       }
@@ -192,14 +213,16 @@ function userChangePassword(req, res) {
     , newPassword     : newPassword
     , confirmPassword : confirmPassword
     }
-  , function(err, clientErr) {
+  , function(err, clientErr, message) {
       if (err) {
         console.error(err.stack)
         res.render('500.html')
       } else if (clientErr) {
-        res.render('profile.html', { error: clientErr })
+        req.flashError(clientErr)
+        res.redirect('/user/changepassword')
       } else {
-        res.redirect('/feed')
+        req.flashMessage(message)
+        res.redirect('/user/changepassword')
 
       }
     }
@@ -211,21 +234,27 @@ function userLogout(req, res) {
   if (req.signedCookies.token) {
 
     API.user.logout({ token: req.signedCookies.token }
-    , function(err) {
+    , function(err, clientErr, message) {
       if (err) {
         console.error(err.stack)
         res.render('500.html')
         return
       } else {
 
-        // We don't explicitly handle clientErr because client errors
-        // happens only when the session has expired in the database
+        // We handle clientErr a bit differently here because
+        // clientErr is only defined when the token as expired in the db
+        if (clientErr) {
+          req.flashError(clientErr)
+        } else {
+          req.flashMessage(message)
+        }
         res.clearCookie('token')
         res.redirect('/feed')
       }
 
     })
   } else {
+    req.flashError('You aren\'t logged in.')
     res.redirect('/feed')
   }
 }
@@ -246,12 +275,13 @@ function storyCreate(req, res) {
     , title   : question
     , answers : [answer0, answer1, answer2, answer3, answer4]
     }
-  , function(err, clientErr, question) {
+  , function(err, clientErr, message, question) {
       if (err) {
         console.error(err.stack)
         res.render('500.html')
       } else if (clientErr) {
-        res.render('create.html', { error: clientErr })
+        req.flashError(clientErr)
+        res.redirect('/story')
       } else {
         API.story.create(
           { token     : req.signedCookies.token
@@ -259,13 +289,15 @@ function storyCreate(req, res) {
           , narrative : narrative
           , question  : question.question
           }
-        , function(err, clientErr, story) {
+        , function(err, clientErr, message, story) {
             if (err) {
               console.error(err.stack)
               res.render('500.html')
             } else if (clientErr) {
-              res.render('create.html', { error: clientErr })
+              req.flashError(clientErr)
+              res.redirect('/story')
             } else {
+              req.flashMessage(message)
               res.redirect('/story/' + story.story)
             }
           }
@@ -276,10 +308,13 @@ function storyCreate(req, res) {
 
 }
 
-function renderStoryFetch(storyId, res, previousClientError) {
+function storyFetch(req, res) {
+
+  var storyId = req.params.storyId
+
   API.story.get(
     { story: storyId }
-  , function(err, clientErr, story) {
+  , function(err, clientErr, message, story) {
       if (err) {
         console.error(err.stack)
         res.render('500.html')
@@ -289,7 +324,7 @@ function renderStoryFetch(storyId, res, previousClientError) {
       } else {
         API.question.get(
           { question: story.question }
-        , function(err, clientErr, question) {
+        , function(err, clientErr, message, question) {
             if (err) {
               console.error(err.stack)
               res.render('500.html')
@@ -302,9 +337,14 @@ function renderStoryFetch(storyId, res, previousClientError) {
               for (var i = 0; i < question.answers.length; i++) {
                 question.totalVotes += question.answers[i].votes
               }
+
               res.render(
                 'story.html'
-              , { story: story, question: question, error: previousClientError }
+              , { story   : story
+                , question: question
+                , message : req.flashMessage()
+                , error   : req.flashError()
+                }
               )
             }
           }
@@ -322,24 +362,19 @@ function storyDelete(req, res) {
     { token : req.signedCookies.token
     , story : storyId
     }
-  , function(err, clientErr) {
+  , function(err, clientErr, message) {
       if (err) {
         console.error(err.stack)
         res.render('500.html')
       } else if (clientErr) {
-        renderStoryFetch(storyId, res, clientErr)
+        req.flashError(clientErr)
+        res.redirect('/story/' + storyId)
       } else {
-        renderFeed(res, 'Story deleted.')
+        req.flashMessage(message)
+        res.redirect('/feed')
       }
     }
   )
-}
-
-function storyFetch(req, res) {
-
-  var storyId = req.params.storyId
-
-  renderStoryFetch(storyId, res)
 }
 
 function storyVote(req, res) {
@@ -349,7 +384,7 @@ function storyVote(req, res) {
 
   API.story.get(
     { story: req.params.storyId }
-  , function(err, clientErr, story) {
+  , function(err, clientErr, message, story) {
       if (err) {
         console.error(err.stack)
         res.render('500.html')
@@ -363,14 +398,15 @@ function storyVote(req, res) {
           , answer   : answer
           , story    : storyId
           }
-        , function(err, clientErr) {
+        , function(err, clientErr, message) {
             if (err) {
               console.error(err.stack)
               res.render('500.html')
             } else if (clientErr) {
-              // There was a problem with the user voting on this question.
-              renderStoryFetch(storyId, res, clientErr)
+              req.flashError(clientErr)
+              res.redirect('/story/' + storyId)
             } else {
+              req.flashMessage(message)
               res.redirect('/story/' + storyId)
             }
           }
@@ -380,7 +416,7 @@ function storyVote(req, res) {
   )
 }
 
-function feedback(req, res) {
+function feedbackCreate(req, res) {
 
   var feedback = req.body.feedback
 
@@ -388,14 +424,16 @@ function feedback(req, res) {
     { token    : req.signedCookies.token
     , feedback : feedback
     }
-  , function(err, clientErr) {
+  , function(err, clientErr, message) {
       if (err) {
         console.error(err.stack)
         res.render('500.html')
       } else if (clientErr) {
-        res.render('about.html', { error: clientErr })
+        req.flashError(clientErr)
+        res.redirect('/about')
       } else {
-        res.render('about.html', { error: 'Thanks for your feedback!' })
+        req.flashMessage(message)
+        res.redirect('/about')
       }
     }
   )
@@ -413,7 +451,7 @@ module.exports = function(router) {
   router.get('/about/dmca',     renderStatic   ('legalDocs/dmca.html'))
 
   router.get('/story/:storyId', storyFetch)
-  router.get('/feed',           feed)
+  router.get('/feed',           renderFeed)
 
   router.post('/user/changepassword', userChangePassword)
   router.post('/user/delete',         userDelete)
@@ -425,7 +463,7 @@ module.exports = function(router) {
   router.post('/story/:storyId/vote/:answer', storyVote)
   router.post('/story/:storyId/delete',       storyDelete)
 
-  router.post('/about', feedback)
+  router.post('/about', feedbackCreate)
 
 }
 
