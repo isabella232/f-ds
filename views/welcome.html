@@ -32,7 +32,7 @@
   <div class="modal-inner">
     <p>Join the Community!</p>
     <div class="modal-content">
-      <form autocomplete="off" action="/user/signup" method="POST">
+      <form action="/user/signup" method="POST">
         <input name="username" type="text" placeholder="username" pattern="^[A-Za-z0-9]{3,20}$" title="please enter a combination of 3-20 alphabetic characters/numeric digits" required autocapitalize="off">
         <input name="email" type="email" placeholder="email" maxlength="254"pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$" title="please enter a valid email address" required autocapitalize="off">
         <input id="password" name="password" type="password" placeholder="password" maxlength="512" pattern=".{5,512}" title="please enter a password between 5-512 characters" required autocapitalize="off">
@@ -51,7 +51,7 @@
   <div class="modal-inner">
     <p>Welcome Back!</p>
     <div class="modal-content">
-      <form autocomplete="off" action="/user/login" method="POST">
+      <form action="/user/login" method="POST">
         <input name="emailUser" type="text" maxlength="254" placeholder="email/username" required>
         <input name="password" type="password" maxlength="512" placeholder="password" required autocapitalize="off">
         <hr/>
