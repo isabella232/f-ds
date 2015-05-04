@@ -40,17 +40,20 @@ button{
 }
 input {
 	display: block;
-	margin-top:.9em;
 	margin-bottom:.9em;
-	width:60%;
 	margin: 0 auto;
+	border:1px solid lightgray;
+	margin-top: 10px;
+	padding: 10px;
+	height: 40px;
+	width: 100%;
 }
 p{
 	margin: 1em;
 }
 
 textarea{
-	resize:none;
+	resize:vertical;
 }
 a {
 	color:#333;
@@ -59,12 +62,6 @@ select {
 	margin-top:.9em;
 	margin-bottom:.9em;
 	width:100%;
-}
-input {
-	margin-top: 10px;
-	padding: 10px;
-	height: 40px;
-	width: 100%;
 }
 
 form {
