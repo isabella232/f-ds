@@ -281,7 +281,7 @@ function storyCreate(req, res) {
         res.render('500.html')
       } else if (clientErr) {
         req.flashError(clientErr)
-        res.redirect('/story')
+        res.redirect('/story/create')
       } else {
         API.story.create(
           { token     : req.signedCookies.token
@@ -295,7 +295,7 @@ function storyCreate(req, res) {
               res.render('500.html')
             } else if (clientErr) {
               req.flashError(clientErr)
-              res.redirect('/story')
+              res.redirect('/story/create')
             } else {
               req.flashMessage(message)
               res.redirect('/story/' + story.story)
