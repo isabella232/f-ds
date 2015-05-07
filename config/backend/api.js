@@ -94,8 +94,8 @@ function makeReq(method, urlPattern, reqKeys, resKeys) {
  * an object { token: string, feedback: string }.  For the specific case of
  * feed.get(), pass the empty object {}.
  *
- * The second parameter is a callback that takes three arguments: err,
- * clientErr, and response.
+ * The second parameter is a callback that takes four arguments: err,
+ * clientErr, message, and response.
  *
  *   callback(err, clientErr, message, res)
  *

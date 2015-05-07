@@ -8,22 +8,14 @@ var API          = require('./config/backend/api')
 function renderStatic(template) {
   return function(req, res) {
 
-    res.render(template,
-      { message:  req.flashMessage()
-      , error   : req.flashError()
-      }
-    )
+    res.render(template)
   }
 }
 
 function renderIfToken(template, redirectTo) {
   return function(req, res) {
     if (req.signedCookies.token) {
-      res.render(template,
-        { message:  req.flashMessage()
-        , error   : req.flashError()
-        }
-      )
+      res.render(template)
     } else {
       //req.flashError('You are not logged in.')
       res.redirect(redirectTo)
@@ -34,11 +26,7 @@ function renderIfToken(template, redirectTo) {
 function renderIfNoToken(template, redirectTo) {
   return function(req, res) {
     if (!req.signedCookies.token) {
-      res.render(template,
-        { message:  req.flashMessage()
-        , error   : req.flashError()
-        }
-      )
+      res.render(template)
     } else {
       //req.flashError('You are already logged in.')
       res.redirect(redirectTo)
@@ -97,12 +85,7 @@ function renderFeed(req, res) {
               }
               feed.feed[i].totalVotes = totalVotes
             }
-            res.render(
-              'feed.html'
-            , { feed    : feed.feed
-              , message : req.flashMessage()
-              , error   : req.flashError()
-              }
+            res.render('feed.html', { feed: feed.feed}
             )
           }
         }
@@ -111,204 +94,8 @@ function renderFeed(req, res) {
   })
 }
 
-function userCreate(req, res) {
 
-  var username        = req.body.username
-    , email           = req.body.email
-    , password        = req.body.password
-    , confirmPassword = req.body.confirmPassword
-
-  if (password !== confirmPassword) {
-    res.render(
-      'signup.html'
-    , { error: 'Password and its confirmation did not match!' }
-    )
-    return
-  }
-
-  API.user.create({username: username, email: email, password: password}
-  , function(err, clientErr, message, user) {
-      if (err) {
-        console.error(err.stack)
-        res.render('500.html')
-      } else if (clientErr) {
-        req.flashError(clientErr)
-        res.redirect('/user/signup')
-      } else {
-        var options = CookieConfig.options
-        options.maxAge = user.ttl
-        res.cookie('token', user.token, options)
-
-        req.flashMessage(message)
-        res.redirect('/feed')
-      }
-    }
-  )
-}
-
-function userLogin(req, res) {
-
-  var usernameEmail = req.body.usernameEmail
-    , password      = req.body.password
-
-  API.user.login({usernameemail: usernameEmail, password: password}
-  , function(err, clientErr, message, user) {
-      if (err) {
-        console.error(err.stack)
-        res.render('500.html')
-      } else if (clientErr) {
-        req.flashError(clientErr)
-        res.redirect('/user/login')
-      } else {
-
-        var options = CookieConfig.options
-        options.maxAge = user.ttl
-        res.cookie('token', user.token, options)
-
-        req.flashMessage(message)
-        res.redirect('/feed')
-      }
-    }
-  )
-}
-
-function userDelete(req, res) {
-  API.user.delete({token: req.signedCookies.token}
-  , function(err, clientErr, message, user) {
-      if (err) {
-        console.error(err.stack)
-        res.render('500.html')
-      } else if (clientErr) {
-        req.flashError(clientErr)
-        res.redirect('/user/profile')
-      } else {
-
-        res.clearCookie('token')
-
-        req.flashMessage(message)
-        res.redirect('/feed')
-
-      }
-    }
-  )
-}
-
-function userChangePassword(req, res) {
-
-  var oldPassword     = req.body.oldPassword
-    , newPassword     = req.body.newPassword
-    , confirmPassword = req.body.confirmPassword
-
-  if (newPassword !== confirmPassword) {
-    res.render(
-      'profile.html'
-    , { error: 'New password and its confirmation did not match!' }
-    )
-    return
-  }
-
-  API.user.changePassword(
-    { token           : req.signedCookies.token
-    , oldPassword     : oldPassword
-    , newPassword     : newPassword
-    , confirmPassword : confirmPassword
-    }
-  , function(err, clientErr, message) {
-      if (err) {
-        console.error(err.stack)
-        res.render('500.html')
-      } else if (clientErr) {
-        req.flashError(clientErr)
-        res.redirect('/user/changepassword')
-      } else {
-        req.flashMessage(message)
-        res.redirect('/user/changepassword')
-
-      }
-    }
-  )
-}
-
-function userLogout(req, res) {
-
-  if (req.signedCookies.token) {
-
-    API.user.logout({ token: req.signedCookies.token }
-    , function(err, clientErr, message) {
-      if (err) {
-        console.error(err.stack)
-        res.render('500.html')
-        return
-      } else {
-
-        // We handle clientErr a bit differently here because
-        // clientErr is only defined when the token as expired in the db
-        if (clientErr) {
-          req.flashError(clientErr)
-        } else {
-          req.flashMessage(message)
-        }
-        res.clearCookie('token')
-        res.redirect('/feed')
-      }
-
-    })
-  } else {
-    req.flashError('You aren\'t logged in.')
-    res.redirect('/feed')
-  }
-}
-
-function storyCreate(req, res) {
-
-  var question  = req.body.question // Question title
-    , answer0   = req.body.answer0
-    , answer1   = req.body.answer1
-    , answer2   = req.body.answer2
-    , answer3   = req.body.answer3
-    , answer4   = req.body.answer4
-    , title     = req.body.title // Story title
-    , narrative = req.body.narrative
-
-  API.question.create(
-    { token   : req.signedCookies.token
-    , title   : question
-    , answers : [answer0, answer1, answer2, answer3, answer4]
-    }
-  , function(err, clientErr, message, question) {
-      if (err) {
-        console.error(err.stack)
-        res.render('500.html')
-      } else if (clientErr) {
-        req.flashError(clientErr)
-        res.redirect('/story/create')
-      } else {
-        API.story.create(
-          { token     : req.signedCookies.token
-          , title     : title
-          , narrative : narrative
-          , question  : question.question
-          }
-        , function(err, clientErr, message, story) {
-            if (err) {
-              console.error(err.stack)
-              res.render('500.html')
-            } else if (clientErr) {
-              req.flashError(clientErr)
-              res.redirect('/story/create')
-            } else {
-              req.flashMessage(message)
-              res.redirect('/story/' + story.story)
-            }
-          }
-        )
-      }
-    }
-  )
-
-}
-
-function storyFetch(req, res) {
+function renderStory(req, res) {
 
   var storyId = req.params.storyId
 
@@ -342,8 +129,6 @@ function storyFetch(req, res) {
                 'story.html'
               , { story   : story
                 , question: question
-                , message : req.flashMessage()
-                , error   : req.flashError()
                 }
               )
             }
@@ -352,6 +137,189 @@ function storyFetch(req, res) {
       }
     }
   )
+}
+
+function userCreate(req, res) {
+
+  var username        = req.body.username
+    , email           = req.body.email
+    , password        = req.body.password
+    , confirmPassword = req.body.confirmPassword
+
+  if (password !== confirmPassword) {
+    res.render(
+      'signup.html'
+    , { error: 'Password and its confirmation did not match!' }
+    )
+    return
+  }
+
+  API.user.create({username: username, email: email, password: password}
+  , function(err, clientErr, message, user) {
+      if (err) {
+        console.error(err.stack)
+        res.render('500.html')
+      } else if (clientErr) {
+        res.redirectWithError('/user/signup', clientErr)
+      } else {
+        var options = CookieConfig.options
+        options.maxAge = user.ttl
+        res.cookie('token', user.token, options)
+
+        res.redirectWithMessage('/feed', message)
+      }
+    }
+  )
+}
+
+function userLogin(req, res) {
+
+  var usernameEmail = req.body.usernameEmail
+    , password      = req.body.password
+
+  API.user.login({usernameemail: usernameEmail, password: password}
+  , function(err, clientErr, message, user) {
+      if (err) {
+        console.error(err.stack)
+        res.render('500.html')
+      } else if (clientErr) {
+        res.redirectWithError('/user/login', clientErr)
+      } else {
+
+        var options = CookieConfig.options
+        options.maxAge = user.ttl
+        res.cookie('token', user.token, options)
+
+        res.redirectWithMessage('/feed', message)
+      }
+    }
+  )
+}
+
+function userDelete(req, res) {
+  API.user.delete({token: req.signedCookies.token}
+  , function(err, clientErr, message, user) {
+      if (err) {
+        console.error(err.stack)
+        res.render('500.html')
+      } else if (clientErr) {
+        res.redirectWithError('/user/profile', clientErr)
+      } else {
+
+        res.clearCookie('token')
+
+        res.redirectWithMessage('/feed', message)
+      }
+    }
+  )
+}
+
+function userChangePassword(req, res) {
+
+  var oldPassword     = req.body.oldPassword
+    , newPassword     = req.body.newPassword
+    , confirmPassword = req.body.confirmPassword
+
+  if (newPassword !== confirmPassword) {
+    res.render(
+      'profile.html'
+    , { error: 'New password and its confirmation did not match!' }
+    )
+    return
+  }
+
+  API.user.changePassword(
+    { token           : req.signedCookies.token
+    , oldPassword     : oldPassword
+    , newPassword     : newPassword
+    , confirmPassword : confirmPassword
+    }
+  , function(err, clientErr, message) {
+      if (err) {
+        console.error(err.stack)
+        res.render('500.html')
+      } else if (clientErr) {
+        res.redirectWithError('/user/changepassword', clientErr)
+      } else {
+        res.redirectWithMessage('/user/profile', message)
+
+      }
+    }
+  )
+}
+
+function userLogout(req, res) {
+
+  if (req.signedCookies.token) {
+
+    API.user.logout({ token: req.signedCookies.token }
+    , function(err, clientErr, message) {
+      if (err) {
+        console.error(err.stack)
+        res.render('500.html')
+        return
+      } else {
+        res.clearCookie('token')
+
+        // We handle clientErr a bit differently here because
+        // clientErr is only defined when the token as expired in the db
+        if (clientErr) {
+          res.redirectWithError('/feed', 'You aren\'t logged in.')
+        } else {
+          res.redirectWithMessage('/feed', message)
+        }
+      }
+
+    })
+  } else {
+    res.redirectWithError('/feed', 'You aren\'t logged in.')
+  }
+}
+
+function storyCreate(req, res) {
+
+  var question  = req.body.question // Question title
+    , answer0   = req.body.answer0
+    , answer1   = req.body.answer1
+    , answer2   = req.body.answer2
+    , answer3   = req.body.answer3
+    , answer4   = req.body.answer4
+    , title     = req.body.title // Story title
+    , narrative = req.body.narrative
+
+  API.question.create(
+    { token   : req.signedCookies.token
+    , title   : question
+    , answers : [answer0, answer1, answer2, answer3, answer4]
+    }
+  , function(err, clientErr, message, question) {
+      if (err) {
+        console.error(err.stack)
+        res.render('500.html')
+      } else if (clientErr) {
+        res.redirectWithError('/story/create', clientErr)
+      } else {
+        API.story.create(
+          { token     : req.signedCookies.token
+          , title     : title
+          , narrative : narrative
+          , question  : question.question
+          }
+        , function(err, clientErr, message, story) {
+            if (err) {
+              console.error(err.stack)
+              res.render('500.html')
+            } else if (clientErr) {
+              res.redirectWithError('/story/create', clientErr)
+            } else {
+              res.redirectWithMessage('/story/' + story.story, message)
+            }
+          }
+        )
+      }
+    }
+  )
+
 }
 
 function storyDelete(req, res) {
@@ -367,11 +335,9 @@ function storyDelete(req, res) {
         console.error(err.stack)
         res.render('500.html')
       } else if (clientErr) {
-        req.flashError(clientErr)
-        res.redirect('/story/' + storyId)
+        res.redirectWithError('/story/'  + storyId, clientErr)
       } else {
-        req.flashMessage(message)
-        res.redirect('/feed')
+        res.redirectWithMessage('/feed', message)
       }
     }
   )
@@ -403,11 +369,10 @@ function storyVote(req, res) {
               console.error(err.stack)
               res.render('500.html')
             } else if (clientErr) {
-              req.flashError(clientErr)
-              res.redirect('/story/' + storyId)
+              res.redirectWithError('/story/'  + storyId, clientErr)
             } else {
-              req.flashMessage(message)
-              res.redirect('/story/' + storyId)
+
+              res.redirectWithMessage('/story/'  + storyId, message)
             }
           }
         )
@@ -429,11 +394,9 @@ function feedbackCreate(req, res) {
         console.error(err.stack)
         res.render('500.html')
       } else if (clientErr) {
-        req.flashError(clientErr)
-        res.redirect('/about')
+        res.redirectWithError('/about', clientErr)
       } else {
-        req.flashMessage(message)
-        res.redirect('/about')
+        res.redirectWithMessage('/about', message)
       }
     }
   )
@@ -450,7 +413,7 @@ module.exports = function(router) {
   router.get('/about/toupp',    renderStatic   ('legalDocs/toupp.html'))
   router.get('/about/dmca',     renderStatic   ('legalDocs/dmca.html'))
 
-  router.get('/story/:storyId', storyFetch)
+  router.get('/story/:storyId', renderStory)
   router.get('/feed',           renderFeed)
 
   router.post('/user/changepassword', userChangePassword)

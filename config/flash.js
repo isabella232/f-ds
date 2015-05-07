@@ -39,6 +39,15 @@ module.exports = function(req, res, next) {
     }
   }
 
+  res.redirectWithMessage = function(path, message) {
+    req.flashMessage(message)
+    res.redirect(path)
+  }
+
+  res.redirectWithError = function(path, error) {
+    req.flashError(error)
+    res.redirect(path)
+  }
 
   next()
 }
