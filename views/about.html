@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block page %}
+{% include "partials/error.html" %}
 
 <div class="aboutView">
     <div class="section shadow">
@@ -55,8 +56,10 @@
        <div class="keyPoint-inside"><h3>Contact Us</h3></div>
         <div class="content">
           <p>Questions, Comments, Concerns?</br>Please share your thoughts with us.</p>
-          <textarea class="field body" name="body" placeholder=" Body"></textarea>
-          <button class="finish clickable shadow">Send feedback!</button>
+          <form action="/about" method="POST">
+            <textarea class="field body" name="feedback" placeholder=" What would you like us to know?" pattern="^.{50,10000}$"></textarea>
+            <button class="finish clickable shadow" type="submit">Send feedback!</button>
+          </form>
         </div>
     </div>
 </div>

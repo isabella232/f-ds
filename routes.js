@@ -1,7 +1,9 @@
 'use strict';
 
-var API           = require('./config/backend/api')
-var CookieConfig  = require('./config/cookie')
+var Async        = require('async')
+
+var API          = require('./config/backend/api')
+var CookieConfig = require('./config/cookie')
 
 function renderStatic(template) {
   return function(req, res) {
@@ -29,16 +31,92 @@ function renderIfNoToken(template, redirectTo) {
   }
 }
 
+function feed(req, res) {
+  renderFeed(res)
+}
+
+function renderFeed(res, previousClientError) {
+  // Get the list of stories.
+  API.feed.get({}, function(err, clientErr, feed) {
+    if (err) {
+      console.error(err.stack)
+      res.render('500.html')
+    } else if (clientErr) {
+      // Backend's route of "GET /feed" is specified to never return a client
+      // error.  It should never happen.  If we get one, then this is an
+      // internal server error.
+      console.trace('Error: client error on feed: ' + clientErr)
+      res.render('500.html')
+    } else {
+      var questionIds = []
+      for (var i = 0; i < feed.feed.length; i++) {
+        questionIds.push(feed.feed[i].question)
+      }
+      // For each story, get its question.
+      Async.map(
+        questionIds
+      , function(questionId, callback) {
+          API.question.get(
+            { question: questionId }
+          , function(err, clientErr, question) {
+              if (err) {
+                console.error(err.stack)
+                res.render('500.html')
+                callback(err)
+              } else if (clientErr) {
+                res.render('404.html', { error: clientErr })
+                callback(clientErr)
+              } else {
+                callback(null, question)
+              }
+            }
+          )
+        }
+      , function(err, results) {
+          if (err) {
+            // We had an error and either 500.html or 404.html was already
+            // rendered.
+            return
+          } else {
+            // Calculate total votes for each question.
+            for (var i = 0; i < feed.feed.length; i++) {
+              var totalVotes = 0
+              for (var j = 0; j < results[i].answers.length; j++) {
+                totalVotes += results[i].answers[j].votes
+              }
+              feed.feed[i].totalVotes = totalVotes
+            }
+            res.render(
+              'feed.html'
+            , { feed: feed.feed, error: previousClientError }
+            )
+          }
+        }
+      )
+    }
+  })
+}
+
 function userCreate(req, res) {
 
-  var username  = req.body.username
-    , email     = req.body.email
-    , password  = req.body.password
+  var username        = req.body.username
+    , email           = req.body.email
+    , password        = req.body.password
+    , confirmPassword = req.body.confirmPassword
+
+  if (password !== confirmPassword) {
+    res.render(
+      'signup.html'
+    , { error: 'Password and its confirmation did not match!' }
+    )
+    return
+  }
 
   API.user.create({username: username, email: email, password: password}
   , function(err, clientErr, user) {
       if (err) {
-        throw err
+        console.error(err.stack)
+        res.render('500.html')
       } else if (clientErr) {
         res.render('signup.html', { error: clientErr })
       } else {
@@ -60,7 +138,8 @@ function userLogin(req, res) {
   API.user.login({usernameemail: usernameEmail, password: password}
   , function(err, clientErr, user) {
       if (err) {
-        throw err
+        console.error(err.stack)
+        res.render('500.html')
       } else if (clientErr) {
         res.render('login.html', { error: clientErr })
       } else {
@@ -79,7 +158,8 @@ function userDelete(req, res) {
   API.user.delete({token: req.signedCookies.token}
   , function(err, clientErr, user) {
       if (err) {
-        throw err
+        console.error(err.stack)
+        res.render('500.html')
       } else if (clientErr) {
         res.render('profile.html', { error: clientErr })
       } else {
@@ -98,6 +178,14 @@ function userChangePassword(req, res) {
     , newPassword     = req.body.newPassword
     , confirmPassword = req.body.confirmPassword
 
+  if (newPassword !== confirmPassword) {
+    res.render(
+      'profile.html'
+    , { error: 'New password and its confirmation did not match!' }
+    )
+    return
+  }
+
   API.user.changePassword(
     { token           : req.signedCookies.token
     , oldPassword     : oldPassword
@@ -106,7 +194,8 @@ function userChangePassword(req, res) {
     }
   , function(err, clientErr) {
       if (err) {
-        throw err
+        console.error(err.stack)
+        res.render('500.html')
       } else if (clientErr) {
         res.render('profile.html', { error: clientErr })
       } else {
@@ -124,7 +213,8 @@ function userLogout(req, res) {
     API.user.logout({ token: req.signedCookies.token }
     , function(err) {
       if (err) {
-        throw err
+        console.error(err.stack)
+        res.render('500.html')
         return
       } else {
 
@@ -140,22 +230,203 @@ function userLogout(req, res) {
   }
 }
 
+function storyCreate(req, res) {
+
+  var question  = req.body.question // Question title
+    , answer0   = req.body.answer0
+    , answer1   = req.body.answer1
+    , answer2   = req.body.answer2
+    , answer3   = req.body.answer3
+    , answer4   = req.body.answer4
+    , title     = req.body.title // Story title
+    , narrative = req.body.narrative
+
+  API.question.create(
+    { token   : req.signedCookies.token
+    , title   : question
+    , answers : [answer0, answer1, answer2, answer3, answer4]
+    }
+  , function(err, clientErr, question) {
+      if (err) {
+        console.error(err.stack)
+        res.render('500.html')
+      } else if (clientErr) {
+        res.render('create.html', { error: clientErr })
+      } else {
+        API.story.create(
+          { token     : req.signedCookies.token
+          , title     : title
+          , narrative : narrative
+          , question  : question.question
+          }
+        , function(err, clientErr, story) {
+            if (err) {
+              console.error(err.stack)
+              res.render('500.html')
+            } else if (clientErr) {
+              res.render('create.html', { error: clientErr })
+            } else {
+              res.redirect('/story/' + story.story)
+            }
+          }
+        )
+      }
+    }
+  )
+
+}
+
+function renderStoryFetch(storyId, res, previousClientError) {
+  API.story.get(
+    { story: storyId }
+  , function(err, clientErr, story) {
+      if (err) {
+        console.error(err.stack)
+        res.render('500.html')
+      } else if (clientErr) {
+        console.trace('Error: client error on story: ' + clientErr)
+        res.render('404.html', { error: clientErr })
+      } else {
+        API.question.get(
+          { question: story.question }
+        , function(err, clientErr, question) {
+            if (err) {
+              console.error(err.stack)
+              res.render('500.html')
+            } else if (clientErr) {
+              console.trace('Error: client error on question: ' + clientErr)
+              res.render('404.html', { error: clientErr })
+            } else {
+              story.storyId = storyId
+              question.totalVotes = 0
+              for (var i = 0; i < question.answers.length; i++) {
+                question.totalVotes += question.answers[i].votes
+              }
+              res.render(
+                'story.html'
+              , { story: story, question: question, error: previousClientError }
+              )
+            }
+          }
+        )
+      }
+    }
+  )
+}
+
+function storyDelete(req, res) {
+
+  var storyId = req.params.storyId
+
+  API.story.delete(
+    { token : req.signedCookies.token
+    , story : storyId
+    }
+  , function(err, clientErr) {
+      if (err) {
+        console.error(err.stack)
+        res.render('500.html')
+      } else if (clientErr) {
+        renderStoryFetch(storyId, res, clientErr)
+      } else {
+        renderFeed(res, 'Story deleted.')
+      }
+    }
+  )
+}
+
+function storyFetch(req, res) {
+
+  var storyId = req.params.storyId
+
+  renderStoryFetch(storyId, res)
+}
+
+function storyVote(req, res) {
+
+  var storyId = req.params.storyId
+    , answer  = req.params.answer
+
+  API.story.get(
+    { story: req.params.storyId }
+  , function(err, clientErr, story) {
+      if (err) {
+        console.error(err.stack)
+        res.render('500.html')
+      } else if (clientErr) {
+        // The user tried to vote on a story that doesn't exist anymore.
+        res.render('404.html', { error: err })
+      } else {
+        API.question.vote(
+          { token    : req.signedCookies.token
+          , question : story.question
+          , answer   : answer
+          , story    : storyId
+          }
+        , function(err, clientErr) {
+            if (err) {
+              console.error(err.stack)
+              res.render('500.html')
+            } else if (clientErr) {
+              // There was a problem with the user voting on this question.
+              renderStoryFetch(storyId, res, clientErr)
+            } else {
+              res.redirect('/story/' + storyId)
+            }
+          }
+        )
+      }
+    }
+  )
+}
+
+function feedback(req, res) {
+
+  var feedback = req.body.feedback
+
+  API.feedback.create(
+    { token    : req.signedCookies.token
+    , feedback : feedback
+    }
+  , function(err, clientErr) {
+      if (err) {
+        console.error(err.stack)
+        res.render('500.html')
+      } else if (clientErr) {
+        res.render('about.html', { error: clientErr })
+      } else {
+        res.render('about.html', { error: 'Thanks for your feedback!' })
+      }
+    }
+  )
+}
+
 module.exports = function(router) {
 
-  router.get('/',             renderIfNoToken('welcome.html', '/feed'))
-  router.get('/user/profile', renderIfToken  ('profile.html', '/'))
-  router.get('/user/login',   renderIfNoToken('login.html',   '/feed'))
-  router.get('/user/signup',  renderIfNoToken('signup.html',  '/feed'))
-  router.get('/story/create', renderIfToken  ('create.html',  '/'))
-  router.get('/about',        renderStatic   ('about.html'))
-  router.get('/about/toupp',  renderStatic   ('legalDocs/toupp.html'))
-  router.get('/about/dmca',   renderStatic   ('legalDocs/dmca.html'))
+  router.get('/',               renderIfNoToken('welcome.html', '/feed'))
+  router.get('/user/profile',   renderIfToken  ('profile.html', '/'))
+  router.get('/user/login',     renderIfNoToken('login.html',   '/feed'))
+  router.get('/user/signup',    renderIfNoToken('signup.html',  '/feed'))
+  router.get('/story/create',   renderIfToken  ('create.html',  '/'))
+  router.get('/about',          renderStatic   ('about.html'))
+  router.get('/about/toupp',    renderStatic   ('legalDocs/toupp.html'))
+  router.get('/about/dmca',     renderStatic   ('legalDocs/dmca.html'))
+
+  router.get('/story/:storyId', storyFetch)
+  router.get('/feed',           feed)
 
   router.post('/user/changepassword', userChangePassword)
   router.post('/user/delete',         userDelete)
   router.post('/user/login',          userLogin)
   router.post('/user/logout',         userLogout)
   router.post('/user/signup',         userCreate)
+
+  router.post('/story/create',                storyCreate)
+  router.post('/story/:storyId/vote/:answer', storyVote)
+  router.post('/story/:storyId/delete',       storyDelete)
+
+  router.post('/about', feedback)
+
 }
 
 
