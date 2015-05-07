@@ -21,7 +21,7 @@ var serverPort = process.env.DS_PORT || 9000
 
 var env = new nunjucks.Environment(
   new nunjucks.FileSystemLoader('views'),
-  { autoescape: false }
+  { autoescape: true }
 )
 
 env.express(app)
