@@ -305,11 +305,7 @@ Mess
 	padding:.1em 1.3em;
 	border-radius:0 1em 1em 0;
 	margin-left:1em;
-<<<<<<< HEAD
 	margin-top:1em;
-=======
-	margin-top:.3em;
->>>>>>> 5dbe7b0... Implemented Flash Messages and Flash errors (config/flash.js)
 }
 
 .feedView {
