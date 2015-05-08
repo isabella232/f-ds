@@ -75,7 +75,7 @@ function makeReq(method, urlPattern, reqKeys, resKeys) {
               return _.indexOf(resKeys, key) != -1
             })
 
-            callback(null, null, requestedFields)
+            callback(null, null, body.message, requestedFields)
             break;
         }
       }
@@ -94,10 +94,10 @@ function makeReq(method, urlPattern, reqKeys, resKeys) {
  * an object { token: string, feedback: string }.  For the specific case of
  * feed.get(), pass the empty object {}.
  *
- * The second parameter is a callback that takes three arguments: err,
- * clientErr, and response.
+ * The second parameter is a callback that takes four arguments: err,
+ * clientErr, message, and response.
  *
- *   callback(err, clientErr, res)
+ *   callback(err, clientErr, message, res)
  *
  * If err is present, then the frontend could not connect to the backend, the
  * backend did not respond properly, or the backend returned a { code: 500 }
@@ -108,10 +108,11 @@ function makeReq(method, urlPattern, reqKeys, resKeys) {
  * clientErr will be a String whose message is a description of the client
  * error chosen by the backend server.
  *
- * If response is present, then the request was ultimately succesful.  response
- * will be an object whose keys are equal to the fourth parameter to makeReq.
- * For instance, when calling question.get(), response will be { title: string,
- * answers: string }.
+ * If message and response are present, then the request was ultimately
+ * successful.  message will be the server's suggestion for a success message
+ * that we can give to the user.  response will be an object whose keys are
+ * equal to the fourth parameter to makeReq.  For instance, when calling
+ * question.get(), response will be { title: string, answers: string }.
  */
 module.exports =
   { feed:

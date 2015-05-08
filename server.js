@@ -13,8 +13,7 @@ var app = express()
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(cookieParser(CookieConfig.secret)
-)
+app.use(cookieParser(CookieConfig.secret))
 
 // Set variables that will change when in production
 var serverPort = process.env.DS_PORT || 9000
@@ -31,10 +30,14 @@ app.use(express.static('pub'))
 app.use(express.static('node_modules/css-modal/build'))
 app.use(express.static('node_modules/bootstrap/dist'))
 
+app.use(require('./config/flash'))
+app.use(require('./config/nunjucks').globalVarsMiddleware(app, env))
+
 // Set up routes.
 var router = express.Router()
 require('./routes')(router)
 app.use(router)
+
 
 // Handle server exceptions
 app.use(function(err, req, res, next) {
