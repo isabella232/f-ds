@@ -108,10 +108,11 @@ function makeReq(method, urlPattern, reqKeys, resKeys) {
  * clientErr will be a String whose message is a description of the client
  * error chosen by the backend server.
  *
- * If response is present, then the request was ultimately succesful.  response
- * will be an object whose keys are equal to the fourth parameter to makeReq.
- * For instance, when calling question.get(), response will be { title: string,
- * answers: string }.
+ * If message and response are present, then the request was ultimately
+ * successful.  message will be the server's suggestion for a success message
+ * that we can give to the user.  response will be an object whose keys are
+ * equal to the fourth parameter to makeReq.  For instance, when calling
+ * question.get(), response will be { title: string, answers: string }.
  */
 module.exports =
   { feed:

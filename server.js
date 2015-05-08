@@ -31,8 +31,7 @@ app.use(express.static('node_modules/css-modal/build'))
 app.use(express.static('node_modules/bootstrap/dist'))
 
 app.use(require('./config/flash'))
-
-require('./config/nunjucks')(app, env)
+app.use(require('./config/nunjucks').globalVarsMiddleware(app, env))
 
 // Set up routes.
 var router = express.Router()

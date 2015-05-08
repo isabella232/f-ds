@@ -21,10 +21,10 @@ module.exports = function(req, res, next) {
     }
   }
 
-  req.flashError = function(error) {
-    if (error) {
+  req.flashError = function(errorMessage) {
+    if (errorMessage) {
       var options = CookieConfig.options
-      res.cookie('flashError', error, options)
+      res.cookie('flashError', errorMessage, options)
       return
     } else {
       var flashError = req.signedCookies.flashError
@@ -44,8 +44,8 @@ module.exports = function(req, res, next) {
     res.redirect(path)
   }
 
-  res.redirectWithError = function(path, error) {
-    req.flashError(error)
+  res.redirectWithError = function(path, errorMessage) {
+    req.flashError(errorMessage)
     res.redirect(path)
   }
 

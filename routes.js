@@ -7,7 +7,6 @@ var API          = require('./config/backend/api')
 
 function renderStatic(template) {
   return function(req, res) {
-
     res.render(template)
   }
 }
@@ -85,8 +84,7 @@ function renderFeed(req, res) {
               }
               feed.feed[i].totalVotes = totalVotes
             }
-            res.render('feed.html', { feed: feed.feed}
-            )
+            res.render('feed.html', { feed: feed.feed })
           }
         }
       )
@@ -147,10 +145,8 @@ function userCreate(req, res) {
     , confirmPassword = req.body.confirmPassword
 
   if (password !== confirmPassword) {
-    res.render(
-      'signup.html'
-    , { error: 'Password and its confirmation did not match!' }
-    )
+    res.redirectWithError('/user/signup'
+                        , 'Password and its confirmation did not match!')
     return
   }
 
@@ -221,10 +217,8 @@ function userChangePassword(req, res) {
     , confirmPassword = req.body.confirmPassword
 
   if (newPassword !== confirmPassword) {
-    res.render(
-      'profile.html'
-    , { error: 'New password and its confirmation did not match!' }
-    )
+    res.redirectWithError('/user/profile'
+                        , 'New password and its confirmation did not match!')
     return
   }
 
@@ -239,7 +233,7 @@ function userChangePassword(req, res) {
         console.error(err.stack)
         res.render('500.html')
       } else if (clientErr) {
-        res.redirectWithError('/user/changepassword', clientErr)
+        res.redirectWithError('/user/profile', clientErr)
       } else {
         res.redirectWithMessage('/user/profile', message)
 
