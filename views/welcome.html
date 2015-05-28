@@ -4,14 +4,69 @@
 {% endblock %}
 
 {% block page %}
-<div class="background">
-  <div class="welcome-section">
-    <div class="welcome-title">DYNAMIC STORY</div>
-    <p class="welcome-info">Share your story with the world.</p>
-    <div class="welcome-btn-wrapper">
-      <a class="welcome-btn" href="/user/login"><span>Login</span></a>
-      <a class="welcome-btn" href="/user/signup"><span>Signup</span></a>
+<div class="landing">
+  <h3>dynamicstory</h3>
+  <div class="graphic">
+    <img src="../img/article.png"><span class="plus">+</span><img src="../img/survey.png">
+    <span class="graphic-label article-label">article</span><span class="graphic-label">survey</span>
+  </div>
+  <div class="landing-btns">
+    <a href="#"><div class="enter-btn">enter</div></a>
+    <a href="#login"><div class="login-btn">login</div></a>
+    <a href="#signup"><div class="signup-btn">signup</div></a>
+  </div>
+  <div class="about-vid">
+    <div class="seperator"></div>
+    <h2>a new kind of</h2>
+    <h2>publishing platform</h2>
+    <div class="about-text">
+      <img class="left-quote" src="../img/quote.png">
+      <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil animi, provident blanditiis nam suscipit at, recusandae maiores! Fugiat a nisi labore natus magnam, deleniti voluptate alias, porro nulla atque soluta?</h5>
+      <img class="right-quote" src="../img/quote.png">
     </div>
+    <div class="seperator"></div>
+    <!-- Preserve the aspect ratio of the video -->
+    <!-- <div style="position:relative; width:100%; height:0; padding-bottom:51%; margin-top:50px;"> -->
+    <iframe width="250" height="300" src="https://www.youtube.com/embed/gW1-YTwWuxI?rel=0&amp;controls=0&amp;showinfo=0&amp;title=&amp;modestbranding=1" frameborder="0" allowfullscreen></iframe>
+    <div class="seperator"></div>
+  </div>
+  <div class="footer">
+    <div class="company">dynamicstory</div>
+    <div class="address">599 Fairchild Dr<br />Mountain View, CA 94043</div>
+    <div class="name">(599) 827-8282<br /><span>alexander.m</span></div>
+    <div class="copyright">© Copyright 2015 dynamicstory</div>
   </div>
 </div>
+<section class="modal--show" id="login" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-inner">
+    <div class="modal-content">
+      <form action="user/login" method="POST">
+        <div class="modal-title">Login<a href="#" data-dismiss="modal" class="close-btn">&times;</a></div>
+        <div class="label">Username or Email</div>
+        <input type="text">
+        <div class="label">Password</div>
+        <input type="password">
+        <a href="#"><div class="modal-btn">Login<span class="glyphicon glyphicon-ok-circle"></span></div></a>
+      </form>
+    </div>
+  </div>
+  <a href="#!" class="modal-close" title="Close this modal" data-close="Close" data-dismiss="modal">?</a>
+</section>
+<section class="modal--show" id="signup" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-inner">
+    <div class="modal-content">
+      <form action="user/signup" method="POST">
+        <div class="modal-title">Signup<a href="#" data-dismiss="modal" class="close-btn">&times;</a></div>
+        <div class="label">Username or Email</div>
+        <input type="text">
+        <div class="label">Password</div>
+        <input type="password">
+        <div class="label">Confirm Password</div>
+        <input type="password">
+        <a href="#"><div class="modal-btn">Signup<span class="glyphicon glyphicon-ok-circle"></span></div></a>
+      </form>
+    </div>
+  </div>
+  <a href="#!" class="modal-close" title="Close this modal" data-close="Close" data-dismiss="modal">?</a>
+</section>
 {% endblock %}
