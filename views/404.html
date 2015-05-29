@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 
 {% block page %}
-  <div class="bodyView shadow">
-    <div class="text">
-      <p>This page doesn't exist!</p>
-      <p>Error: {{ error }}</p>
-      <img src="/img/404.png" height="50%" width="50%">
+  <div class="container">
+    <div class="jumbotron">
+      <div class="error-page">
+      	<p>This page doesn't exist!</p>
+      	<p>Error: {{ error }}</p>
+      	<img src="/img/404.png">
+      </div>
     </div>
   </div>
 {% endblock %}

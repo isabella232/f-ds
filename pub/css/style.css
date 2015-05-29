@@ -1,491 +1,107 @@
+/*general modifiers*//*general modifiers*//*general modifiers*/
+/*modifed the <hr> to be visable in a jumbotron*/
+hr{
+	border-color:#bbb;
+}/*----O_o-*/
 
-/* KEY KEY KEY
-1. debug
-2. universal css
-	a.html tags
-	b.error
-	c.shadow
-	d.keypoints
-	e.clickables
-	f.modals
-3. navigation bar
-4. mess
-*/
+/*adding a larger default height to textarea (for story-page)*/
+.tall{
+	height:15em !important;
+}/*----O_o-*/
 
-
-
-/* ***********************
-Debug
-************************* */
-{
-	border:1px solid black;
-}
-
-/* ***********************
-Univerasl CSS
-************************* */
-body {
-  word-wrap: break-word;
-	background-size: cover;
-	background-attachment:fixed;
-  background: -webkit-linear-gradient(lightgray, #49517B); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(lightgray, #49517B); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(lightgray, #49517B); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(lightgray, #49517B); /* Standard syntax */
-}
-
-button{
-	background-color:white;
-	color:#316029;
-}
-input {
-	display: block;
-	margin-bottom:.9em;
-	margin: 0 auto;
-	border:1px solid lightgray;
-	margin-top: 10px;
-	padding: 10px;
-	height: 40px;
-	width: 100%;
-}
-p{
-	margin: 1em;
-}
-
-textarea{
-	resize:vertical;
-}
-a {
-	color:#333;
-}
-select {
-	margin-top:.9em;
-	margin-bottom:.9em;
-	width:100%;
-}
-
-form {
-	width: 80%;
-	margin: 0 auto;
-}
-
-a:hover {
-	color:#300;
-  text-decoration: none;
-}
-
+/*adds margin-top to any element*/
 .top{
-	z-index: 100;
-	position: relative;
-}
-
-/*shadow ---------------------*/
-
-
-.shadow{
-	box-shadow:1px 1px  4px 1px  #888888;
-}
-
-.shadow2{
-	box-shadow:1px 1px  10px 1px  #B5B5B5;
-}
-
-/*error ---------------------*/
-
-.error{
-	color: #FF0000;
-	text-align: center;
-	position: relative;
-	top: 3em;
-}
-
-/*Key Point ---------------------*/
-
-.keyPoint {
-	font-size:1.2em;
-	background-color:#f3f3f3;
-	text-align:center;
-	border-radius:.7em;
-}
-.keyPoint-inside {
-	font-size:1.2em;
-	background-color:#eeeeee;
-	text-align:center;
-	border-radius:.7em;
-}
-
-/*Clickables ------------------- */
-
-
-.clickable{
-	border-radius:0em .5em .5em .5em;
-	border:none;
-	margin:.4em;
-}
-
-.clickable:hover{
-	background-color:#a1a1a1;
-	color:white;
-}
-
-.button{
-	float: left;
-	border-radius: .5em;
-	padding: .4em 1.3em;
-	background-color: white;
-	margin-top: .3em;
-	width: 100%;
-}
-
-/* modals ------------------------- */
-
-.modal-inner {
-  width: 315px;
-  margin: 0 auto;
-  top: 50%;
-  left: 50%;
-  margin-left: -157.5px;
-  position: fixed;
-  text-align: center;
-  background-color: #f3f3f3;
-  border-radius: 0 14px 14px 14px;
-  padding: 15px;
-}
-
-#login .modal-inner{
-  margin-top: -172.5px;
-}
-
-#signup .modal-inner{
-  margin-top: -222.5px;
-}
-
-.welcome-form .modal-inner{
-  top: auto;
-  margin-top: 48px;
-}
-
-.modal--fade p, .welcome-form p{
-  font-size: 21px;
-}
-
-.modal--fade .clickable, .welcome-form .clickable{
-  width: 100%;
-  border: 0 #95a5a6 solid;
-  background-color: #979797;
-  height: 50px;
-  font-size: 19px;
-  color: white;
-  margin-bottom: 24px;
-}
-
-.modal--fade .clickable:hover, .welcome-form .clickable:hover{
-  background-color: #bdbdbd;
-}
-
-.modal-content, .modal--fade .modal-content, .welcome-form .modal-content{
-  box-shadow: none;
-  border: 0;
-  overflow: hidden;
-  max-height: none;
-  background-color: #f3f3f3;
-}
-
-#welcome-buttonsModal {
-  display: block;
-}
-
-#welcome-buttonsLink {
-  display: none;
-}
-
-@media (max-width: 480px) {
-  .modal--fade {
-    display: none;
-  }
-
-  #welcome-buttonsModal {
-    display: none;
-  }
-
-  #welcome-buttonsLink {
-    display: block;
-  }
-}
-
-/* **************************
-navigation bar
- *********************** */
-
-.logoIcon{
-	height:3em;
-	float:left;
-}
-
-.logoIcon img{
-	margin-top:.3em;
-	height:80%;
-}
-
-.navigationIcons {
-	height:1.5em;
-	float:right;
-}
-
-.navigationIcons img {
-	height:100%;
-	margin:.5em;
-}
-
-.narrative{
-	padding:0 .4em;
-	width:100%;
-	height:15em;
-	text-align: top;
-}
-
-
-/* *************************
-Mess
-*********************** */
-
-
-.buttons-welcome {
-	font-size: 14px;
-	width:200px;
-  margin: 0 auto;
-}
-
-
-
-/*feedView attributes*/
-
-.answers {
-	width:90%;
-	margin:1em auto;
-}
-
-.answer{
-	width:100%;
-	margin:.1em auto;
-	background-color:white;
-	padding:.2em .5em;
-	border-radius:.4em;
-}
-
-.aboutView {
-	width:76%;
-	padding-top:5.5em;
-	margin: 0 auto;
-}
-
-/*Admin-input*/
-
-.admin-input {
-	border-radius:1em;
-	background-color: #E5E5E5;
-}
-
-.body{
-	height:7em;
-}
-
-.bodyView {
-	width:660px;
-	border-radius:1em;
-	padding:2em 0.2em 2em 0.2em;
-	text-align: center;
-	margin: 6em auto 0em auto;
-	background-color: #f3f3f3;
-}
-
-.s-date {
-	background-color:#f3f3f3;
-	float:right;
-	padding:.1em 1.3em;
-	border-radius:0 1em 1em 0;
-	margin-left:1em;
 	margin-top:1em;
+}/*----O_o-*/
+
+/*adds padding-bottom to any element*/
+.extra-bottom{
+	padding-bottom:5em;
+}/*----O_o-*/
+
+/* class to remove the margin-top on elements */
+.topless{
+	margin-top:0px;
+}/*----O_o-*/
+
+/*auxillary class which can be used to add blank space below any element*/
+.blank-space{
+	margin-bottom:2em;
+}/*----O_o-*/
+/*^^^^^^^^^^^ end of general modifiers ^^^^^^^^^^^^^^^*/
+
+
+
+
+/*prevents the navbar from breaking header*/
+.navbar-collapse.collapse {
+	display: block!important;
 }
-
-.feedView {
-	width:76%;
-	padding-top:5.5em;
-	margin: 0 auto;
+.navbar-nav>li, .navbar-nav {
+	float: left !important;
 }
-
-.bodyView-signup, .bodyView-login, .bodyView-welcome{
-	width:220px;
-	margin: 5.5em auto 1em auto;
+.navbar-nav.navbar-right:last-child {
+	margin-right: -15px !important;
 }
+.navbar-right {
+	float: right!important;
+}/*----O_o-*/
 
 
-.buttonProtector{
-	margin-right: 2%;
-	margin-top: 1em;
-	float: right;
-	height: 2em;
+/*override the defaults settings of <a> on the feed*/
+a .jumbotron{
+	color:#444;
 }
-
-.category{
-	width:100%;
-	border-radius:1em;
-	padding:.4em 1.3em;
-	background-color:white;
-	text-align:center;
-	margin-top:4em;
+a:hover .jumbotron{
+	color:#222;
+	background-color:#ddd;
 }
+a:hover{
+	text-decoration: none;
+}/*----O_o-*/
 
-.createView{
-	width:76%;
-	padding-top:5.5em;
-	margin: 0 auto;
-}
 
-.createform{
+/* allows break-word used to keep troll-text* out of feed page
+(*troll-text:text that does not fit in the jumbotron) */
+.jumbotron{
+	word-wrap:break-word;
+}/*----O_o-*/
+
+
+/* change to allow our buttons text to wrap */
+.btn{
+    white-space:normal !important;
+    word-wrap:break-word;
+}/*----O_o-*/
+
+
+
+/*story-page fix for the survey answer options*/
+.index-number{
 	float:left;
-	background-color:white;
-	padding:.6em .8em;
-	border-radius:.3em;
-	width:100%;
-	text-align: center;
-	margin-top:.3em;
-	margin-bottom:.3em;
-}
-
-.createfield{
-	width:98%;
-	padding:0em .3em;
-}
+	padding:0px 5px 0px 7px;
+	border-right:1px solid #bbb;
+}/*----O_o-*/
 
 
-.class{
-	float:left;
-	padding: .1em 1em;
-	margin-bottom:.5em;
-}
+/* centering the Pie chart*/
+.pie{
+	width:250px;
+	position: relative;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	transform: translateX(-50%);
+ }/*----O_o-*/
 
 
-.content{
-	margin-top:1em;
-}
-
-.demographicWrapper{
-	width:80%;
-	margin:0 auto;
-}
-
-.demographicGrid{
-	width:97%;
-	margin:0 auto;
-}
-
-.demographic{
-	width:97%;
-	border-radius:.3em;
-	padding:.4em 1.3em;
-	background-color:#f3f3f3;
-	text-align:center;
-	margin-top:1.4em;
-}
-
+/*This is for the data table which shows the results on the story-page*/
 .dataPoint{
 	margin:0 auto;
-	width:90%;
+	width:95%;
 	height:2em;
+	margin-top:.4em;
 }
-
-.dataPoint:last-child{
-	margin-bottom:6em;
-}
-
-.date {
-  background-color: #f3f3f3;
-  float: right;
-  border-radius: 0em 1em 1em 0em;
-  padding: .1em 1.3em;
-  margin-left: 0.1em;
-  margin-right: 1em;
-  margin-top: .4em;
-}
-
-.field{
-	width:100%;
-}
-
-.finish{
-	float: right;
-	border-radius: .5em;
-	padding: .4em 1.3em;
-	background-color: white;
-	margin-top: 2.5em;
-	margin-bottom: 4em;
-	width: 55%;
-}
-
-
-.feedElement {
-	margin-bottom:6em;
-	background-color:#EEEEEE;
-	border-radius:1.5em;
-}
-
-.header {
-	height:5em;
-	width:100%;
-	background-color:#494949;
-	padding:1em;
-}
-
-
-.inputFields {
-	margin-top:2em;
-}
-
-.inputFields input{
-	margin-top:1em;
-	font-size: 14px;
-}
-
-
-.level{
-	background-color:#e2e2e2;
-	float:right;
-	width:20%;
-	height:2.9em;
-	border-radius:1em 0em 0em 1em;
-	padding:.7em .1em .1em .1em;
-	text-align:center;
-	margin-top:.7em;
-}
-
-
-.option{
-	float: right;
-	width: 78%;
-	margin-left: .3em;
-	border-radius: 0em 1em 1em 0em;
-	padding: .1em 1em;
-	background-color: white;
-	margin-top: .7em;
-}
-
-.profileView {
-	width:76%;
-	padding-top:5.5em;
-	margin: 0 auto;
-}
-
-.question {
-	margin-top:6em;
-	width:100%;
-	float:left;
-}
-
-.questionText{
-	padding:.4em 1.3em;
-}
-
 .rank{
 	float:left;
 	width:20%;
@@ -493,126 +109,9 @@ Mess
 	padding:.1em 1em;
 	background-color:white;
 	text-align:center;
-	margin-top:.7em;
 	margin-left:.9em;
+	border:1px solid #ccc;
 }
-
-.section{
-	margin-top:1.8em;
-	border-radius:1em;
-	padding:1.3em;
-	background-color:white;
-}
-
-.superWrapper{
-	float:left;
-	width:100%;
-}
-
-.superWrapper-storyView{
-	margin:0 auto;
-}
-
-.statistics{
-	float:left;
-	width:100%;
-	margin-top:4em;
-}
-
-.statistic{
-	float:right;
-}
-
-.storyView{
-	width: 76%;
-	padding-top: 5.5em;
-	margin: 0 auto;
-}
-
-
-
-.text{
-	font-size: 1.5em;
-}
-
-.text-storyView {
-	background-color:white;
-	width:100%;
-	float:left;
-	padding: 2em;
-	border-radius:2em;
-	margin-top:2em;
-	font-size: 14px;
-}
-
-.text-feedView{
-	background-color:white;
-	padding: .9em 1.3em;
-	border-radius:0em 0em 1.5em 1.5em;
-	font-size: 1em;
-}
-
-.title-storyView {
-  width: 100%;
-	padding:1.4em 1.2em;
-	float:left;
-	font-size:1.5em;
-	text-align:center;
-	border-radius:.7em;
-	background-color:#F2F2F2;
-}
-
-/* create view title*/
-.title-createView{
-	padding:0 .4em;
-	width:100%;
-}
-
-/* feed view title*/
-.title-feedView{
-	padding-top:1.0em;
-	padding-right:.9em;
-	padding-left:.9em;
-	font-size: 1.3em;
-}
-
-.totalVotes {
-	width:100%;
-	height:3em;
-	border-radius:1em;
-	padding:.6em 1.2em;
-	background-color:#f3f3f3;
-	text-align:left;
-}
-
-.total{
-	float:left;
-}
-
-.userHeader{
-	float:left;
-	width:100%;
-	height:7em;
-	border-radius:1em;
-	background-color:#f3f3f3;
-}
-
-.username{
-
-	margin:1em;
-	margin-left:1.8em;
-	float:left;
-}
-
-.votes {
-  background-color: #f3f3f3;
-  float: right;
-  padding: .1em 1.3em;
-  border-radius: 1em 0em 0em 1em;
-  margin-right: .1em;
-  margin-top: .4em;
-}
-
 .votes-storyView{
 	float:left;
 	width:70%;
@@ -621,137 +120,55 @@ Mess
 	padding:.1em 1em;
 	background-color:white;
 	text-align:center;
-	margin-top:.7em;
+	border:1px solid #ccc;
 }
-
-.wrapper{
-	float:left;
-	width:100%;
-}
-
-/*about us page*/
-.aboutView {
-	width:76%;
-	padding-top:5.5em;
-	margin: 0 auto;
-}
-
-.section{
-margin-top: 1.8em;
- border-radius:1em;
- padding:1.3em;
- background-color:white;
-}
-
-.gap{
-	margin-top:5em;
-}
-
-.section-create-question{
-	margin-top: 1.8em;
-	border-radius:1em;
-	padding:1.3em 1.3em 19em 1.3em;
-	background-color:white;
-
-}
-
-.content{
-	margin-top:1em;
-}
-
-.body{
-	height:7em;
-}
-.portrait-section{
+.dataPoint:last-child{
 	margin-bottom:1em;
-}
-.video{
-	display:block;
-	margin:0 auto;
-}
-.founders{
-	background-color:white;
-}
+}/*----O_o-*/
 
-.bio{
-	margin-top:1em;
-	margin-left:0em;
-	height:15em;
-	background-color:white;
-}
-.portrait-container img{}
-.portrait-container{
-}
 
-.quote{
-  padding-left:115px;
-}
+/*adding a small amount of space in between each answer option on the create story-page*/
+.input-group{
+	margin-top:5px;
+}/*----O_o-*/
 
-.portrait{
-	border-radius:20em;
-	display:block;
-	margin:0 auto;
-}
 
-.bio-info{
-	float:;
-	margin-top:2em;
+
+
+/*making the profile-page avatar a smaller size*/
+.img-circle{
+	margin-top:20px;
+	width:140px;
+	height:140px;
+}/*----O_o-*/
+
+
+/* override the default padding of bootstrap */
+.navbar{
+	margin-bottom:00px !important;
+}
+ .jumbotron:first-child{
+	margin-top:20px;
+}/*----O_o-*/
+
+/* override the default padding of bootstrap */
+.navbar-brand{
+	padding:10px;
+}/*----O_o-*/
+
+/*used to frame the error pages on 404 & 500 */
+.error-page img{
+	max-width: 300px;
 	width:100%;
-	margin-bottom:3em;
-	text-align: center;
-}
-
-.div-trick{
-	color:white;
-	font-size: .2em;
-	margin:0 auto;
-	width:30px;
-}
-
-
-.page-background{
-	position: fixed;
-	background-size: cover;
-	background-position:center;
-	background-image:url("/img/puzzle.jpg");
 	height:100%;
-	width:100%;
-	min-height:720px;
-	background-attachment:fixed;
-}
+}/*----O_o-*/
 
-.buttons a {
-  text-decoration: none;
-}
+/* Improve legibility for paragraph text */
+p {
+  font-weight: 300 !important;
+}/*----O_o-*/
 
-
-/**
- *  Modal changes
- *
- *
- *
- */
-
-.modal--fade .modal-inner, .modal--show .modal-inner {
-    width: 315px;
-    margin: 0 auto;
-    top: 50%;
-    left: 50%;
-    margin-left: -157.5px;
-    position: fixed;
-    z-index: 20;
-    text-align: center;
-    background-color: #f3f3f3;
-    border-radius: 0 14px 14px 14px;
-    padding: 15px;
-  }
-
-.modal--fade .modal-close:before, .modal--show .modal-close:before {
-      background-color: #000;
-      opacity: .6;
-}
-
-.modal--fade .modal-close:after, .modal--show .modal-close:after {
-    display: none;
-}
-
+/* Overwrite default font-family for bootstrap's btn class */
+.btn {
+  font-family: 'Open Sans';
+}/*----O_o-*/

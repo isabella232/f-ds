@@ -1,40 +1,60 @@
 {% extends "base.html" %}
 
 {% block page %}
-<div class="storyView">
-  <div class="title-storyView shadow">{{ story.title }}</div>
-  <div class="s-date shadow">
-    <span>{{ story.creationDate.split('T')[0] }}</span>
-  </div>
-  <div class="text text-storyView shadow">
+<div class="container">
+<div class="jumbotron">
+  <h1>{{ story.title }}</h1>
+  <small>{{ story.creationDate.split('T')[0] }}</small>
+  <form action="/story/{{ story.storyId }}/delete" method="POST">
+      <button class="pull-right btn btn-default btn-xs"><span>Delete</span></button>
+  </form>
+</div>
+
+  <div class="jumbotron">
     <p>{{ story.narrative }}</p>
   </div>
-  <div class="question">
-    <div class="questionText keyPoint shadow">{{ question.title }}</div>
-    <div class="answers">
+
+  <div class="jumbotron">
+    <h2 class="topless">{{ question.title }}</h2>
     {% for answer in question.answers %}
       <form action="/story/{{ story.storyId }}/vote/{{ loop.index - 1 }}" method="POST">
-        <button class="answer clickable shadow">{{ loop.index }}. {{ answer.name }}</button>
+        <button class="btn btn-default btn-block">
+          <span class="index-number">{{ loop.index }}.</span>
+          {{ answer.name }}
+        </button>
       </form>
     {% endfor %}
-    </div>
-  </div>
-  <div class="statistics">
-    <div class="totalVotes shadow">
-      <span class="total keyPoint">Total Votes</span>
-      <span class="statistic keyPoint">{{ question.totalVotes }} votes</span>
-    </div>
+    <hr>
+    <h3>Results</h3>
+    <span>
+      Total Votes:
+      <span class="badge">{{ question.totalVotes }}</span>
+    </span>
 
-    <div class="superWrapper supperWrapper-storyView">
+    {% if question.totalVotes > 0 %}
+    <div id="pie" class="pie"></div>
+    {% endif %}
+
+    <div class="superWrapper">
       <div class="demographicGrid">
       {% for answer in question.answers %}
         <div class="dataPoint">
-          <span class="rank shadow">{{ loop.index }}</span>
+          <span class="rank shadow">{{loop.index}}</span>
           <div class="votes votes-storyView shadow">{{ answer.votes }}</div>
         </div>
       {% endfor %}
       </div>
     </div>
   </div>
+</div>
 {% endblock %}
 
+{% block script %}
+<script>
+  {% for answer in question.answers %}
+    window.answer{{ loop.index }} = {{ answer.votes }}
+  {% endfor %}
+</script>
+<script src="/lib/d3pie.min.js"></script>
+<script src="/lib/pie.js"></script>
+{% endblock %}

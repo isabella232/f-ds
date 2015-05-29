@@ -2,25 +2,17 @@
 
 {% block page %}
 
-<div class="feedView">
   {% for story in feed %}
-  <a href="/story/{{ story.story }}">
-    <div class="feedElement shadow">
-      <div class="title-feedView">
-        <p>{{ story.title }}</p>
-      </div>
-      <div class="text text-feedView">
-        <p>{{ story.narrative }}</p>
-      </div>
-      <div class="date shadow">
+  <a class="no-hover" href="/story/{{ story.story }}">
+    <div class="container jumbotron">
+        <h2>{{ story.title }}</h2>
+        <p>{{ story.narrative.substring(0,150) }} {% if story.narrative.length > 150 %}...{% endif %}</p>
         <span>{{ story.creationDate.split('T')[0] }}</span>
-      </div>
-      <div class="votes shadow">
-        <span>{{ story.totalVotes }} votes</span>
+      <div>
+        <span class="badge">{{ story.totalVotes }}</span><span> votes</span>
       </div>
     </div>
   </a>
   {% endfor %}
-</div>
-{% endblock %}
 
+{% endblock %}
