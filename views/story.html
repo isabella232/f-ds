@@ -19,7 +19,19 @@
     {% for answer in question.answers %}
       <form action="/story/{{ story.storyId }}/vote/{{ loop.index - 1 }}" method="POST">
         <button class="btn btn-default btn-block">
-          <span class="index-number">{{ loop.index }}.</span>
+          <span class="index-number">
+            {% if loop.index == 1 %}
+            A
+            {% elif loop.index == 2 %}
+            B
+            {% elif loop.index == 3 %}
+            C
+            {% elif loop.index == 4 %}
+            D
+            {% else %}
+            E
+            {% endif %}
+          </span>
           {{ answer.name }}
         </button>
       </form>
@@ -39,7 +51,19 @@
       <div class="demographicGrid">
       {% for answer in question.answers %}
         <div class="dataPoint">
-          <span class="rank shadow">{{loop.index}}</span>
+          <span class="rank shadow">
+            {% if loop.index == 1 %}
+            A
+            {% elif loop.index == 2 %}
+            B
+            {% elif loop.index == 3 %}
+            C
+            {% elif loop.index == 4 %}
+            D
+            {% else %}
+            E
+            {% endif %}
+          </span>
           <div class="votes votes-storyView shadow">{{ answer.votes }}</div>
         </div>
       {% endfor %}
