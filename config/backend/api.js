@@ -156,5 +156,7 @@ module.exports =
       [], [])
     , delete: makeReq('DELETE', '/user',
       [], [])
+    , activate: makeReq('POST', '/user/activate',
+      ['activationid'], [])
     }
   }

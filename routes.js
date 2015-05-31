@@ -34,6 +34,31 @@ function renderIfNoToken(template, redirectTo) {
   }
 }
 
+function renderActivationWithId(req, res) {
+  var activationId = req.params.activationid
+
+  API.user.activate({activationid: activationId}
+  , function(err, clientErr, message) {
+      if (err) {
+        console.error(err.stack)
+        res.render('500.html')
+      } else if (clientErr) {
+        res.redirectWithError('/user/activate', clientErr)
+      } else {
+        if (!req.signedCookies.token) {
+
+          // Activation Success will display something along the lines of:
+          // "You successfully activated your account! Click here to log in"
+          res.render('activation-success.html')
+        } else {
+          res.redirectWithMessage('/feed', message)
+        }
+      }
+    }
+  )
+}
+
+
 function renderFeed(req, res) {
   // Get the list of stories.
   API.feed.get(
@@ -294,6 +319,31 @@ function userLogout(req, res) {
   }
 }
 
+function userActivate(req, res) {
+
+  var activationId = req.body.activationid
+
+  API.user.activate({activationid: activationId}
+  , function(err, clientErr, message) {
+      if (err) {
+        console.error(err.stack)
+        res.render('500.html')
+      } else if (clientErr) {
+        res.redirectWithError('/user/activate', clientErr)
+      } else {
+        if (!req.signedCookies.token) {
+
+          // Activation Success will display something along the lines of:
+          // "You successfully activated your account! Click here to log in"
+          res.render('activation-success.html')
+        } else {
+          res.redirectWithMessage('/feed', message)
+        }
+      }
+    }
+  )
+}
+
 function storyCreate(req, res) {
   var questionTitle  = req.body.question // Question title
     , answer0        = req.body.answer0
@@ -441,23 +491,26 @@ function feedbackCreate(req, res) {
 
 module.exports = function(router) {
 
-  router.get('/',               renderIfNoToken('welcome.html', '/feed'))
-  router.get('/user/profile',   renderIfToken  ('profile.html', '/'))
-  router.get('/user/login',     renderIfNoToken('login.html',   '/feed'))
-  router.get('/user/signup',    renderIfNoToken('signup.html',  '/feed'))
-  router.get('/story/create',   renderIfToken  ('create.html',  '/'))
-  router.get('/about',          renderStatic   ('about.html'))
-  router.get('/about/toupp',    renderStatic   ('legalDocs/toupp.html'))
-  router.get('/about/dmca',     renderStatic   ('legalDocs/dmca.html'))
+  router.get('/',                   renderIfNoToken('welcome.html', '/feed'))
+  router.get('/user/profile',       renderIfToken  ('profile.html', '/'))
+  router.get('/user/login',         renderIfNoToken('login.html',   '/feed'))
+  router.get('/user/signup',        renderIfNoToken('signup.html',  '/feed'))
+  router.get('/user/activate',      renderStatic   ('activation.html'))
+  router.get('/story/create',       renderIfToken  ('create.html',  '/'))
+  router.get('/about',              renderStatic   ('about.html'))
+  router.get('/about/toupp',        renderStatic   ('legalDocs/toupp.html'))
+  router.get('/about/dmca',         renderStatic   ('legalDocs/dmca.html'))
 
-  router.get('/story/:storyId', renderStory)
-  router.get('/feed',           renderFeed)
+  router.get('/user/activate/:activationid',  renderActivationWithId)
+  router.get('/story/:storyId',               renderStory)
+  router.get('/feed',                         renderFeed)
 
   router.post('/user/changepassword', userChangePassword)
   router.post('/user/delete',         userDelete)
   router.post('/user/login',          userLogin)
   router.post('/user/logout',         userLogout)
   router.post('/user/signup',         userCreate)
+  router.post('/user/activate',       userActivate)
 
   router.post('/story/create',                storyCreate)
   router.post('/story/:storyId/vote/:answer', storyVote)
