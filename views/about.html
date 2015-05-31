@@ -5,33 +5,34 @@
 <div class="container">
   <div class="jumbotron">
     <h1>About Us</h1>
-      <br>
-      <p>DynamicStory is a website created by a handful of student. Development began January of 2015.</p>
-      <p>We created this website because we believe it is more effective way for people to share their opinions than on other blogs or social media sites.</p>
-      <p>We saw how limiting other website were. They limited users with a like button, or a simple up and down arrows. They gathered all kinds of personal information on users and decided not to share the analysis with the community.  They limited our reach because we were not popular enough.  DynamicStory works everyday to empower our users.</p>
-      <br>
-      <div style="position:relative; width:100%; height:0; padding-bottom:51%;">
-        <iframe style="position:absolute; width:100%; height:100%; left:0; top:0;" src="https://www.youtube.com/embed/gW1-YTwWuxI" frameborder="0" allowfullscreen></iframe>
-      </div>
+    <br>
+    <p>DynamicStory is a website created by a handful of student. Development began January of 2015.</p>
+    <p>We created this website because we believe it is more effective way for people to share their opinions than on other blogs or social media sites.</p>
+    <p>We saw how limiting other website were. They limited users with a like button, or a simple up and down arrows. They gathered all kinds of personal information on users and decided not to share the analysis with the community.  They limited our reach because we were not popular enough.  DynamicStory works everyday to empower our users.</p>
+    <br>
+    <div class="responsive-container">
+      <iframe class="responsive-item" src="https://www.youtube.com/embed/gW1-YTwWuxI" frameborder="0" allowfullscreen></iframe>
     </div>
-    <div class="jumbotron">
-       <h2>Legal</h2>
-         <a href="/about/toupp">Terms of Use &amp; Privacy Policy</a>
-         <br>
-         <a href="/about/dmca">DMCA policy</a>
-    </div>
-
-    {% if usernameEmail %}
-    <div class="jumbotron extra-bottom">
-       <h2 class="topless">Contact Us</h2>
-         <p>Questions, Comments, Concerns?</p>
-         <p>Please share your thoughts with us.</p>
-         <form action="/about" method="POST">
-           <textarea class="tall form-control" name="feedback" placeholder=" What would you like us to know?" pattern="^.{50,10000}$"></textarea>
-           <button class="top btn btn-default pull-right" type="submit"><span class="glyphicon glyphicon-ok">&nbsp;</span>Send feedback!</button>
-         </form>
-    </div>
-    {% endif %}
+  </div>
+  <div class="jumbotron">
+    <h2 class="topless">Legal</h2>
+    <a class="twenty-one" href="/about/toupp">Terms of Use &amp; Privacy Policy</a>
+    <br>
+    <a class="twenty-one" href="/about/dmca">DMCA policy</a>
+  </div>
+  {% if usernameEmail %}
+  <div class="jumbotron extra-bottom">
+    <h2 class="topless">Contact Us</h2>
+    <p>Questions, Comments, Concerns?</p>
+    <p>Please share your thoughts with us.</p>
+    <form action="/about" method="POST">
+      <textarea class="tall form-control" name="feedback" placeholder=" What would you like us to know?" pattern="^.{50,10000}$"></textarea>
+      <button class="top btn btn-default pull-right" type="submit">  <span class="glyphicon glyphicon-ok">&nbsp;</span>
+        Send feedback!
+      </button>
+    </form>
+  </div>
+  {% endif %}
 </div>
 {% endblock %}
 

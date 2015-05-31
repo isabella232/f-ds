@@ -1,3 +1,19 @@
+/*custom override changes to prexisting tags and classes*/
+/* Improve legibility for general text */
+p {
+  font-weight: 300 !important;
+}
+/*----O_o-*/
+
+/* Overwrite default font-family for bootstrap's btn class */
+.btn {
+  font-family: 'Open Sans';
+}/*----O_o-*/
+/*^^^^^^^^^^^ end of override modifiers ^^^^^^^^^^^^^^^*/
+
+
+
+
 /*general modifiers*//*general modifiers*//*general modifiers*/
 /*modifed the <hr> to be visable in a jumbotron*/
 hr{
@@ -12,6 +28,9 @@ hr{
 /*adds margin-top to any element*/
 .top{
 	margin-top:1em;
+}
+.half-top{
+	margin-top:.5em;
 }/*----O_o-*/
 
 /*adds padding-bottom to any element*/
@@ -28,6 +47,30 @@ hr{
 .blank-space{
 	margin-bottom:2em;
 }/*----O_o-*/
+
+/*use to make responsive media links*/
+.responsive-container{
+ 	position:relative; 
+ 	width:100%; 
+ 	height:0; 
+ 	padding-bottom:51%;
+}
+.responsive-item {
+	position:absolute;
+	width:100%;
+	height:100%;
+	left:0;
+	top:0;
+}/*----O_o-*/
+
+/*used to add a margin-right of 6px to anything!*/
+.margin-right-space{
+	margin-right:6px;
+}/*----O_o-*/
+
+.twenty-one {
+	font-size:21px !important;
+}
 /*^^^^^^^^^^^ end of general modifiers ^^^^^^^^^^^^^^^*/
 
 
@@ -136,7 +179,7 @@ a:hover{
 
 
 /*making the profile-page avatar a smaller size*/
-.img-circle{
+.profile-img{
 	margin-top:20px;
 	width:140px;
 	height:140px;
@@ -161,14 +204,4 @@ a:hover{
 	max-width: 300px;
 	width:100%;
 	height:100%;
-}/*----O_o-*/
-
-/* Improve legibility for paragraph text */
-p {
-  font-weight: 300 !important;
-}/*----O_o-*/
-
-/* Overwrite default font-family for bootstrap's btn class */
-.btn {
-  font-family: 'Open Sans';
 }/*----O_o-*/

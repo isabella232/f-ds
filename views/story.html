@@ -2,73 +2,68 @@
 
 {% block page %}
 <div class="container">
-<div class="jumbotron">
-  <h1>{{ story.title }}</h1>
-  <small>{{ story.creationDate.split('T')[0] }}</small>
-  <form action="/story/{{ story.storyId }}/delete" method="POST">
-      <button class="pull-right btn btn-default btn-xs"><span>Delete</span></button>
-  </form>
-</div>
-
+  <div class="jumbotron">
+    <h1>{{ story.title }}</h1>
+    <small>{{ story.creationDate.split('T')[0] }}</small>
+    <form action="/story/{{ story.storyId }}/delete" method="POST">
+      <button class="pull-right btn btn-default btn-xs">
+        Delete
+      </button>
+    </form>
+  </div>
   <div class="jumbotron">
     <p>{{ story.narrative }}</p>
   </div>
-
   <div class="jumbotron">
     <h2 class="topless">{{ question.title }}</h2>
     {% for answer in question.answers %}
-      <form action="/story/{{ story.storyId }}/vote/{{ loop.index - 1 }}" method="POST">
-        <button class="btn btn-default btn-block">
-          <span class="index-number">
-            {% if loop.index == 1 %}
-            A
-            {% elif loop.index == 2 %}
-            B
-            {% elif loop.index == 3 %}
-            C
-            {% elif loop.index == 4 %}
-            D
-            {% else %}
-            E
-            {% endif %}
-          </span>
-          {{ answer.name }}
-        </button>
-      </form>
+    <form action="/story/{{ story.storyId }}/vote/{{ loop.index - 1 }}" method="POST">
+      <button class="btn btn-default btn-block">
+        <span class="index-number">
+        {% if loop.index == 1 %}
+        A
+        {% elif loop.index == 2 %}
+        B
+        {% elif loop.index == 3 %}
+        C
+        {% elif loop.index == 4 %}
+        D
+        {% else %}
+        E
+        {% endif %}
+        </span>
+        {{ answer.name }}
+      </button>
+    </form>
     {% endfor %}
     <hr>
     <h3>Results</h3>
-    <span>
+    <span class="pull-right small half-top">
       Total Votes:
       <span class="badge">{{ question.totalVotes }}</span>
     </span>
-
     {% if question.totalVotes > 0 %}
     <div id="pie" class="pie"></div>
     {% endif %}
 
-    <div class="superWrapper">
-      <div class="demographicGrid">
-      {% for answer in question.answers %}
-        <div class="dataPoint">
-          <span class="rank shadow">
-            {% if loop.index == 1 %}
-            A
-            {% elif loop.index == 2 %}
-            B
-            {% elif loop.index == 3 %}
-            C
-            {% elif loop.index == 4 %}
-            D
-            {% else %}
-            E
-            {% endif %}
-          </span>
-          <div class="votes votes-storyView shadow">{{ answer.votes }}</div>
-        </div>
-      {% endfor %}
-      </div>
+    {% for answer in question.answers %}
+    <div class="dataPoint">
+      <span class="rank">
+      {% if loop.index == 1 %}
+      A
+      {% elif loop.index == 2 %}
+      B
+      {% elif loop.index == 3 %}
+      C
+      {% elif loop.index == 4 %}
+      D
+      {% else %}
+      E
+      {% endif %}
+      </span>
+      <div class="votes-storyView">{{ answer.votes }}</div>
     </div>
+    {% endfor %}
   </div>
 </div>
 {% endblock %}
@@ -80,5 +75,5 @@
   {% endfor %}
 </script>
 <script src="/lib/d3pie.min.js"></script>
-<script src="/lib/pie.js"></script>
+<script src="/js/pie.js"></script>
 {% endblock %}

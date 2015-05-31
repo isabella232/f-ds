@@ -4,27 +4,28 @@
 {% include "partials/change-pword.html" %}
 
 <div class="container">
-    <div class="jumbotron">
-        <div class="col-sm-4">
-            <img src="/img/avatar.png" alt="avatar here"  class=" img-circle center-block">
-        </div>
-        <div class="col-sm-8 menu">
-            <h2>{{ usernameEmail }}</h2>
-            <form action="/user/delete" method="POST">
-                <button class="btn btn-default btn-block">Delete Account</button>
-            </form>
-            <form>
-                <a href="#change-pword"  data-toggle="modal">
-                <button class="btn btn-default btn-block">Change Password</button>
-                </a>
-            </form>
-            <form class="profile-form" action="/user/logout" method="POST">
-                <button id="logout-btn" class="btn btn-default btn-block">Log Out</button>
-            </form>
-        </div>
-        <span>&nbsp;</span>     
+  <div class="jumbotron">
+    <div class="col-sm-4">
+      <img src="/img/avatar.png" alt="avatar here"  class=" profile-img center-block">
     </div>
+    <div class="col-sm-8 menu">
+      <h2>{{ usernameEmail }}</h2>
+      <form action="/user/delete" method="POST">
+        <button class="btn btn-default btn-block">Delete Account</button>
+      </form>
+      <form>
+        <a href="#change-pword"  data-toggle="modal">
+          <button class="btn btn-default btn-block">Change Password</button>
+        </a>
+      </form>
+      <form class="profile-form" action="/user/logout" method="POST">
+        <button id="logout-btn" class="btn btn-default btn-block">Log Out</button>
+      </form>
+    </div>
+    &nbsp;
+  </div>
+</div>
 {% include "partials/change-pword.html" %}
 {% endblock %}
-</div>
+
 
