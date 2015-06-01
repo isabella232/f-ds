@@ -1,21 +1,22 @@
 {% extends "base.html" %}
 
+{% block noheader %}
+{% endblock %}
+
 {% block page %}
-
-<div class="page-background"></div>
-
-<section class="welcome-form">
-  <div class="modal-inner">
-    <p>Welcome Back!</p>
-    <div class="modal-content">
-      <form action="/user/login" method="POST">
-        <input name="usernameEmail" type="text" maxlength="254" placeholder="email/username" required>
-        <input name="password" type="password" maxlength="512" placeholder="password" required autocapitalize="off">
-        <hr/>
-        <button class="clickable">Login</button>
+  <div class="background">
+    <div class="login">
+      <div style="padding:25px; padding-bottom:75px; font-weight:100; font-size:36px;">Sign in</div>
+      <form id="login-form" autocomplete="off" action="/user/login" method="POST" style="width:100%;">
+        <div class="label">Username or Email</div>
+        <input autocomplete="off" name="usernameEmail" type="text" maxlength="254" required>
+        <div class="label">Password</div>
+        <input autocomplete="off" type="password" name="password" maxlength="512" required>
+        <div class="welcome-btn-wrapper">
+          <button id="login-btn" class="welcome-btn">Login</button>
+        </div>
       </form>
-    </div>
+      </div>
   </div>
-</section>
 {% endblock %}
 

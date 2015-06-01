@@ -1,46 +1,50 @@
 {% extends "base.html" %}
 
 {% block page %}
-<div class="createView">
-    <form action="/story/create" method="POST">
-    <div class="section shadow">
-        <div class="class keyPoint-inside"> Title </div>
-            <input class="title title-createView field fixed" name="title" placeholder="Title" pattern="^.{5,140}$" title="please enter a title between 5 & 140 characters" required>
+<div class="container">
+  <form class="form-horizontal" action="/story/create" method="POST">
+    <div class="jumbotron form-group container-fluid">
+      <h1>Create a Dynamic Story</h1>
     </div>
-    <div class="section shadow">
-        <div class="class keyPoint-inside"> Narrative </div>
-        <textarea  class="narrative field" name="narrative" placeholder="Narrative" pattern="^.{20,100000}$" title="please enter a narrative between 20 & 100,000 characters" required></textarea>
+    <div class="jumbotron form-group">
+      <h2> Narrative </h2>
+      <label class="control-label">Title:</label>
+      <input class="form-control" name="title" placeholder="Title" pattern="^.{10,140}$" title="please enter a title between 10 &amp; 140 characters" required>
+      <br>
+      <label class="control-label">Narrative:</label>
+      <textarea  class="form-control tall" name="narrative" placeholder="Narrative" pattern="^.{50,100000}$" title="please enter a narrative between 50 &amp; 100,000 characters" required></textarea>
     </div>
-    <div class="section-create-question shadow">
-        <div class="class keyPoint-inside"> Question </div>    
-            <input class="createfield" name="question" type="text" placeholder="Question" pattern="^.{5,140}$" title="please enter a question between 5 & 140 characters" required>
-
-        <div class="wrapper">
-            <input class="option" name="answer0" placeholder="Strongly Disagree" pattern="^.{1,100}$" title="please enter an option between 1 & 100 characters" required>
-            <div class="level">1</div>
+    <div class="jumbotron form-group">
+      <h2> Survey Question </h2>
+      <br>
+      <div class="form-group">
+        <label class="control-label col-sm-2">Question:</label>
+        <div class="col-sm-10">
+          <input class="form-control" name="question" placeholder="Question" pattern="^.{5,140}$" title="please enter a question between 5 &amp; 100 characters" required>
         </div>
-
-        <div class="wrapper">
-            <input class="option" name="answer1" placeholder="Disagree" pattern="^.{1,100}$" title="please enter an option between 1 & 100 characters" required>
-            <div class="level">2</div>
-        </div>
-
-        <div class="wrapper">
-            <input class="option" name="answer2" placeholder="Neutral" pattern="^.{1,100}$" title="please enter an option between 1 & 100 characters" required>
-            <div class="level">3</div>
-        </div>
-
-        <div class="wrapper">
-            <input class="option" name="answer3" placeholder="Agree" pattern="^.{1,100}$" title="please enter an option between 1 & 100 characters" required>
-            <div class="level">4</div>
-        </div>
-
-        <div class="wrapper">
-            <input class="option" name="answer4" type="text" placeholder="Strongly Agree" pattern="^.{1,100}$" title="please enter an option between 1 & 100 characters" required>
-            <div class="level">5</div>
-        </div>
+      </div>
+      <div class="input-group"> 
+        <span class="input-group-addon">A</span>
+        <input class="form-control" name="answer0" placeholder="Strongly Disagree" pattern="^.{1,100}$" title="please enter an option between 1 &amp; 100 characters" required>
+      </div>
+      <div class="input-group"> 
+        <span class="input-group-addon">B</span>
+        <input class="form-control" name="answer1" placeholder="Strongly Disagree" pattern="^.{1,100}$" title="please enter an option between 1 &amp; 100 characters" required>
+      </div>        
+      <div class="input-group"> 
+        <span class="input-group-addon">C</span>
+        <input class="form-control" name="answer2" placeholder="Strongly Disagree" pattern="^.{1,100}$" title="please enter an option between 1 &amp; 100 characters" required>
+      </div>        
+      <div class="input-group"> 
+        <span class="input-group-addon">D</span>
+        <input class="form-control" name="answer3" placeholder="Strongly Disagree" pattern="^.{1,100}$" title="please enter an option between 1 &amp; 100 characters" required>
+      </div>        
+      <div class="input-group"> 
+        <span class="input-group-addon">E</span>
+        <input class="form-control" name="answer4" placeholder="Strongly Disagree" pattern="^.{1,100}$" title="please enter an option between 1 &amp; 100 characters" required>
+      </div>        
     </div>
-        <button class="finish clickable shadow" type="submit">Finish Story!</button>
-    </form>
+    <button class="center-block blank-space btn btn-primary btn-lg" type="submit"><span class="glyphicon glyphicon-ok"></span>&nbsp;Finish Story!</button>
+  </form>
 </div>
 {% endblock %}

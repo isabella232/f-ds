@@ -1,34 +1,31 @@
 {% extends "base.html" %}
 
 {% block page %}
-<div class="profileView">
+{% include "partials/change-pword.html" %}
 
-    <div class="userHeader">
-        <div class="username">
-            <h3>{{ sessUser.username }}</h3>
-        </div>
+<div class="container">
+  <div class="jumbotron">
+    <div class="col-sm-4">
+      <img src="/img/avatar.png" alt="avatar here"  class=" profile-img center-block">
     </div>
-    <div class="buttonProtector">
+    <div class="col-sm-8 menu">
+      <h2>{{ usernameEmail }}</h2>
       <form action="/user/delete" method="POST">
-        <button class="clickable">
-            Delete Account
-        </button>
+        <button class="btn btn-default btn-block">Delete Account</button>
+      </form>
+      <form>
+        <a href="#change-pword"  data-toggle="modal">
+          <button class="btn btn-default btn-block">Change Password</button>
+        </a>
+      </form>
+      <form class="profile-form" action="/user/logout" method="POST">
+        <button id="logout-btn" class="btn btn-default btn-block">Log Out</button>
       </form>
     </div>
-    <div class="buttonProtector">
-        <form action="/user/logout" method="POST">
-          <button class="clickable">
-            Log Out
-          </button>
-        </form>
-    </div>
-    <div class="buttonProtector">
-        <button class="clickable">
-            <a href="#change-pword" data-toggle="modal">Change Password</a>
-        </button>
-    </div>
-
+    &nbsp;
+  </div>
+</div>
 {% include "partials/change-pword.html" %}
 {% endblock %}
-</div>
+
 

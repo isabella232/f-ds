@@ -1,40 +1,79 @@
 {% extends "base.html" %}
 
 {% block page %}
-<div class="storyView">
-  <div class="title-storyView shadow">{{ story.title }}</div>
-  <div class="s-date shadow">
-    <span>{{ story.creationDate.split('T')[0] }}</span>
+<div class="container">
+  <div class="jumbotron">
+    <h1>{{ story.title }}</h1>
+    <small>{{ story.creationDate.split('T')[0] }}</small>
+    <form action="/story/{{ story.storyId }}/delete" method="POST">
+      <button class="pull-right btn btn-default btn-xs">
+        Delete
+      </button>
+    </form>
   </div>
-  <div class="text text-storyView shadow">
+  <div class="jumbotron">
     <p>{{ story.narrative }}</p>
   </div>
-  <div class="question">
-    <div class="questionText keyPoint shadow">{{ question.title }}</div>
-    <div class="answers">
+  <div class="jumbotron">
+    <h2 class="topless">{{ question.title }}</h2>
     {% for answer in question.answers %}
-      <form action="/story/{{ story.storyId }}/vote/{{ loop.index - 1 }}" method="POST">
-        <button class="answer clickable shadow">{{ loop.index }}. {{ answer.name }}</button>
-      </form>
+    <form action="/story/{{ story.storyId }}/vote/{{ loop.index - 1 }}" method="POST">
+      <button class="btn btn-default btn-block">
+        <span class="index-number">
+        {% if loop.index == 1 %}
+        A
+        {% elif loop.index == 2 %}
+        B
+        {% elif loop.index == 3 %}
+        C
+        {% elif loop.index == 4 %}
+        D
+        {% else %}
+        E
+        {% endif %}
+        </span>
+        {{ answer.name }}
+      </button>
+    </form>
     {% endfor %}
-    </div>
-  </div>
-  <div class="statistics">
-    <div class="totalVotes shadow">
-      <span class="total keyPoint">Total Votes</span>
-      <span class="statistic keyPoint">{{ question.totalVotes }} votes</span>
-    </div>
+    <hr>
+    <h3>Results</h3>
+    <span class="pull-right small half-top">
+      Total Votes:
+      <span class="badge">{{ question.totalVotes }}</span>
+    </span>
+    {% if question.totalVotes > 0 %}
+    <div id="pie" class="pie"></div>
+    {% endif %}
 
-    <div class="superWrapper supperWrapper-storyView">
-      <div class="demographicGrid">
-      {% for answer in question.answers %}
-        <div class="dataPoint">
-          <span class="rank shadow">{{ loop.index }}</span>
-          <div class="votes votes-storyView shadow">{{ answer.votes }}</div>
-        </div>
-      {% endfor %}
-      </div>
+    {% for answer in question.answers %}
+    <div class="dataPoint">
+      <span class="rank">
+      {% if loop.index == 1 %}
+      A
+      {% elif loop.index == 2 %}
+      B
+      {% elif loop.index == 3 %}
+      C
+      {% elif loop.index == 4 %}
+      D
+      {% else %}
+      E
+      {% endif %}
+      </span>
+      <div class="votes-storyView">{{ answer.votes }}</div>
     </div>
+    {% endfor %}
   </div>
+</div>
 {% endblock %}
 
+{% block script %}
+<script>
+  {% for answer in question.answers %}
+    window.answer{{ loop.index }} = {{ answer.votes }}
+  {% endfor %}
+</script>
+<script src="/lib/d3pie.min.js"></script>
+<script src="/js/pie.js"></script>
+{% endblock %}

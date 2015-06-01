@@ -1,8 +1,7 @@
 <!-- CHANGE PWORD MODAL -->
 
 <div class="modal fade" id="change-pword" role="dialog">
-    <div class ="modal-dialog">
-        <div class ="modal-content">
+    <div class ="modal-dialog-change-p">
             <div class="bodyView">
                 <div class="text">
                     <p>Change your password</p>
@@ -13,12 +12,12 @@
                         <input id="password" name="newPassword" type="password" maxlength="512" pattern=".{6,15}" title="please enter a password between 6-15 characters" placeholder=" New Password" required autocapitalize="off" onkeyup="checkPass(); return false;">
                         <input id="confirmPassword" name="confirmPassword" type="password" maxlength="512" placeholder=" Confirm password" required autocapitalize="off" onkeyup="checkPass(); return false;">
                     </div>
-
+                    <hr/>
                     <div class="buttons">
-                      <button class="clickable" type="submit" style="margin-left: 7.8em;">Change</button>
+                      <button class="clickable" type="submit" style="margin: 0em;">Change</button>
                     </div>
                 </form>
             </div>
-        </div>
+        
     </div>
 </div>

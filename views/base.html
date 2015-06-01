@@ -1,23 +1,22 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <title>{% if title %}{{ title }} :: {% endif %}Dynamic Story</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="DynamicStory.org is a database for,  sharing you opinion with the world." />
-
-    <link rel="stylesheet" type="text/css" href="/modal.css">
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
-    <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+  <meta name="description" content="DynamicStory.org is a platfrom for,  sharing you opinion with the world." />
+  <link rel="stylesheet" type="text/css" href="/lib/bootstrap-3.3.4.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
 
-{% include "partials/header.html" %}
+{% block noheader %}
+  {% include "partials/header.html" %}
+{% endblock %}
 
 {% include "partials/flashmessage.html" %}
 {% include "partials/flasherror.html" %}
@@ -25,4 +24,8 @@
 {% block page %}
 {% endblock %}
 
+<script src="/lib/d3.v3.min.js"></script>
+
+{% block script %}
+{% endblock %}
 </body>

@@ -161,6 +161,7 @@ function userCreate(req, res) {
         var options = CookieConfig.options
         options.maxAge = user.ttl
         res.cookie('token', user.token, options)
+        res.cookie('usernameEmail', username, options)
 
         res.redirectWithMessage('/feed', message)
       }
@@ -185,6 +186,7 @@ function userLogin(req, res) {
         var options = CookieConfig.options
         options.maxAge = user.ttl
         res.cookie('token', user.token, options)
+        res.cookie('usernameEmail', usernameEmail, options)
 
         res.redirectWithMessage('/feed', message)
       }
@@ -203,6 +205,7 @@ function userDelete(req, res) {
       } else {
 
         res.clearCookie('token')
+        res.clearCookie('usernameEmail')
 
         res.redirectWithMessage('/feed', message)
       }
@@ -254,6 +257,7 @@ function userLogout(req, res) {
         return
       } else {
         res.clearCookie('token')
+        res.clearCookie('usernameEmail')
 
         // We handle clientErr a bit differently here because
         // clientErr is only defined when the token as expired in the db
@@ -271,7 +275,6 @@ function userLogout(req, res) {
 }
 
 function storyCreate(req, res) {
-
   var question  = req.body.question // Question title
     , answer0   = req.body.answer0
     , answer1   = req.body.answer1
@@ -313,7 +316,6 @@ function storyCreate(req, res) {
       }
     }
   )
-
 }
 
 function storyDelete(req, res) {
@@ -418,9 +420,10 @@ module.exports = function(router) {
 
   router.post('/story/create',                storyCreate)
   router.post('/story/:storyId/vote/:answer', storyVote)
-  router.post('/story/:storyId/delete',       storyDelete)
 
   router.post('/about', feedbackCreate)
+
+  router.post('/story/:storyId/delete', storyDelete)
 
 }
 
