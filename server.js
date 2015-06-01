@@ -53,7 +53,7 @@ app.use(function(req, res, next) {
   res.status(404).render('404.html')
 })
 
-var server = app.listen(serverPort, '0.0.0.0', function () {
+var server = app.listen(serverPort, 'localhost', function () {
 
   var host = server.address().address
     , port = server.address().port
