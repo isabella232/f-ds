@@ -7,14 +7,14 @@ var API          = require('./config/backend/api')
 
 function renderStatic(template) {
   return function(req, res) {
-    res.render(template, { "page" : template })
+    res.render(template, { page : template })
   }
 }
 
 function renderIfToken(template, redirectTo) {
   return function(req, res) {
     if (req.signedCookies.token) {
-      res.render(template, { "page" : template })
+      res.render(template, { page : template })
     } else {
       //req.flashError('You are not logged in.')
       res.redirect(redirectTo)
@@ -25,7 +25,7 @@ function renderIfToken(template, redirectTo) {
 function renderIfNoToken(template, redirectTo) {
   return function(req, res) {
     if (!req.signedCookies.token) {
-      res.render(template, { "page" : template })
+      res.render(template, { page : template })
     } else {
       //req.flashError('You are already logged in.')
       res.redirect(redirectTo)

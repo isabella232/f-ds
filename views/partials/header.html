@@ -5,26 +5,17 @@
   <a class="navbar-left" href="/"><img class="navbar navbar-brand" src="/img/logo.png"/></a>
   <div class="pull-right">
     <ul class="nav navbar-nav">
-      {% if page == "create.html" %}
-        <li class="active">
-      {% else %}
-        <li>
-      {% endif %}      
-        <a href="/story/create"><span class="margin-right-space glyphicon glyphicon-edit"></span>Create</a></li>
-      {% if page == "profile.html" %}
-        <li class="active">
-      {% else %}
-        <li>
-      {% endif %}
-        <a href="/user/profile"><span class="margin-right-space glyphicon glyphicon-user"></span>Profile</a></li>
-      {% if page == "about.html" %}
-        <li class="active">
-      {% else %}
-        <li>
-      {% endif %}
-        <a href="/about"><span class="glyphicon glyphicon-info-sign"></span></a></li>
-      </ul>
-    </div>
+      <li {% if page == "create.html" %}class="active"{% endif %}>
+        <a href="/story/create"><span class="margin-right-space glyphicon glyphicon-edit"></span>Create</a>
+      </li>
+      <li {% if page == "profile.html" %}class="active"{% endif %}> 
+        <a href="/user/profile"><span class="margin-right-space glyphicon glyphicon-user"></span>Profile</a>
+      </li>
+      <li {% if page == "about.html" %}class="active"{% endif %}>
+        <a href="/about"><span class="glyphicon glyphicon-info-sign"></span></a>
+      </li>
+    </ul>
+  </div>
 </div>
     <!-- insert logic to see if user is logged in -->
 </nav>
