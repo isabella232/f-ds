@@ -6,7 +6,7 @@ var pie = new d3pie("pie", {
     "location": "bottom-left"
   },
   "size": {
-    "canvasWidth": 250,
+    "canvasWidth": 270,
     "canvasHeight":250,
     "pieOuterRadius": "90%"
   },
