@@ -17,11 +17,11 @@
   </div>
   <div class="jumbotron narrative"><p><span id="drop-cap">{{ story.narrative.substr(0,1) }}</span>{{ story.narrative }}</p></div>
   <div class="jumbotron">
-    <h2 class="topless">{{ question.title }}</h2>
+    <h2 class="topless little-blank-space">{{ question.title }}</h2>
     {% for answer in question.answers %}
     <form action="/story/{{ story.storyId }}/vote/{{ loop.index - 1 }}" method="POST">
       <button class="btn btn-default btn-block">
-        <span class="index-number">
+        <div class="index-number">
         {% if loop.index == 1 %}
         A
         {% elif loop.index == 2 %}
@@ -33,22 +33,26 @@
         {% else %}
         E
         {% endif %}
-        </span>
-        {{ answer.name }}
+        </div>
+        <div>
+          {{ answer.name }}
+        </div>
       </button>
     </form>
     {% endfor %}
     <hr>
-    <h3>Results</h3>
-    <span class="pull-right small half-top">
+    <h3>Results
+      <span class="pull-right small half-top">
       Total Votes:
-      <span class="badge">{{ question.totalVotes }}</span>
-    </span>
+        <span class="badge">{{ question.totalVotes }}</span>
+      </span>
+    </h3>
+
     {% if question.totalVotes > 0 %}
     <div id="pie" class="pie"></div>
     {% endif %}
     {% for answer in question.answers %}
-    <div class="dataPoint">
+    <div class="dataPoint" id="dataPoint{{ loop.index }}">
       <span class="rank">
       {% if loop.index == 1 %}
       A
