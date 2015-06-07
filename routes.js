@@ -229,7 +229,6 @@ function userChangePassword(req, res) {
     { token           : req.signedCookies.token
     , oldPassword     : oldPassword
     , newPassword     : newPassword
-    , confirmPassword : confirmPassword
     }
   , function(err, clientErr, message) {
       if (err) {
