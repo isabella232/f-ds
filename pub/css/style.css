@@ -297,6 +297,12 @@ a:hover{
   text-decoration: none;
 }
 
+/*adjust width of change password button on profile page */
+.change-pword button{
+  width: 80%;
+  margin: 0 auto;
+}/*----O_o-*/
+
 
 /**
  *  Modal changes
@@ -535,6 +541,10 @@ button:focus {
   height: 400px !important;
 }
 
+#change-pword .modal-inner{
+  height: 450px !important;
+}
+
 #signup .modal-inner{
   height: 500px !important;
 }
@@ -561,7 +571,7 @@ input:-webkit-autofill {
   max-height: none !important;
 }
 
-#login input, #signup input{
+#login input, #signup input, #change-pword input{
   background-color: #333333;
   font-size: 18px;
   text-align: left;
@@ -589,18 +599,18 @@ input:-webkit-autofill {
   font-size: 24px;
 }
 
-#login .glyphicon, #signup .glyphicon{
+#login .glyphicon, #signup .glyphicon, #change-pword .glyphicon{
   margin-left: 8px;
   position: relative;
   top: 3px;
 }
 
-#login form, #signup form{
+#login form, #signup form, #change-pword form{
   width: 100%;
   margin: 0;
 }
 
-#login button, #signup button{
+#login button, #signup button, #change-pword button{
   padding: 0;
   border: 0;
   height: 40px;
@@ -614,7 +624,7 @@ input:-webkit-autofill {
   line-height: 40px;
 }
 
-#login button:hover, #signup button:hover{
+#login button:hover, #signup button:hover, #change-pword button:hover{
   background-color: #FFF;
   color: #222;
 }

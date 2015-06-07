@@ -40,38 +40,8 @@
     <div class="copyright">© Copyright 2015 dynamicstory</div>
   </div>
 </div>
-<section class="modal--show" id="login" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-inner">
-    <div class="modal-content">
-      <form action="user/login" method="POST">
-        <div class="modal-title">Login<a href="#" data-dismiss="modal" class="close-btn">&times;</a></div>
-        <div class="label">Username or Email</div>
-        <input name="usernameEmail" type="text" maxlength="254" required>
-        <div class="label">Password</div>
-        <input name="password" type="password" maxlength="512" required>
-        <button type="submit"><div>Login<span class="glyphicon glyphicon-ok-circle"></span></div></button>
-      </form>
-    </div>
-  </div>
-  <a href="#!" class="modal-close" title="Close this modal" data-close="Close" data-dismiss="modal">?</a>
-</section>
-<section class="modal--show" id="signup" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-inner">
-    <div class="modal-content">
-      <form action="user/signup" method="POST">
-        <div class="modal-title">Signup<a href="#" data-dismiss="modal" class="close-btn">&times;</a></div>
-        <div class="label">Username</div>
-        <input name="username" type="text" pattern="^[A-Za-z0-9]{3,20}$" required>
-        <div class="label">Email</div>
-        <input name="email" type="email" maxlength="254" pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$"  required>
-        <div class="label">Password</div>
-        <input id="password" name="password" type="password" maxlength="512" pattern=".{5,512}" required>
-        <div class="label">Confirm Password</div>
-        <input id="confirmPassword" name="confirmPassword" type="password" maxlength="512" pattern=".{5,512}" required>
-        <button type="submit"><div>Signup<span class="glyphicon glyphicon-ok-circle"></span></div></button>
-      </form>
-    </div>
-  </div>
-  <a href="#!" class="modal-close" title="Close this modal" data-close="Close" data-dismiss="modal">?</a>
-</section>
+
+{% include "partials/login-modal.html" %}
+{% include "partials/signup-modal.html" %}
+
 {% endblock %}
