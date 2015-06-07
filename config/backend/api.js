@@ -147,7 +147,7 @@ module.exports =
     , refreshSession: makeReq('POST', '/user/reauthenticate',
       ['token'], ['token', 'ttl'])
     , changePassword: makeReq('PUT', '/user/password',
-      ['token', 'oldPassword', 'newPassword', 'confirmPassword'], [])
+      ['token', 'oldPassword', 'newPassword'], [])
     , logout: makeReq('POST', '/user/logout',
       ['token'], [])
     , delete: makeReq('DELETE', '/user',
