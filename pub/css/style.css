@@ -502,11 +502,9 @@ a:hover{
 .right-quote{
   position: relative;
   transform: rotate(180deg);
-  padding-right: 6px;
 }
 
 .left-quote{
-  padding-right: 6px;
   position: relative;
   top: 43px;
   vertical-align: top;
@@ -590,6 +588,8 @@ input:-webkit-autofill {
 
 #login .glyphicon, #signup .glyphicon{
   margin-left: 8px;
+  position: relative;
+  top: 3px;
 }
 
 #login form, #signup form{
@@ -625,23 +625,6 @@ input:-webkit-autofill {
 .close-btn:hover{
   color:#FFF;
 }
-/*^^^^^^^^^^^^^^^^^^^^^  END Modals ^^^^^^^^^^^^^^^^^^^^^*/
-
-
-/* Static Login & Signup Pages */
-.static-welcome{
-  background: #222;
-  width: 100%;
-  height: 100%;
-  padding:50px;
-  min-width: 320px;
-}
-.static-welcome form{
-  background: #222;
-  max-width: 400px;
-  margin: 0 auto;
-}
-/*^^^^^^^^^^^  END Static Login & Signup Pages ^^^^^^^^^^^^^^^*/
 
 @media screen and (max-width: 415px) {
     .landing-btns-modal{
@@ -660,3 +643,22 @@ input:-webkit-autofill {
         display: none;
     }
 }
+/*^^^^^^^^^^^^^^^^^^^^^  END Modals ^^^^^^^^^^^^^^^^^^^^^*/
+
+
+/* Static Login & Signup Pages */
+.static-welcome{
+  background: #222;
+  width: 100%;
+  height: 100%;
+  padding:50px;
+  min-width: 320px;
+}
+.static-welcome form{
+  background: #222;
+  max-width: 400px;
+  margin: 0 auto;
+}
+/*^^^^^^^^^^^  END Static Login & Signup Pages ^^^^^^^^^^^^^^^*/
+
+
