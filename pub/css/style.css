@@ -303,6 +303,10 @@ a:hover{
   margin: 0 auto;
 }/*----O_o-*/
 
+/*Center username on profile page*/
+.username{
+  text-align: center;
+}/*----O_o-*/
 
 /**
  *  Modal changes
