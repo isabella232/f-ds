@@ -1,14 +1,21 @@
 <!-- HEADER -->
+
 <nav class="navbar navbar-inverse">
 <div class="container-fluid">
-    	<a class="navbar-left" href="/"><img class="navbar navbar-brand" src="/img/logo.png"/></a>
-    <div class="pull-right">
-      <ul class="nav navbar-nav">
-        <li> <a href="/story/create"><span class="margin-right-space glyphicon glyphicon-edit"></span>Create</a></li>
-        <li class="active"><a href="/user/profile"><span class="margin-right-space glyphicon glyphicon-user"></span>Profile</a></li>
-        <li><a href="/about"><span class="glyphicon glyphicon-info-sign"></span></a></li>
-      </ul>
-    </div>
+  <a class="navbar-left" href="/"><img class="navbar navbar-brand" src="/img/logo.png"/></a>
+  <div class="pull-right">
+    <ul class="nav navbar-nav">
+      <li {% if page == "create.html" %}class="active"{% endif %}>
+        <a href="/story/create"><span class="margin-right-space glyphicon glyphicon-edit"></span>Create</a>
+      </li>
+      <li {% if page == "profile.html" %}class="active"{% endif %}> 
+        <a href="/user/profile"><span class="margin-right-space glyphicon glyphicon-user"></span>Profile</a>
+      </li>
+      <li {% if page == "about.html" %}class="active"{% endif %}>
+        <a href="/about"><span class="glyphicon glyphicon-info-sign"></span></a>
+      </li>
+    </ul>
+  </div>
 </div>
     <!-- insert logic to see if user is logged in -->
 </nav>
