@@ -643,7 +643,7 @@ input:-webkit-autofill {
   color:#FFF;
 }
 
-@media screen and (max-width: 415px) {
+@media screen and (max-width: 767px) {
     .landing-btns-modal{
         display: none;
     }
@@ -652,7 +652,7 @@ input:-webkit-autofill {
     }
 }
 
-@media screen and (min-width: 414px) {
+@media screen and (min-width: 768px) {
     .landing-btns-modal{
         display: block;
     }
