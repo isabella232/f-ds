@@ -10,10 +10,15 @@
     <img src="../img/article.png"><span class="plus">+</span><img src="../img/survey.png">
     <span class="graphic-label article-label">article</span><span class="graphic-label">survey</span>
   </div>
-  <div class="landing-btns">
-    <a href="#"><div class="enter-btn">enter</div></a>
-    <a href="#login"><div class="login-btn">login</div></a>
-    <a href="#signup"><div class="signup-btn">signup</div></a>
+  <div class="landing-btns-modal">
+    <div class="enter-btn"><a href="/feed">enter</a></div>
+    <div class="login-btn"><a href="#login">login</a></div>
+    <div class="signup-btn"> <a href="#signup">signup</a></div>
+  </div>
+  <div class="landing-btns-static">
+    <div class="enter-btn"><a href="/feed">enter</a></div>
+    <div class="login-btn"><a href="/user/login">login</a></div>
+    <div class="signup-btn"> <a href="/user/signup">signup</a></div>
   </div>
   <div class="about-vid">
     <div class="seperator"></div>
@@ -43,10 +48,10 @@
       <form action="user/login" method="POST">
         <div class="modal-title">Login<a href="#" data-dismiss="modal" class="close-btn">&times;</a></div>
         <div class="label">Username or Email</div>
-        <input type="text">
+        <input name="usernameEmail" type="text" maxlength="254" required>
         <div class="label">Password</div>
-        <input type="password">
-        <a href="#"><div class="modal-btn">Login<span class="glyphicon glyphicon-ok-circle"></span></div></a>
+        <input name="password" type="password" maxlength="512" required>
+        <button type="submit"><div>Login<span class="glyphicon glyphicon-ok-circle"></span></div></button>
       </form>
     </div>
   </div>
@@ -57,13 +62,15 @@
     <div class="modal-content">
       <form action="user/signup" method="POST">
         <div class="modal-title">Signup<a href="#" data-dismiss="modal" class="close-btn">&times;</a></div>
-        <div class="label">Username or Email</div>
-        <input type="text">
+        <div class="label">Username</div>
+        <input name="username" type="text" pattern="^[A-Za-z0-9]{3,20}$" required>
+        <div class="label">Email</div>
+        <input name="email" type="email" maxlength="254" pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$"  required>
         <div class="label">Password</div>
-        <input type="password">
+        <input id="password" name="password" type="password" maxlength="512" pattern=".{5,512}" required>
         <div class="label">Confirm Password</div>
-        <input type="password">
-        <a href="#"><div class="modal-btn">Signup<span class="glyphicon glyphicon-ok-circle"></span></div></a>
+        <input id="confirmPassword" name="confirmPassword" type="password" maxlength="512" pattern=".{5,512}" required>
+        <button type="submit"><div>Signup<span class="glyphicon glyphicon-ok-circle"></span></div></button>
       </form>
     </div>
   </div>

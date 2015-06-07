@@ -34,10 +34,10 @@ body {
   word-wrap: break-word;
 	background-size: cover;
 	background-attachment:fixed;
-  /*background: -webkit-linear-gradient(lightgray, #49517B);*/ /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(lightgray, #49517B); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(lightgray, #49517B); /* For Firefox 3.6 to 15 */
-  /*background: linear-gradient(lightgray, #49517B);*/ /* Standard syntax */
+  background: -webkit-linear-gradient(lightgray, #49517B); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(lightgray, #49517B) !important; /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(lightgray, #49517B) !important; /* For Firefox 3.6 to 15 */
+  background: linear-gradient(lightgray, #49517B); /* Standard syntax */
 }
 
 button{
@@ -335,9 +335,9 @@ a:hover{
 
 .landing {
   padding: 10px;
-  margin: 10px;
   min-width: 300px;
   background-color: #013976;
+  border: 15px solid white;
 }
 
 .landing h1, .landing h2, .landing h3, .landing h4, .landing h5{
@@ -386,7 +386,7 @@ a:hover{
   margin-right: 42px;
 }
 
-.landing-btns{
+.landing-btns-modal, .landing-btns-static{
   margin-top: 170px;
   text-align: center;
   line-height: 24px;
@@ -394,17 +394,20 @@ a:hover{
 
 .enter-btn{
   font-size: 24px;
+}
+
+.enter-btn a{
   color: #FFF;
 }
 
 .login-btn, .signup-btn{
   font-size: 24px;
-  color: #BBB;
   font-weight: 300;
+  display: block;
 }
 
-.login-btn{
-  position: relative;
+.login-btn a, .signup-btn a{
+  color: #BBB;
 }
 
 .plus{
@@ -479,83 +482,6 @@ a:hover{
   margin-top: 54px;
 }
 
-.modal-inner{
-  border-radius: 0 !important;
-  background: #222 !important;
-  max-height: none !important;
-}
-
-.modal-content{
-  border: 0 !important;
-  background: #222 !important;
-  max-height: none !important;
-}
-
-.modal-inner input{
-  background-color: #333333;
-  font-size: 18px;
-  text-align: left;
-  color: #FFF;
-  border: 0;
-  font-size: 22px;
-}
-
-.label{
-  color: #AAA;
-  float: left;
-  font-size: 16px;
-  font-weight: 300;
-  padding-left: 0;
-}
-
-.label:nth-child(4), .label:nth-child(6){
-  margin-top: 8px;
-}
-
-.modal-title{
-  color: #FFF;
-  text-align: left;
-  padding-bottom: 50px;
-  font-size: 24px;
-}
-
-#login{
-  color: #AAA;
-}
-
-.modal-btn{
-  font-weight: 400;
-  background-color: #CCC;
-  margin-top: 32px;
-  color: #222;
-  font-size: 18px;
-  height: 40px;
-  line-height: 40px;
-}
-
-.modal-btn:hover{
-  background-color: #FFF;
-  color: #222;
-}
-
-.modal-inner .glyphicon{
-  margin-left: 8px;
-}
-
-.modal-inner form{
-  width: 100%;
-  margin: 0;
-}
-
-.close-btn{
-  display: inline-block;
-  float: right;
-  color: #AAA;
-}
-
-.close-btn:hover{
-  color:#FFF;
-}
 
 .enter-btn:hover{
   font-size: 28px;
@@ -586,11 +512,16 @@ a:hover{
   vertical-align: top;
 }
 
-.border{
-  width: 25%;
-  border-top: 1px solid white;
+.seperator{
+  width: 75%;
+  max-width: 300px;
   margin: 0 auto;
+  border-top: 1px solid white;
 }
+/*^^^^^^^^^^^^^^^^^^^^^  END Landing Page ^^^^^^^^^^^^^^^^^^^^^*/
+
+
+/* Modals */
 
 input:focus,
 select:focus,
@@ -599,19 +530,12 @@ button:focus {
   outline: none;
 }
 
-.seperator{
-  width: 75%;
-  max-width: 300px;
-  margin: 0 auto;
-  border-top: 1px solid white;
-}
-
 #login .modal-inner{
   height: 400px !important;
 }
 
 #signup .modal-inner{
-  height: 450px !important;
+  height: 500px !important;
 }
 
 .modal--fade .modal-close:before, .modal--show .modal-close:before{
@@ -619,4 +543,120 @@ button:focus {
   height: 100%;
 }
 
-/* END Landing Page */
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #333333 inset;
+    -webkit-text-fill-color: #FFF;
+}
+
+.modal-inner{
+  border-radius: 0 !important;
+  background: #222 !important;
+  max-height: none !important;
+}
+
+.modal-content{
+  border: 0 !important;
+  background: #222 !important;
+  max-height: none !important;
+}
+
+#login input, #signup input{
+  background-color: #333333;
+  font-size: 18px;
+  text-align: left;
+  color: #FFF;
+  border: 0;
+  font-size: 22px;
+}
+
+.label{
+  color: #AAA;
+  float: left;
+  font-size: 16px;
+  font-weight: 300;
+  padding-left: 0;
+}
+
+.label:nth-child(4), .label:nth-child(8){
+  margin-top: 8px;
+}
+
+.modal-title{
+  color: #FFF;
+  text-align: left;
+  padding-bottom: 50px;
+  font-size: 24px;
+}
+
+#login .glyphicon, #signup .glyphicon{
+  margin-left: 8px;
+}
+
+#login form, #signup form{
+  width: 100%;
+  margin: 0;
+}
+
+#login button, #signup button{
+  padding: 0;
+  border: 0;
+  height: 40px;
+  width: 100%;
+  margin-top: 30px;
+  font-weight: 400;
+  background-color: #CCC;
+  color: #222;
+  font-size: 18px;
+  height: 40px;
+  line-height: 40px;
+}
+
+#login button:hover, #signup button:hover{
+  background-color: #FFF;
+  color: #222;
+}
+
+.close-btn{
+  display: inline-block;
+  float: right;
+  color: #AAA;
+}
+
+.close-btn:hover{
+  color:#FFF;
+}
+/*^^^^^^^^^^^^^^^^^^^^^  END Modals ^^^^^^^^^^^^^^^^^^^^^*/
+
+
+/* Static Login & Signup Pages */
+.static-welcome{
+  background: #222;
+  width: 100%;
+  height: 100%;
+  padding:50px;
+  min-width: 320px;
+}
+.static-welcome form{
+  background: #222;
+  max-width: 400px;
+  margin: 0 auto;
+}
+/*^^^^^^^^^^^  END Static Login & Signup Pages ^^^^^^^^^^^^^^^*/
+
+@media screen and (max-width: 415px) {
+    .landing-btns-modal{
+        display: none;
+    }
+    .landing-btns-static{
+        display: block;
+    }
+}
+
+@media screen and (min-width: 414px) {
+    .landing-btns-modal{
+        display: block;
+    }
+    .landing-btns-static{
+        display: none;
+    }
+}
