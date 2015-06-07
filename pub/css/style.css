@@ -129,7 +129,7 @@ a:hover{
 
 /* centering the Pie chart*/
 .pie{
-	width:250px;
+	width:270px;
 	position: relative;
 	left: 50%;
 	-webkit-transform: translateX(-50%);
