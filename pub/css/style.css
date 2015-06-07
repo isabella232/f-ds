@@ -8,12 +8,12 @@ p {
 /* KEY KEY KEY
 1. debug
 2. universal css
-	a.html tags
-	b.error
-	c.shadow
-	d.keypoints
-	e.clickables
-	f.modals
+  a.html tags
+  b.error
+  c.shadow
+  d.keypoints
+  e.clickables
+  f.modals
 3. navigation bar
 4. mess
 */
@@ -24,7 +24,7 @@ p {
 Debug
 ************************* */
 {
-	border:1px solid black;
+  border:1px solid black;
 }
 
 /* ***********************
@@ -39,55 +39,55 @@ body {
 }
 
 button{
-	background-color:white;
-	color:#316029;
+  background-color:white;
+  color:#316029;
 }
 input {
-	display: block;
-	margin-bottom:.9em;
-	margin: 0 auto;
-	border:1px solid lightgray;
-	margin-top: 10px;
-	padding: 10px;
-	height: 40px;
-	width: 100%;
+  display: block;
+  margin-bottom:.9em;
+  margin: 0 auto;
+  border:1px solid lightgray;
+  margin-top: 10px;
+  padding: 10px;
+  height: 40px;
+  width: 100%;
 }
 p{
-	margin: 1em;
+  margin: 1em;
 }
 
 textarea{
-	resize:vertical;
+  resize:vertical;
 }
 a {
-	color:#333;
+  color:#333;
 }
 select {
-	margin-top:.9em;
-	margin-bottom:.9em;
-	width:100%;
+  margin-top:.9em;
+  margin-bottom:.9em;
+  width:100%;
 }
 
 form {
-	width: 80%;
-	margin: 0 auto;
+  width: 80%;
+  margin: 0 auto;
 }
 
 a:hover {
-	color:#300;
+  color:#300;
   text-decoration: none;
 }
 
 .top{
-	z-index: 100;
-	position: relative;
+  z-index: 100;
+  position: relative;
 }
 
 /*shadow ---------------------*/
 
 
 .shadow{
-	box-shadow:1px 1px  4px 1px  #888888;
+  box-shadow:1px 1px  4px 1px  #888888;
 }
 /*----O_o-*/
 
@@ -103,59 +103,59 @@ a:hover {
 /*general modifiers*//*general modifiers*//*general modifiers*/
 /*modifed the <hr> to be visable in a jumbotron*/
 hr{
-	border-color:#bbb;
+  border-color:#bbb;
 }/*----O_o-*/
 
 /*adding a larger default height to textarea (for story-page)*/
 .tall{
-	height:15em !important;
+  height:15em !important;
 }/*----O_o-*/
 
 /*adds margin-top to any element*/
 .top{
-	margin-top:1em;
+  margin-top:1em;
 }
 .half-top{
-	margin-top:.5em;
+  margin-top:.5em;
 }/*----O_o-*/
 
 /*adds padding-bottom to any element*/
 .extra-bottom{
-	padding-bottom:5em;
+  padding-bottom:5em;
 }/*----O_o-*/
 
 /* class to remove the margin-top on elements */
 .topless{
-	margin-top:0px;
+  margin-top:0px;
 }/*----O_o-*/
 
 /*auxillary class which can be used to add blank space below any element*/
 .blank-space{
-	margin-bottom:2em;
+  margin-bottom:2em;
 }/*----O_o-*/
 
 /*use to make responsive media links*/
 .responsive-container{
- 	position:relative;
- 	width:100%;
- 	height:0;
- 	padding-bottom:51%;
+   position:relative;
+   width:100%;
+   height:0;
+   padding-bottom:51%;
 }
 .responsive-item {
-	position:absolute;
-	width:100%;
-	height:100%;
-	left:0;
-	top:0;
+  position:absolute;
+  width:100%;
+  height:100%;
+  left:0;
+  top:0;
 }/*----O_o-*/
 
 /*used to add a margin-right of 6px to anything!*/
 .margin-right-space{
-	margin-right:6px;
+  margin-right:6px;
 }/*----O_o-*/
 
 .twenty-one {
-	font-size:21px !important;
+  font-size:21px !important;
 }
 /*^^^^^^^^^^^ end of general modifiers ^^^^^^^^^^^^^^^*/
 
@@ -164,36 +164,36 @@ hr{
 
 /*prevents the navbar from breaking header*/
 .navbar-collapse.collapse {
-	display: block!important;
+  display: block!important;
 }
 .navbar-nav>li, .navbar-nav {
-	float: left !important;
+  float: left !important;
 }
 .navbar-nav.navbar-right:last-child {
-	margin-right: -15px !important;
+  margin-right: -15px !important;
 }
 .navbar-right {
-	float: right!important;
+  float: right!important;
 }/*----O_o-*/
 
 
 /*override the defaults settings of <a> on the feed*/
 a .jumbotron{
-	color:#444;
+  color:#444;
 }
 a:hover .jumbotron{
-	color:#222;
-	background-color:#ddd;
+  color:#222;
+  background-color:#ddd;
 }
 a:hover{
-	text-decoration: none;
+  text-decoration: none;
 }/*----O_o-*/
 
 
 /* allows break-word used to keep troll-text* out of feed page
 (*troll-text:text that does not fit in the jumbotron) */
 .jumbotron{
-	word-wrap:break-word;
+  word-wrap:break-word;
 }/*----O_o-*/
 
 
@@ -207,58 +207,58 @@ a:hover{
 
 /*story-page fix for the survey answer options*/
 .index-number{
-	float:left;
-	padding:0px 5px 0px 7px;
-	border-right:1px solid #bbb;
+  float:left;
+  padding:0px 5px 0px 7px;
+  border-right:1px solid #bbb;
 }/*----O_o-*/
 
 
 /* centering the Pie chart*/
 .pie{
-	width:270px;
-	position: relative;
-	left: 50%;
-	-webkit-transform: translateX(-50%);
-	-ms-transform: translateX(-50%);
-	transform: translateX(-50%);
- }/*----O_o-*/
+  width:270px;
+  position: relative;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}/*----O_o-*/
 
 
 /*This is for the data table which shows the results on the story-page*/
 .dataPoint{
-	margin:0 auto;
-	width:95%;
-	height:2em;
-	margin-top:.4em;
+  margin:0 auto;
+  width:95%;
+  height:2em;
+  margin-top:.4em;
 }
 .rank{
-	float:left;
-	width:20%;
-	border-radius:1em 0em 0em 1em;
-	padding:.1em 1em;
-	background-color:white;
-	text-align:center;
-	margin-left:.9em;
-	border:1px solid #ccc;
+  float:left;
+  width:20%;
+  border-radius:1em 0em 0em 1em;
+  padding:.1em 1em;
+  background-color:white;
+  text-align:center;
+  margin-left:.9em;
+  border:1px solid #ccc;
 }
 .votes-storyView{
-	float:left;
-	width:70%;
-	margin-left:.3em;
-	border-radius:0em 1em 1em 0em;
-	padding:.1em 1em;
-	background-color:white;
-	text-align:center;
-	border:1px solid #ccc;
+  float:left;
+  width:70%;
+  margin-left:.3em;
+  border-radius:0em 1em 1em 0em;
+  padding:.1em 1em;
+  background-color:white;
+  text-align:center;
+  border:1px solid #ccc;
 }
 .dataPoint:last-child{
-	margin-bottom:1em;
+  margin-bottom:1em;
 }/*----O_o-*/
 
 
 /*adding a small amount of space in between each answer option on the create story-page*/
 .input-group{
-	margin-top:5px;
+  margin-top:5px;
 }/*----O_o-*/
 
 
@@ -266,30 +266,30 @@ a:hover{
 
 /*making the profile-page avatar a smaller size*/
 .profile-img{
-	margin-top:20px;
-	width:140px;
-	height:140px;
+  margin-top:20px;
+  width:140px;
+  height:140px;
 }/*----O_o-*/
 
 
 /* override the default padding of bootstrap */
 .navbar{
-	margin-bottom:00px !important;
+  margin-bottom:00px !important;
 }
  .jumbotron:first-child{
-	margin-top:20px;
+  margin-top:20px;
 }/*----O_o-*/
 
 /* override the default padding of bootstrap */
 .navbar-brand{
-	padding:10px;
+  padding:10px;
 }/*----O_o-*/
 
 /*used to frame the error pages on 404 & 500 */
 .error-page img{
-	max-width: 300px;
-	width:100%;
-	height:100%;
+  max-width: 300px;
+  width:100%;
+  height:100%;
 }/*----O_o-*/
 
 
