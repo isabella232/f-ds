@@ -75,6 +75,9 @@ hr{
 
 
 
+.narrative{
+  white-space: pre-wrap;
+}
 
 /*prevents the navbar from breaking header*/
 .navbar-collapse.collapse {
