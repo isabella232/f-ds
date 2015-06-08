@@ -1,17 +1,51 @@
 {% extends "base.html" %}
 
+{% block style %}
+  <link rel="stylesheet" type="text/css" href="/css/modal.css">
+{% endblock %}
+
 {% block noheader %}
 {% endblock %}
 
 {% block page %}
-<div class="background">
-  <div class="welcome-section">
-    <div class="welcome-title">DYNAMIC STORY</div>
-    <p class="welcome-info">Share your story with the world.</p>
-    <div class="welcome-btn-wrapper">
-      <a class="welcome-btn" href="/user/login"><span>Login</span></a>
-      <a class="welcome-btn" href="/user/signup"><span>Signup</span></a>
+<div class="landing">
+  <h3>dynamicstory</h3>
+  <div class="graphic">
+    <img src="/img/article.png"><span class="plus">+</span><img src="/img/survey.png">
+    <span class="graphic-label article-label">article</span><span class="graphic-label">survey</span>
+  </div>
+  <div class="landing-btns-modal">
+    <div class="enter-btn"><a href="/feed">enter</a></div>
+    <div class="login-btn"><a href="#login">login</a></div>
+    <div class="signup-btn"> <a href="#signup">signup</a></div>
+  </div>
+  <div class="landing-btns-static">
+    <div class="enter-btn"><a href="/feed">enter</a></div>
+    <div class="login-btn"><a href="/user/login">login</a></div>
+    <div class="signup-btn"> <a href="/user/signup">signup</a></div>
+  </div>
+  <div class="about-vid">
+    <div class="seperator"></div>
+    <h2>a new kind of</h2>
+    <h2>publishing platform</h2>
+    <div class="about-text">
+      <img class="left-quote" src="/img/quote.png">
+      <h5>Our mission is to create a more effective way to learn about the world around us. We believe pairing surveys with thought provoking content will help everyone see the bigger picture.</h5>
+      <img class="right-quote" src="/img/quote.png">
     </div>
+    <div class="seperator"></div>
+    <iframe width="250" height="300" src="https://www.youtube.com/embed/gW1-YTwWuxI?rel=0&amp;controls=0&amp;showinfo=0&amp;title=&amp;modestbranding=1" frameborder="0" allowfullscreen></iframe>
+    <div class="seperator"></div>
+  </div>
+  <div class="footer">
+    <div class="company">dynamicstory</div>
+    <div class="address">599 Fairchild Dr<br>Mountain View, CA 94043</div>
+    <div class="name">(599) 827-8282<br><span>alexander.m</span></div>
+    <div class="copyright">© Copyright 2015 dynamicstory</div>
   </div>
 </div>
+
+{% include "partials/login-modal.html" %}
+{% include "partials/signup-modal.html" %}
+
 {% endblock %}

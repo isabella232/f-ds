@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block style %}
+  <link rel="stylesheet" type="text/css" href="/css/modal.css">
+{% endblock %}
+
 {% block page %}
 {% include "partials/change-pword.html" %}
 
@@ -9,15 +13,13 @@
       <img src="/img/avatar.png" alt="avatar here"  class=" profile-img center-block">
     </div>
     <div class="col-sm-8 menu">
-      <h2>{{ usernameEmail }}</h2>
+      <h2 class="username">{{ usernameEmail }}</h2>
       <form action="/user/delete" method="POST">
         <button class="btn btn-default btn-block">Delete Account</button>
       </form>
-      <form>
-        <a href="#change-pword"  data-toggle="modal">
-          <button class="btn btn-default btn-block">Change Password</button>
-        </a>
-      </form>
+      <a class="change-pword" href="#change-pword">
+        <button class="btn btn-default btn-block">Change Password</button>
+      </a>
       <form class="profile-form" action="/user/logout" method="POST">
         <button id="logout-btn" class="btn btn-default btn-block">Log Out</button>
       </form>

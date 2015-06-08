@@ -1,9 +1,9 @@
+
 /*custom override changes to prexisting tags and classes*/
 /* Improve legibility for general text */
 p {
   font-weight: 300 !important;
 }
-/*----O_o-*/
 
 /* Overwrite default font-family for bootstrap's btn class */
 .btn {
@@ -17,59 +17,59 @@ p {
 /*general modifiers*//*general modifiers*//*general modifiers*/
 /*modifed the <hr> to be visable in a jumbotron*/
 hr{
-	border-color:#bbb;
+  border-color:#bbb;
 }/*----O_o-*/
 
 /*adding a larger default height to textarea (for story-page)*/
 .tall{
-	height:15em !important;
+  height:15em !important;
 }/*----O_o-*/
 
 /*adds margin-top to any element*/
 .top{
-	margin-top:1em;
+  margin-top:1em;
 }
 .half-top{
-	margin-top:.5em;
+  margin-top:.5em;
 }/*----O_o-*/
 
 /*adds padding-bottom to any element*/
 .extra-bottom{
-	padding-bottom:5em;
+  padding-bottom:5em;
 }/*----O_o-*/
 
 /* class to remove the margin-top on elements */
 .topless{
-	margin-top:0px;
+  margin-top:0px;
 }/*----O_o-*/
 
 /*auxillary class which can be used to add blank space below any element*/
 .blank-space{
-	margin-bottom:2em;
+  margin-bottom:2em;
 }/*----O_o-*/
 
 /*use to make responsive media links*/
 .responsive-container{
- 	position:relative; 
- 	width:100%; 
- 	height:0; 
- 	padding-bottom:51%;
+   position:relative;
+   width:100%;
+   height:0;
+   padding-bottom:51%;
 }
 .responsive-item {
-	position:absolute;
-	width:100%;
-	height:100%;
-	left:0;
-	top:0;
+  position:absolute;
+  width:100%;
+  height:100%;
+  left:0;
+  top:0;
 }/*----O_o-*/
 
 /*used to add a margin-right of 6px to anything!*/
 .margin-right-space{
-	margin-right:6px;
+  margin-right:6px;
 }/*----O_o-*/
 
 .twenty-one {
-	font-size:21px !important;
+  font-size:21px !important;
 }
 /*^^^^^^^^^^^ end of general modifiers ^^^^^^^^^^^^^^^*/
 
@@ -78,36 +78,36 @@ hr{
 
 /*prevents the navbar from breaking header*/
 .navbar-collapse.collapse {
-	display: block!important;
+  display: block!important;
 }
 .navbar-nav>li, .navbar-nav {
-	float: left !important;
+  float: left !important;
 }
 .navbar-nav.navbar-right:last-child {
-	margin-right: -15px !important;
+  margin-right: -15px !important;
 }
 .navbar-right {
-	float: right!important;
+  float: right!important;
 }/*----O_o-*/
 
 
 /*override the defaults settings of <a> on the feed*/
 a .jumbotron{
-	color:#444;
+  color:#444;
 }
 a:hover .jumbotron{
-	color:#222;
-	background-color:#ddd;
+  color:#222;
+  background-color:#ddd;
 }
 a:hover{
-	text-decoration: none;
+  text-decoration: none;
 }/*----O_o-*/
 
 
 /* allows break-word used to keep troll-text* out of feed page
 (*troll-text:text that does not fit in the jumbotron) */
 .jumbotron{
-	word-wrap:break-word;
+  word-wrap:break-word;
 }/*----O_o-*/
 
 
@@ -121,58 +121,58 @@ a:hover{
 
 /*story-page fix for the survey answer options*/
 .index-number{
-	float:left;
-	padding:0px 5px 0px 7px;
-	border-right:1px solid #bbb;
+  float:left;
+  padding:0px 5px 0px 7px;
+  border-right:1px solid #bbb;
 }/*----O_o-*/
 
 
 /* centering the Pie chart*/
 .pie{
-	width:270px;
-	position: relative;
-	left: 50%;
-	-webkit-transform: translateX(-50%);
-	-ms-transform: translateX(-50%);
-	transform: translateX(-50%);
- }/*----O_o-*/
+  width:270px;
+  position: relative;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}/*----O_o-*/
 
 
 /*This is for the data table which shows the results on the story-page*/
 .dataPoint{
-	margin:0 auto;
-	width:95%;
-	height:2em;
-	margin-top:.4em;
+  margin:0 auto;
+  width:95%;
+  height:2em;
+  margin-top:.4em;
 }
 .rank{
-	float:left;
-	width:20%;
-	border-radius:1em 0em 0em 1em;
-	padding:.1em 1em;
-	background-color:white;
-	text-align:center;
-	margin-left:.9em;
-	border:1px solid #ccc;
+  float:left;
+  width:20%;
+  border-radius:1em 0em 0em 1em;
+  padding:.1em 1em;
+  background-color:white;
+  text-align:center;
+  margin-left:.9em;
+  border:1px solid #ccc;
 }
 .votes-storyView{
-	float:left;
-	width:70%;
-	margin-left:.3em;
-	border-radius:0em 1em 1em 0em;
-	padding:.1em 1em;
-	background-color:white;
-	text-align:center;
-	border:1px solid #ccc;
+  float:left;
+  width:70%;
+  margin-left:.3em;
+  border-radius:0em 1em 1em 0em;
+  padding:.1em 1em;
+  background-color:white;
+  text-align:center;
+  border:1px solid #ccc;
 }
 .dataPoint:last-child{
-	margin-bottom:1em;
+  margin-bottom:1em;
 }/*----O_o-*/
 
 
 /*adding a small amount of space in between each answer option on the create story-page*/
 .input-group{
-	margin-top:5px;
+  margin-top:5px;
 }/*----O_o-*/
 
 
@@ -180,28 +180,420 @@ a:hover{
 
 /*making the profile-page avatar a smaller size*/
 .profile-img{
-	margin-top:20px;
-	width:140px;
-	height:140px;
+  margin-top:20px;
+  width:140px;
+  height:140px;
 }/*----O_o-*/
 
 
 /* override the default padding of bootstrap */
 .navbar{
-	margin-bottom:00px !important;
+  margin-bottom:00px !important;
 }
  .jumbotron:first-child{
-	margin-top:20px;
+  margin-top:20px;
 }/*----O_o-*/
 
 /* override the default padding of bootstrap */
 .navbar-brand{
-	padding:10px;
+  padding:10px;
 }/*----O_o-*/
 
 /*used to frame the error pages on 404 & 500 */
 .error-page img{
-	max-width: 300px;
-	width:100%;
-	height:100%;
+  max-width: 300px;
+  width:100%;
+  height:100%;
 }/*----O_o-*/
+
+
+.buttons a {
+  text-decoration: none;
+}
+
+/*Center username on profile page*/
+.username{
+  text-align: center;
+}/*----O_o-*/
+
+/**
+ *  Modal changes
+ *
+ *
+ *
+ */
+
+.modal--fade .modal-inner, .modal--show .modal-inner {
+    width: 315px;
+    margin: 0 auto;
+    top: 10%;
+    left: 50%;
+    margin-left: -157.5px;
+    position: fixed;
+    z-index: 20;
+    text-align: center;
+    background-color: #f3f3f3;
+    border-radius: 0 14px 14px 14px;
+    padding: 15px;
+  }
+
+.modal--fade .modal-close:before, .modal--show .modal-close:before {
+      background-color: #000;
+      opacity: .6;
+}
+
+.modal--fade .modal-close:after, .modal--show .modal-close:after {
+    display: none;
+}
+.modal-content{
+  border-radius: 0 !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+
+/* Landing Page */
+
+.landing {
+  padding: 10px;
+  min-width: 300px;
+  background-color: #013976;
+  border: 15px solid white;
+}
+
+.landing h1, .landing h2, .landing h3, .landing h4, .landing h5{
+  margin:0;
+}
+
+.landing h3{
+  font-weight: 300;
+  padding: 18px 18px 170px 18px;
+  color:#FFF;
+  font-size: 18px;
+}
+
+.landing h2{
+  padding: 0 36px;
+}
+
+.article{
+  display: inline-block;
+  height: 65px;
+  width: 50px;
+  background-color: #222;
+  text-align: center;
+}
+
+.survey{
+  display: inline-block;
+  background-color: #222;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.graphic-label{
+  width: 43px;
+  display: inline-block;
+  text-align: center;
+  color: #FFF;
+  font-weight: 100;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.article-label{
+  margin-right: 42px;
+}
+
+.landing-btns-modal, .landing-btns-static{
+  margin-top: 170px;
+  text-align: center;
+  line-height: 24px;
+}
+
+.enter-btn{
+  font-size: 24px;
+}
+
+.enter-btn a{
+  color: #FFF;
+}
+
+.login-btn, .signup-btn{
+  font-size: 24px;
+  font-weight: 300;
+  display: block;
+}
+
+.login-btn a, .signup-btn a{
+  color: #BBB;
+}
+
+.plus{
+  color: #FFF;
+  line-height: 42px;
+  height: 42px;
+  text-align: center;
+  display: inline-block;
+  width: 43px;
+  font-size: 24px;
+  font-weight: 100;
+}
+
+.graphic{
+  width: 129px;
+  margin: 0 auto;
+}
+
+.about-vid{
+  text-align: center;
+  margin-top: 50px;
+}
+
+.about-vid h2{
+  text-align: center;
+  font-size: 28px;
+  color: #FFF;
+  line-height: 36px;
+  margin: 0 auto;
+  font-weight: 100;
+  letter-spacing: 4px;
+}
+
+.about-vid h2:first-of-type{
+  width: 50%;
+  margin: 0 auto;
+  padding: 20px 0 0 0;
+}
+
+.about-vid h5{
+  display: inline-block;
+  color: #FFF;
+  padding: 50px 0;
+  margin: 0 auto;
+  width: 180px;
+  line-height: 20px;
+  font-size: 16px;
+  letter-spacing: 2px;
+  font-weight: 100;
+  text-align: left;
+}
+
+.footer{
+  text-align: center;
+  font-size: 16px;
+  line-height: 18px;
+  color: #FFF;
+  padding: 36px;
+  font-weight: 100;
+  letter-spacing: 1px;
+}
+
+.address, .name{
+  margin-top:18px;
+}
+
+.name span{
+  border-bottom: 1px solid #fff;
+}
+
+.copyright{
+  margin-top: 54px;
+}
+
+
+.enter-btn:hover{
+  font-size: 28px;
+}
+
+.login-btn:hover, .signup-btn:hover{
+  color: #FFF;
+  font-size: 28px;
+}
+
+.about-vid iframe{
+  display: block;
+  margin: 0 auto;
+  padding-top: 100px;
+  margin-bottom: 100px;
+}
+
+.right-quote{
+  position: relative;
+  transform: rotate(180deg);
+}
+
+.left-quote{
+  position: relative;
+  top: 43px;
+  vertical-align: top;
+}
+
+.seperator{
+  width: 75%;
+  max-width: 300px;
+  margin: 0 auto;
+  border-top: 1px solid white;
+}
+/*^^^^^^^^^^^^^^^^^^^^^  END Landing Page ^^^^^^^^^^^^^^^^^^^^^*/
+
+
+/* Modals */
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+#login .modal-inner{
+  height: 400px !important;
+}
+
+#change-pword .modal-inner{
+  height: 450px !important;
+}
+
+#signup .modal-inner{
+  height: 500px !important;
+}
+
+.modal--fade .modal-close:before, .modal--show .modal-close:before{
+  z-index: -1;
+  height: 100%;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #333333 inset;
+  -webkit-text-fill-color: #FFF;
+}
+
+.modal-inner{
+  border-radius: 0 !important;
+  background: #222 !important;
+  max-height: none !important;
+}
+
+.modal-content{
+  border: 0 !important;
+  background: #222 !important;
+  max-height: none !important;
+}
+
+#login input, #signup input, #change-pword input{
+  background-color: #333333;
+  font-size: 18px;
+  text-align: left;
+  color: #FFF;
+  border: 0;
+  font-size: 22px;
+}
+
+.label{
+  color: #AAA;
+  float: left;
+  font-size: 16px;
+  font-weight: 300;
+  padding-left: 0;
+}
+
+.label:nth-child(4), .label:nth-child(6), .label:nth-child(8){
+  margin-top: 8px;
+}
+
+.modal-title{
+  color: #FFF;
+  text-align: left;
+  padding-bottom: 50px;
+  font-size: 24px;
+}
+
+#login .glyphicon, #signup .glyphicon, #change-pword .glyphicon{
+  margin-left: 8px;
+  position: relative;
+  top: 3px;
+}
+
+#login form, #signup form, #change-pword form{
+  width: 100%;
+  margin: 0;
+}
+
+#login button, #signup button, #change-pword button{
+  padding: 0;
+  border: 0;
+  height: 40px;
+  width: 100%;
+  margin-top: 30px;
+  font-weight: 400;
+  background-color: #CCC;
+  color: #222;
+  font-size: 18px;
+  height: 40px;
+  line-height: 40px;
+}
+
+#login button:hover, #signup button:hover, #change-pword button:hover{
+  background-color: #FFF;
+  color: #222;
+}
+
+.close-btn{
+  display: inline-block;
+  float: right;
+  color: #AAA;
+}
+
+.close-btn:hover{
+  color:#FFF;
+}
+
+@media screen and (max-width: 767px) {
+    .landing-btns-modal{
+        display: none;
+    }
+    .landing-btns-static{
+        display: block;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .landing-btns-modal{
+        display: block;
+    }
+    .landing-btns-static{
+        display: none;
+    }
+}
+/*^^^^^^^^^^^^^^^^^^^^^  END Modals ^^^^^^^^^^^^^^^^^^^^^*/
+
+
+/* Static Login & Signup Pages */
+.static-welcome{
+  background: #222;
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+  min-width: 320px;
+}
+.static-welcome form{
+  background: #222;
+  max-width: 400px;
+  margin: 0 auto;
+  margin-top: 32px;
+}
+/*^^^^^^^^^^^  END Static Login & Signup Pages ^^^^^^^^^^^^^^^*/
+
+
+@media (max-width: 767px) {
+	.container {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.jumbotron {
+		border-radius: 0 !important;
+	}
+}

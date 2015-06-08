@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 
 {% block page %}
+  <div class="container">
   {% for story in feed %}
   <a class="no-hover" href="/story/{{ story.story }}">
-    <div class="container jumbotron">
+    <div class="jumbotron">
       <h2>{{ story.title }}</h2>
       <p>{{ story.narrative.substring(0,150) }} {% if story.narrative.length > 150 %}...{% endif %}</p>
       <span>{{ story.creationDate.split('T')[0] }}</span>
@@ -14,4 +15,5 @@
     </div>
   </a>
   {% endfor %}
+  </div>
 {% endblock %}
