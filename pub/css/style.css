@@ -211,12 +211,6 @@ a:hover{
   text-decoration: none;
 }
 
-/*adjust width of change password button on profile page */
-.change-pword button{
-  width: 80%;
-  margin: 0 auto;
-}/*----O_o-*/
-
 /*Center username on profile page*/
 .username{
   text-align: center;
@@ -594,3 +588,12 @@ input:-webkit-autofill {
 /*^^^^^^^^^^^  END Static Login & Signup Pages ^^^^^^^^^^^^^^^*/
 
 
+@media (max-width: 767px) {
+	.container {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.jumbotron {
+		border-radius: 0 !important;
+	}
+}
