@@ -8,12 +8,14 @@ p {
 
 /* Overwrite default font-family for bootstrap's btn class */
 .btn {
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
 }/*----O_o-*/
 
 /* Overwrite default height of body and html to 100% */
 html{
   height: 100%;
+  min-width: 320px;
+  font-family: 'Open Sans', sans-serif;
 }
 body{
   height: 100%;
@@ -43,6 +45,8 @@ label{
   text-align: center;
   font-size: 52px;
 }
+
+
 /*^^^^^^^^^^^ end of override modifiers ^^^^^^^^^^^^^^^*/
 
 
@@ -109,6 +113,7 @@ hr{
 #question{
   margin-bottom: 16px;
 }
+
 /*^^^^^^^^^^^ end of general modifiers ^^^^^^^^^^^^^^^*/
 
 
@@ -166,6 +171,12 @@ a:hover{
   width: 170px;
 }
 
+.delete-btn{
+  width: 70px;
+  height: 35px;
+  padding: 0;
+  font-size: 14px;
+}
 
 /*story-page fix for the survey answer options*/
 .index-number{
@@ -273,22 +284,16 @@ a:hover{
  */
 
 .modal--fade .modal-inner, .modal--show .modal-inner {
-    width: 315px;
-    margin: 0 auto;
-    top: 10%;
-    left: 50%;
-    margin-left: -157.5px;
-    position: fixed;
-    z-index: 20;
-    text-align: center;
-    background-color: #f3f3f3;
-    border-radius: 0 14px 14px 14px;
-    padding: 15px;
-  }
+  width: auto;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  margin-left: 0;
+}
 
 .modal--fade .modal-close:before, .modal--show .modal-close:before {
-      background-color: #000;
-      opacity: .6;
+  background-color: #000;
+  opacity: .6;
 }
 
 .modal--fade .modal-close:after, .modal--show .modal-close:after {
@@ -499,7 +504,7 @@ button:focus {
   outline: none;
 }
 
-#login .modal-inner{
+/*#login .modal-inner{
   height: 350px !important;
 }
 
@@ -509,7 +514,7 @@ button:focus {
 
 #signup .modal-inner{
   height: 490px !important;
-}
+}*/
 
 .modal--fade .modal-close:before, .modal--show .modal-close:before{
   z-index: -1;
@@ -517,9 +522,14 @@ button:focus {
 }
 
 input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0px 1000px #333333 inset;
-  -webkit-text-fill-color: #FFF;
+  background-color: #333 !important;
+  -webkit-box-shadow: 0 0 0px 1000px #333333 inset !important;
+  -webkit-text-fill-color: #FFF !important;
+  -webkit-text-stroke: 0 !important;
+  -webkit-text: #fff !important;
+  currentcolor: #fff;
 }
+
 
 .modal-inner{
   border-radius: 0 !important;
@@ -535,7 +545,7 @@ input:-webkit-autofill {
 
 #login input, #signup input, #change-pword input{
   background-color: #333333;
-  font-size: 18px;
+  padding: 4px 8px;
   text-align: left;
   color: #FFF;
   border: 0;
@@ -585,13 +595,13 @@ input:-webkit-autofill {
   border: 0;
   height: 40px;
   width: 100%;
-  margin-top: 16px;
   font-weight: 400;
   background-color: #CCC;
   color: #222;
   font-size: 18px;
   height: 40px;
   line-height: 40px;
+  margin: 16px 0;
 }
 
 #login button:hover, #signup button:hover, #change-pword button:hover{
