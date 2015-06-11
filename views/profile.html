@@ -15,13 +15,13 @@
     <div class="col-sm-8 menu">
       <h2 class="username">{{ username }}</h2>
       <form action="/user/delete" method="POST">
-        <button class="btn btn-default btn-block">Delete Account</button>
+        <button class="btn btn-danger btn-block profile-btn">Delete Account</button>
       </form>
       <a class="change-pword" href="#change-pword">
-        <button class="btn btn-default btn-block">Change Password</button>
+        <button class="btn btn-warning btn-block profile-btn">Change Password</button>
       </a>
       <form class="profile-form" action="/user/logout" method="POST">
-        <button id="logout-btn" class="btn btn-default btn-block">Log Out</button>
+        <button id="logout-btn" class="btn btn-info btn-block profile-btn">Log Out</button>
       </form>
     </div>
     &nbsp;

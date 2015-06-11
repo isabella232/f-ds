@@ -20,6 +20,29 @@ body{
 }
 /*----O_o-*/
 
+/* Overwrite default margin for bootstrap labels */
+label{
+  margin-top: 5px;
+}
+/*----O_o-*/
+
+.container{
+  min-width: 320px;
+}
+
+.alert{
+  margin-bottom: 0;
+}
+
+.jumbotron p{
+  font-size: 22.5px;
+  line-height: 36px;
+}
+
+.jumbotron h1{
+  text-align: center;
+  font-size: 52px;
+}
 /*^^^^^^^^^^^ end of override modifiers ^^^^^^^^^^^^^^^*/
 
 
@@ -82,6 +105,10 @@ hr{
 .twenty-one {
   font-size:21px !important;
 }
+
+#question{
+  margin-bottom: 16px;
+}
 /*^^^^^^^^^^^ end of general modifiers ^^^^^^^^^^^^^^^*/
 
 
@@ -127,10 +154,17 @@ a:hover{
 
 /* change to allow our buttons text to wrap */
 .btn{
-    white-space:normal !important;
-    word-wrap:break-word;
+  color: #222;
+  font-weight: 700;
+  white-space: normal !important;
+  word-wrap: break-word;
+  margin: 8px auto;
+  width: 100%;
 }/*----O_o-*/
 
+.profile-btn{
+  width: 170px;
+}
 
 
 /*story-page fix for the survey answer options*/
@@ -228,6 +262,7 @@ a:hover{
 /*Center username on profile page*/
 .username{
   text-align: center;
+  margin: 30px auto;
 }/*----O_o-*/
 
 /**
@@ -270,9 +305,8 @@ a:hover{
 
 .landing {
   padding: 10px;
-  min-width: 300px;
+/*  min-width: 300px;*/
   background-color: #013976;
-  border: 15px solid white;
 }
 
 .landing h1, .landing h2, .landing h3, .landing h4, .landing h5{
@@ -281,7 +315,7 @@ a:hover{
 
 .landing h3{
   font-weight: 300;
-  padding: 18px 18px 170px 18px;
+  padding: 20px 24px 170px 24px;
   color:#FFF;
   font-size: 18px;
 }
@@ -437,6 +471,8 @@ a:hover{
 .right-quote{
   position: relative;
   transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
 }
 
 .left-quote{
@@ -468,7 +504,7 @@ button:focus {
 }
 
 #change-pword .modal-inner{
-  height: 450px !important;
+  height: 420px !important;
 }
 
 #signup .modal-inner{
@@ -505,7 +541,7 @@ input:-webkit-autofill {
   border: 0;
   font-size: 22px;
   display: block;
-  width: 260px;
+  width: 100%;
   margin-bottom: 8px;
 }
 
@@ -548,7 +584,7 @@ input:-webkit-autofill {
   padding: 0;
   border: 0;
   height: 40px;
-  width: 260px;
+  width: 100%;
   margin-top: 16px;
   font-weight: 400;
   background-color: #CCC;
