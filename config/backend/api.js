@@ -135,7 +135,7 @@ module.exports =
     { create: makeReq('POST', '/story',
       ['token', 'title', 'narrative', 'question'], ['story'])
     , get: makeReq('GET', '/story/:story',
-      ['story'], ['title', 'narrative', 'creationDate', 'question'])
+      ['story'], ['title', 'narrative', 'creationDate', 'question', 'author'])
     , delete: makeReq('DELETE', '/story/:story',
       ['token', 'story'], [])
     }

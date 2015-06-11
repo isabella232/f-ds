@@ -4,12 +4,16 @@
 <div class="container">
   <div class="jumbotron">
     <h1>{{ story.title }}</h1>
-    <small>{{ story.creationDate.split('T')[0] }}</small>
+    <span>Written by:  <b>{{ story.author }}</b></span>
+    <br>
     <form action="/story/{{ story.storyId }}/delete" method="POST">
+      {% if story.author == username %}
       <button class="pull-right btn btn-default btn-xs">
         Delete
       </button>
+      {% endif %}
     </form>
+    <small>{{ story.creationDate.split('T')[0] }}</small>
   </div>
   <div class="jumbotron narrative">
     <p>{{ story.narrative }}</p>
