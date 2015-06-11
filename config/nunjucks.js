@@ -5,7 +5,7 @@ function declareGlobalTemplateVars(app, env) {
 
     env.addGlobal('flashMessage', req.flashMessage());
     env.addGlobal('flashError', req.flashError());
-    env.addGlobal('usernameEmail', req.signedCookies.usernameEmail);
+    env.addGlobal('username', req.signedCookies.username);
 
     next();
   }
