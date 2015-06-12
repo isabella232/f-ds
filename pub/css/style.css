@@ -8,17 +8,25 @@ p {
 
 /* Overwrite default font-family for bootstrap's btn class */
 .btn {
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
 }/*----O_o-*/
 
 /* Overwrite default height of body and html to 100% */
 html{
   height: 100%;
+  min-width: 320px;
+  font-family: 'Open Sans', sans-serif;
 }
 body{
   height: 100%;
 }
 /*----O_o-*/
+
+/* min width for containers to prevent maintain legibility */
+.container{
+  min-width: 320px;
+}/*----O_o-*/
+
 
 /*^^^^^^^^^^^ end of override modifiers ^^^^^^^^^^^^^^^*/
 
@@ -54,6 +62,11 @@ hr{
   margin-top:0px;
 }/*----O_o-*/
 
+/* class to remove the margin-bottom on elements */
+.bottomless{
+  margin-bottom: 0;
+}/*----O_o-*/
+
 /*auxillary class which can be used to add blank space below any element*/
 .blank-space{
   margin-bottom:2em;
@@ -82,6 +95,7 @@ hr{
 .twenty-one {
   font-size:21px !important;
 }
+
 /*^^^^^^^^^^^ end of general modifiers ^^^^^^^^^^^^^^^*/
 
 
@@ -127,11 +141,9 @@ a:hover{
 
 /* change to allow our buttons text to wrap */
 .btn{
-    white-space:normal !important;
-    word-wrap:break-word;
+  white-space: normal !important;
+  word-wrap: break-word;
 }/*----O_o-*/
-
-
 
 /*story-page fix for the survey answer options*/
 .index-number{
@@ -228,6 +240,7 @@ a:hover{
 /*Center username on profile page*/
 .username{
   text-align: center;
+  margin: 30px auto;
 }/*----O_o-*/
 
 /**
@@ -238,22 +251,16 @@ a:hover{
  */
 
 .modal--fade .modal-inner, .modal--show .modal-inner {
-    width: 315px;
-    margin: 0 auto;
-    top: 10%;
-    left: 50%;
-    margin-left: -157.5px;
-    position: fixed;
-    z-index: 20;
-    text-align: center;
-    background-color: #f3f3f3;
-    border-radius: 0 14px 14px 14px;
-    padding: 15px;
-  }
+  width: auto;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  margin-left: 0;
+}
 
 .modal--fade .modal-close:before, .modal--show .modal-close:before {
-      background-color: #000;
-      opacity: .6;
+  background-color: #000;
+  opacity: .6;
 }
 
 .modal--fade .modal-close:after, .modal--show .modal-close:after {
@@ -270,9 +277,8 @@ a:hover{
 
 .landing {
   padding: 10px;
-  min-width: 300px;
+/*  min-width: 300px;*/
   background-color: #013976;
-  border: 15px solid white;
 }
 
 .landing h1, .landing h2, .landing h3, .landing h4, .landing h5{
@@ -281,7 +287,7 @@ a:hover{
 
 .landing h3{
   font-weight: 300;
-  padding: 18px 18px 170px 18px;
+  padding: 20px 24px 170px 24px;
   color:#FFF;
   font-size: 18px;
 }
@@ -437,6 +443,8 @@ a:hover{
 .right-quote{
   position: relative;
   transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
 }
 
 .left-quote{
@@ -463,17 +471,6 @@ button:focus {
   outline: none;
 }
 
-#login .modal-inner{
-  height: 350px !important;
-}
-
-#change-pword .modal-inner{
-  height: 450px !important;
-}
-
-#signup .modal-inner{
-  height: 490px !important;
-}
 
 .modal--fade .modal-close:before, .modal--show .modal-close:before{
   z-index: -1;
@@ -481,9 +478,14 @@ button:focus {
 }
 
 input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0px 1000px #333333 inset;
-  -webkit-text-fill-color: #FFF;
+  background-color: #333 !important;
+  -webkit-box-shadow: 0 0 0px 1000px #333333 inset !important;
+  -webkit-text-fill-color: #FFF !important;
+  -webkit-text-stroke: 0 !important;
+  -webkit-text: #fff !important;
+  currentcolor: #fff;
 }
+
 
 .modal-inner{
   border-radius: 0 !important;
@@ -499,14 +501,20 @@ input:-webkit-autofill {
 
 #login input, #signup input, #change-pword input{
   background-color: #333333;
-  font-size: 18px;
+  padding: 4px 8px;
   text-align: left;
   color: #FFF;
   border: 0;
   font-size: 22px;
   display: block;
-  width: 260px;
+  width: 100%;
   margin-bottom: 8px;
+  /* Safari 3-4, iOS 1-3.2, Android 1.6- */
+  -webkit-border-radius: 0;
+  /* Firefox 1-3.6 */
+  -moz-border-radius: 0px;
+  /* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+ */
+  border-radius: 0px;
 }
 
 #login input:last-child, #signup input:last-child, #change-pword input:last-child{
@@ -548,14 +556,14 @@ input:-webkit-autofill {
   padding: 0;
   border: 0;
   height: 40px;
-  width: 260px;
-  margin-top: 16px;
+  width: 100%;
   font-weight: 400;
   background-color: #CCC;
   color: #222;
   font-size: 18px;
   height: 40px;
   line-height: 40px;
+  margin: 16px 0;
 }
 
 #login button:hover, #signup button:hover, #change-pword button:hover{
@@ -596,17 +604,17 @@ input:-webkit-autofill {
 /* Static Login & Signup Pages */
 .static-welcome{
   background: #222;
-  width: 100%;
   height: 100%;
+  min-height: 535.938px;
   padding: 16px;
   min-width: 320px;
 }
 .static-welcome form{
   background: #222;
   max-width: 400px;
-  margin: 0 auto;
-  margin-top: 32px;
   width: 260px;
+  margin: 0 auto;
+  padding: 32px 0;
 }
 /*^^^^^^^^^^^  END Static Login & Signup Pages ^^^^^^^^^^^^^^^*/
 

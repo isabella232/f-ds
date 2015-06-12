@@ -161,7 +161,7 @@ function userCreate(req, res) {
         var options = CookieConfig.options
         options.maxAge = user.ttl
         res.cookie('token', user.token, options)
-        res.cookie('usernameEmail', username, options)
+        res.cookie('username', username, options)
 
         res.redirectWithMessage('/feed', message)
       }
@@ -186,7 +186,7 @@ function userLogin(req, res) {
         var options = CookieConfig.options
         options.maxAge = user.ttl
         res.cookie('token', user.token, options)
-        res.cookie('usernameEmail', usernameEmail, options)
+        res.cookie('username', user.username, options)
 
         res.redirectWithMessage('/feed', message)
       }

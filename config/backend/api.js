@@ -135,7 +135,7 @@ module.exports =
     { create: makeReq('POST', '/story',
       ['token', 'title', 'narrative', 'question'], ['story'])
     , get: makeReq('GET', '/story/:story',
-      ['story'], ['title', 'narrative', 'creationDate', 'question'])
+      ['story'], ['title', 'narrative', 'creationDate', 'question', 'author'])
     , delete: makeReq('DELETE', '/story/:story',
       ['token', 'story'], [])
     }
@@ -143,7 +143,7 @@ module.exports =
     { create: makeReq('POST', '/user',
       ['username', 'email', 'password'], ['token', 'ttl'])
     , login: makeReq('POST', '/user/authenticate',
-      ['usernameemail', 'password'], ['token', 'ttl'])
+      ['usernameemail', 'password'], ['token', 'ttl', 'username'])
     , refreshSession: makeReq('POST', '/user/reauthenticate',
       ['token'], ['token', 'ttl'])
     , changePassword: makeReq('PUT', '/user/password',
