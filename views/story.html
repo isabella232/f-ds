@@ -4,7 +4,7 @@
 <div class="container">
   <div class="jumbotron">
     <h1>{{ story.title }}</h1>
-    <span>Written by:  <b>{{ story.author }}</b></span>
+    <span>By <b>{{ story.author }}</b></span>
     <br>
     <form action="/story/{{ story.storyId }}/delete" method="POST">
       {% if story.author == username %}

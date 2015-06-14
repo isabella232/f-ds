@@ -1,6 +1,7 @@
 'use strict';
 
 var Async        = require('async')
+  , Moment       = require('moment')
 
 var API          = require('./config/backend/api')
   , CookieConfig = require('./config/cookie')
@@ -123,12 +124,12 @@ function renderStory(req, res) {
               console.trace('Error: client error on question: ' + clientErr)
               res.render('404.html', { error: clientErr })
             } else {
+              story.creationDate = Moment(story.creationDate).format('LL')
               story.storyId = storyId
               question.totalVotes = 0
               for (var i = 0; i < question.answers.length; i++) {
                 question.totalVotes += question.answers[i].votes
               }
-
               res.render(
                 'story.html'
               , { story   : story
