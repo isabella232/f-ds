@@ -81,13 +81,14 @@ function renderFeed(req, res) {
             // rendered.
             return
           } else {
-            // Calculate total votes for each question.
+            // Calculate total votes for each question and prettify creation date.
             for (var i = 0; i < feed.feed.length; i++) {
               var totalVotes = 0
               for (var j = 0; j < results[i].answers.length; j++) {
                 totalVotes += results[i].answers[j].votes
               }
               feed.feed[i].totalVotes = totalVotes
+              feed.feed[i].creationDate = Moment(feed.feed[i].creationDate).format('LL')
             }
             res.render('feed.html', { feed: feed.feed })
           }

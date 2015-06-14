@@ -7,7 +7,7 @@
     <div class="jumbotron">
       <h2>{{ story.title }}</h2>
       <p>{{ story.narrative.substring(0,150) }} {% if story.narrative.length > 150 %}...{% endif %}</p>
-      <span>{{ story.creationDate.split('T')[0] }}</span>
+      <span>{{ story.creationDate }}</span>
       <div>
         <span class="badge">{{ story.totalVotes }}</span>
         votes
