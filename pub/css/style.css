@@ -637,4 +637,12 @@ input:-webkit-autofill {
     padding: 15px 10px;
   }
 }
+
+/* temporary fix until a hamburger menu is implemented*/
+@media (max-width: 380px) {
+  #logout-btn{
+    display: none;
+  }
+}
+
 /*^^^*/
