@@ -12,22 +12,17 @@
       <li {% if page == "profile.html" %}class="active"{% endif %}>
         <a href="/user/profile"><span class="margin-right-space glyphicon glyphicon-user"></span>Profile</a>
       </li>
-      {% endif %}
-
-      {% if not username %}
+      <li>
+        <form action="/user/logout" method="POST">
+          <button class="transparent-btn" id="logout-btn"><span class="margin-right-space glyphicon glyphicon-log-out"></span>Logout</button>
+        </form>
+      </li>
+      {% else %}
       <li {% if page == "user/login.html" %}class="active"{% endif %}>
         <a href="/user/login"><span class="margin-right-space glyphicon glyphicon-log-in"></span>Login</a>
       </li>
       <li {% if page == "user/signup.html" %}class="active"{% endif %}>
         <a href="/user/signup"><span class="margin-right-space glyphicon glyphicon-new-window"></span>Signup</a>
-      </li>
-      {% endif %}
-
-      {% if username %}
-      <li>
-        <form action="/user/logout" method="POST">
-          <button class="transparent-btn" id="logout-btn"><span class="margin-right-space glyphicon glyphicon-log-out"></span>Logout</button>
-        </form>
       </li>
       {% endif %}
       <li {% if page == "about.html" %}class="active"{% endif %}>
