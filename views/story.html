@@ -20,7 +20,7 @@
     <h2 class="topless little-blank-space">{{ question.title }}</h2>
     {% for answer in question.answers %}
     <form action="/story/{{ story.storyId }}/vote/{{ loop.index - 1 }}" method="POST">
-      <button class="btn btn-default btn-block">
+      <button class="btn btn-default btn-block custom-1-btn blank-space-2">
         <div class="index-number">
         {% if loop.index == 1 %}
         A

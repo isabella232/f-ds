@@ -72,6 +72,9 @@ hr{
 }
 .little-blank-space{
 	margin-bottom:.6em;
+}
+.blank-space-2{
+  margin-bottom:.3em;
 }/*----O_o-*/
 
 /*use to make responsive media links*/
@@ -205,6 +208,14 @@ form:nth-child(6) .index-number{
 	background-color: #daca61;
 }/* ---O_o----*/
 
+/*creating more 'afforable buttons'*/
+.custom-1-btn{
+  border:5px solid;
+  border-color:#ddd #bbb #bbb #ddd;
+}
+.custom-1-btn:hover{
+  border-color:#bbb #999 #999 #bbb;
+}
 /* centering the Pie chart*/
 .pie{
   width:270px;
@@ -224,6 +235,7 @@ form:nth-child(6) .index-number{
   margin-top:.4em;
 }
 .rank{
+<<<<<<< HEAD
   float:left;
   width:20%;
   border-radius:1em 0em 0em 1em;
@@ -232,6 +244,17 @@ form:nth-child(6) .index-number{
   text-align:center;
   margin-left:.9em;
   border:1px solid #ccc;
+=======
+	float:left;
+	width:20%;
+	border-radius:1em 0em 0em 1em;
+	padding:.1em 1em;
+	text-align:center;
+	margin-left:.9em;
+	border:1px solid #ccc;
+  font-weight: 700;
+  color:white;
+>>>>>>> attempt at more affordable buttons
 }
 .votes-storyView{
   float:left;
