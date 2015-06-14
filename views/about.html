@@ -20,13 +20,13 @@
     <br>
     <a class="twenty-one" href="/about/dmca">DMCA policy</a>
   </div>
-  {% if usernameEmail %}
+  {% if username %}
   <div class="jumbotron extra-bottom">
     <h2 class="topless">Contact Us</h2>
     <p>Questions, Comments, Concerns?</p>
     <p>Please share your thoughts with us.</p>
     <form action="/about" method="POST">
-      <textarea class="tall form-control" name="feedback" placeholder=" What would you like us to know?" pattern="^.{50,10000}$"></textarea>
+      <textarea class="tall form-control" name="feedback" placeholder=" What would you like us to know?" pattern="^.{5,10000}$"></textarea>
       <button class="top btn btn-default pull-right" type="submit">  <span class="glyphicon glyphicon-ok">&nbsp;</span>
         Send feedback!
       </button>
