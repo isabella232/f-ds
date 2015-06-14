@@ -4,7 +4,7 @@ var _              = require('lodash')
 var backendRequest = require('./request')
 
 function makeReq(method, urlPattern, reqKeys, resKeys) {
-  return function(form, callback) {
+  return function(form, token, callback) {
 
     var formKeys = _.keys(form)
 
@@ -31,7 +31,11 @@ function makeReq(method, urlPattern, reqKeys, resKeys) {
 
     // Make request to backend.
     backendRequest(
-      { method: method, url: url, form: form }
+      { method: method
+      , url: url
+      , form: form
+      , headers: token ? {token: token} : {}
+      }
     , function(err, res, body) {
 
         if (err) {
@@ -121,23 +125,23 @@ module.exports =
     }
   , feedback:
     { create: makeReq('POST', '/feedback',
-      ['token', 'feedback'], [])
+      ['feedback'], [])
     }
   , question:
     { create: makeReq('POST', '/question',
-      ['token', 'title', 'answers'], ['question'])
+      ['title', 'answers'], ['question'])
     , get: makeReq('GET', '/question/:question',
       ['question'], ['title', 'answers'])
     , vote: makeReq('POST', '/question/:question/vote',
-      ['token', 'question', 'answer', 'story'], [])
+      ['question', 'answer', 'story'], [])
     }
   , story:
     { create: makeReq('POST', '/story',
-      ['token', 'title', 'narrative', 'question'], ['story'])
+      ['title', 'narrative', 'question'], ['story'])
     , get: makeReq('GET', '/story/:story',
       ['story'], ['title', 'narrative', 'creationDate', 'question', 'author'])
     , delete: makeReq('DELETE', '/story/:story',
-      ['token', 'story'], [])
+      ['story'], [])
     }
   , user:
     { create: makeReq('POST', '/user',
@@ -145,12 +149,12 @@ module.exports =
     , login: makeReq('POST', '/user/authenticate',
       ['usernameemail', 'password'], ['token', 'ttl', 'username'])
     , refreshSession: makeReq('POST', '/user/reauthenticate',
-      ['token'], ['token', 'ttl'])
+      [], ['token', 'ttl'])
     , changePassword: makeReq('PUT', '/user/password',
-      ['token', 'oldPassword', 'newPassword'], [])
+      ['oldPassword', 'newPassword'], [])
     , logout: makeReq('POST', '/user/logout',
-      ['token'], [])
+      [], [])
     , delete: makeReq('DELETE', '/user',
-      ['token'], [])
+      [], [])
     }
   }
