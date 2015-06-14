@@ -266,10 +266,7 @@ function userChangePassword(req, res) {
 function userLogout(req, res) {
 
   if (req.signedCookies.token) {
-
-    API.user.logout(
-      {}
-    , req.signedCookies.token
+    API.user.logout({ token: req.signedCookies.token }
     , function(err, clientErr, message) {
       if (err) {
         console.error(err.stack)
@@ -277,7 +274,7 @@ function userLogout(req, res) {
         return
       } else {
         res.clearCookie('token')
-        res.clearCookie('usernameEmail')
+        res.clearCookie('username')
 
         // We handle clientErr a bit differently here because
         // clientErr is only defined when the token as expired in the db
