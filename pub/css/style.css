@@ -210,11 +210,12 @@ form:nth-child(6) .index-number{
 
 /*creating more 'afforable buttons'*/
 .custom-1-btn{
-  border:5px solid;
+  border:3px solid;
   border-color:#ddd #bbb #bbb #ddd;
 }
 .custom-1-btn:hover{
-  border-color:#bbb #999 #999 #bbb;
+  background-color:#afafaf;
+  border-color:#9c9c9c #9f9f9f #9f9f9f #9c9c9c;
 }
 /* centering the Pie chart*/
 .pie{
