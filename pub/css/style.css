@@ -594,17 +594,22 @@ input:-webkit-autofill {
 
 /* Static Login & Signup Pages */
 .static-welcome{
-  background: #222;
-  min-height: 100%;
+  background: #444;
+  width: 100%;
+  height: 100%;
   padding: 16px;
   min-width: 240px;
 }
 .static-welcome form{
-  background: #222;
+  background: #444;
   max-width: 400px;
   width: 260px;
   margin: 0 auto;
   padding: 32px 0;
+}
+
+.static-welcome input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #666 inset;
 }
 /*^^^^^^^^^^^  END Static Login & Signup Pages ^^^^^^^^^^^^^^^*/
 
