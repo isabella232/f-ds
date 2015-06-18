@@ -66,11 +66,6 @@ hr{
   margin-top:0px;
 }/*----O_o-*/
 
-/* class to remove the margin-bottom on elements */
-.bottomless{
-  margin-bottom: 0;
-}/*----O_o-*/
-
 /*auxillary class which can be used to add blank space below any element*/
 .blank-space{
   margin-bottom:2em;
