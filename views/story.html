@@ -18,14 +18,14 @@
   <div class="jumbotron narrative"><p><span id="drop-cap">{{ story.narrative.substr(0,1) }}</span>{{ story.narrative }}</p></div>
   <div class="jumbotron">
     <h2 class="topless little-blank-space" id="question-title">{{ question.title }}</h2>
-    <div>
+    <div style="display:inline-block">
     {% for answer in question.answers %}
-<!--     <form action="/story/{{ story.storyId }}/vote/{{ loop.index - 1 }}" method="POST">
+    <form action="/story/{{ story.storyId }}/vote/{{ loop.index - 1 }}" method="POST">
       <button class="btn btn-default btn-block custom-1-btn blank-space-2">
-        <div class="index-number"> -->
-    <form class="answer-options" action="/story/{{ story.storyId }}/vote/{{ loop.index - 1 }}" method="POST">
+        <div class="index-number">
+<!--     <form class="answer-options" action="/story/{{ story.storyId }}/vote/{{ loop.index - 1 }}" method="POST">
       <button class="btn btn-default btn-block" style=" color: #FFF;font-weight: 600;padding: 6px; border:0; max-width:400px;">
-        <div class="index-number" style="border:0;  font-size: 26px; font-weight: 300;">
+        <div class="index-number" style="border:0;  font-size: 26px; font-weight: 300;"> -->
         {% if loop.index == 1 %}
         A
         {% elif loop.index == 2 %}
@@ -45,6 +45,11 @@
     </form>
     {% endfor %}
     </div>
+
+    {% if question.totalVotes > 0 %}
+    <div id="pie" class="pie"></div>
+    {% endif %}
+
     <hr class="hr-large">
     <h3>Results
       <span class="pull-right small half-top">
@@ -56,6 +61,7 @@
     {% if question.totalVotes > 0 %}
     <div id="pie" class="pie"></div>
     {% endif %}
+
     {% for answer in question.answers %}
     <div class="dataPoint" id="dataPoint{{ loop.index }}">
       <span class="rank">
