@@ -333,12 +333,16 @@ a:hover{
   line-height: 24px;
 }
 
-.enter-btn{
-  font-size: 24px;
+.landing-btns-modal a:nth-child(1), .landing-btns-static a:nth-child(1){
+  color: #FFF;
+}
+.landing-btns-modal a, .landing-btns-static a{
+  color: #AAA;
 }
 
-.enter-btn a{
-  color: #FFF;
+.enter-btn{
+  font-weight: 300;
+  font-size: 42px;
 }
 
 .login-btn, .signup-btn{
@@ -425,7 +429,7 @@ a:hover{
 
 
 .enter-btn:hover{
-  font-size: 28px;
+  font-size: 48px;
 }
 
 .login-btn:hover, .signup-btn:hover{
