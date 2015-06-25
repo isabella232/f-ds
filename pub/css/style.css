@@ -109,9 +109,9 @@ hr{
 
 /** question title on story page **/
 #question-title{
-  font-size: 24px;
+  font-size: 32px;
   font-weight: 300;
-  color: #555;
+  color: #222;
   margin: 48px 0 96px;
   text-align: center;
 }
@@ -194,46 +194,86 @@ a:hover{
 /*story-page fix for the survey answer options*/
 .index-number{
 	float:left;
-	padding:0px 5px 0px 7px;
+	padding:0px 7px 0px 7px;
 	border-right:1px solid #bbb;
 	border-bottom:1px solid #bbb;
 	border-top:1px solid #bbb;
-	font-weight: 700;
-	color:#fff;
-	width:30px;
-	margin-right:5px;
-}/*----O_o-*/
+	color:#222;
+	width:48px;
+	margin: 0px;
+  padding-right: 7px;
+  border: 0;
+  border-right: 1px solid #222;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.answer-option-text{
+/*  padding-left: 102px;
+  padding-right: 54px;*/
+  font-weight: 400;
+  font-size: 26px;
+  color: #222;
+}
+
+@media screen and (max-width: 320px){
+  .answer-option-text{
+  }
+}
+
+.answer-options button{
+  color: #FFF;
+  font-weight: 600;
+  padding: 6px;
+  border:0;
+  max-width: 400px;
+  margin: 16px auto;
+}
+
+
+/*----O_o-*/
 
 /*adding colors the survey options*/
-form:nth-child(2) .index-number{
-	background-color: #2484c1;
+.answer-options:nth-child(1) button{
+	background-color: #A5CFFF;
 }
-form:nth-child(3) .index-number{
-	background-color: #0c6197;
+.answer-options:nth-child(2) button{
+	background-color: #B9FF88;
 }
-form:nth-child(4) .index-number{
-	background-color: #4daa4b;
+.answer-options:nth-child(3) button{
+	background-color: #FFC475;
 }
-form:nth-child(5) .index-number{
-	background-color: #90c469;
+.answer-options:nth-child(4) button{
+	background-color: #F78C77;
 }
-form:nth-child(6) .index-number{
-	background-color: #daca61;
+.answer-options:nth-child(5) button{
+	background-color: #D692F9;
+}
+.answer-options button:hover{
+  background-color: #222;
+}
+
+.answer-options button:hover .answer-option-text{
+  color: #fff;
+}
+.answer-options button:hover .index-number{
+  color: #fff;
+  border-color: #fff;
 }
 #dataPoint1 .rank{
-	background-color: #2484c1;
+  background-color: #A5CFFF;
 }
 #dataPoint2 .rank{
-	background-color: #0c6197;
+  background-color: #B9FF88;
 }
 #dataPoint3 .rank{
-	background-color: #4daa4b;
+  background-color: #FFC475;
 }
 #dataPoint4 .rank{
-	background-color: #90c469;
+  background-color: #F78C77;
 }
 #dataPoint5 .rank{
-	background-color: #daca61;
+  background-color: #D692F9;
 }/* ---O_o----*/
 
 /*creating more 'afforable buttons'*/
@@ -271,7 +311,7 @@ form:nth-child(6) .index-number{
 	margin-left:.9em;
 	border:1px solid #ccc;
   font-weight: 700;
-  color:white;
+  color:#222;
 }
 .votes-storyView{
   float:left;

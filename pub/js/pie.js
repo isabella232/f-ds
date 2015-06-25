@@ -16,27 +16,27 @@ var pie = new d3pie("pie", {
       {
         "label": "A",
         "value": window.answer1,
-        "color": "#2484c1"
+        "color": "#4099FF"
       },
       {
         "label": "B",
         "value": window.answer2,
-        "color": "#0c6197"
+        "color": "#93FF48"
       },
       {
         "label": "C",
         "value": window.answer3,
-        "color": "#4daa4b"
+        "color": "#FFB756"
       },
       {
         "label": "D",
         "value": window.answer4,
-        "color": "#90c469"
+        "color": "#FD6547"
       },
       {
         "label": "E",
         "value": window.answer5,
-        "color": "#daca61"
+        "color": "#C24BFF"
       }
     ]
   },
