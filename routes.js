@@ -293,17 +293,19 @@ function storyCreate(req, res) {
         console.error(err.stack)
         res.render('500.html')
       } else if (clientErr) {
-        res.render('create.html', {
-          question   : question
-        , answer0    : answer0
-        , answer1    : answer1
-        , answer2    : answer2
-        , answer3    : answer3
-        , answer4    : answer4
-        , title      : title
-        , narrative  : narrative
-        , flashError : clientErr
-        })
+        res.render(
+          'create.html'
+        , { question   : question
+          , answer0    : answer0
+          , answer1    : answer1
+          , answer2    : answer2
+          , answer3    : answer3
+          , answer4    : answer4
+          , title      : title
+          , narrative  : narrative
+          , flashError : clientErr
+          }
+        )
       } else {
         API.story.create(
           { token     : req.signedCookies.token
@@ -316,17 +318,19 @@ function storyCreate(req, res) {
               console.error(err.stack)
               res.render('500.html')
             } else if (clientErr) {
-              res.render('create.html', {
-                question   : question
-              , answer0    : answer0
-              , answer1    : answer1
-              , answer2    : answer2
-              , answer3    : answer3
-              , answer4    : answer4
-              , title      : title
-              , narrative  : narrative
-              , flashError : clientErr
-              })
+              res.render(
+                'create.html'
+              , { question   : question
+                , answer0    : answer0
+                , answer1    : answer1
+                , answer2    : answer2
+                , answer3    : answer3
+                , answer4    : answer4
+                , title      : title
+                , narrative  : narrative
+                , flashError : clientErr
+                }
+              )
             } else {
               res.redirectWithMessage('/story/' + story.story, message)
             }
