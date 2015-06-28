@@ -8,13 +8,13 @@
   <form id="signup" action="/user/signup" method="POST">
     <div class="modal-title">Signup</div>
     <div class="label">Username</div>
-    <input name="username" type="text" pattern="^[A-Za-z0-9]{3,20}$" required>
+    <input name="username" type="text" pattern=".{3,}" title="This will be the username for your account; it must be at least 3 characters long" maxlength="20" required>
     <div class="label">Email</div>
-    <input name="email" type="email" maxlength="254" pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$"  required>
+    <input name="email" type="email" title="This will be the email for your account" maxlength="254" required>
     <div class="label">Password</div>
-    <input id="password" name="password" type="password" maxlength="512" pattern=".{5,512}" required>
+    <input id="password" name="password" type="password" pattern=".{5,}" title="This will be the password for your account; it must be at least 5 characters" maxlength="512" required>
     <div class="label">Confirm Password</div>
-    <input id="confirmPassword" name="confirmPassword" type="password" maxlength="512" pattern=".{5,512}" required>
+    <input id="confirmPassword" name="confirmPassword" type="password" pattern=".{5,}" title="Please retype the password that you input above; this must be at least 5 characters" maxlength="512" required>
     <button type="submit"><div>Signup<span class="glyphicon glyphicon-ok-circle"></span></div></button>
   </form>
 </div>
