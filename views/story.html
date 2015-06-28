@@ -3,9 +3,8 @@
 {% block page %}
 <div class="container">
   <div class="jumbotron">
-    <h1>{{ story.title }}</h1>
-    <span>By <b>{{ story.author }}</b></span>
-    <br>
+    <h1 class="title">{{ story.title }}</h1>
+    <span class="author">BY {{ story.author }}</span>
     <form action="/story/{{ story.storyId }}/delete" method="POST">
       {% if story.author == username %}
       <button class="pull-right btn btn-default btn-xs">
@@ -13,10 +12,10 @@
       </button>
       {% endif %}
     </form>
-    <small>{{ story.creationDate.split('T')[0] }}</small>
+    <small class="date">{{ story.creationDate.split('T')[0] }}</small>
   </div>
   <div class="jumbotron narrative">
-    <p>{{ story.narrative }}</p>
+    <p><span>{{ story.narrative.substr(0,1) }}</span>{{ story.narrative.substr(1) }}</p>
   </div>
   <div class="jumbotron">
     <h2 class="topless">{{ question.title }}</h2>
@@ -49,7 +48,6 @@
     {% if question.totalVotes > 0 %}
     <div id="pie" class="pie"></div>
     {% endif %}
-
     {% for answer in question.answers %}
     <div class="dataPoint">
       <span class="rank">
@@ -71,7 +69,6 @@
   </div>
 </div>
 {% endblock %}
-
 {% block script %}
 <script>
   {% for answer in question.answers %}
