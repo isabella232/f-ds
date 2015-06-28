@@ -9,10 +9,10 @@
     <div class="jumbotron form-group">
       <h2> Narrative </h2>
       <label class="control-label">Title:</label>
-      <input class="form-control" name="title" placeholder="Title" pattern="^.{10,}$" title="Please enter a story title that is at least 10 characters long." maxlength="140" required>
+      <input class="form-control" name="title" placeholder="Title" pattern=".{10,}" title="This is the title for your story; it must be at least 10 characters long." maxlength="140" required>
       <br>
       <label class="control-label">Narrative:</label>
-      <textarea  class="form-control tall" name="narrative" placeholder="Narrative" pattern="^.{20,}$" title="Please enter a narrative that is at least 20 characters long." maxlength="100000" required></textarea>
+      <textarea  class="form-control tall" name="narrative" placeholder="Narrative" pattern=".{20,}" title="The narrative is where all the content of your story will go; it must be at least 20 characters long." maxlength="100000" required></textarea>
     </div>
     <div class="jumbotron form-group">
       <h2> Survey Question </h2>
@@ -20,28 +20,28 @@
       <div class="form-group">
         <label class="control-label col-sm-2">Question:</label>
         <div class="col-sm-10">
-          <input class="form-control" name="question" placeholder="Question" pattern="^.{5,}$" title="Please enter a question that is at least 5 characters long." maxlength="140" required>
+          <input class="form-control" name="question" placeholder="Question" pattern=".{5,}" title="This is the question that you'll ask your readers after they have read your story; it must be at least 5 characters long." maxlength="140" required>
         </div>
       </div>
       <div class="input-group">
         <span class="input-group-addon">A</span>
-        <input class="form-control" name="answer0" placeholder="Strongly Disagree" maxlength="100" required>
+        <input class="form-control" name="answer0" placeholder="Strongly Disagree" title="This is an answer option that your readers can vote for on the question." maxlength="100" required>
       </div>
       <div class="input-group">
         <span class="input-group-addon">B</span>
-        <input class="form-control" name="answer1" placeholder="Strongly Disagree" maxlength="100" required>
+        <input class="form-control" name="answer1" placeholder="Strongly Disagree" title="This is an answer option that your readers can vote for on the question." maxlength="100" required>
       </div>
       <div class="input-group">
         <span class="input-group-addon">C</span>
-        <input class="form-control" name="answer2" placeholder="Strongly Disagree" maxlength="100" required>
+        <input class="form-control" name="answer2" placeholder="Strongly Disagree" title="This is an answer option that your readers can vote for on the question." maxlength="100" required>
       </div>
       <div class="input-group">
         <span class="input-group-addon">D</span>
-        <input class="form-control" name="answer3" placeholder="Strongly Disagree" maxlength="100" required>
+        <input class="form-control" name="answer3" placeholder="Strongly Disagree" title="This is an answer option that your readers can vote for on the question." maxlength="100" required>
       </div>
       <div class="input-group">
         <span class="input-group-addon">E</span>
-        <input class="form-control" name="answer4" placeholder="Strongly Disagree" maxlength="100" required>
+        <input class="form-control" name="answer4" placeholder="Strongly Disagree" title="This is an answer option that your readers can vote for on the question." maxlength="100" required>
       </div>
     </div>
     <button class="center-block blank-space btn btn-primary btn-lg" type="submit"><span class="glyphicon glyphicon-ok"></span>&nbsp;Finish Story!</button>
