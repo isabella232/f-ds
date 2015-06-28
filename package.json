@@ -7,6 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "hint": "jshint $(find . -name \\*.js | egrep -v '(node_modules|pub/lib)')"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@bitbucket.org:dynamicstory/frontend-c.git"
+  },
   "author": "DynamicStory",
   "license": "Proprietary",
   "dependencies": {
