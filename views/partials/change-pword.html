@@ -6,11 +6,11 @@
       <form action="/user/changepassword" method="POST">
         <div class="modal-title">Change Password<a href="#" data-dismiss="modal" class="close-btn">&times;</a></div>
         <div class="label">Current Password</div>
-        <input name="oldPassword" type="password" maxlength="512" required>
+        <input name="oldPassword" type="password" title="This is your current password." maxlength="512" required>
         <div class="label">New Password</div>
-        <input id="password" name="newPassword" type="password" maxlength="512" pattern=".{6,15}" required>
+        <input id="password" name="newPassword" type="password" pattern=".{5,}" title="This is the new password you want for your account." maxlength="512" required>
         <div class="label">Confirm Password</div>
-        <input id="confirmPassword" name="confirmPassword" type="password" maxlength="512" required>
+        <input id="confirmPassword" name="confirmPassword" type="password" pattern=".{5,}" title="Please retype the new password that you input above; this must be at least 5 characters" maxlength="512" required>
         <button type="submit"><div>Change<span class="glyphicon glyphicon-ok-circle"></span></div></button>
       </form>
     </div>
