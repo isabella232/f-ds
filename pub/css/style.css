@@ -100,6 +100,11 @@ hr{
 .narrative{
   white-space: pre-wrap;
   padding: 30px 20px;
+  font-family: 'Georgia';
+}
+
+.narrative p{
+    font-size: 32px;
 }
 
 /*prevents the navbar from breaking header*/
@@ -244,54 +249,53 @@ a:hover{
 /*Story title styling*/
 .title{
   text-align: center;
-  letter-spacing: -2.5px;
+  font-family: 'Georgia';
   color: #222;
   font-size: 48px;
   font-weight: 700;
+  margin: 48px 0;
 }
+
 .author{
   display: block;
-  letter-spacing: 1px;
   font-weight: 400;
   text-align: center;
-  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 12px;
+  font-size: 18px;
+  margin: 18px 0;
+  font-family: 'Georgia';
 }
 
 .date{
   display: block;
   text-align: center;
+  font-family: 'Georgia';
   font-weight: 400;
-  letter-spacing: 1px;
-  font-size: 14px;
   color: #555;
+  font-style: italic;
+  font-size: 18px;
+  letter-spacing: 6px;
+  margin: 18px 0;
 }
 
 .title-bar{
   width: 20%;
-  margin: 40px auto;
+  margin: 48px auto;
 }
 
-.first-char{
-  float: left;
-  font-size: 64px;
-  line-height: 64px;
-  padding: 0 10px;
-  font-weight: 700;
-  vertical-align: bottom;
-  position: relative;
-  top: 19px;
+#drop-cap{
+  font-family: 'Baskerville';
+  margin-right: 7.86px;
 }
-
-.narrative p:first-letter {
-  float: left;
-  color: #903;
-  font-size: 102px;
-  line-height: 39px;
-  padding-right: 8px;
-  font-weight: 500;
-}
-
 /*----O_o-*/
+
+/* Narrative padding */
+@media screen and (min-width: 768px){
+  .container .jumbotron{
+    padding: 120px;
+  }
+}/*----O_o-*/
 
 /**
  *  Modal changes
