@@ -17,7 +17,7 @@ function makeReq(method, urlPattern, reqKeys, resKeys) {
         new Error(
           'Backend request with extra or missing fields. ' +
           'Expected: ' + JSON.stringify(reqKeys) + ' ' +
-          'Got: ' + JSON.strongify(formKeys)
+          'Got: ' + JSON.stringify(formKeys)
         )
       )
       return
