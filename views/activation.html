@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block page %}
+
+<div>
+  <h1>Activate your account!</h1>
+  <form action="/user/activate" method="POST">
+    <input name="activationid" type="text" placeholder="Activation ID" required>
+    <button class="clickable" type="submit">Activate</button>
+  </form>
+</div>
+
+{% endblock %}
