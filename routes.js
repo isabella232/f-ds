@@ -35,7 +35,10 @@ function renderIfNoToken(template, redirectTo) {
 
 function renderFeed(req, res) {
   // Get the list of stories.
-  API.feed.get({}, function(err, clientErr, message, feed) {
+  API.feed.get(
+    {}
+  , req.signedCookies.token
+  , function(err, clientErr, message, feed) {
     if (err) {
       console.error(err.stack)
       res.render('500.html')
@@ -56,6 +59,7 @@ function renderFeed(req, res) {
       , function(questionId, callback) {
           API.question.get(
             { question: questionId }
+          , req.signedCookies.token
           , function(err, clientErr, message, question) {
               if (err) {
                 console.error(err.stack)
@@ -99,6 +103,7 @@ function renderStory(req, res) {
 
   API.story.get(
     { story: storyId }
+  , req.signedCookies.token
   , function(err, clientErr, message, story) {
       if (err) {
         console.error(err.stack)
@@ -109,6 +114,7 @@ function renderStory(req, res) {
       } else {
         API.question.get(
           { question: story.question }
+        , req.signedCookies.token
         , function(err, clientErr, message, question) {
             if (err) {
               console.error(err.stack)
@@ -150,7 +156,12 @@ function userCreate(req, res) {
     return
   }
 
-  API.user.create({username: username, email: email, password: password}
+  API.user.create(
+    { username: username
+    , email   : email
+    , password: password
+    }
+  , req.signedCookies.token
   , function(err, clientErr, message, user) {
       if (err) {
         console.error(err.stack)
@@ -174,7 +185,11 @@ function userLogin(req, res) {
   var usernameEmail = req.body.usernameEmail
     , password      = req.body.password
 
-  API.user.login({usernameemail: usernameEmail, password: password}
+  API.user.login(
+    { usernameemail : usernameEmail
+    , password      : password
+    }
+  , req.signedCookies.token
   , function(err, clientErr, message, user) {
       if (err) {
         console.error(err.stack)
@@ -195,7 +210,9 @@ function userLogin(req, res) {
 }
 
 function userDelete(req, res) {
-  API.user.delete({token: req.signedCookies.token}
+  API.user.delete(
+    {}
+  , req.signedCookies.token
   , function(err, clientErr, message, user) {
       if (err) {
         console.error(err.stack)
@@ -226,10 +243,10 @@ function userChangePassword(req, res) {
   }
 
   API.user.changePassword(
-    { token           : req.signedCookies.token
-    , oldPassword     : oldPassword
+    { oldPassword     : oldPassword
     , newPassword     : newPassword
     }
+  , req.signedCookies.token
   , function(err, clientErr, message) {
       if (err) {
         console.error(err.stack)
@@ -248,7 +265,9 @@ function userLogout(req, res) {
 
   if (req.signedCookies.token) {
 
-    API.user.logout({ token: req.signedCookies.token }
+    API.user.logout(
+      {}
+    , req.signedCookies.token
     , function(err, clientErr, message) {
       if (err) {
         console.error(err.stack)
@@ -284,10 +303,10 @@ function storyCreate(req, res) {
     , narrative = req.body.narrative
 
   API.question.create(
-    { token   : req.signedCookies.token
-    , title   : question
+    { title   : question
     , answers : [answer0, answer1, answer2, answer3, answer4]
     }
+  , req.signedCookies.token
   , function(err, clientErr, message, question) {
       if (err) {
         console.error(err.stack)
@@ -296,11 +315,11 @@ function storyCreate(req, res) {
         res.redirectWithError('/story/create', clientErr)
       } else {
         API.story.create(
-          { token     : req.signedCookies.token
-          , title     : title
+          { title     : title
           , narrative : narrative
           , question  : question.question
           }
+        , req.signedCookies.token
         , function(err, clientErr, message, story) {
             if (err) {
               console.error(err.stack)
@@ -322,9 +341,8 @@ function storyDelete(req, res) {
   var storyId = req.params.storyId
 
   API.story.delete(
-    { token : req.signedCookies.token
-    , story : storyId
-    }
+    { story : storyId }
+  , req.signedCookies.token
   , function(err, clientErr, message) {
       if (err) {
         console.error(err.stack)
@@ -345,6 +363,7 @@ function storyVote(req, res) {
 
   API.story.get(
     { story: req.params.storyId }
+  , req.signedCookies.token
   , function(err, clientErr, message, story) {
       if (err) {
         console.error(err.stack)
@@ -354,11 +373,11 @@ function storyVote(req, res) {
         res.render('404.html', { error: err })
       } else {
         API.question.vote(
-          { token    : req.signedCookies.token
-          , question : story.question
+          { question : story.question
           , answer   : answer
           , story    : storyId
           }
+        , req.signedCookies.token
         , function(err, clientErr, message) {
             if (err) {
               console.error(err.stack)
@@ -381,9 +400,8 @@ function feedbackCreate(req, res) {
   var feedback = req.body.feedback
 
   API.feedback.create(
-    { token    : req.signedCookies.token
-    , feedback : feedback
-    }
+    { feedback : feedback }
+  , req.signedCookies.token
   , function(err, clientErr, message) {
       if (err) {
         console.error(err.stack)
