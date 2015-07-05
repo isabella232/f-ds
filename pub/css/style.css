@@ -249,8 +249,8 @@ a:hover{
 	text-align:center;
 	margin-left:.9em;
 	border:1px solid #ccc;
-  font-weight: 700;
-  color:#222;
+  font-weight: 300;
+  color:white;
 }
 .votes-storyView{
   float:left;
@@ -809,7 +809,7 @@ input:-webkit-autofill {
   font-family: Georgia, serif;
   margin: auto;
   padding: 10px;
-  border: 1px solid black;
+  border: 1px solid #777;
   margin-bottom: 6px;
   max-width: 480px;
   background-color: transparent;
