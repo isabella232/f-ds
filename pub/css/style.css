@@ -652,7 +652,7 @@ input:-webkit-autofill {
 
 /* temporary fix until a hamburger menu is implemented*/
 @media (max-width: 380px) {
-  #logout-btn{
+  #logout-btn-header{
     display: none;
   }
 }
