@@ -295,17 +295,16 @@ function userLogout(req, res) {
 }
 
 function storyCreate(req, res) {
-  var question  = req.body.question // Question title
-    , answer0   = req.body.answer0
-    , answer1   = req.body.answer1
-    , answer2   = req.body.answer2
-    , answer3   = req.body.answer3
-    , answer4   = req.body.answer4
-    , title     = req.body.title // Story title
-    , narrative = req.body.narrative
-
+  var questionTitle  = req.body.question // Question title
+    , answer0        = req.body.answer0
+    , answer1        = req.body.answer1
+    , answer2        = req.body.answer2
+    , answer3        = req.body.answer3
+    , answer4        = req.body.answer4
+    , title          = req.body.title // Story title
+    , narrative      = req.body.narrative
   API.question.create(
-    { title   : question
+    { title   : questionTitle
     , answers : [answer0, answer1, answer2, answer3, answer4]
     }
   , req.signedCookies.token
@@ -314,7 +313,17 @@ function storyCreate(req, res) {
         console.error(err.stack)
         res.render('500.html')
       } else if (clientErr) {
-        res.redirectWithError('/story/create', clientErr)
+        res.render('create.html', {
+          questionTitle  : questionTitle
+        , answer0        : answer0
+        , answer1        : answer1
+        , answer2        : answer2
+        , answer3        : answer3
+        , answer4        : answer4
+        , title          : title
+        , narrative      : narrative
+        , flashError     : clientErr
+        })
       } else {
         API.story.create(
           { title     : title
@@ -327,7 +336,17 @@ function storyCreate(req, res) {
               console.error(err.stack)
               res.render('500.html')
             } else if (clientErr) {
-              res.redirectWithError('/story/create', clientErr)
+              res.render('create.html', {
+                questionTitle   : questionTitle
+              , answer0         : answer0
+              , answer1         : answer1
+              , answer2         : answer2
+              , answer3         : answer3
+              , answer4         : answer4
+              , title           : title
+              , narrative       : narrative
+              , flashError      : clientErr
+              })
             } else {
               res.redirectWithMessage('/story/' + story.story, message)
             }
