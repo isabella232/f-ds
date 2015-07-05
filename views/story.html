@@ -3,10 +3,9 @@
 {% block page %}
 <div class="container">
   <div class="jumbotron">
-    <h1 class="title">{{ story.title }}</h1>
-    <h3 class="author">{{ story.author }}</h3>
-    <h3 class="date">{{ story.creationDate.split('T')[0] }}</h3>
-    <hr class="title-bar"/>
+    <h1>{{ story.title }}</h1>
+    <span>Written by:  <b>{{ story.author }}</b></span>
+    <br>
     <form action="/story/{{ story.storyId }}/delete" method="POST">
       {% if story.author == username %}
       <button class="pull-right btn btn-default btn-xs">
@@ -14,18 +13,51 @@
       </button>
       {% endif %}
     </form>
+    <small>{{ story.creationDate.split('T')[0] }}</small>
   </div>
-  <div class="jumbotron narrative"><p><span id="drop-cap">{{ story.narrative.substr(0,1) }}</span>{{ story.narrative }}</p></div>
+  <div class="jumbotron narrative">
+    <p>{{ story.narrative }}</p>
+  </div>
   <div class="jumbotron">
     <h2 class="topless little-blank-space" id="question-title">{{ question.title }}</h2>
     <div>
-    {% for answer in question.answers %}
-<!--     <form action="/story/{{ story.storyId }}/vote/{{ loop.index - 1 }}" method="POST">
-      <button class="btn btn-default btn-block custom-1-btn blank-space-2">
-        <div class="index-number"> -->
-    <form class="answer-options" action="/story/{{ story.storyId }}/vote/{{ loop.index - 1 }}" method="POST">
-      <button class="btn btn-default btn-block">
-        <div class="index-number">
+      {% for answer in question.answers %}
+      <form class="answer-options" action="/story/{{ story.storyId }}/vote/{{ loop.index - 1 }}" method="POST">
+          <button class="survey-button" type="submit">
+            <div class="circle">
+              <span>
+                {% if loop.index == 1 %}
+                A
+                {% elif loop.index == 2 %}
+                B
+                {% elif loop.index == 3 %}
+                C
+                {% elif loop.index == 4 %}
+                D
+                {% else %}
+                E
+                {% endif %}
+              </span>
+              <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            </div>
+            <div class="answer-text">{{ answer.name }}</div>
+          </button>
+      </form>
+      {% endfor %}
+    </div>
+    <hr class="hr-large">
+    <h3>Results
+      <span class="pull-right small half-top">
+      Total Votes: <span class="badge">{{ question.totalVotes }}</span>
+      </span>
+    </h3>
+    {% if question.totalVotes > 0 %}
+    <div id="pie" class="pie"></div>
+    {% endif %}
+    <div class="pie-results">
+      {% for answer in question.answers %}
+      <div class="dataPoint" id="dataPoint{{ loop.index }}">
+        <span class="rank">
         {% if loop.index == 1 %}
         A
         {% elif loop.index == 2 %}
@@ -37,49 +69,11 @@
         {% else %}
         E
         {% endif %}
-        </div>
-        <div class="answer-option-text">
-          {{ answer.name }}
-        </div>
-      </button>
-    </form>
-    {% endfor %}
+        </span>
+        <div class="votes-storyView">{{ answer.votes }}</div>
+      </div>
+      {% endfor %}
     </div>
-
-    {% if question.totalVotes > 0 %}
-    <div id="pie" class="pie"></div>
-    {% endif %}
-
-    <hr class="hr-large">
-    <h3>Results
-      <span class="pull-right small half-top">
-      Total Votes:
-        <span class="badge">{{ question.totalVotes }}</span>
-      </span>
-    </h3>
-
-    {% if question.totalVotes > 0 %}
-    <div id="pie" class="pie"></div>
-    {% endif %}
-
-    {% for answer in question.answers %}
-    <div class="dataPoint" id="dataPoint{{ loop.index }}">
-      <span class="rank">
-      {% if loop.index == 1 %}
-      A
-      {% elif loop.index == 2 %}
-      B
-      {% elif loop.index == 3 %}
-      C
-      {% elif loop.index == 4 %}
-      D
-      {% else %}
-      E
-      {% endif %}
-      </span>
-      <div class="votes-storyView">{{ answer.votes }}</div>
-    </div>
-    {% endfor %}
   </div>
 </div>
 {% endblock %}
@@ -91,27 +85,4 @@
 </script>
 <script src="/lib/d3pie.min.js"></script>
 <script src="/js/pie.js"></script>
-<script src="/lib/dropcap.min.js"></script>
-<script>
-  var dropcap = document.querySelector("#drop-cap");
-
-  // media query event handler
-  if (matchMedia) {
-    var mq = window.matchMedia("(min-width: 768px)");
-    mq.addListener(WidthChange);
-    WidthChange(mq);
-  }
-
-  // media query change
-  function WidthChange(mq) {
-    if (mq.matches) {
-    // window width is at least 768px
-      window.Dropcap.layout(dropcap, 3);
-    }
-    else {
-      // window width is less than 768px
-      window.Dropcap.layout(dropcap, 2);
-    }
-  }
-</script>
 {% endblock %}

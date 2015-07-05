@@ -7,7 +7,7 @@ var pie = new d3pie("pie", {
   },
   "size": {
     "canvasWidth": 270,
-    "canvasHeight":250,
+    "canvasHeight": 250,
     "pieOuterRadius": "90%"
   },
   "data": {
@@ -16,27 +16,27 @@ var pie = new d3pie("pie", {
       {
         "label": "A",
         "value": window.answer1,
-        "color": "#4099FF"
+        "color": "#283a90"
       },
       {
         "label": "B",
         "value": window.answer2,
-        "color": "#93FF48"
+        "color": "#d7821e"
       },
       {
         "label": "C",
         "value": window.answer3,
-        "color": "#FFB756"
+        "color": "#6d54b6"
       },
       {
         "label": "D",
         "value": window.answer4,
-        "color": "#FD6547"
+        "color": "#32a779"
       },
       {
         "label": "E",
         "value": window.answer5,
-        "color": "#C24BFF"
+        "color": "#c4606a"
       }
     ]
   },
@@ -73,3 +73,19 @@ var pie = new d3pie("pie", {
     }
   }
 });
+    console.log(pie.options.size.canvasWidth);
+var w = window,
+    d = document,
+    e = d.documentElement,
+    g = d.getElementsByTagName('body')[0],
+    x = w.innerWidth || e.clientWidth || g.clientWidth,
+    y = w.innerHeight|| e.clientHeight|| g.clientHeight;
+function updateWindow(){
+    x = w.innerWidth || e.clientWidth || g.clientWidth;
+    y = w.innerHeight|| e.clientHeight|| g.clientHeight;
+
+    pie.options.size.canvasWidth = x;
+    pie.options.size.canvasWidth = y;
+}
+
+window.onresize = updateWindow;
