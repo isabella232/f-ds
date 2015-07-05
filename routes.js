@@ -302,7 +302,7 @@ function userLogout(req, res) {
         return
       } else {
         res.clearCookie('token')
-        res.clearCookie('usernameEmail')
+        res.clearCookie('username')
 
         // We handle clientErr a bit differently here because
         // clientErr is only defined when the token as expired in the db
