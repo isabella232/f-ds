@@ -103,9 +103,18 @@ hr{
   font-family: 'Georgia';
 }
 
+/*adjusting font-size according to the size of screen */
 .narrative p{
-    font-size: 32px;
+    font-size: 30px;
 }
+@media screen and (max-width: 767px){
+  .narrative {
+    padding: 70px 20px;
+  }
+  .narrative p{
+    font-size: 23px;
+  }
+}/*---------O_o------*/
 
 /*prevents the navbar from breaking header*/
 .navbar-collapse.collapse {
@@ -291,9 +300,14 @@ a:hover{
 /*----O_o-*/
 
 /* Narrative padding */
-@media screen and (min-width: 768px){
+@media screen and (min-width: 1100px){
   .container .jumbotron{
     padding: 120px;
+  }
+}
+@media screen and (min-width: 768px){
+  .container .jumbotron{
+    padding: 90px;
   }
 }/*----O_o-*/
 
