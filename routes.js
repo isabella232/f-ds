@@ -266,7 +266,10 @@ function userChangePassword(req, res) {
 function userLogout(req, res) {
 
   if (req.signedCookies.token) {
-    API.user.logout({ token: req.signedCookies.token }
+
+    API.user.logout(
+      {}
+    , req.signedCookies.token
     , function(err, clientErr, message) {
       if (err) {
         console.error(err.stack)
