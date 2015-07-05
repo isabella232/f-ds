@@ -4,8 +4,8 @@ var Async        = require('async')
   , Moment       = require('moment')
 
 var API           = require('./config/backend/api')
-  , CookieConfig  = require('./config/cookie')
   , Captcha       = require('./config/captcha')
+  , CookieConfig  = require('./config/cookie')
 
 function renderStatic(template) {
   return function(req, res) {
@@ -182,11 +182,7 @@ function userCreate(req, res) {
 
   Async.waterfall([
     function(next) {
-      if (Captcha.CAPTCHA_KEY) {
-        Captcha.verify(key, next)
-      } else {
-        next(null, true)
-      }
+      Captcha.verify(key, next)
     }
 
   ]

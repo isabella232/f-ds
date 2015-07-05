@@ -15,19 +15,24 @@ if (!CAPTCHA_KEY) {
 }
 
 function verifyCaptcha(key, callback) {
-  var form =
-    { secret  : CAPTCHA_KEY
-    , response: key
-    }
-  request.post(
-    { url : 'https://www.google.com/recaptcha/api/siteverify'
-    , form: form
-    , json: true
-    }
-  , function(err, res, body) {
-      callback(err, body.success)
-    }
-  )
+
+  if (!CAPTCHA_KEY) {
+    callback(null, true)
+  } else {
+    var form =
+      { secret  : CAPTCHA_KEY
+      , response: key
+      }
+    request.post(
+      { url : 'https://www.google.com/recaptcha/api/siteverify'
+      , form: form
+      , json: true
+      }
+    , function(err, res, body) {
+        callback(err, body.success)
+      }
+    )
+  }
 }
 
-module.exports = { verify: verifyCaptcha, CAPTCHA_KEY: CAPTCHA_KEY }
+module.exports = { verify: verifyCaptcha }
