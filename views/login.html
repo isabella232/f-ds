@@ -1,5 +1,13 @@
 {% extends "base.html" %}
 
+{% block style %}
+<style>
+  html{
+    background: #444;
+  }
+</style>
+{% endblock %}
+
 {% block page %}
 <div class="static-welcome">
   <form id="login" action="/user/login" method="POST">
