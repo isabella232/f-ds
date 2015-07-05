@@ -97,11 +97,24 @@ hr{
 
 /*^^^^^^^^^^^ end of general modifiers ^^^^^^^^^^^^^^^*/
 
-
-
 .narrative{
   white-space: pre-wrap;
+  padding: 30px 20px;
+  font-family: 'Georgia';
 }
+
+/*adjusting font-size according to the size of screen */
+.narrative p{
+    font-size: 30px;
+}
+@media screen and (max-width: 767px){
+  .narrative {
+    padding: 70px 20px;
+  }
+  .narrative p{
+    font-size: 23px;
+  }
+}/*---------O_o------*/
 
 /*prevents the navbar from breaking header*/
 .navbar-collapse.collapse {
@@ -240,6 +253,62 @@ a:hover{
 .username{
   text-align: center;
   margin: 30px auto;
+}/*----O_o-*/
+
+/*Story title styling*/
+.title{
+  text-align: center;
+  font-family: 'Georgia';
+  color: #222;
+  font-size: 48px;
+  font-weight: 700;
+  margin: 48px 0;
+}
+
+.author{
+  display: block;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 12px;
+  font-size: 18px;
+  margin: 18px 0;
+  font-family: 'Georgia';
+}
+
+.date{
+  display: block;
+  text-align: center;
+  font-family: 'Georgia';
+  font-weight: 400;
+  color: #555;
+  font-style: italic;
+  font-size: 18px;
+  letter-spacing: 6px;
+  margin: 18px 0;
+}
+
+.title-bar{
+  width: 20%;
+  margin: 48px auto;
+}
+
+#drop-cap{
+  font-family: 'Baskerville';
+  margin-right: 7.86px;
+}
+/*----O_o-*/
+
+/* Narrative padding */
+@media screen and (min-width: 1100px){
+  .container .jumbotron{
+    padding: 120px;
+  }
+}
+@media screen and (min-width: 768px){
+  .container .jumbotron{
+    padding: 90px;
+  }
 }/*----O_o-*/
 
 /**

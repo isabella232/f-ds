@@ -3,9 +3,10 @@
 {% block page %}
 <div class="container">
   <div class="jumbotron">
-    <h1>{{ story.title }}</h1>
-    <span>By <b>{{ story.author }}</b></span>
-    <br>
+    <h1 class="title">{{ story.title }}</h1>
+    <h3 class="author">{{ story.author }}</h3>
+    <h3 class="date">{{ story.creationDate.split('T')[0] }}</h3>
+    <hr class="title-bar"/>
     <form action="/story/{{ story.storyId }}/delete" method="POST">
       {% if story.author == username %}
       <button class="pull-right btn btn-default btn-xs">
@@ -13,11 +14,8 @@
       </button>
       {% endif %}
     </form>
-    <small>{{ story.creationDate.split('T')[0] }}</small>
   </div>
-  <div class="jumbotron narrative">
-    <p>{{ story.narrative }}</p>
-  </div>
+  <div class="jumbotron narrative"><p><span id="drop-cap">{{ story.narrative.substr(0,1) }}</span>{{ story.narrative }}</p></div>
   <div class="jumbotron">
     <h2 class="topless">{{ question.title }}</h2>
     {% for answer in question.answers %}
@@ -49,7 +47,6 @@
     {% if question.totalVotes > 0 %}
     <div id="pie" class="pie"></div>
     {% endif %}
-
     {% for answer in question.answers %}
     <div class="dataPoint">
       <span class="rank">
@@ -71,7 +68,6 @@
   </div>
 </div>
 {% endblock %}
-
 {% block script %}
 <script>
   {% for answer in question.answers %}
@@ -80,4 +76,27 @@
 </script>
 <script src="/lib/d3pie.min.js"></script>
 <script src="/js/pie.js"></script>
+<script src="/lib/dropcap.min.js"></script>
+<script>
+  var dropcap = document.querySelector("#drop-cap");
+
+  // media query event handler
+  if (matchMedia) {
+    var mq = window.matchMedia("(min-width: 768px)");
+    mq.addListener(WidthChange);
+    WidthChange(mq);
+  }
+
+  // media query change
+  function WidthChange(mq) {
+    if (mq.matches) {
+    // window width is at least 768px
+      window.Dropcap.layout(dropcap, 3);
+    }
+    else {
+      // window width is less than 768px
+      window.Dropcap.layout(dropcap, 2);
+    }
+  }
+</script>
 {% endblock %}
