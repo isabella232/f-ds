@@ -3,8 +3,9 @@
 var Async        = require('async')
   , Moment       = require('moment')
 
-var API          = require('./config/backend/api')
-  , CookieConfig = require('./config/cookie')
+var API           = require('./config/backend/api')
+  , Captcha       = require('./config/captcha')
+  , CookieConfig  = require('./config/cookie')
 
 function renderStatic(template) {
   return function(req, res) {
@@ -176,35 +177,53 @@ function userCreate(req, res) {
     , email           = req.body.email
     , password        = req.body.password
     , confirmPassword = req.body.confirmPassword
+    , key             = req.body['g-recaptcha-response']
 
-  if (password !== confirmPassword) {
-    res.redirectWithError('/user/signup'
-                        , 'Password and its confirmation did not match!')
-    return
-  }
 
-  API.user.create(
-    { username: username
-    , email   : email
-    , password: password
+  Async.waterfall([
+    function(next) {
+      Captcha.verify(key, next)
     }
-  , req.signedCookies.token
-  , function(err, clientErr, message, user) {
-      if (err) {
-        console.error(err.stack)
-        res.render('500.html')
-      } else if (clientErr) {
-        res.redirectWithError('/user/signup', clientErr)
-      } else {
-        var options = CookieConfig.options
-        options.maxAge = user.ttl
-        res.cookie('token', user.token, options)
-        res.cookie('username', username, options)
 
-        res.redirectWithMessage('/feed', message)
+  ]
+  , function(err, result) {
+    if (err) {
+      console.log(err)
+      res.render('500.html')
+    } else if (!result) {
+      res.redirectWithError('/user/signup', 'Captcha failed. Try again.')
+    } else {
+      if (password !== confirmPassword) {
+        res.redirectWithError('/user/signup'
+        , 'Password and its confirmation did not match!')
+        return
       }
+
+      API.user.create(
+        { username: username
+        , email   : email
+        , password: password
+        }
+      , req.signedCookies.token
+      , function(err, clientErr, message, user) {
+          if (err) {
+            console.error(err.stack)
+            res.render('500.html')
+          } else if (clientErr) {
+            res.redirectWithError('/user/signup', clientErr)
+          } else {
+            var options = CookieConfig.options
+            options.maxAge = user.ttl
+            res.cookie('token', user.token, options)
+            res.cookie('username', username, options)
+
+            res.redirectWithMessage('/feed', message)
+          }
+        }
+      )
     }
-  )
+  })
+
 }
 
 function userLogin(req, res) {
