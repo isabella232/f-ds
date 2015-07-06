@@ -913,3 +913,12 @@ input:-webkit-autofill {
   -webkit-transform:scale(0.86);
   margin-top: 24px;
 }
+
+.g-recaptcha, .static{
+  transform-origin: 0 0;
+  -webkit-transform-origin: 0 0;
+  transform: scale(1.33);
+  -webkit-transform:scale(1.33);
+  margin-top: 24px;
+  margin-bottom: 36px;
+}
