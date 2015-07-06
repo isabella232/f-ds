@@ -3,9 +3,10 @@
 {% block page %}
 <div class="container">
   <div class="jumbotron">
-    <h1>{{ story.title }}</h1>
-    <span>Written by:  <b>{{ story.author }}</b></span>
-    <br>
+    <h1 class="title">{{ story.title }}</h1>
+    <h3 class="author">{{ story.author }}</h3>
+    <h3 class="date">{{ story.creationDate.split('T')[0] }}</h3>
+    <hr class="title-bar"/>
     <form action="/story/{{ story.storyId }}/delete" method="POST">
       {% if story.author == username %}
       <button class="pull-right btn btn-default btn-xs">
@@ -13,7 +14,6 @@
       </button>
       {% endif %}
     </form>
-    <small>{{ story.creationDate.split('T')[0] }}</small>
   </div>
   <div class="jumbotron narrative">
     <p>{{ story.narrative }}</p>
@@ -86,3 +86,5 @@
 <script src="/lib/d3pie.min.js"></script>
 <script src="/js/pie.js"></script>
 {% endblock %}
+
+
