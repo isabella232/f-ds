@@ -15,9 +15,7 @@
       {% endif %}
     </form>
   </div>
-  <div class="jumbotron narrative">
-    <p>{{ story.narrative }}</p>
-  </div>
+  <div class="jumbotron narrative"><p class="definition"><span id="drop-cap">{{ story.narrative.substring(0,1) }}</span><span>{{ story.narrative.substring(1) }}</span></p></div>
   <div class="jumbotron">
     <h2 class="topless little-blank-space" id="question-title">{{ question.title }}</h2>
     <div>
@@ -46,31 +44,22 @@
       {% endfor %}
     </div>
     <hr class="hr-large">
-    <h3>Results
-      <span class="pull-right small half-top">
-      Total Votes: <span class="badge">{{ question.totalVotes }}</span>
-      </span>
-    </h3>
+    <div class="results">
+        <div>Results</div>
+        <div>Total Votes: {{ question.totalVotes }}</div>
+    </div>
     {% if question.totalVotes > 0 %}
     <div id="pie" class="pie"></div>
     {% endif %}
     <div class="pie-results">
       {% for answer in question.answers %}
       <div class="dataPoint" id="dataPoint{{ loop.index }}">
-        <span class="rank">
-        {% if loop.index == 1 %}
-        A
-        {% elif loop.index == 2 %}
-        B
-        {% elif loop.index == 3 %}
-        C
-        {% elif loop.index == 4 %}
-        D
-        {% else %}
-        E
-        {% endif %}
-        </span>
-        <div class="votes-storyView">{{ answer.votes }}</div>
+        <div class="rank">{% if loop.index == 1 %}A{% elif loop.index == 2 %}B{% elif loop.index == 3 %}C{% elif loop.index == 4 %}D{% else %}E{% endif %}</div>
+        <div class="answer">{{ answer.name }}</div>
+        <div class="data">
+          <div class="percent">{{ answer.percent }}%</div>
+          <div class="vote-count">{{ answer.votes }} votes</div>
+        </div>
       </div>
       {% endfor %}
     </div>
@@ -82,6 +71,31 @@
   {% for answer in question.answers %}
     window.answer{{ loop.index }} = {{ answer.votes }}
   {% endfor %}
+</script>
+<script src="/lib/dropcap.min.js"></script>
+<script>
+  var dropcap = document.querySelector("#drop-cap");
+
+  // media query event handler
+  if (matchMedia) {
+    var mq = window.matchMedia("(min-width: 768px)");
+    mq.addListener(WidthChange);
+    WidthChange(mq);
+  }
+
+  // media query change
+  function WidthChange(mq) {
+
+    if (mq.matches) {
+      // window width is at least 768px
+      window.Dropcap.layout(dropcap, 3);
+    }
+    else {
+      // window width is less than 768px
+      window.Dropcap.layout(dropcap, 2);
+    }
+
+  }
 </script>
 <script src="/lib/d3pie.min.js"></script>
 <script src="/js/pie.js"></script>
