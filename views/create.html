@@ -1,5 +1,21 @@
 {% extends "base.html" %}
 
+{% block style %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<link rel="stylesheet" href="/minified/themes/square.min.css" type="text/css" media="all" />
+<script type="text/javascript" src="/minified/jquery.sceditor.bbcode.min.js"></script>
+<script>
+$(function() {
+    // Replace all textarea's
+    // with SCEditor
+    $("textarea").sceditor({
+        plugins: "bbcode",
+        style: "minified/jquery.sceditor.square.min.css"
+    });
+});
+</script>
+{% endblock %}
+
 {% block page %}
 <div class="container">
   <form action="/story/create" method="POST">
@@ -12,7 +28,7 @@
       <input class="form-control" name="title" placeholder="Title" pattern=".{10,}" title="This is the title for your story; it must be at least 10 characters long" maxlength="140" value="{{ title }}" required>
       <br>
       <label class="control-label">Narrative:</label>
-      <textarea  class="form-control tall" name="narrative" placeholder="Narrative" pattern=".{20,}" title="The narrative is where all the content of your story will go; it must be at least 20 characters long" maxlength="100000" required>{{ narrative }}</textarea>
+      <textarea  class="form-control narrative-create" name="narrative" placeholder="Narrative" pattern=".{20,}" title="The narrative is where all the content of your story will go; it must be at least 20 characters long" maxlength="100000" required>{{ narrative }}</textarea>
     </div>
     <div class="jumbotron form-group">
       <h2> Survey Question </h2>

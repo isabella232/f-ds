@@ -61,11 +61,6 @@ hr{
   border-color:#bbb;
 }/*----O_o-*/
 
-/*adding a larger default height to textarea (for story-page)*/
-.tall{
-  height:15em !important;
-}/*----O_o-*/
-
 /*adds margin-top to any element*/
 .top{
   margin-top:1em;
@@ -286,6 +281,13 @@ a:hover{
 .input-group{
   margin-top:5px;
 }/*----O_o-*/
+
+.narrative-create{
+  height:30em !important;
+}
+.sceditor-container{
+  width:100% !important;
+}
 
 /*making the profile-page avatar a smaller size*/
 .profile-img{
