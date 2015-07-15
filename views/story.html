@@ -1,5 +1,20 @@
 {% extends "base.html" %}
 
+{% block style %}
+<link rel="stylesheet" href="/lib/bbcode/xbbcode.css" type="text/css" media="all" />
+<script type="text/javascript" src="/lib/bbcode/xbbcode.js"></script>
+<script>
+  var result = XBBCODE.process({
+    text: "Some bbcode to process here",
+    removeMisalignedTags: false,
+    addInLineBreaks: false
+  });
+  console.log("Errors: " + result.error);
+  console.dir(result.errorQueue);
+  console.log(result.html);// the HTML form of your BBCode
+</script>
+{% endblock %}
+
 {% block page %}
 <div class="container">
   <div class="jumbotron">
