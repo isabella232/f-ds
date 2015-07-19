@@ -151,6 +151,9 @@ function renderStory(req, res) {
               console.trace('Error: client error on question: ' + clientErr)
               res.render('404.html', { error: clientErr })
             } else {
+              // trim leading and trailing whitespace in narrative
+              story.narrative = story.narrative.trim()
+              // prettify date
               story.creationDate = Moment(story.creationDate).format('LL')
               story.storyId = storyId
               question.totalVotes = 0

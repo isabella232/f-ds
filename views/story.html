@@ -17,91 +17,129 @@
   </div>
   <div class="jumbotron narrative"><p class="definition"><span id="drop-cap">{{ story.narrative.substring(0,1) }}</span><span>{{ story.narrative.substring(1) }}</span></p></div>
   <div class="jumbotron">
-    <button class="vote-btn">Vote</button>
-    <button class="results-btn">Results</button>
-    <div class="vote">
-      <h2 class="topless little-blank-space" id="question-title">{{ question.title }}</h2>
-      <div>
-        {% for answer in question.answers %}
-        <form class="answer-options" action="/story/{{ story.storyId }}/vote/{{ loop.index - 1 }}" method="POST">
-            <button class="survey-button" type="submit">
-              <div class="circle">
-                <span>
-                  {% if loop.index == 1 %}
-                  A
-                  {% elif loop.index == 2 %}
-                  B
-                  {% elif loop.index == 3 %}
-                  C
-                  {% elif loop.index == 4 %}
-                  D
-                  {% else %}
-                  E
-                  {% endif %}
-                </span>
-                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-              </div>
-              <div class="answer-text">{{ answer.name }}</div>
-            </button>
-        </form>
-        {% endfor %}
-      </div>
+    <div class="active-section">
+      <div class="vote-btn active">Vote</div>
+      <div class="results-btn">Results</div>
     </div>
-    <!-- <hr class="hr-large"> -->
-    <div class="results" style="display:none">
-      <div class="results-header">
-          <div>Results</div>
-          <div>Total Votes: {{ question.totalVotes }}</div>
-      </div>
-      {% if question.totalVotes > 0 %}
-      <div id="pie" class="pie"></div>
-      {% endif %}
-      <div class="pie-results">
-        {% for answer in question.answers %}
-        <div class="dataPoint" id="dataPoint{{ loop.index }}">
-          <div class="rank">{% if loop.index == 1 %}A{% elif loop.index == 2 %}B{% elif loop.index == 3 %}C{% elif loop.index == 4 %}D{% else %}E{% endif %}</div>
-          <div class="answer">{{ answer.name }}</div>
-          <div class="data">
-            <div class="percent">{{ answer.percent }}%</div>
-            <div class="vote-count">{{ answer.votes }} votes</div>
+    <div class="question-title">{{ question.title }}</div>
+    <div class="interactive-section" style="position:relative; transition: all 1000ms ease-in-out">
+      <div class="results" style="opacity:0;transition: all 1000ms ease-in-out;position: relative;">
+        <hr class="title-bar" style="margin:0 auto; margin-top:48px;"/>
+        {% if question.totalVotes > 0 %}
+        <div id="pie" class="pie"></div>
+        {% endif %}
+        <div class="pie-results">
+          {% for answer in question.answers %}
+          <div class="dataPoint" id="dataPoint{{ loop.index }}">
+            <div class="rank">{% if loop.index == 1 %}A{% elif loop.index == 2 %}B{% elif loop.index == 3 %}C{% elif loop.index == 4 %}D{% else %}E{% endif %}</div>
+            <div class="answer">{{ answer.name }}</div>
+            <div class="data">
+              <div class="percent">{{ answer.percent }}%</div>
+              <div class="vote-count">{{ answer.votes }} votes</div>
+            </div>
           </div>
+          {% endfor %}
         </div>
-        {% endfor %}
+      </div>
+      <div class="vote" style="opacity:0;transition: all 1000ms ease-in-out;position:absolute;top:0;left:0;right:0;margin:0 auto;">
+        <hr class="title-bar" style="margin:0 auto; margin-bottom:48px;"/>
+        <div>
+          {% for answer in question.answers %}
+          <form class="answer-options" action="/story/{{ story.storyId }}/vote/{{ loop.index - 1 }}" method="POST">
+              <button class="survey-button" type="submit">
+                <div class="circle">
+                  <span>
+                    {% if loop.index == 1 %}
+                    A
+                    {% elif loop.index == 2 %}
+                    B
+                    {% elif loop.index == 3 %}
+                    C
+                    {% elif loop.index == 4 %}
+                    D
+                    {% else %}
+                    E
+                    {% endif %}
+                  </span>
+                  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                </div>
+                <div class="answer-text">{{ answer.name }}</div>
+              </button>
+          </form>
+          {% endfor %}
+        </div>
       </div>
     </div>
   </div>
 </div>
 {% endblock %}
 {% block script %}
+<!-- toggle display for vote and results section -->
 <script>
-  // toggle display of vote and results
-  document.getElementsByClassName('vote-btn')[0].addEventListener("click", function() {
-    document.getElementsByClassName('vote')[0].style.display = "block";
-    document.getElementsByClassName('results')[0].style.display = "none";
+  var vote         = document.getElementsByClassName('vote')[0]
+  var results      = document.getElementsByClassName('results')[0]
+  var vote_btn     = document.getElementsByClassName('vote-btn')[0]
+  var results_btn  = document.getElementsByClassName('results-btn')[0]
+  var container    = document.getElementsByClassName('interactive-section')[0]
+  // display results section if userVote exists on question
+  {% if question.userVote %}
+    changePointerEvents(vote, "none")
+    vote_btn.className = "vote-btn"
+    results_btn.className = "results-btn active"
+    changeOpacity(vote, 0)
+    changeOpacity(results, 1)
+  // otherwise display results section
+  {% else %}
+    vote_btn.className = "vote-btn active"
+    results_btn.className = "results-btn"
+    changeOpacity(vote, 1)
+    changeOpacity(results, 0)
+  {% endif %}
+  // on button click, toggle display for vote and results section
+  vote_btn.addEventListener("click", function() {
+    changePointerEvents(vote, "all")
+    vote_btn.className = "vote-btn active"
+    results_btn.className = "results-btn"
+    changeOpacity(vote, 1)
+    changeOpacity(results, 0)
+    console.log(window.getComputedStyle(vote, null).getPropertyValue("height"))
+    container.style.height=String(window.getComputedStyle(vote, null).getPropertyValue("height"))
   })
-  document.getElementsByClassName('results-btn')[0].addEventListener("click", function() {
-    document.getElementsByClassName('vote')[0].style.display = "none";
-    document.getElementsByClassName('results')[0].style.display = "block";
+  results_btn.addEventListener("click", function() {
+    changePointerEvents(vote, "none")
+    vote_btn.className = "vote-btn"
+    results_btn.className = "results-btn active"
+    changeOpacity(vote, 0)
+    changeOpacity(results, 1)
+    console.log(window.getComputedStyle(results, null).getPropertyValue("height"))
+    container.style.height=String(window.getComputedStyle(results, null).getPropertyValue("height"))
   })
+  function changeDisplay(el, val) {
+    el.style.display = val
+  }
+  function changeOpacity(el, val) {
+    el.style.opacity = val
+  }
+  function changePointerEvents(el, val) {
+    el.style['pointer-events'] = val
+  }
 </script>
+<!-- declare global variables for d3js -->
 <script>
-  // declare global variables for d3js
   {% for answer in question.answers %}
     window.answer{{ loop.index }} = {{ answer.votes }}
   {% endfor %}
 </script>
 <script src="/lib/dropcap.min.js"></script>
+<!-- Enable drop cap -->
 <script>
-  // enable drop cap
   var dropcap = document.querySelector("#drop-cap");
-
   // media query event handler
   if (matchMedia) {
     var mq = window.matchMedia("(min-width: 768px)");
     mq.addListener(WidthChange);
     WidthChange(mq);
   }
-
   // media query change
   function WidthChange(mq) {
     if (mq.matches) {

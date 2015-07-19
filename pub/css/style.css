@@ -115,7 +115,7 @@ hr{
 #question-title{
   font-size: 32px;
   font-weight: 300;
-  color: #222;
+  color: #444;
   margin: 48px 0 96px;
   text-align: center;
 }
@@ -784,10 +784,40 @@ input:-webkit-autofill {
 /*^^^*/
 
 /* *************** survey section styling **************** */
+.question-title{
+  font-family: 'Georgia';
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 0;
+}
+.active-section{
+  display:flex;
+  justify-content:center;
+  margin-bottom: 64px;
+}
+
+.active-section div{
+  cursor: pointer;
+  width: 140px;
+  height: 48px;
+  line-height: 48px;
+  text-align: center;
+  font-family: 'Georgia';
+  letter-spacing: 10px;
+  text-transform: uppercase;
+}
+
+.vote-btn{
+  margin-right: 18px;
+}
+
+.active{
+  border-bottom: 1px solid #777;
+}
+
 .answer {
   order:2;
   width:50%;
-/*  border-right:1px solid #777;*/
   margin: 0 16px;
   line-height:1;
   text-align:left;
@@ -795,16 +825,16 @@ input:-webkit-autofill {
   padding-right:8px;
   font-size:24px;
 }
-.results {
+.results-header {
   font-family: 'Georgia';
   text-align: center;
 }
 
-.results div:nth-child(1){
+.results-header div:nth-child(1){
   font-size: 32px;
 }
 
-.results div:nth-child(2){
+.results-header div:nth-child(2){
   font-size: 14px;
 }
 
@@ -813,6 +843,7 @@ input:-webkit-autofill {
   order:3;
   text-align:left;
   font-weight:400;
+  margin-left:auto;
 }
 
 .percent{
@@ -823,6 +854,18 @@ input:-webkit-autofill {
 .vote-count{
   font-size:20px;
   line-height: 20px;
+  text-align: right;
+}
+
+.question-title{
+  font-family: 'Georgia';
+  text-align: center;
+  font-weight: 600;
+  font-size: 36px;
+  width: 300px;
+  margin: 0 auto;
+  margin-bottom: 48px;
+  line-height: 40px;
 }
 
 @media (max-width: 560px) {
@@ -847,12 +890,17 @@ input:-webkit-autofill {
     font-size: 14px;
     line-height: 14px;
   }
+  .question-title{
+    /*font-size: 24px;*/
+  }
 }
 
-#question-title{
-  font-family: 'Georgia';
-  font-size: 32px;
+@media (max-width: 320px) {
+  .dataPoint{
+    width:100%;
+  }
 }
+
 .circle{
   color: white;
   display: inline-block;
