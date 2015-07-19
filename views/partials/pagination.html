@@ -4,13 +4,13 @@
   <ul class="pagination">
     {% if page == 1 %}
     <li class="disabled">
-        <a aria-label="Previous">
+      <a aria-label="First">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
     {% else %}
     <li>
-        <a href="/feed" aria-label="Previous">
+      <a href="/feed" aria-label="First">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
@@ -36,7 +36,7 @@
     <li><a href="?page={{ page - 1 }}">{{ page - 1 }}</a></li>
     {% endif %}
 
-    <li class="active"><a href="?page={{page}}">{{ page }}</a></li>
+    <li class="active"><a>{{ page }}</a></li>
 
     {% if page + 1 <= lastPage %}
     <li><a href="?page={{ page + 1 }}">{{ page + 1 }}</a></li>
@@ -60,13 +60,13 @@
 
     {% if page == lastPage %}
     <li class="disabled">
-      <a aria-label="Next">
+      <a aria-label="Last">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>
     {% else %}
     <li>
-      <a href="?page={{lastPage}}" aria-label="Next">
+      <a href="?page={{lastPage}}" aria-label="Last">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>
