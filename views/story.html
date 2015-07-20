@@ -7,7 +7,7 @@
 {% block page %}
 <div class="container">
   <div class="jumbotron">
-    <h1 class="title">{{ story.title }}</h1>
+    <h1 class="title hyphenate text">{{ story.title }}</h1>
     <h3 class="author">{{ story.author }}</h3>
     <h3 class="date">{{ story.creationDate.split('T')[0] }}</h3>
     <hr class="title-bar"/>
@@ -19,13 +19,35 @@
       {% endif %}
     </form>
   </div>
-  <div class="jumbotron narrative">
-    <p class="definition"><span></span><span id="xbbcode"></span></p>
+  <div class="jumbotron narrative hyphenate text">
+    <p>{{ story.narrative }}</p>
   </div>
   <div class="jumbotron">
-    <div class="active-section">
-      <div class="vote-btn active">Vote<i class="ion-ios-checkmark-outline"></i></div>
-      <div class="results-btn">Results<i class="ion-ios-pie-outline"></i></div>
+    <h2 class="topless little-blank-space hyphenate text" id="question-title">{{ question.title }}</h2>
+    <div>
+      {% for answer in question.answers %}
+      <form class="answer-options" action="/story/{{ story.storyId }}/vote/{{ loop.index - 1 }}" method="POST">
+          <button class="survey-button" type="submit">
+            <div class="circle">
+              <span>
+                {% if loop.index == 1 %}
+                A
+                {% elif loop.index == 2 %}
+                B
+                {% elif loop.index == 3 %}
+                C
+                {% elif loop.index == 4 %}
+                D
+                {% else %}
+                E
+                {% endif %}
+              </span>
+              <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            </div>
+            <div class="answer-text">{{ answer.name }}</div>
+          </button>
+      </form>
+      {% endfor %}
     </div>
     <div class="question-title">{{ question.title }}</div>
     <div class="interactive-section" style="position:relative; transition: all 1000ms ease-in-out">
@@ -80,6 +102,11 @@
 </div>
 {% endblock %}
 {% block script %}
+<!-- hyphenate text -->
+<script src="/lib/hyphenator.min.js"></script>
+<script>
+  Hyphenator.run();
+</script>
 <!-- declare global variables -->
 <script>
   var userVote = '{{ question.userVote }}'
