@@ -110,22 +110,6 @@ hr{
   margin: 60px 0
 }/*----O_o-*/
 
-
-/** question title on story page **/
-#question-title{
-  font-size: 32px;
-  font-weight: 300;
-  color: #444;
-  margin: 48px 0 96px;
-  text-align: center;
-}
-@media screen and (max-width: 768px) {
-  #question-title{
-      margin: 48px 0 78px;
-  }
-}
-/*----O_o-*/
-
 /*^^^^^^^^^^^ end of general modifiers ^^^^^^^^^^^^^^^*/
 
 .narrative{
@@ -784,12 +768,6 @@ input:-webkit-autofill {
 /*^^^*/
 
 /* *************** survey section styling **************** */
-.question-title{
-  font-family: 'Georgia';
-  text-align: center;
-  font-size: 32px;
-  margin-bottom: 0;
-}
 .active-section{
   display:flex;
   justify-content:center;
@@ -890,14 +868,14 @@ input:-webkit-autofill {
     font-size: 14px;
     line-height: 14px;
   }
-  .question-title{
-    /*font-size: 24px;*/
-  }
 }
 
 @media (max-width: 320px) {
   .dataPoint{
     width:100%;
+  }
+  .question-title{
+    width: 290px;
   }
 }
 

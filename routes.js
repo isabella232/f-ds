@@ -161,8 +161,14 @@ function renderStory(req, res) {
                 question.totalVotes += question.answers[i].votes
               }
               // Calculate percentage of total votes for each answer option
-              for (var i = 0; i < question.answers.length; i++) {
-                question.answers[i].percent = Math.round(question.answers[i].votes/question.totalVotes*100);
+              if (question.totalVotes > 0){
+                for (var i = 0; i < question.answers.length; i++) {
+                  question.answers[i].percent = Math.round(question.answers[i].votes/question.totalVotes*100);
+                }
+              } else {
+                question.answers.forEach(function(el, i, arr) {
+                  arr[i].percent = 0;
+                })
               }
               res.render(
                 'story.html'

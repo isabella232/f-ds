@@ -23,7 +23,7 @@
     </div>
     <div class="question-title">{{ question.title }}</div>
     <div class="interactive-section" style="position:relative; transition: all 1000ms ease-in-out">
-      <div class="results" style="opacity:0;transition: all 1000ms ease-in-out;position: relative;">
+      <div class="results-section">
         <hr class="title-bar" style="margin:0 auto; margin-top:48px;"/>
         {% if question.totalVotes > 0 %}
         <div id="pie" class="pie"></div>
@@ -41,7 +41,7 @@
           {% endfor %}
         </div>
       </div>
-      <div class="vote" style="opacity:0;transition: all 1000ms ease-in-out;position:absolute;top:0;left:0;right:0;margin:0 auto;">
+      <div class="vote-section">
         <hr class="title-bar" style="margin:0 auto; margin-bottom:48px;"/>
         <div>
           {% for answer in question.answers %}
@@ -76,52 +76,42 @@
 {% block script %}
 <!-- toggle display for vote and results section -->
 <script>
-  var vote         = document.getElementsByClassName('vote')[0]
-  var results      = document.getElementsByClassName('results')[0]
+  var vote         = document.getElementsByClassName('vote-section')[0]
+  var results      = document.getElementsByClassName('results-section')[0]
   var vote_btn     = document.getElementsByClassName('vote-btn')[0]
   var results_btn  = document.getElementsByClassName('results-btn')[0]
   var container    = document.getElementsByClassName('interactive-section')[0]
   // display results section if userVote exists on question
   {% if question.userVote %}
-    changePointerEvents(vote, "none")
+    changeDisplay(vote, "none")
+    changeDisplay(results, "block")
     vote_btn.className = "vote-btn"
     results_btn.className = "results-btn active"
-    changeOpacity(vote, 0)
-    changeOpacity(results, 1)
-  // otherwise display results section
   {% else %}
+    changeDisplay(vote, "block")
+    changeDisplay(results, "none")
     vote_btn.className = "vote-btn active"
     results_btn.className = "results-btn"
-    changeOpacity(vote, 1)
-    changeOpacity(results, 0)
   {% endif %}
   // on button click, toggle display for vote and results section
   vote_btn.addEventListener("click", function() {
-    changePointerEvents(vote, "all")
+    setTimeout(function() {
+      changeDisplay(vote, "block")
+      changeDisplay(results, "none")
+    }, 75)
     vote_btn.className = "vote-btn active"
     results_btn.className = "results-btn"
-    changeOpacity(vote, 1)
-    changeOpacity(results, 0)
-    console.log(window.getComputedStyle(vote, null).getPropertyValue("height"))
-    container.style.height=String(window.getComputedStyle(vote, null).getPropertyValue("height"))
   })
   results_btn.addEventListener("click", function() {
-    changePointerEvents(vote, "none")
+    setTimeout(function() {
+      changeDisplay(vote, "none")
+      changeDisplay(results, "block")
+    }, 75)
     vote_btn.className = "vote-btn"
     results_btn.className = "results-btn active"
-    changeOpacity(vote, 0)
-    changeOpacity(results, 1)
-    console.log(window.getComputedStyle(results, null).getPropertyValue("height"))
-    container.style.height=String(window.getComputedStyle(results, null).getPropertyValue("height"))
   })
   function changeDisplay(el, val) {
     el.style.display = val
-  }
-  function changeOpacity(el, val) {
-    el.style.opacity = val
-  }
-  function changePointerEvents(el, val) {
-    el.style['pointer-events'] = val
   }
 </script>
 <!-- declare global variables for d3js -->
