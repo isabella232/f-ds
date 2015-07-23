@@ -170,6 +170,11 @@ a:hover{
   text-decoration: none;
 }/*----O_o-*/
 
+/*indentation for feed-question*/
+.feed-question{
+  padding:.3em .8em;
+}
+
 
 /* allows break-word used to keep troll-text* out of feed page
 (*troll-text:text that does not fit in the jumbotron) */

@@ -116,6 +116,7 @@ function renderFeed(req, res) {
               }
               feed.feed[i].totalVotes = totalVotes
               feed.feed[i].creationDate = Moment(feed.feed[i].creationDate).format('LL')
+              feed.feed[i].questionTitle = results[i].title
             }
             res.render('feed.html', { feed: feed.feed })
           }

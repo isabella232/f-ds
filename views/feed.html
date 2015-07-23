@@ -6,7 +6,8 @@
   <a class="no-hover" href="/story/{{ story.story }}">
     <div class="jumbotron">
       <h2>{{ story.title }}</h2>
-      <p>{{ story.narrative.substring(0,150) }} {% if story.narrative.length > 150 %}...{% endif %}</p>
+      <p class="feed-question">{{ story.questionTitle }} </p>
+      <hr>
       <span>{{ story.creationDate }}</span>
       <div>
         <span class="badge">{{ story.totalVotes }}</span>
