@@ -74,74 +74,18 @@
 </div>
 {% endblock %}
 {% block script %}
-<!-- toggle display for vote and results section -->
+<!-- declare global variables -->
 <script>
-  var vote         = document.getElementsByClassName('vote-section')[0]
-  var results      = document.getElementsByClassName('results-section')[0]
-  var vote_btn     = document.getElementsByClassName('vote-btn')[0]
-  var results_btn  = document.getElementsByClassName('results-btn')[0]
-  var container    = document.getElementsByClassName('interactive-section')[0]
-  // display results section if userVote exists on question
-  {% if question.userVote %}
-    changeDisplay(vote, "none")
-    changeDisplay(results, "block")
-    vote_btn.className = "vote-btn"
-    results_btn.className = "results-btn active"
-  {% else %}
-    changeDisplay(vote, "block")
-    changeDisplay(results, "none")
-    vote_btn.className = "vote-btn active"
-    results_btn.className = "results-btn"
-  {% endif %}
-  // on button click, toggle display for vote and results section
-  vote_btn.addEventListener("click", function() {
-    setTimeout(function() {
-      changeDisplay(vote, "block")
-      changeDisplay(results, "none")
-    }, 75)
-    vote_btn.className = "vote-btn active"
-    results_btn.className = "results-btn"
-  })
-  results_btn.addEventListener("click", function() {
-    setTimeout(function() {
-      changeDisplay(vote, "none")
-      changeDisplay(results, "block")
-    }, 75)
-    vote_btn.className = "vote-btn"
-    results_btn.className = "results-btn active"
-  })
-  function changeDisplay(el, val) {
-    el.style.display = val
-  }
-</script>
-<!-- declare global variables for d3js -->
-<script>
+  var userVote = {{ question.userVote }}
   {% for answer in question.answers %}
     window.answer{{ loop.index }} = {{ answer.votes }}
   {% endfor %}
 </script>
 <script src="/lib/dropcap.min.js"></script>
-<!-- Enable drop cap -->
-<script>
-  var dropcap = document.querySelector("#drop-cap");
-  // media query event handler
-  if (matchMedia) {
-    var mq = window.matchMedia("(min-width: 768px)");
-    mq.addListener(WidthChange);
-    WidthChange(mq);
-  }
-  // media query change
-  function WidthChange(mq) {
-    if (mq.matches) {
-      // if window width is at least 768px, the drop cap spans the height of 3 lines
-      window.Dropcap.layout(dropcap, 3);
-    }
-    else {
-      // if window width is less than 768px, the drop cap spans the height of 2 lines
-      window.Dropcap.layout(dropcap, 2);
-    }
-  }
-</script>
+<!-- Drop cap settings -->
+<script src="/js/dropcap.js"></script>
+<!-- toggle display for vote and results section -->
+<script src="/js/survey-results.js"></script>
 <script src="/lib/d3pie.min.js"></script>
 <script src="/js/pie.js"></script>
 {% endblock %}
