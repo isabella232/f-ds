@@ -36,8 +36,24 @@ body{
 .jumbotron{
   background-color: #f8f8f8 !important;
 }
-/*^^^^^^^^^^^ end of override modifiers ^^^^^^^^^^^^^^^*/
 
+/* stlying bootstrap's pagination class */
+.pagination {
+  width: auto;
+  margin-top: 40px;
+}
+
+.pagination>li>a, .pagination>li>a:hover {
+  color: #333;
+}
+
+.pagination>.active>a, .pagination>.active>a:hover{
+  background-color: #333;
+  border-color: #333;
+}
+/*----O_o-*/
+
+/*^^^^^^^^^^^ end of override modifiers ^^^^^^^^^^^^^^^*/
 
 
 
@@ -922,3 +938,9 @@ input:-webkit-autofill {
   margin-top: 24px;
   margin-bottom: 36px;
 }
+
+/* Center boostrap's pagination class */
+.pagination-container{
+  text-align: center;
+}
+/*----O_o-*/
