@@ -76,7 +76,7 @@
 {% block script %}
 <!-- declare global variables -->
 <script>
-  var userVote = {{ question.userVote }}
+  var userVote = '{{ question.userVote }}'
   {% for answer in question.answers %}
     window.answer{{ loop.index }} = {{ answer.votes }}
   {% endfor %}
