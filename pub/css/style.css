@@ -36,6 +36,20 @@ body{
 .jumbotron{
   background-color: #f8f8f8 !important;
 }
+
+/* styling ion-icons*/
+.ion-ios-checkmark-outline, .ion-ios-pie-outline{
+  font-size: 32px;
+  line-height: 48px;
+  vertical-align: middle;
+  padding-left: 12px;
+}/*----O_o-*/
+
+/* Remove border radius in bootstrap's navbar class */
+.navbar{
+  border-radius: 0!important;
+}/*----O_o-*/
+
 /*^^^^^^^^^^^ end of override modifiers ^^^^^^^^^^^^^^^*/
 
 
@@ -772,17 +786,34 @@ input:-webkit-autofill {
   display:flex;
   justify-content:center;
   margin-bottom: 64px;
+  border-bottom: 1px solid #ddd;
+  width: 390px;
+  margin: 0 auto;
+  margin-bottom: 64px;
 }
 
 .active-section div{
   cursor: pointer;
-  width: 140px;
-  height: 48px;
+  width: 195px;
+  height: 52px;
   line-height: 48px;
   text-align: center;
   font-family: 'Georgia';
-  letter-spacing: 10px;
+  letter-spacing: 4px;
   text-transform: uppercase;
+}
+
+@media (max-width: 520px) {
+  .active-section div{
+    width: 140px;
+  }
+  .active-section{
+    width: 290px;
+  }
+  .ion-ios-checkmark-outline, .ion-ios-pie-outline {
+    font-size: 26px;
+    padding-left: 10px;
+  }
 }
 
 .vote-btn{
@@ -790,7 +821,8 @@ input:-webkit-autofill {
 }
 
 .active{
-  border-bottom: 1px solid #777;
+  border-bottom: 3px solid #333;
+  font-weight: 700;
 }
 
 .answer {
