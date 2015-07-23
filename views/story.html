@@ -1,18 +1,7 @@
 {% extends "base.html" %}
 
 {% block style %}
-<link rel="stylesheet" href="/lib/bbcode/xbbcode.css" type="text/css" media="all" />
-<script type="text/javascript" src="/lib/bbcode/xbbcode.js"></script>
-<script>
-  var result = XBBCODE.process({
-    text: "Some bbcode to process here",
-    removeMisalignedTags: false,
-    addInLineBreaks: false
-  });
-  console.log("Errors: " + result.error);
-  console.dir(result.errorQueue);
-  console.log(result.html);// the HTML form of your BBCode
-</script>
+<link rel="stylesheet" href="/lib/bbcode/xbbcode.css" type="text/css"/>
 {% endblock %}
 
 {% block page %}
@@ -30,7 +19,9 @@
       {% endif %}
     </form>
   </div>
-  <div class="jumbotron narrative"><p class="definition"><span id="drop-cap">{{ story.narrative.substring(0,1) }}</span><span>{{ story.narrative.substring(1) }}</span></p></div>
+  <div class="jumbotron narrative">
+    <div id="xbbcode"></div>
+  </div>
   <div class="jumbotron">
     <div class="active-section">
       <div class="vote-btn active">Vote<i class="ion-ios-checkmark-outline"></i></div>
@@ -101,6 +92,11 @@
 <script src="/js/dropcap.js"></script>
 <!-- toggle display for vote and results section -->
 <script src="/js/survey-results.js"></script>
+<script>
+  var narrative = {{story.narrative | safe}};
+</script>
+<script src="/lib/bbcode/xbbcode.js"></script>
+<script src="/js/renderbbcode.js"></script>
 <script src="/lib/d3pie.min.js"></script>
 <script src="/js/pie.js"></script>
 {% endblock %}

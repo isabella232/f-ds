@@ -513,8 +513,17 @@ var XBBCODE = (function() {
                 return "</li>";
             },
             restrictParentsTo: ["list","ul","ol"]
+        },
+        "youtube": {
+            openTag: function(params,content) {
+                return "<br><br><iframe width='100%' height='350px' src='https://www.youtube.com/embed/";
+            },
+            closeTag: function(params,content) {
+                return "' frameborder='0' allowfullscreen></iframe><br><br>";
+            }
         }
     };
+
 
     // create tag list and lookup fields
     function initTags() {

@@ -2,6 +2,7 @@
 
 var Async        = require('async')
   , Moment       = require('moment')
+  , util         = require('util')
 
 var API           = require('./config/backend/api')
   , Captcha       = require('./config/captcha')
@@ -154,6 +155,7 @@ function renderStory(req, res) {
               // trim leading and trailing whitespace in narrative
               story.narrative = story.narrative.trim()
               // prettify date
+              story.narrative = util.inspect(story.narrative)
               story.creationDate = Moment(story.creationDate).format('LL')
               story.storyId = storyId
               question.totalVotes = 0
