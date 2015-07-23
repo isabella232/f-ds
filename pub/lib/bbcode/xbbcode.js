@@ -225,7 +225,7 @@ var XBBCODE = (function() {
                     myUrl = "";
                 }
 
-                return '<img src="' + myUrl + '" />';
+                return "<img width='100%' src='" + myUrl + "' />";
             },
             closeTag: function(params,content) {
                 return '';
