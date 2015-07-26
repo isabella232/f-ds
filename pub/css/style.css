@@ -1089,6 +1089,7 @@ input:-webkit-autofill {
   margin-bottom: 36px;
 }
 
+
 /* bbcode styling for narrative section */
 /*#xbbcode{
   font-family: 'Georgia';
@@ -1096,3 +1097,90 @@ input:-webkit-autofill {
   line-height: 1.42;
 }*/
 /* END bbcode styling */
+
+/* TITLE BANNER */
+.header{
+  font-family: 'Georgia';
+}
+.header h1{
+  font-weight: 700;
+  font-size: 42px;
+  letter-spacing: -3px;
+  color: #444;
+  text-align: center;
+  cursor: pointer;
+}
+.header a{
+  color: #444;
+}
+.banner{
+  border-top: 1px solid #777;
+  border-bottom: 1px solid #777;
+}
+.banner div{
+  text-align: center;
+}
+
+@media (max-width: 420px){
+  .header h1{
+    font-size: 32px;
+  }
+}
+
+.header a:hover{
+  color: #50698D;
+}
+
+.header button:hover{
+
+}
+
+.cta{
+  position: relative;
+  text-align: center;
+  margin: 24px auto 0px;
+  border: 1px solid #bbb;
+  padding-bottom: 24px;
+  max-width: 500px;
+  padding: 12px 32px 24px;
+}
+.ion-ios-close-empty{
+  position: absolute;
+  right: 20px;
+  top: 8px;
+  font-size: 36px;
+  line-height: 36px;
+  color: #bbb;
+}
+
+.ion-ios-close-empty:hover{
+  color: #222;
+}
+.cta h3{
+  font-style: italic;
+  font-size: 36px;
+  letter-spacing: -1px;
+  line-height: 32px;
+  color: #444;
+}
+
+.cta p{
+  color: #333;
+}
+
+.cta button{
+  margin: 0 auto;
+  text-align: center;
+  border: 0;
+  text-transform: uppercase;
+  font-size: 12px;
+  background-color: #333;
+  color: white;
+  height: 50px;
+  width: 100px;
+}
+
+.cta button:hover{
+
+}
+/* END TITLE BANNER*/
