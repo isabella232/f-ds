@@ -48,8 +48,8 @@ body{
 }
 
 .pagination>.active>a, .pagination>.active>a:hover{
-  background-color: #333;
-  border-color: #333;
+  background-color: #666;
+  border-color: #666;
 }
 /*----O_o-*/
 
