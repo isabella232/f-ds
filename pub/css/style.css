@@ -1128,14 +1128,15 @@ input:-webkit-autofill {
 }
 
 .header a:hover{
-  color: #50698D;
+  color: #777;
 }
-
-.header button:hover{
-
+.header a:focus{
+  text-decoration: none;
+  outline: 0;
 }
 
 .cta{
+  font-family: 'Georgia';
   position: relative;
   text-align: center;
   margin: 24px auto 0px;
@@ -1143,6 +1144,9 @@ input:-webkit-autofill {
   padding-bottom: 24px;
   max-width: 500px;
   padding: 12px 32px 24px;
+  -webkit-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+  transform: translate(0px, 0px);
 }
 .ion-ios-close-empty{
   position: absolute;
@@ -1179,8 +1183,117 @@ input:-webkit-autofill {
   height: 50px;
   width: 100px;
 }
-
-.cta button:hover{
-
+.ion-ios-arrow-thin-up{
+  display: none;
+}
+.cta button:hover span{
+  display: none;
+}
+.cta button:hover .ion-ios-arrow-thin-up{
+  display: block;
+  font-size: 24px;
 }
 /* END TITLE BANNER*/
+
+/* FEED */
+.category{
+  font-family: 'georgia';
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+.category div:nth-child(1), .category div:nth-child(3){
+  border-bottom: 1px solid black;
+  flex-grow: 1;
+  border-top: 1px solid black;
+  height: 5px;
+}
+
+.category div:nth-child(2){
+  padding: 0 8px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #444;
+  letter-spacing: 0px;
+}
+
+.feed-item{
+  word-wrap: break-word;
+  font-family: 'Georgia';
+  margin: 0 auto;
+  border: 1px solid #555;
+  padding: 24px;
+  text-align: center;
+  margin-bottom: 8px;
+  width: 280px;
+}
+
+.feed-item h4{
+  font-weight: 700;
+}
+
+.feed-item h6{
+  font-style: italic;
+}
+
+.feed-item h6 span{
+  font-size: 12px;
+}
+
+.feed-author span:nth-child(1){
+  font-style: italic;
+}
+
+.feed-author span:nth-child(2){
+  text-transform: uppercase;
+  margin-left: 4px;
+  letter-spacing: 1px;
+}
+
+.feed-item div{
+  width: 60px;
+  border-bottom: 1px solid #666;
+  margin: 16px auto;
+}
+
+.feed-author{
+  margin-bottom: 3px;
+}
+.feed-item h5:nth-child(5){
+  margin:0;
+}
+.feed a{
+  color:#222;
+  display: inline-block;
+}
+
+.feed{
+  text-align: center;
+}
+
+.feed a:hover .feed-item h4{
+  color: #777;
+}
+
+.feed a:visited{
+  text-decoration: none;
+}
+
+.feed a:focus{
+  text-decoration: none;
+  outline: 0;
+}
+
+@media (min-width: 400px) {
+  .feed-item h4{
+    font-size: 25px;
+  }
+  .feed-item h6{
+    font-size: 14px;
+  }
+}
+
+/* END FEED */
