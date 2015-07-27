@@ -5,23 +5,13 @@
   <title>{% if story.title %}{{ story.title }}{% else %}DynamicStory{% endif %}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="DynamicStory.org is a database for,  sharing you opinion with the world." />
+  {% block style %}
+  {% endblock %}
   <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
   <link rel="stylesheet" href="/lib/ionicons.min.css">
-{% block style %}
-{% endblock %}
-
-
-<script src="/lib/bbcode/xbbcode.js"></script>
-<script src="/js/bbcode/renderbbcode.js"></script>
-
   <link rel="stylesheet" type="text/css" href="/css/style.css">
   <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
-  <script src='https://www.google.com/recaptcha/api.js'></script>
-
-<link rel="stylesheet" href="/lib/bbcode/xbbcode.css" type="text/css"/>
-
 </head>
 <body>
 
@@ -35,9 +25,8 @@
 
 {% block page %}
 {% endblock %}
-
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <script src="/lib/d3.v3.min.js"></script>
-
 {% block script %}
 {% endblock %}
 </body>

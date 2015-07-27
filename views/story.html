@@ -20,7 +20,7 @@
     </form>
   </div>
   <div class="jumbotron narrative">
-    <div id="xbbcode"></div>
+    <p class="definition"><span></span><span id="xbbcode"></span></p>
   </div>
   <div class="jumbotron">
     <div class="active-section">
@@ -87,16 +87,17 @@
     window.answer{{ loop.index }} = {{ answer.votes }}
   {% endfor %}
 </script>
-<script src="/lib/dropcap.min.js"></script>
-<!-- Drop cap settings -->
-<script src="/js/dropcap.js"></script>
-<!-- toggle display for vote and results section -->
-<script src="/js/survey-results.js"></script>
 <script>
   var narrative = {{story.narrative | safe}};
 </script>
 <script src="/lib/bbcode/xbbcode.js"></script>
 <script src="/js/renderbbcode.js"></script>
+<script src="/lib/dropcap.min.js"></script>
+<!-- Drop cap settings -->
+<script src="/js/dropcap.js"></script>
+<!-- toggle display for vote and results section -->
+<script src="/js/survey-results.js"></script>
+
 <script src="/lib/d3pie.min.js"></script>
 <script src="/js/pie.js"></script>
 {% endblock %}

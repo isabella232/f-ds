@@ -132,16 +132,17 @@ hr{
 }
 
 /*adjusting font-size according to the size of screen */
-.narrative p{
-    font-size: 24px;
+.narrative p, #xbbcode{
+    font-size: 20px;
+    line-height: 1.42;
 }
 @media screen and (max-width: 767px){
   .narrative {
     padding: 70px 20px;
   }
-  .narrative p{
+/*  .narrative p, #xbbcode{
     font-size: 20px;
-  }
+  }*/
 }/*---------O_o------*/
 
 /*prevents the navbar from breaking header*/
@@ -1087,3 +1088,11 @@ input:-webkit-autofill {
   margin-top: 24px;
   margin-bottom: 36px;
 }
+
+/* bbcode styling for narrative section */
+/*#xbbcode{
+  font-family: 'Georgia';
+  font-size: 23px;
+  line-height: 1.42;
+}*/
+/* END bbcode styling */
