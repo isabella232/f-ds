@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
 {% block page %}
+  {% if username %}
+  {% else %}
   <div class="container-fluid">
     <div class="cta">
       <i id="cta-close" class="ion-ios-close-empty"></i>
@@ -9,6 +11,7 @@
       <a href="/user/signup"><button><span>signup</span><i class="ion-ios-arrow-thin-up"></i></button></a>
     </div>
   </div>
+  {% endif %}
   <div class="container feed">
   <div class="category container-fluid">
     <div></div>

@@ -628,12 +628,12 @@ button:focus {
 }
 
 input:-webkit-autofill {
-  background-color: #333 !important;
-  -webkit-box-shadow: 0 0 0px 1000px #333333 inset !important;
-  -webkit-text-fill-color: #FFF !important;
+  background-color: #ddd !important;
+  -webkit-box-shadow: 0 0 0px 1000px #ddd inset !important;
+  -webkit-text-fill-color: #222 !important;
   -webkit-text-stroke: 0 !important;
-  -webkit-text: #fff !important;
-  currentcolor: #fff;
+  -webkit-text: #222 !important;
+  currentcolor: #222;
 }
 
 .modal-inner{
@@ -1271,15 +1271,16 @@ input:-webkit-autofill {
   height: 50px;
   width: 100px;
 }
-.ion-ios-arrow-thin-up{
+
+.ion-ios-arrow-thin-up, .ion-ios-arrow-thin-right{
   display: none;
 }
-.cta button:hover span{
+.cta button:hover span, .form button:hover span{
   display: none;
 }
-.cta button:hover .ion-ios-arrow-thin-up{
+.cta button:hover .ion-ios-arrow-thin-up, .form button:hover .ion-ios-arrow-thin-right{
   display: block;
-  font-size: 24px;
+  font-size: 28px;
 }
 /* END TITLE BANNER*/
 
@@ -1385,3 +1386,49 @@ input:-webkit-autofill {
 }
 
 /* END FEED */
+
+/* SIGNUP & LOGIN */
+.form{
+  font-family: 'georgia';
+}
+.form h1{
+  text-align: center;
+  font-style: italic;
+  font-size: 52px;
+  letter-spacing: -1px;
+}
+
+.form h5{
+  text-align: center;
+  width: 240px;
+  margin: 0 auto;
+  margin-bottom: 24px;
+  font-size: 18px;
+}
+
+.form form input{
+  width: 300px;
+  margin: auto;
+  background-color: transparent;
+  border: 1px solid #777;
+  color: #333;
+  font-size: 16px;
+  height: 42px;
+  padding: 12px 12px;
+  display: block;
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+.form form button{
+  background-color: #333;
+  display: block;
+  margin: 0 auto;
+  color: white;
+  height: 48px;
+  width: 300px;
+  border: 0;
+  margin-top: 28px;
+}
+
+/* END SIGNUP & LOGIN */

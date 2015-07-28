@@ -1,22 +1,13 @@
 {% extends "base.html" %}
 
-{% block style %}
-<style>
-  html{
-    background: #444;
-  }
-</style>
-{% endblock %}
-
 {% block page %}
-<div class="static-welcome">
-  <form id="login" action="/user/login" method="POST">
-    <div class="modal-title">Login</div>
-    <div class="label">Username or Email</div>
-    <input name="usernameEmail" type="text" title="This is the username or email of your account" maxlength="254" required>
-    <div class="label">Password</div>
-    <input name="password" type="password" maxlength="512" required>
-    <button type="submit"><div class="modal-btn">Login<span class="glyphicon glyphicon-ok-circle"></span></div></button>
+<div class="container-fluid form">
+  <h1>Login</h1>
+  <h5>Welcome back. Dynamic stories await you.</h5>
+  <form action="/user/login" method="POST">
+    <input name="usernameEmail" type="text" title="This is the username or email of your account" maxlength="254" required placeholder="Email or Username">
+    <input name="password" type="password" maxlength="512" required placeholder="Password">
+    <button><span>ENTER</span><i class="ion-ios-arrow-thin-right"></i></button>
   </form>
 </div>
 {% endblock %}
