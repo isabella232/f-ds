@@ -1330,6 +1330,8 @@ input:-webkit-autofill {
 
 .feed-item h6 span{
   font-size: 12px;
+  margin-top: 8px;
+  display: block;
 }
 
 .feed-author span:nth-child(1){

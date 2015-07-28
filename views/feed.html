@@ -18,17 +18,17 @@
     <div>Latest</div>
     <div></div>
   </div>
-  <!-- {% for story in feed %} -->
+  {% for story in feed %}
   <div>
     <a href="/story/{{ story.story }}"><div class="feed-item">
       <h4>{{ story.title }}</h4>
-      <h6>How much do you trust the media?<br/><span>Total Votes: {{ story.totalVotes }}</span></h6>
+      <h6>{{ story.questionTitle }}<br/><span>Total Votes: {{ story.totalVotes }}</span></h6>
       <div></div>
-      <h5 class="feed-author"><span>by</span><span>brandon</span></h5>
+      <h5 class="feed-author"><span>by</span><span>author</span></h5>
       <h5>{{ story.creationDate }}</h5>
     </div></a>
   </div>
-  <!-- {% endfor %} -->
+  {% endfor %}
   </div>
   {% block script %}
     <script src="/js/cta.js"></script>
