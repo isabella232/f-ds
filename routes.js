@@ -526,7 +526,7 @@ function feedbackCreate(req, res) {
 
 module.exports = function(router) {
 
-  router.get('/',                   renderIfNoToken('welcome.html', '/feed'))
+  router.get('/',                   renderFeed)
   router.get('/user/profile',       renderIfToken  ('profile.html', '/'))
   router.get('/user/login',         renderIfNoToken('login.html',   '/feed'))
   router.get('/user/signup',        renderIfNoToken('signup.html',  '/feed'))

@@ -3,10 +3,10 @@
 {% block page %}
   <div class="container-fluid">
     <div class="cta">
-      <i class="ion-ios-close-empty"></i>
+      <i id="cta-close" class="ion-ios-close-empty"></i>
       <h3>Articles with surveys.</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae alias earum dolore perspiciatis, voluptates, sapiente ratione eum non illum nam.</p>
-      <button><span>signup</span><i class="ion-ios-arrow-thin-up"></i></button>
+      <p>Our mission is to create a more effective way to learn about the world around us. We believe pairing surveys with thought provoking content will help promote more dynamic stories.</p>
+      <a href="/user/signup"><button><span>signup</span><i class="ion-ios-arrow-thin-up"></i></button></a>
     </div>
   </div>
   <div class="container feed">
@@ -28,14 +28,7 @@
   <!-- {% endfor %} -->
   </div>
   {% block script %}
-  <script>
-    var close = document.getElementsByClassName('ion-ios-close-empty')[0]
-    var cta = document.getElementsByClassName('cta')[0]
-    close.onclick = function() {
-      cta.style.transform = "translate(-700px, 0px)"
-      setTimeout(function () { cta.style.display = "none" }, 600)
-    }
-  </script>
+    <script src="/js/cta.js"></script>
   {% endblock %}
 {% endblock %}
 
