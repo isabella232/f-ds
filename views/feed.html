@@ -21,8 +21,8 @@
   {% for story in feed %}
   <div>
     <a href="/story/{{ story.story }}"><div class="feed-item">
-      <h4 class="hyphenate text">{{ story.title }}</h4>
-      <h6 class="hyphenate text">{{ story.questionTitle }}<br/><span>Total Votes: {{ story.totalVotes }}</span></h6>
+      <h4>{{ story.title }}</h4>
+      <h6>{{ story.questionTitle }}<br/><span>Total Votes: {{ story.totalVotes }}</span></h6>
       <div></div>
       <h5 class="feed-author"><span>by</span><span>author</span></h5>
       <h5>{{ story.creationDate }}</h5>
@@ -32,10 +32,6 @@
   </div>
   {% block script %}
     <script src="/js/cta.js"></script>
-    <script src="/lib/hyphenator.min.js"></script>
-    <script>
-      Hyphenator.run();
-    </script>
   {% endblock %}
 {% endblock %}
 
