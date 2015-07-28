@@ -13,7 +13,7 @@
     <hr class="title-bar"/>
     <form action="/story/{{ story.storyId }}/delete" method="POST">
       {% if story.author == username %}
-      <button class="pull-right btn btn-default btn-xs">
+      <button class="btn btn-default btn-xs delete">
         Delete
       </button>
       {% endif %}
