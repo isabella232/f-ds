@@ -1,20 +1,7 @@
 {% extends "base.html" %}
 
 {% block style %}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <link rel="stylesheet" href="/lib/bbcode/minified/themes/square.min.css" type="text/css" media="all" />
-<script type="text/javascript" src="/lib/bbcode/minified/jquery.sceditor.bbcode.min.js"></script>
-<script>
-$(function() {
-    // Replace all textarea's
-    // with SCEditor
-    $("textarea").sceditor({
-        plugins: "bbcode",
-        toolbar:"image,youtube|source",
-        style: "minified/jquery.sceditor.square.min.css"
-    });
-});
-</script>
 {% endblock %}
 
 {% block page %}
@@ -64,4 +51,20 @@ $(function() {
     <button class="center-block blank-space btn btn-primary btn-lg" type="submit"><span class="glyphicon glyphicon-ok"></span>&nbsp;Finish Story!</button>
   </form>
 </div>
+{% endblock %}
+
+{% block script %}
+<script src="/lib/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/lib/bbcode/minified/jquery.sceditor.bbcode.min.js"></script>
+<script>
+$(function() {
+    // Replace all textarea's
+    // with SCEditor
+    $("textarea").sceditor({
+        plugins: "bbcode",
+        toolbar:"image,youtube|source",
+        style: "minified/jquery.sceditor.square.min.css"
+    });
+});
+</script>
 {% endblock %}
