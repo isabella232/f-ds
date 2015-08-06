@@ -28,9 +28,9 @@
       <div class="results-btn">Results<i class="ion-ios-pie-outline"></i></div>
     </div>
     <div class="question-title">{{ question.title }}</div>
-    <div class="interactive-section" style="position:relative; transition: all 1000ms ease-in-out">
+    <div class="interactive-section">
       <div class="results-section">
-        <hr class="title-bar" style="margin:0 auto; margin-top:48px;"/>
+        <hr class="title-bar" />
         {% if question.totalVotes > 0 %}
         <div id="pie" class="pie"></div>
         {% endif %}
@@ -48,7 +48,7 @@
         </div>
       </div>
       <div class="vote-section">
-        <hr class="title-bar" style="margin:0 auto; margin-bottom:48px;"/>
+        <hr class="title-bar" />
         <div>
           {% for answer in question.answers %}
           <form class="answer-options" action="/story/{{ story.storyId }}/vote/{{ loop.index - 1 }}" method="POST">

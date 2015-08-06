@@ -273,15 +273,6 @@ a:hover{
   line-height: 40px;
   width: 40px;
   border-radius: 50%;
-/*	float:left;
-	width:20%;
-	border-radius:1em 0em 0em 1em;
-	padding:.1em 1em;
-	text-align:center;
-	margin-left:.9em;
-	border:1px solid #ccc;
-  font-weight: 300;
-  color:white;*/
 }
 .votes-storyView{
   float:left;
@@ -392,7 +383,7 @@ a:hover{
 
 .title-bar{
   width: 20%;
-  margin: 48px auto;
+  margin:48px auto;
 }
 
 #drop-cap{
@@ -816,7 +807,6 @@ input:-webkit-autofill {
     display: none;
   }
 }
-
 /*^^^*/
 
 /* *************** survey section styling **************** */
@@ -1126,15 +1116,6 @@ input:-webkit-autofill {
   margin-top: 24px;
   margin-bottom: 36px;
 }
-
-
-/* bbcode styling for narrative section */
-/*#xbbcode{
-  font-family: 'Georgia';
-  font-size: 23px;
-  line-height: 1.42;
-}*/
-/* END bbcode styling */
 
 /* TITLE BANNER */
 .header{
