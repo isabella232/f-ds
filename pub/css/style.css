@@ -1175,6 +1175,10 @@ input:-webkit-autofill {
     display: inline-block;
     padding-right: 8px;
     cursor: pointer;
+    font-size: 23px;
+    position: absolute;
+    left: 16px;
+    top: 32px;
   }
 }
 @media (min-width: 611px){
@@ -1187,10 +1191,13 @@ input:-webkit-autofill {
   .header h1{
     font-size: 32px;
   }
+  .ion-drag{
+    top: 24px;
+  }
 }
 
 .ion-drag:hover{
-  font-size: larger;
+  font-size: 26px;
 }
 
 #menu{
