@@ -1321,18 +1321,21 @@ input:-webkit-autofill {
 }
 
 .feed-item{
+  background-color: #f3f3f3;
   word-wrap: break-word;
   font-family: 'Georgia';
   margin: 0 auto;
-  border: 1px solid #555;
+  border: 1px solid #999;
   padding: 24px;
   text-align: center;
-  margin-bottom: 8px;
+  margin-bottom: 18px;
   width: 280px;
 }
 
 .feed-item h4{
+  color:#333;
   font-weight: 700;
+  margin-bottom:18px;
 }
 
 .feed-item h6{
