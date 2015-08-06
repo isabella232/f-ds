@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>{% if story.title %}{{ story.title }}{% else %}DynamicStory{% endif %}</title>
+  <title>{% if story.title %}{{ story.title }} | {% endif %}DynamicStory</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="DynamicStory.org is a database for,  sharing you opinion with the world." />
   {% block style %}
@@ -14,8 +14,6 @@
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
 </head>
 <body>
-
-
 {% block noheader %}
   {% include "partials/header.html" %}
 {% endblock %}
