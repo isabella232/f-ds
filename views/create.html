@@ -56,15 +56,5 @@
 {% block script %}
 <script src="/lib/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="/lib/bbcode/minified/jquery.sceditor.bbcode.min.js"></script>
-<script>
-$(function() {
-    // Replace all textarea's
-    // with SCEditor
-    $("textarea").sceditor({
-        plugins: "bbcode",
-        toolbar:"image,youtube|source",
-        style: "minified/jquery.sceditor.square.min.css"
-    });
-});
-</script>
+<script src="/js/sceditor-plugin.js"></script>
 {% endblock %}
