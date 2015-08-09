@@ -14,9 +14,8 @@
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
 </head>
 <body>
-{% block noheader %}
-  {% include "partials/header.html" %}
-{% endblock %}
+
+{% include "partials/header.html" %}
 
 {% include "partials/flashmessage.html" %}
 {% include "partials/flasherror.html" %}
@@ -26,4 +25,5 @@
 
 {% block script %}
 {% endblock %}
+
 </body>
