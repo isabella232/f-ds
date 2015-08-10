@@ -7,23 +7,25 @@ if ( xbbcode.innerHTML[0] != "<" && xbbcode.innerHTML[0] != "[" ){
   document.getElementsByClassName('definition')[0].childNodes[0].innerHTML = narrative.substr(0,1).toUpperCase()
   document.getElementsByClassName('definition')[0].childNodes[0].id = 'drop-cap'
 } else if (xbbcode.innerHTML[0] === '<') { // otherwise, implement the dropcap with this hack
-  // create new span element to store the dropcap and append to the beginning of xbbcode
+
   function isAlpha(xStr){
     var regEx = /^[a-zA-Z0-9\-]+$/;
     return xStr.match(regEx);
   }
 
-  var firstLetter = ""
+  var firstLetter
   var firstTextBlock
 
+  // Find the first child node in xbbcode with alphanumeric text
   for (var i = 0; i < xbbcode.childNodes.length; i++) {
-    if ( isAlpha(xbbcode.childNodes[i].textContent.substr(0,1)) ) {
-      var firstTextBlock = xbbcode.childNodes[i]
-      firstLetter = xbbcode.childNodes[i].textContent.substr(0,1).toUpperCase()
+    if ( isAlpha(xbbcode.childNodes[i].textContent.trim().substr(0,1)) ) {
+      firstTextBlock = xbbcode.childNodes[i]
+      firstLetter = xbbcode.childNodes[i].textContent.trim().substr(0,1).toUpperCase()
       break
     }
   }
 
+  // create new span element to store the dropcap and append to the beginning of the first block of text
   var newSpan = document.createElement('SPAN')
   var firstLetterNode= document.createTextNode(firstLetter)
   newSpan.appendChild(firstLetterNode)
