@@ -6,22 +6,6 @@
 
 {% block page %}
 <div class="container">
-  <div class="overlay">
-    <div class="modal-custom form">
-      <h1>Signup</h1>
-      <h5>Create a free account to vote on surveys and start writing your own articles.</h5>
-      <form action="/user/signup" method="POST">
-        <input name="username" type="text" pattern=".{3,}" title="This will be the username for your account; it must be at least 3 characters long" maxlength="20" required placeholder="Username">
-        <input name="email" type="email" title="This will be the email for your account" maxlength="254" required placeholder="Email">
-        <input id="password" name="password" type="password" pattern=".{5,}" title="This will be the password for your account; it must be at least 5 characters" maxlength="512" required placeholder="Password">
-        <input id="confirmPassword" name="confirmPassword" type="password" pattern=".{5,}" title="Please retype the password that you input above; this must be at least 5 characters" maxlength="512" required placeholder="Confirm Password">
-        <!-- CAPTCHA GOES HERE -->
-        <!-- <div class="g-recaptcha static" data-sitekey="6LeTKgkTAAAAAHtRSES98qz4aa7FOBN0uOy532L1"></div> -->
-        <button><span>FINISH</span><i class="ion-ios-arrow-thin-right"></i></button>
-      </form>
-    </div>
-  </div>
-
   <div class="jumbotron">
     <h1 class="title hyphenate text">{{ story.title }}</h1>
     <h3 class="author">{{ story.author }}</h3>
@@ -96,28 +80,6 @@
 </div>
 {% endblock %}
 {% block script %}
-<script type="text/javascript">
-  var voteForm = document.getElementById('vote-form-wrapper')
-  var user = '{{ username }}'
-  var overlay = document.getElementsByClassName('overlay')[0]
-  if (!user) {
-    for (var i = 0; i < voteForm.getElementsByTagName('form').length; i++) {
-      // disable vote buttons if user is not logged in
-      voteForm.getElementsByTagName('button')[i].disabled = true
-
-      // display modal when a user who is not logged in clicks on vote buttons
-      // var btn+i = voteForm.getElementsByClassName('answer-options')[i]
-      // btn[i].onclick = function() {
-      //   overlay.style.display = 'flex';
-      // }
-    }
-  }
-  overlay.addEventListener('click', function(e) {
-    if (e.target.className === 'overlay') {
-      overlay.style.display = 'none';
-    }
-  })
-</script>
 <!-- hyphenate text -->
 <script src="/lib/hyphenator.min.js"></script>
 <script>
