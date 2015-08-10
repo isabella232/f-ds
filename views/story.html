@@ -13,6 +13,14 @@
 {% endblock %}
 
 {% block page %}
+
+<!-- LOGIN/SIGNUP MODAL -->
+<div class="overlay">
+  <div class="modal-custom form">
+    {% include "partials/signup.html" %}
+  </div>
+</div>
+
 <div class="container">
   {% if story.author == username %}
   <div class=" author-tools">

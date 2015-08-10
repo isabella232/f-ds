@@ -21,7 +21,7 @@ body{
 /* min width for containers to prevent maintain legibility */
 .container{
   min-width: 320px;
-  max-width: 720px;
+  margin-top: 30px;
 }/*----O_o-*/
 
 /* styling bootstrap alert class */
@@ -1003,6 +1003,8 @@ input:-webkit-autofill {
   font-style: italic;
   font-size: 52px;
   letter-spacing: -1px;
+  margin-top: 0;
+  padding-top: 20px;
 }
 
 .form h5{
@@ -1040,6 +1042,7 @@ input:-webkit-autofill {
   border: 0;
   margin-top: 28px;
 }
+/* END SIGNUP & LOGIN */
 
 /* Center boostrap's pagination class */
 .pagination-container{
@@ -1198,3 +1201,63 @@ input:-webkit-autofill {
 .change-pass-form h1{
   font-size: 36px;
 }
+
+/* MODAL */
+.overlay{
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  position:fixed;
+  background: rgba(0,0,0,.5);
+  cursor:pointer;
+  display: none;
+  z-index: 1;
+  overflow: auto;
+}
+
+.modal-custom{
+  margin: 0 auto;
+  cursor: auto;
+  width: 280px;
+  height: 500px;
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+@media (max-height: 565px) {
+  .modal-custom{
+    position: static;
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
+    display: block;
+    margin:30px auto;
+  }
+}
+@media(max-width: 320px) {
+  .form form button{
+    width: 240px;
+  }
+  .form form input{
+    width: 240px;
+  }
+}
+
+@media (min-width: 400px) {
+  .modal-custom{
+    width: 315px;
+  }
+  .form form button{
+    width: 270px;
+  }
+  .form form input{
+    width: 270px;
+  }
+}
+/* END MODAL */

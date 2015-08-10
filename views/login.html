@@ -2,13 +2,7 @@
 
 {% block page %}
 <div class="container-fluid form">
-  <h1>Login</h1>
-  <h5>Welcome back. Dynamic stories await you.</h5>
-  <form action="/user/login" method="POST">
-    <input name="usernameEmail" type="text" title="This is the username or email of your account" maxlength="254" required placeholder="Email or Username">
-    <input name="password" type="password" maxlength="512" required placeholder="Password">
-    <button><span>ENTER</span><i class="ion-ios-arrow-thin-right"></i></button>
-  </form>
+  {% include "partials/login.html" %}
 </div>
 {% endblock %}
 
