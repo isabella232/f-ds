@@ -36,6 +36,10 @@ body{
   background-color: #f8f8f8 !important;
 }
 
+.container .jumbotron{
+  padding: 40px 10px;
+}
+
 /* styling ion-icons*/
 .ion-ios-checkmark-outline, .ion-ios-pie-outline{
   font-size: 32px;
@@ -229,6 +233,15 @@ a:hover{
   margin: 48px 0;
 }
 
+@media(max-width: 560px) {
+  .title{
+    margin: 32px 0;
+  }
+  .title-bar{
+    margin: 36px auto;
+  }
+}
+
 .author{
   display: block;
   font-weight: 400;
@@ -254,7 +267,7 @@ a:hover{
 }
 
 .title-bar{
-  width: 20%;
+  width: 68px;
   margin:48px auto;
 }
 
@@ -371,9 +384,9 @@ input:-webkit-autofill {
   text-align:left;
   padding-left: 8px;
   padding-right:8px;
-  font-size:24px;
+  font-size: 18px;
 }
-.results-header {
+/*.results-header {
   font-family: 'Georgia';
   text-align: center;
 }
@@ -384,6 +397,9 @@ input:-webkit-autofill {
 
 .results-header div:nth-child(2){
   font-size: 14px;
+}*/
+.results-section .title-bar{
+  margin-bottom: 0;
 }
 
 .data{
@@ -398,13 +414,13 @@ input:-webkit-autofill {
 }
 
 .percent{
-  font-size:57px;
-  line-height: 57px;
+  font-size: 32px;
+  line-height: 32px;
 }
 
 .vote-count{
-  font-size:20px;
-  line-height: 20px;
+  font-size: 14px;
+  line-height: 14px;
   text-align: right;
 }
 
@@ -417,30 +433,6 @@ input:-webkit-autofill {
   margin: 0 auto;
   margin-bottom: 48px;
   line-height: 40px;
-}
-
-@media (max-width: 560px) {
-  .dataPoint{
-    width: 300px;
-  }
-  .rank{
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    border-radius: 50%;
-    font-size: 12px;
-  }
-  .percent {
-    font-size: 32px;
-    line-height: 32px;
-  }
-  .answer{
-    font-size: 18px;
-  }
-  .vote-count{
-    font-size: 14px;
-    line-height: 14px;
-  }
 }
 
 @media (max-width: 320px) {
@@ -614,7 +606,7 @@ input:-webkit-autofill {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
-  width: 500px;
+  width: 300px;
   text-align:center;
   color:#555;
   -webkit-box-align: center;
@@ -633,10 +625,12 @@ input:-webkit-autofill {
   -ms-flex-order:1;
   background: #333;
   color: white;
-  font-size:22px;
-  line-height: 40px;
-  width: 40px;
   border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 50%;
+  font-size: 12px;
 }
 .votes-storyView{
   float:left;
@@ -681,7 +675,6 @@ input:-webkit-autofill {
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
 }
-
 /* *************** END survey button styling **************** */
 
 
