@@ -16,7 +16,10 @@
 
 <!-- LOGIN/SIGNUP MODAL -->
 <div class="overlay">
-  <div class="modal-custom form">
+  <div class="modal-custom form" id="login-modal">
+    {% include "partials/login.html" %}
+  </div>
+  <div class="modal-custom form" id="signup-modal">
     {% include "partials/signup.html" %}
   </div>
 </div>
@@ -67,10 +70,10 @@
       </div>
       <div class="vote-section">
         <hr class="title-bar" />
-        <div id="vote-form-wrapper">
+        <div>
           {% for answer in question.answers %}
           <form class="answer-options" action="/story/{{ story.storyId }}/vote/{{ loop.index - 1 }}" method="POST">
-              <button class="survey-button" type="submit">
+              <button class="survey-button" type="button">
                 <div class="circle">
                   <span>
                     {% if loop.index == 1 %}
@@ -117,13 +120,19 @@
 {% block script %}
 <!-- declare global variables -->
 <script>
+  var user = '{{ username }}'
+  var narrative = {{story.narrative | safe}};
   var userVote = '{{ question.userVote }}'
   {% for answer in question.answers %}
     window.answer{{ loop.index }} = {{ answer.votes }}
   {% endfor %}
 </script>
+<!-- login/signup modal -->
+<script src="/js/modal.js"></script>
+<!-- hyphenate text -->
+<script src="/lib/hyphenator.min.js"></script>
 <script>
-  var narrative = {{story.narrative | safe}};
+  Hyphenator.run();
 </script>
 <!-- drop cap + bbcode -->
 <script src="/lib/dropcap.min.js"></script>

@@ -939,6 +939,7 @@ input:-webkit-autofill {
 
 .feed{
   text-align: center;
+  margin-top: 0;
 }
 
 .feed a:hover .feed-item h4{
@@ -999,6 +1000,7 @@ input:-webkit-autofill {
   font-family: 'georgia';
 }
 .form h1{
+  position: relative;
   text-align: center;
   font-style: italic;
   font-size: 52px;
@@ -1231,7 +1233,7 @@ input:-webkit-autofill {
 }
 
 @media (max-height: 565px) {
-  .modal-custom{
+  #signup-modal{
     position: static;
     -webkit-transform: none;
     -ms-transform: none;
@@ -1240,7 +1242,19 @@ input:-webkit-autofill {
     margin:30px auto;
   }
 }
-@media(max-width: 320px) {
+
+@media (max-height: 415px) {
+  #login-modal{
+    position: static;
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
+    display: block;
+    margin:30px auto;
+  }
+}
+
+@media(max-width: 399px) {
   .form form button{
     width: 240px;
   }
@@ -1260,4 +1274,38 @@ input:-webkit-autofill {
     width: 270px;
   }
 }
+
+.modal-close{
+  display: none;
+}
+.overlay .modal-close{
+  display: block;
+}
+
+#login-modal{
+  display: none;
+}
+
+#login-modal:target{
+  display: block;
+}
+
+#login-modal:target + #signup-modal{
+  display: none;
+}
+
+#signup-modal:target{
+  display: block;
+}
+
+#signup-modal:target + #login-modal{
+  display: none;
+}
+
+#login-modal{
+  height: 350px;
+}
 /* END MODAL */
+
+
+

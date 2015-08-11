@@ -1,8 +1,16 @@
 {% extends "base.html" %}
 
 {% block page %}
+
 <div class="container-fluid form">
   {% include "partials/login.html" %}
 </div>
+
+{% block script %}
+<script>
+document.getElementsByClassName('form')[0].getElementsByTagName('a')[0].setAttribute('href', '/user/signup')
+</script>
+{% endblock %}
+
 {% endblock %}
 
