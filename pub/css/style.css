@@ -1421,6 +1421,38 @@ input:-webkit-autofill {
   }
 }
 
+@media (min-width: 460px) {
+  .feed-item {
+    width:440px;
+    padding:38px;
+  }
+}
+
+@media (min-width: 760px) {
+  .feed-item {
+    width:700px;
+    padding:50px 50px;
+    margin-bottom:32px;
+  }
+  .category {
+    margin-top:35px;
+    margin-bottom:35px;
+  }
+  .cta {
+    margin-top:32px;
+  }
+  .feed-item h6 {
+    margin-top:22px;
+  }
+  .header h1{
+    margin:30px auto;
+  }
+  .banner {
+    padding-top:4px;
+    padding-bottom:4px;
+  }
+}
+
 /* END FEED */
 
 /* SIGNUP & LOGIN */
