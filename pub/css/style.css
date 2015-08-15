@@ -131,9 +131,10 @@ hr{
 
 /*adjusting font-size according to the size of screen */
 .narrative p, #xbbcode{
-    font-size: 20px;
-    line-height: 1.42;
+  font-size: 20px !important;
+  line-height: 32px !important;
 }
+
 @media screen and (max-width: 767px){
   .narrative {
     padding: 40px 20px !important;
@@ -698,9 +699,17 @@ input:-webkit-autofill {
 /* END CAPTCHA styling */
 
 /* TITLE BANNER */
+
+@media (max-width: 767px){
+  .header, .category {
+    padding: 0 16px;
+  }
+}
+
 .header{
   font-family: 'Georgia';
   text-align: center;
+/*  margin: 0 31px;*/
 }
 .header h1{
   font-weight: 700;
@@ -738,11 +747,11 @@ input:-webkit-autofill {
     cursor: pointer;
     font-size: 23px;
     position: absolute;
-    left: 16px;
+    left: 24px;
     top: 32px;
   }
 }
-@media (min-width: 611px){
+@media (min-width: 751px){
   #menu{
     display: none !important;
   }
@@ -889,7 +898,18 @@ input:-webkit-autofill {
 .category{
   font-family: 'georgia';
   text-align: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   justify-content: center;
   align-items: center;
   margin-top: 24px;
@@ -897,6 +917,9 @@ input:-webkit-autofill {
 }
 .category div:nth-child(1), .category div:nth-child(3){
   border-bottom: 1px solid black;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
   flex-grow: 1;
   border-top: 1px solid black;
   height: 5px;

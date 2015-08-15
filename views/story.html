@@ -20,7 +20,7 @@
     </form>
   </div>
   <div class="jumbotron narrative">
-    <p class="definition"><span></span><span id="xbbcode"></span></p>
+    <span id="xbbcode" class="definition"></span>
   </div>
   <div class="jumbotron">
     <div class="active-section">
@@ -95,13 +95,13 @@
 <script>
   var narrative = {{story.narrative | safe}};
 </script>
-<script src="/lib/bbcode/xbbcode.js"></script>
-<script src="/js/renderbbcode.js"></script>
+<!-- drop cap + bbcode -->
 <script src="/lib/dropcap.min.js"></script>
-<!-- Drop cap settings -->
-<script src="/js/dropcap.js"></script>
-<!-- toggle display for vote and results section -->
+<script src="/lib/bbcode/xbbcode.js"></script>
+<script src="/js/bbcode-drop.js"></script>
+<!-- toggle survey and results -->
 <script src="/js/survey-results.js"></script>
+<!-- d3 pie -->
 <script src="/lib/d3.v3.min.js"></script>
 <script src="/lib/d3pie.min.js"></script>
 <script src="/js/pie.js"></script>
