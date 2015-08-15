@@ -528,6 +528,7 @@ module.exports = function(router) {
 
   router.get('/',                   renderFeed)
   router.get('/user/profile',       renderIfToken  ('profile.html', '/'))
+  router.get('/user/change-pass',   renderIfToken  ('change-pass.html', '/'))
   router.get('/user/login',         renderIfNoToken('login.html',   '/feed'))
   router.get('/user/signup',        renderIfNoToken('signup.html',  '/feed'))
   router.get('/user/activate',      renderStatic   ('activation.html'))
