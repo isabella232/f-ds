@@ -995,11 +995,8 @@ input:-webkit-autofill {
   margin: 0 auto;
   width: 250px;
 }
-.form{
-  margin:30px auto;
-  font-family: 'georgia';
-}
-.form h1{
+
+#login-modal h1, #signup-modal h1{
   position: relative;
   text-align: center;
   font-style: italic;
@@ -1009,7 +1006,7 @@ input:-webkit-autofill {
   padding-top: 20px;
 }
 
-.form h5{
+#login-modal h5, #signup-modal h5{
   text-align: center;
   width: 240px;
   margin: 0 auto;
@@ -1017,8 +1014,8 @@ input:-webkit-autofill {
   font-size: 18px;
 }
 
-.form form input{
-  width: 300px;
+#login-modal input, #signup-modal input{
+  width: 270px;
   margin: auto;
   background-color: transparent;
   border: 1px solid #777;
@@ -1034,13 +1031,13 @@ input:-webkit-autofill {
   -webkit-appearance: none;
 }
 
-.form form button{
+#login-modal button, #signup-modal button{
   background-color: #333;
   display: block;
   margin: 0 auto;
   color: white;
   height: 48px;
-  width: 300px;
+  width: 270px;
   border: 0;
   margin-top: 28px;
 }
@@ -1205,6 +1202,8 @@ input:-webkit-autofill {
 }
 
 /* MODAL */
+
+/* Modal background overlay */
 .overlay{
   left: 0;
   top: 0;
@@ -1218,19 +1217,34 @@ input:-webkit-autofill {
   overflow: auto;
 }
 
+/* Custom modal class, not to be confused with bootstrap's default '.modal' class */
 .modal-custom{
   margin: 0 auto;
   cursor: auto;
-  width: 280px;
-  height: 500px;
-  background-color: #fff;
   position: absolute;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+  font-family: 'georgia';
 }
+
+#signup-modal{
+  width: 315px;
+  height: 500px;
+  background-color: #fff;
+}
+
+#login-modal{
+  width: 315px;
+  height: 350px;
+  background-color: #fff;
+}
+
+/** Switch from position fixed to static when screen height is less
+ *  than the modal height to allow for scrolling.
+ */
 
 @media (max-height: 565px) {
   #signup-modal{
@@ -1243,6 +1257,10 @@ input:-webkit-autofill {
   }
 }
 
+/** Switch from position fixed to static when screen height is less
+ *  than the modal height to allow for scrolling.
+ */
+
 @media (max-height: 415px) {
   #login-modal{
     position: static;
@@ -1254,38 +1272,20 @@ input:-webkit-autofill {
   }
 }
 
-@media(max-width: 399px) {
-  .form form button{
-    width: 240px;
-  }
-  .form form input{
-    width: 240px;
-  }
-}
-
-@media (min-width: 400px) {
-  .modal-custom{
-    width: 315px;
-  }
-  .form form button{
-    width: 270px;
-  }
-  .form form input{
-    width: 270px;
-  }
-}
-
 .modal-close{
   display: none;
 }
+/* only display modal close button if a modal overlay is present */
 .overlay .modal-close{
   display: block;
 }
 
+/* signup modal is displayed and login modal is hidden by default */
 #login-modal{
   display: none;
 }
 
+/* When user targets login modal, show it and hide the signup modal */
 #login-modal:target{
   display: block;
 }
@@ -1294,6 +1294,7 @@ input:-webkit-autofill {
   display: none;
 }
 
+/* When user targets signup modal, show it and hide the login modal */
 #signup-modal:target{
   display: block;
 }
@@ -1302,9 +1303,6 @@ input:-webkit-autofill {
   display: none;
 }
 
-#login-modal{
-  height: 350px;
-}
 /* END MODAL */
 
 

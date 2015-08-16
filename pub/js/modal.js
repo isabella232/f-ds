@@ -11,12 +11,13 @@ var loginClose = document.getElementsByClassName('modal-close')[0]
 for (var i = 0; i < numOfAnswers ; i++) {
 
   buttons.push(voteForm.getElementsByTagName('button')[i])
+  // disable vote buttons if user is not logged in
   user ? buttons[i].setAttribute('type', 'submit') : buttons[i].setAttribute('type', 'button')
 
   if (!user) {
     buttons[i].onclick = function() {
-    overlay.style.display = 'block';
-    document.getElementsByTagName('body')[0].style.overflow = "hidden"
+      overlay.style.display = 'block';
+      document.getElementsByTagName('body')[0].style.overflow = "hidden"
     }
   }
 }
