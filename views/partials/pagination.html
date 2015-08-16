@@ -1,0 +1,76 @@
+
+{% if lastPage > 1 %}
+<nav class="pagination-container">
+  <ul class="pagination">
+    {% if page == 1 %}
+    <li class="disabled">
+      <a aria-label="First">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    {% else %}
+    <li>
+      <a href="/feed" aria-label="First">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    {% endif %}
+
+    {% if lastPage - page <= 0 %}
+      {% if page - 4 >= 1 %}
+      <li><a href="?page={{ page - 4 }}">{{ page - 4 }}</a></li>
+      {% endif %}
+    {% endif %}
+
+    {% if lastPage - page <= 1 %}
+      {% if page - 3 >= 1 %}
+      <li><a href="?page={{ page - 3 }}">{{ page - 3 }}</a></li>
+      {% endif %}
+    {% endif %}
+
+    {% if page - 2 >= 1 %}
+    <li><a href="?page={{ page - 2 }}">{{ page - 2 }}</a></li>
+    {% endif %}
+
+    {% if page - 1 >= 1 %}
+    <li><a href="?page={{ page - 1 }}">{{ page - 1 }}</a></li>
+    {% endif %}
+
+    <li class="active"><a>{{ page }}</a></li>
+
+    {% if page + 1 <= lastPage %}
+    <li><a href="?page={{ page + 1 }}">{{ page + 1 }}</a></li>
+    {% endif %}
+
+    {% if page + 2 <= lastPage %}
+    <li><a href="?page={{ page + 2 }}">{{ page + 2 }}</a></li>
+    {% endif %}
+
+    {% if page <= 2 %}
+      {% if page + 3 <= lastPage %}
+      <li><a href="?page={{ page + 3 }}">{{ page + 3 }}</a></li>
+      {% endif %}
+    {% endif %}
+
+    {% if page <= 1 %}
+      {% if page + 4 <= lastPage %}
+      <li><a href="?page={{ page + 4 }}">{{ page + 4 }}</a></li>
+      {% endif %}
+    {% endif %}
+
+    {% if page == lastPage %}
+    <li class="disabled">
+      <a aria-label="Last">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+    {% else %}
+    <li>
+      <a href="?page={{lastPage}}" aria-label="Last">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
+{% endif %}
