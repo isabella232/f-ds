@@ -1,7 +1,7 @@
 // render bbcode
 var result = XBBCODE.process({
   text: narrative
-});
+})
 
 // preserve line breaks
 result.html = result.html.replace(/^/gm, '<p>').replace(/$/gm, '</p>')
@@ -35,15 +35,15 @@ node.textContent = node.textContent.substr(firstCharLength)
 window.Dropcap.layout(document.querySelector("#drop-cap"), 3, 3);
 
 function firstTextNode(node) {
-  var textContent = node.textContent;
-  if (textContent.trim() === '') { return null; }
-  var children = node.childNodes;
+  var textContent = node.textContent
+  if (textContent.trim() === '') { return null }
+  var children = node.childNodes
   // Text nodes have a text content and have no children.
   // Non-text nodes that have a textContent must have at least one descendant
   // that is a text node, so their child count would be > 0.
-  if (children.length === 0) { return node; }
+  if (children.length === 0) { return node }
   for (var i = 0; i < children.length; i++) {
-    var child = firstTextNode(children[i]);
-    if (child) { return child; }
+    var child = firstTextNode(children[i])
+    if (child) { return child }
   }
 }

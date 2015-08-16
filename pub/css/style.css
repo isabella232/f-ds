@@ -13,7 +13,7 @@ html{
 }
 body{
   height: 100%;
-  background: url("http://subtlepatterns.com/patterns/cloth_alike.png") repeat scroll 0% 0% transparent;
+  background: url("/img/cloth_alike.png") repeat scroll 0% 0% transparent;
 }
 /*----O_o-*/
 
@@ -341,7 +341,7 @@ input:-webkit-autofill {
   margin-bottom: 64px;
 }
 
-.active-section div{
+.active-section div {
   cursor: pointer;
   width: 195px;
   height: 52px;

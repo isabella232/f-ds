@@ -1,16 +1,10 @@
 {% extends "base.html" %}
 
-{% block style %}
-  <link rel="stylesheet" type="text/css" href="/css/modal.css">
-{% endblock %}
-
 {% block page %}
-{% include "partials/change-pword.html" %}
-
 <div class="container">
   <div class="jumbotron">
     <div class="col-sm-4">
-      <img src="/img/avatar.png" alt="avatar here"  class=" profile-img center-block">
+      <img src="/img/avatar.png" alt="avatar here" class=" profile-img center-block">
     </div>
     <div class="col-sm-8 menu">
       <h2 class="username">{{ username }}</h2>
@@ -27,7 +21,6 @@
     &nbsp;
   </div>
 </div>
-{% include "partials/change-pword.html" %}
 {% endblock %}
 
 
