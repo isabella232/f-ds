@@ -120,8 +120,8 @@ function makeReq(method, urlPattern, reqKeys, resKeys) {
  */
 module.exports =
   { feed:
-    { get: makeReq('GET', '/feed',
-      [], ['feed'])
+    { get: makeReq('GET', '/feed/:page',
+      ['page'], ['feed', 'lastPage'])
     }
   , feedback:
     { create: makeReq('POST', '/feedback',

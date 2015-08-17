@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block page %}
+<<<<<<< HEAD
   {% if username %}
   {% else %}
   <div class="container-fluid">
@@ -9,6 +10,9 @@
       <h3>Articles with surveys.</h3>
       <p>Our mission is to create a more effective way to learn about the world around us. We believe pairing content with surveys will help generate more understanding for everyone.</p>
       <a href="/user/signup"><button><span>signup</span><i class="ion-ios-arrow-thin-up"></i></button></a>
+
+  {% include "partials/pagination.html" %}
+
     </div>
   </div>
   {% endif %}
@@ -33,6 +37,8 @@
   {% block script %}
     <script src="/js/cta.js"></script>
   {% endblock %}
+  {% include "partials/pagination.html" %}
+>>>>>>> master
 {% endblock %}
 
 

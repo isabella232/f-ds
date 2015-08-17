@@ -35,6 +35,7 @@ body{
 .jumbotron{
   background-color: #f8f8f8 !important;
 }
+<<<<<<< HEAD
 
 .container .jumbotron{
   padding: 40px 10px;
@@ -55,6 +56,24 @@ body{
 
 /*^^^^^^^^^^^ end of override modifiers ^^^^^^^^^^^^^^^*/
 
+
+/* stlying bootstrap's pagination class */
+.pagination {
+  width: auto;
+  margin-top: 40px;
+}
+
+.pagination>li>a, .pagination>li>a:hover {
+  color: #333;
+}
+
+.pagination>.active>a, .pagination>.active>a:hover{
+  background-color: #666;
+  border-color: #666;
+}
+/*----O_o-*/
+
+/*^^^^^^^^^^^ end of override modifiers ^^^^^^^^^^^^^^^*/
 
 
 
@@ -1103,4 +1122,8 @@ input:-webkit-autofill {
   margin-top: 28px;
 }
 
-/* END SIGNUP & LOGIN */
+/* Center boostrap's pagination class */
+.pagination-container{
+  text-align: center;
+}
+/*----O_o-*/

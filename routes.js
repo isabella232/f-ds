@@ -62,9 +62,12 @@ function renderActivationWithId(req, res) {
 
 
 function renderFeed(req, res) {
+
+  var page = parseInt(req.query.page) || 1
+
   // Get the list of stories.
   API.feed.get(
-    {}
+    { page: page }
   , req.signedCookies.token
   , function(err, clientErr, message, feed) {
     if (err) {
@@ -77,6 +80,11 @@ function renderFeed(req, res) {
       console.trace('Error: client error on feed: ' + clientErr)
       res.render('500.html')
     } else {
+
+      if (page > feed.lastPage) {
+        res.redirect('/feed')
+      }
+
       var questionIds = []
       for (var i = 0; i < feed.feed.length; i++) {
         questionIds.push(feed.feed[i].question)
@@ -118,7 +126,13 @@ function renderFeed(req, res) {
               feed.feed[i].creationDate = Moment(feed.feed[i].creationDate).format('LL')
               feed.feed[i].questionTitle = results[i].title
             }
-            res.render('feed.html', { feed: feed.feed })
+
+            res.render('feed.html',
+              { feed    : feed.feed
+              , page    : page
+              , lastPage: feed.lastPage
+              }
+            )
           }
         }
       )
