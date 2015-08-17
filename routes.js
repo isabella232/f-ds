@@ -2,6 +2,7 @@
 
 var Async        = require('async')
   , Moment       = require('moment')
+  , util         = require('util')
 
 var API           = require('./config/backend/api')
   , Captcha       = require('./config/captcha')
@@ -123,6 +124,7 @@ function renderFeed(req, res) {
               }
               feed.feed[i].totalVotes = totalVotes
               feed.feed[i].creationDate = Moment(feed.feed[i].creationDate).format('LL')
+              feed.feed[i].questionTitle = results[i].title
             }
 
             res.render('feed.html',
@@ -165,11 +167,25 @@ function renderStory(req, res) {
               console.trace('Error: client error on question: ' + clientErr)
               res.render('404.html', { error: clientErr })
             } else {
+              // trim leading and trailing whitespace in narrative
+              story.narrative = story.narrative.trim()
+              story.narrative = util.inspect(story.narrative)
+              // prettify date
               story.creationDate = Moment(story.creationDate).format('LL')
               story.storyId = storyId
               question.totalVotes = 0
               for (var i = 0; i < question.answers.length; i++) {
                 question.totalVotes += question.answers[i].votes
+              }
+              // Calculate percentage of total votes for each answer option
+              if (question.totalVotes > 0){
+                for (var i = 0; i < question.answers.length; i++) {
+                  question.answers[i].percent = Math.round(question.answers[i].votes/question.totalVotes*100);
+                }
+              } else {
+                question.answers.forEach(function(el, i, arr) {
+                  arr[i].percent = 0;
+                })
               }
               res.render(
                 'story.html'
@@ -524,8 +540,9 @@ function feedbackCreate(req, res) {
 
 module.exports = function(router) {
 
-  router.get('/',                   renderIfNoToken('welcome.html', '/feed'))
+  router.get('/',                   renderFeed)
   router.get('/user/profile',       renderIfToken  ('profile.html', '/'))
+  router.get('/user/change-pass',   renderIfToken  ('change-pass.html', '/'))
   router.get('/user/login',         renderIfNoToken('login.html',   '/feed'))
   router.get('/user/signup',        renderIfNoToken('signup.html',  '/feed'))
   router.get('/user/activate',      renderStatic   ('activation.html'))

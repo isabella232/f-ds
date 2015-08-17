@@ -1,4 +1,3 @@
-
 /*custom override changes to prexisting tags and classes*/
 
 /* Improve legibility for general text */
@@ -6,20 +5,15 @@ p {
   font-weight: 300 !important;
 }
 
-/* Overwrite default font-family for bootstrap's btn class */
-.btn {
-  font-family: 'Open Sans', sans-serif;
-}/*----O_o-*/
-
 /* Overwrite default height of body and html to 100% */
 html{
   height: 100%;
   min-width: 320px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Georgia'
 }
 body{
   height: 100%;
-  background: url("http://subtlepatterns.com/patterns/cloth_alike.png") repeat scroll 0% 0% transparent;
+  background: url("/img/cloth_alike.png") repeat scroll 0% 0% transparent;
 }
 /*----O_o-*/
 
@@ -28,14 +22,40 @@ body{
   min-width: 320px;
 }/*----O_o-*/
 
-/* remove bottom margin for flash message alert */
+/* styling bootstrap alert class */
 .alert{
   margin-bottom: 0;
+  position: relative;
+  font-family: 'Georgia';
+  margin: 0 15px;
+  border-radius: 0;
+  border: 0;
 }/*----O_o-*/
 
 .jumbotron{
   background-color: #f8f8f8 !important;
 }
+<<<<<<< HEAD
+
+.container .jumbotron{
+  padding: 40px 10px;
+}
+
+/* styling ion-icons*/
+.ion-ios-checkmark-outline, .ion-ios-pie-outline{
+  font-size: 32px;
+  line-height: 48px;
+  vertical-align: middle;
+  padding-left: 12px;
+}/*----O_o-*/
+
+/* Remove border radius in bootstrap's navbar class */
+.navbar{
+  border-radius: 0!important;
+}/*----O_o-*/
+
+/*^^^^^^^^^^^ end of override modifiers ^^^^^^^^^^^^^^^*/
+
 
 /* stlying bootstrap's pagination class */
 .pagination {
@@ -61,11 +81,6 @@ body{
 /*modifed the <hr> to be visable in a jumbotron*/
 hr{
   border-color:#bbb;
-}/*----O_o-*/
-
-/*adding a larger default height to textarea (for story-page)*/
-.tall{
-  height:15em !important;
 }/*----O_o-*/
 
 /*adds margin-top to any element*/
@@ -126,56 +141,24 @@ hr{
   margin: 60px 0
 }/*----O_o-*/
 
-
-/** question title on story page **/
-#question-title{
-  font-size: 32px;
-  font-weight: 300;
-  color: #222;
-  margin: 48px 0 96px;
-  text-align: center;
-}
-@media screen and (max-width: 768px) {
-  #question-title{
-      margin: 48px 0 78px;
-  }
-}
-/*----O_o-*/
-
 /*^^^^^^^^^^^ end of general modifiers ^^^^^^^^^^^^^^^*/
 
 .narrative{
-  white-space: pre-wrap;
   padding: 30px 20px;
   font-family: 'Georgia';
 }
 
 /*adjusting font-size according to the size of screen */
-.narrative p{
-    font-size: 30px;
+.narrative p, #xbbcode{
+  font-size: 20px !important;
+  line-height: 32px !important;
 }
+
 @media screen and (max-width: 767px){
   .narrative {
-    padding: 70px 20px;
-  }
-  .narrative p{
-    font-size: 23px;
+    padding: 40px 20px !important;
   }
 }/*---------O_o------*/
-
-/*prevents the navbar from breaking header*/
-.navbar-collapse.collapse {
-  display: block!important;
-}
-.navbar-nav>li, .navbar-nav {
-  float: left !important;
-}
-.navbar-nav.navbar-right:last-child {
-  margin-right: -15px !important;
-}
-.navbar-right {
-  float: right!important;
-}/*----O_o-*/
 
 /*override the defaults settings of <a> on the feed*/
 a .jumbotron{
@@ -189,7 +172,6 @@ a:hover{
   text-decoration: none;
 }/*----O_o-*/
 
-
 /* allows break-word used to keep troll-text* out of feed page
 (*troll-text:text that does not fit in the jumbotron) */
 .jumbotron{
@@ -202,90 +184,17 @@ a:hover{
   word-wrap: break-word;
 }/*----O_o-*/
 
-/*story-page fix for the survey answer options*/
-.index-number{
-	float:left;
-	padding:0px 7px 0px 7px;
-	border-right:1px solid #bbb;
-	border-bottom:1px solid #bbb;
-	border-top:1px solid #bbb;
-	color:#222;
-	width:48px;
-	margin: 0px;
-  padding-right: 7px;
-  border: 0;
-  border-right: 1px solid #222;
-  font-size: 26px;
-  font-weight: 700;
-}
-
-.pie-results{
-  margin-top: 36px;
-}
-
-#dataPoint1 .rank{
-  background-color: rgba(40, 58, 144, .8);
-}
-#dataPoint2 .rank{
-  background-color: rgba(215, 130, 30, .8);
-}
-#dataPoint3 .rank{
-  background-color: rgba(109, 84, 182, .8);
-}
-#dataPoint4 .rank{
-  background-color: rgba(50, 167, 121, .8);
-}
-#dataPoint5 .rank{
-  background-color: rgba(196, 96, 106, .8);
-}/* ---O_o----*/
-
-/* centering the Pie chart*/
-.pie{
-  width:270px;
-  position: relative;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-}/*----O_o-*/
-
-
-/*This is for the data table which shows the results on the story-page*/
-.dataPoint{
-  margin:0 auto;
-  width:95%;
-  height:2em;
-  margin-top:.4em;
-}
-.rank{
-	float:left;
-	width:20%;
-	border-radius:1em 0em 0em 1em;
-	padding:.1em 1em;
-	text-align:center;
-	margin-left:.9em;
-	border:1px solid #ccc;
-  font-weight: 300;
-  color:white;
-}
-.votes-storyView{
-  float:left;
-  width:70%;
-  margin-left:.3em;
-  border-radius:0em 1em 1em 0em;
-  padding:.1em 1em;
-  background-color:white;
-  text-align:center;
-  border:1px solid #ccc;
-}
-.dataPoint:last-child{
-  margin-bottom:1em;
-}/*----O_o-*/
-
 /*adding a small amount of space in between each answer option on the create story-page*/
 .input-group{
   margin-top:5px;
 }/*----O_o-*/
+
+.narrative-create{
+  height:30em !important;
+}
+.sceditor-container{
+  width:100% !important;
+}
 
 /*making the profile-page avatar a smaller size*/
 .profile-img{
@@ -325,6 +234,16 @@ a:hover{
 }/*----O_o-*/
 
 /*Story title styling*/
+
+.delete{
+  font-family: 'georgia';
+  background-color: transparent;
+  border-radius: 0;
+  height: 36px;
+  width: 75px;
+  margin: 0 auto;
+  display: block;
+}
 .title{
   text-align: center;
   font-family: 'Georgia';
@@ -334,6 +253,15 @@ a:hover{
   margin: 48px 0;
 }
 
+@media(max-width: 560px) {
+  .title{
+    margin: 32px 0;
+  }
+  .title-bar{
+    margin: 36px auto;
+  }
+}
+
 .author{
   display: block;
   font-weight: 400;
@@ -341,7 +269,8 @@ a:hover{
   text-transform: uppercase;
   letter-spacing: 12px;
   font-size: 18px;
-  margin: 18px 0;
+  line-height: 26px;
+  margin: 14.5px 0;
   font-family: 'Georgia';
 }
 
@@ -358,8 +287,8 @@ a:hover{
 }
 
 .title-bar{
-  width: 20%;
-  margin: 48px auto;
+  width: 68px;
+  margin:48px auto;
 }
 
 #drop-cap{
@@ -380,221 +309,7 @@ a:hover{
   }
 }/*----O_o-*/
 
-/**
- *  Modal changes
- *
- *
- *
- */
-
-.modal--fade .modal-inner, .modal--show .modal-inner {
-  width: auto;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  top: 50%;
-  margin-left: 0;
-}
-
-.modal--fade .modal-close:before, .modal--show .modal-close:before {
-  background-color: #000;
-  opacity: .6;
-}
-
-.modal--fade .modal-close:after, .modal--show .modal-close:after {
-    display: none;
-}
-.modal-content{
-  border-radius: 0 !important;
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
-}
-
-
-/* Landing Page */
-
-.landing {
-  padding: 10px;
-  background-color: #013976;
-}
-
-.landing h1, .landing h2, .landing h3, .landing h4, .landing h5{
-  margin:0;
-}
-
-.landing h3{
-  font-weight: 300;
-  padding: 20px 24px 170px 24px;
-  color:#FFF;
-  font-size: 18px;
-}
-
-.landing h2{
-  padding: 0 36px;
-}
-
-.article{
-  display: inline-block;
-  height: 65px;
-  width: 50px;
-  background-color: #222;
-  text-align: center;
-}
-
-.survey{
-  display: inline-block;
-  background-color: #222;
-  width: 65px;
-  height: 65px;
-  border-radius: 50%;
-  text-align: center;
-}
-
-.graphic-label{
-  width: 43px;
-  display: inline-block;
-  text-align: center;
-  color: #FFF;
-  font-weight: 100;
-  font-size: 12px;
-  letter-spacing: 2px;
-}
-
-.article-label{
-  margin-right: 42px;
-}
-
-.landing-btns-modal, .landing-btns-static{
-  margin-top: 170px;
-  text-align: center;
-  line-height: 24px;
-}
-
-.landing-btns-modal a:nth-child(1), .landing-btns-static a:nth-child(1){
-  color: #FFF;
-}
-.landing-btns-modal a, .landing-btns-static a{
-  color: #AAA;
-}
-
-.login-btn, .signup-btn, .enter-btn{
-  font-weight: 300;
-  display: block;
-  color: #FFF;
-  font-size: 24px;
-  margin: 6px;
-}
-.login-btn a, .signup-btn a{
-  color: #BBB;
-}
-
-.plus{
-  color: #FFF;
-  line-height: 42px;
-  height: 42px;
-  text-align: center;
-  display: inline-block;
-  width: 43px;
-  font-size: 24px;
-  font-weight: 100;
-}
-
-.graphic{
-  width: 129px;
-  margin: 0 auto;
-}
-
-.about-vid{
-  text-align: center;
-  margin-top: 50px;
-}
-
-.about-vid h2{
-  text-align: center;
-  font-size: 28px;
-  color: #FFF;
-  line-height: 36px;
-  margin: 0 auto;
-  font-weight: 100;
-  letter-spacing: 4px;
-}
-
-.about-vid h2:first-of-type{
-  width: 50%;
-  margin: 0 auto;
-  padding: 20px 0 0 0;
-}
-
-.about-vid h5{
-  display: inline-block;
-  color: #FFF;
-  padding: 50px 0;
-  margin: 0 auto;
-  width: 180px;
-  line-height: 20px;
-  font-size: 16px;
-  letter-spacing: 2px;
-  font-weight: 100;
-  text-align: left;
-}
-
-.footer{
-  text-align: center;
-  font-size: 16px;
-  line-height: 18px;
-  color: #FFF;
-  padding: 36px;
-  font-weight: 100;
-  letter-spacing: 1px;
-}
-
-.address, .name{
-  margin-top:18px;
-}
-
-.name span{
-  color: #FFF;
-  border-bottom: 1px solid #fff;
-}
-
-.copyright{
-  margin-top: 54px;
-}
-
-.login-btn:hover, .signup-btn:hover, .enter-btn:hover{
-  color: #FFF;
-  font-size: 28px;
-}
-
-.about-vid iframe{
-  display: block;
-  margin: 0 auto;
-  padding-top: 100px;
-  margin-bottom: 100px;
-}
-
-.right-quote{
-  position: relative;
-  transform: rotate(180deg);
-  -webkit-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-}
-
-.left-quote{
-  position: relative;
-  top: 43px;
-  vertical-align: top;
-}
-
-.seperator{
-  width: 75%;
-  max-width: 300px;
-  margin: 0 auto;
-  border-top: 1px solid white;
-}
-/*^^^^^^^^^^^^^^^^^^^^^  END Landing Page ^^^^^^^^^^^^^^^^^^^^^*/
-
-
-/* Modals */
+/* Input styling */
 
 input:focus,
 select:focus,
@@ -603,144 +318,16 @@ button:focus {
   outline: none;
 }
 
-
-.modal--fade .modal-close:before, .modal--show .modal-close:before{
-  z-index: -1;
-  height: 100%;
-}
-
 input:-webkit-autofill {
-  background-color: #333 !important;
-  -webkit-box-shadow: 0 0 0px 1000px #333333 inset !important;
-  -webkit-text-fill-color: #FFF !important;
+  background-color: #ddd !important;
+  -webkit-box-shadow: 0 0 0px 1000px #ddd inset !important;
+  -webkit-text-fill-color: #222 !important;
   -webkit-text-stroke: 0 !important;
-  -webkit-text: #fff !important;
-  currentcolor: #fff;
+  -webkit-text: #222 !important;
+  currentcolor: #222;
 }
 
-.modal-inner{
-  border-radius: 0 !important;
-  background: #222 !important;
-  max-height: none !important;
-}
-
-.modal-content{
-  border: 0 !important;
-  background: #222 !important;
-  max-height: none !important;
-}
-
-#login input, #signup input, #change-pword input{
-  display: block;
-  clear: both;
-  width: 100%;
-  background-color: #333333;
-  padding: 4px 8px;
-  text-align: left;
-  color: #FFF;
-  border: 0;
-  font-size: 22px;
-  padding: 6px 8px;
-}
-
-.label{
-  display: block;
-  color: #AAA;
-  text-align: left;
-  font-size: 16px;
-  font-weight: 300;
-  padding-left: 0;
-}
-
-.label:nth-child(4), .label:nth-child(6), .label:nth-child(8){
-  margin-top: 8px;
-}
-
-.modal-title{
-  color: #FFF;
-  text-align: left;
-  padding-bottom: 50px;
-  font-size: 24px;
-}
-
-#login .glyphicon, #signup .glyphicon, #change-pword .glyphicon{
-  margin-left: 8px;
-  position: relative;
-  top: 3px;
-}
-
-#login form, #signup form, #change-pword form{
-  width: 260px;
-  margin: 0 auto;
-}
-
-#login button, #signup button, #change-pword button{
-  padding: 0;
-  border: 0;
-  height: 40px;
-  width: 100%;
-  font-weight: 400;
-  background-color: #CCC;
-  color: #222;
-  font-size: 18px;
-  height: 40px;
-  line-height: 40px;
-  margin: 16px 0;
-}
-
-#login button:hover, #signup button:hover, #change-pword button:hover{
-  background-color: #FFF;
-  color: #222;
-}
-
-.close-btn{
-  display: inline-block;
-  float: right;
-  color: #AAA;
-}
-
-.close-btn:hover{
-  color:#FFF;
-}
-
-@media screen and (max-width: 767px) {
-    .landing-btns-modal{
-        display: none;
-    }
-    .landing-btns-static{
-        display: block;
-    }
-}
-
-@media screen and (min-width: 768px) {
-    .landing-btns-modal{
-        display: block;
-    }
-    .landing-btns-static{
-        display: none;
-    }
-}
-/*^^^^^^^^^^^^^^^^^^^^^  END Modals ^^^^^^^^^^^^^^^^^^^^^*/
-
-
-/* Static Login & Signup Pages */
-.static-welcome{
-  background: #444;
-  width: 100%;
-  height: 100%;
-  padding: 16px;
-  min-width: 240px;
-}
-.static-welcome form{
-  background: #444;
-  max-width: 400px;
-  margin: 32px auto;
-}
-
-.static-welcome input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0px 1000px #666 inset;
-}
-/*^^^^^^^^^^^  END Static Login & Signup Pages ^^^^^^^^^^^^^^^*/
+/*^^^^^^^^^^^^^^^^^^^^^  END Input Styling ^^^^^^^^^^^^^^^^^^^^^*/
 
 
 @media (max-width: 767px) {
@@ -750,42 +337,133 @@ input:-webkit-autofill {
 	}
 	.jumbotron {
 		border-radius: 0 !important;
+    background-color:#f3f3f3;
+    padding:10px;
 	}
 }
 
-/* transparent btn to override bootstrap default */
-.transparent-btn{
-  background-color: transparent;
-  border: 0;
-  color: #9d9d9d !important;
-  line-height: 20px;
-  padding: 10px 10px;
-}
-
-.transparent-btn:hover{
-  color: #FFF !important;
-}
-
-@media (min-width: 768px) {
-  .transparent-btn{
-    padding: 15px 10px;
-  }
-}
-
-/* temporary fix until a hamburger menu is implemented*/
-@media (max-width: 380px) {
-  #logout-btn-header{
-    display: none;
-  }
-}
-
-/*^^^*/
-
 /* *************** survey section styling **************** */
-#question-title{
+.active-section{
+  display:flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack:center;
+  -webkit-justify-content:center;
+  -ms-flex-pack:center;
+  justify-content:center;
+  margin-bottom: 64px;
+  border-bottom: 1px solid #ddd;
+  width: 390px;
+  margin: 0 auto;
+  margin-bottom: 64px;
+}
+
+.active-section div {
+  cursor: pointer;
+  width: 195px;
+  height: 52px;
+  line-height: 48px;
+  text-align: center;
   font-family: 'Georgia';
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 520px) {
+  .active-section div{
+    width: 140px;
+  }
+  .active-section{
+    width: 290px;
+  }
+  .ion-ios-checkmark-outline, .ion-ios-pie-outline {
+    font-size: 26px;
+    padding-left: 10px;
+  }
+}
+
+.vote-btn{
+  margin-right: 18px;
+}
+
+.active{
+  border-bottom: 3px solid #333;
+  font-weight: 700;
+}
+
+.answer {
+  order:2;
+  -webkit-box-ordinal-group:3;
+  -webkit-order:2;
+  -ms-flex-order:2;
+  width:50%;
+  margin: 0 16px;
+  line-height:1;
+  text-align:left;
+  padding-left: 8px;
+  padding-right:8px;
+  font-size: 18px;
+}
+/*.results-header {
+  font-family: 'Georgia';
+  text-align: center;
+}
+
+.results-header div:nth-child(1){
   font-size: 32px;
 }
+
+.results-header div:nth-child(2){
+  font-size: 14px;
+}*/
+.results-section .title-bar{
+  margin-bottom: 0;
+}
+
+.data{
+  font-size:36px;
+  order:3;
+  -webkit-box-ordinal-group:4;
+  -webkit-order:3;
+  -ms-flex-order:3;
+  text-align:left;
+  font-weight:400;
+  margin-left:auto;
+}
+
+.percent{
+  font-size: 32px;
+  line-height: 32px;
+}
+
+.vote-count{
+  font-size: 14px;
+  line-height: 14px;
+  text-align: right;
+}
+
+.question-title{
+  font-family: 'Georgia';
+  text-align: center;
+  font-weight: 600;
+  font-size: 36px;
+  width: 300px;
+  margin: 0 auto;
+  margin-bottom: 48px;
+  line-height: 40px;
+}
+
+@media (max-width: 320px) {
+  .dataPoint{
+    width:100%;
+  }
+  .question-title{
+    width: 290px;
+  }
+}
+
 .circle{
   color: white;
   display: inline-block;
@@ -798,17 +476,15 @@ input:-webkit-autofill {
   float: left;
 }
 .circle span{
-  position: relative;
-      left: -1px;
-      display: block;
-    text-align: center;
+  display: block;
+  text-align: center;
 }
 .answer-text{
-    width: 80%;
-    display: inline-block;
-    text-align: center;
-    font-size: 20px;
-    line-height: 30px;
+  width: 80%;
+  display: inline-block;
+  text-align: center;
+  font-size: 20px;
+  line-height: 30px;
 }
 
 @media screen and (max-width: 380px){
@@ -822,7 +498,7 @@ input:-webkit-autofill {
   display: none;
 }
 .survey-button{
-  font-family: Georgia, serif;
+  font-family: 'Georgia';
   margin: auto;
   padding: 10px;
   border: 1px solid #777;
@@ -831,7 +507,11 @@ input:-webkit-autofill {
   background-color: transparent;
   display: block;
   width: 100%;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer !important;
 }
+
 .survey-button .circle{
   color: white;
 }
@@ -848,6 +528,16 @@ input:-webkit-autofill {
   display: block;
 }
 
+.answer-options{
+  width: 300px;
+  margin: 0 auto;
+}
+
+@media (min-width: 750px) {
+  .answer-options{
+    width: 478px;
+  }
+}
 
 .answer-options:nth-child(1) .circle{
   background-color: #283a90;
@@ -857,6 +547,8 @@ input:-webkit-autofill {
 }
 .answer-options:nth-child(1) .survey-button:hover{
   background-color: #283a90;
+  border: 1px solid #283a90;
+  border-bottom: 6px solid #182357;
 }
 .answer-options:nth-child(1) .survey-button:hover .circle{
   background-color: white;
@@ -872,6 +564,8 @@ input:-webkit-autofill {
 }
 .answer-options:nth-child(2) .survey-button:hover{
   background-color: #d7821e;
+  border: 1px solid #d7821e;
+  border-bottom: 6px solid #9e5f16;
 }
 .answer-options:nth-child(2) .survey-button:hover .circle{
   background-color: white;
@@ -886,6 +580,8 @@ input:-webkit-autofill {
 }
 .answer-options:nth-child(3) .survey-button:hover{
   background-color: #6d54b6;
+  border: 1px solid #6d54b6;
+  border-bottom: 6px solid #4b397d;
 }
 .answer-options:nth-child(3) .survey-button:hover .circle{
   background-color: white;
@@ -900,6 +596,8 @@ input:-webkit-autofill {
 }
 .answer-options:nth-child(4) .survey-button:hover{
   background-color: #32a679;
+  border: 1px solid #32a679;
+  border-bottom: 6px solid #216e4f;
 }
 .answer-options:nth-child(4) .survey-button:hover .circle{
   background-color: white;
@@ -914,14 +612,93 @@ input:-webkit-autofill {
 }
 .answer-options:nth-child(5) .survey-button:hover{
   background-color: #c4606a;
+  border: 1px solid #c4606a;
+  border-bottom: 6px solid #8c454c;
 }
 .answer-options:nth-child(5) .survey-button:hover .circle{
   background-color: white;
   color: #c4606a;
 }
 
+.dataPoint{
+  padding:0;
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  width: 300px;
+  text-align:center;
+  color:#555;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-famiy: Georgia;
+  border-top:1px solid #CCC;
+  margin: 0 auto;
+  padding: 8px 0;
+}
+.rank{
+  order:1;
+  -webkit-box-ordinal-group:2;
+  -webkit-order:1;
+  -ms-flex-order:1;
+  background: #333;
+  color: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 50%;
+  font-size: 12px;
+}
+.votes-storyView{
+  float:left;
+  width:70%;
+  margin-left:.3em;
+  border-radius:0em 1em 1em 0em;
+  padding:.1em 1em;
+  background-color:white;
+  text-align:center;
+  border:1px solid #ccc;
+}
+.dataPoint:first-child{
+  border-top: 0;
+}
+
+.pie-results{
+  margin-top: 6px;
+  font-family: 'Georgia';
+}
+
+#dataPoint1 .rank{
+  background-color: rgba(40, 58, 144, .8);
+}
+#dataPoint2 .rank{
+  background-color: rgba(215, 130, 30, .8);
+}
+#dataPoint3 .rank{
+  background-color: rgba(109, 84, 182, .8);
+}
+#dataPoint4 .rank{
+  background-color: rgba(50, 167, 121, .8);
+}
+#dataPoint5 .rank{
+  background-color: rgba(196, 96, 106, .8);
+}
+
+.pie{
+  width:270px;
+  position: relative;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
 /* *************** END survey button styling **************** */
 
+
+/* CAPTCHA styling */
 .g-recaptcha{
   transform-origin: 0 0;
   -webkit-transform-origin: 0 0;
@@ -937,6 +714,412 @@ input:-webkit-autofill {
   -webkit-transform:scale(1.33);
   margin-top: 24px;
   margin-bottom: 36px;
+}
+/* END CAPTCHA styling */
+
+/* TITLE BANNER */
+
+@media (max-width: 767px){
+  .header, .category {
+    padding: 0 16px;
+  }
+}
+
+.header{
+  font-family: 'Georgia';
+  text-align: center;
+/*  margin: 0 31px;*/
+}
+.header h1{
+  font-weight: 700;
+  font-size: 42px;
+  letter-spacing: -3px;
+  color: #444;
+  text-align: center;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+}
+.header a{
+  color: #444;
+  transition: all 100ms ease-in-out;
+}
+.banner{
+  border-top: 1px solid #777;
+  border-bottom: 1px solid #777;
+  text-align: center;
+  position: relative;
+}
+.banner div{
+  display: inline-block;
+}
+.ion-drag{
+  display: none;
+}
+@media (max-width: 750px){
+  .banner span span{
+    display: none;
+  }
+  .ion-drag{
+    display: inline-block;
+    padding-right: 8px;
+    cursor: pointer;
+    font-size: 23px;
+    position: absolute;
+    left: 24px;
+    top: 32px;
+  }
+}
+@media (min-width: 751px){
+  #menu{
+    display: none !important;
+  }
+}
+
+@media (max-width: 420px){
+  .header h1{
+    font-size: 32px;
+  }
+  .ion-drag{
+    top: 24px;
+  }
+}
+
+.ion-drag:hover{
+  font-size: 26px;
+}
+
+#menu{
+  text-align: left;
+  font-weight: 700;
+  display: block;
+  color: #444;
+  display: none;
+}
+
+#menu div:nth-child(2), #menu div:nth-child(4), #menu div:nth-child(6), #menu div:nth-child(8){
+  display: block;
+  width: 100%;
+  border-top: 1px solid #ccc;
+  margin: 0 auto;
+}
+
+#menu a div {
+  padding-left: 12px;
+  line-height: 40px;
+  width: 100%;
+}
+
+#menu form{
+  line-height: 40px;
+  padding-left: 12px;
+}
+
+#menu button{
+  width: 100%;
+  text-align: left;
+}
+
+.header a:hover{
+  color: #777;
+}
+.header a:focus{
+  text-decoration: none;
+  outline: 0;
+}
+
+.header span{
+  position: absolute;
+  right: 0px;
+  color: #444;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.header button{
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+}
+
+.header button:hover{
+  color: #777;
+}
+
+.header form{
+  display: inline;
+}
+
+.cta{
+  font-family: 'Georgia';
+  position: relative;
+  text-align: center;
+  margin: 24px auto 0px;
+  border: 1px solid #bbb;
+  padding-bottom: 24px;
+  max-width: 500px;
+  padding: 12px 32px 24px;
+  -webkit-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+  transform: translate(0px, 0px);
+}
+.ion-ios-close-empty{
+  position: absolute;
+  right: 20px;
+  top: 8px;
+  font-size: 36px;
+  line-height: 36px;
+  color: #bbb;
+  cursor: pointer;
+}
+
+.ion-ios-close-empty:hover{
+  color: #222;
+}
+.cta h3{
+  font-style: italic;
+  font-size: 36px;
+  letter-spacing: -1px;
+  line-height: 32px;
+  color: #444;
+}
+
+.cta p{
+  color: #333;
+}
+
+.cta button{
+  margin: 0 auto;
+  text-align: center;
+  border: 0;
+  text-transform: uppercase;
+  font-size: 12px;
+  background-color: #333;
+  color: white;
+  height: 50px;
+  width: 100px;
+}
+
+.ion-ios-arrow-thin-up, .ion-ios-arrow-thin-right{
+  display: none;
+}
+.cta button:hover span, .form button:hover span{
+  display: none;
+}
+.cta button:hover .ion-ios-arrow-thin-up, .form button:hover .ion-ios-arrow-thin-right{
+  display: block;
+  font-size: 28px;
+}
+/* END TITLE BANNER*/
+
+/* FEED */
+.category{
+  font-family: 'georgia';
+  text-align: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+.category div:nth-child(1), .category div:nth-child(3){
+  border-bottom: 1px solid black;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  border-top: 1px solid black;
+  height: 5px;
+}
+
+.category div:nth-child(2){
+  padding: 0 8px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #444;
+  letter-spacing: 0px;
+}
+
+.feed-item{
+  background-color: #f3f3f3;
+  word-wrap: break-word;
+  font-family: 'Georgia';
+  margin: 0 auto;
+  border: 1px solid #999;
+  padding: 24px;
+  text-align: center;
+  margin-bottom: 18px;
+  width: 280px;
+}
+
+.feed-item h4{
+  color:#333;
+  font-weight: 700;
+  margin-bottom:18px;
+}
+
+.feed-item h6{
+  font-style: italic;
+}
+
+.feed-item h6 span{
+  font-size: 12px;
+  margin-top: 8px;
+  display: block;
+}
+
+.feed-author span:nth-child(1){
+  font-style: italic;
+}
+
+.feed-author span:nth-child(2){
+  text-transform: uppercase;
+  margin-left: 4px;
+  letter-spacing: 1px;
+}
+
+.feed-item div{
+  width: 60px;
+  border-bottom: 1px solid #666;
+  margin: 16px auto;
+}
+
+.feed-author{
+  margin-bottom: 3px;
+}
+.feed-item h5:nth-child(5){
+  margin:0;
+}
+.feed a{
+  color:#222;
+  display: inline-block;
+}
+
+.feed{
+  text-align: center;
+}
+
+.feed a:hover .feed-item h4{
+  color: #777;
+}
+
+.feed a:visited{
+  text-decoration: none;
+}
+
+.feed a:focus{
+  text-decoration: none;
+  outline: 0;
+}
+
+@media (min-width: 400px) {
+  .feed-item h4{
+    font-size: 25px;
+  }
+  .feed-item h6{
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 460px) {
+  .feed-item {
+    width:440px;
+    padding:38px;
+  }
+}
+
+@media (min-width: 760px) {
+  .feed-item {
+    width:700px;
+    padding:50px 50px;
+    margin-bottom:32px;
+  }
+  .category {
+    margin-top:35px;
+    margin-bottom:35px;
+  }
+  .cta {
+    margin-top:32px;
+  }
+  .feed-item h6 {
+    margin-top:22px;
+  }
+  .header h1{
+    margin:30px auto;
+  }
+  .banner {
+    padding-top:4px;
+    padding-bottom:4px;
+  }
+}
+
+/* END FEED */
+
+/* SIGNUP & LOGIN */
+.legal{
+  color: #777;
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  width: 250px;
+}
+.form{
+  margin:30px auto;
+  font-family: 'georgia';
+}
+.form h1{
+  text-align: center;
+  font-style: italic;
+  font-size: 52px;
+  letter-spacing: -1px;
+}
+
+.form h5{
+  text-align: center;
+  width: 240px;
+  margin: 0 auto;
+  margin-bottom: 24px;
+  font-size: 18px;
+}
+
+.form form input{
+  width: 300px;
+  margin: auto;
+  background-color: transparent;
+  border: 1px solid #777;
+  color: #333;
+  font-size: 16px;
+  height: 42px;
+  padding: 12px 12px;
+  display: block;
+  text-align: left;
+  margin-bottom: 8px;
+  border-radius: 0;
+  border-style:solid;
+  -webkit-appearance: none;
+}
+
+.form form button{
+  background-color: #333;
+  display: block;
+  margin: 0 auto;
+  color: white;
+  height: 48px;
+  width: 300px;
+  border: 0;
+  margin-top: 28px;
 }
 
 /* Center boostrap's pagination class */

@@ -1,88 +1,108 @@
 {% extends "base.html" %}
 
+{% block style %}
+<link rel="stylesheet" href="/lib/bbcode/xbbcode.css" type="text/css"/>
+{% endblock %}
+
 {% block page %}
 <div class="container">
   <div class="jumbotron">
-    <h1 class="title">{{ story.title }}</h1>
+    <h1 class="title hyphenate text">{{ story.title }}</h1>
     <h3 class="author">{{ story.author }}</h3>
     <h3 class="date">{{ story.creationDate.split('T')[0] }}</h3>
     <hr class="title-bar"/>
     <form action="/story/{{ story.storyId }}/delete" method="POST">
       {% if story.author == username %}
-      <button class="pull-right btn btn-default btn-xs">
+      <button class="btn btn-default btn-xs delete">
         Delete
       </button>
       {% endif %}
     </form>
   </div>
   <div class="jumbotron narrative">
-    <p>{{ story.narrative }}</p>
+    <span id="xbbcode" class="definition"></span>
   </div>
   <div class="jumbotron">
-    <h2 class="topless little-blank-space" id="question-title">{{ question.title }}</h2>
-    <div>
-      {% for answer in question.answers %}
-      <form class="answer-options" action="/story/{{ story.storyId }}/vote/{{ loop.index - 1 }}" method="POST">
-          <button class="survey-button" type="submit">
-            <div class="circle">
-              <span>
-                {% if loop.index == 1 %}
-                A
-                {% elif loop.index == 2 %}
-                B
-                {% elif loop.index == 3 %}
-                C
-                {% elif loop.index == 4 %}
-                D
-                {% else %}
-                E
-                {% endif %}
-              </span>
-              <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-            </div>
-            <div class="answer-text">{{ answer.name }}</div>
-          </button>
-      </form>
-      {% endfor %}
+    <div class="active-section">
+      <div class="vote-btn active">Vote<i class="ion-ios-checkmark-outline"></i></div>
+      <div class="results-btn">Results<i class="ion-ios-pie-outline"></i></div>
     </div>
-    <hr class="hr-large">
-    <h3>Results
-      <span class="pull-right small half-top">
-      Total Votes: <span class="badge">{{ question.totalVotes }}</span>
-      </span>
-    </h3>
-    {% if question.totalVotes > 0 %}
-    <div id="pie" class="pie"></div>
-    {% endif %}
-    <div class="pie-results">
-      {% for answer in question.answers %}
-      <div class="dataPoint" id="dataPoint{{ loop.index }}">
-        <span class="rank">
-        {% if loop.index == 1 %}
-        A
-        {% elif loop.index == 2 %}
-        B
-        {% elif loop.index == 3 %}
-        C
-        {% elif loop.index == 4 %}
-        D
-        {% else %}
-        E
+    <div class="question-title">{{ question.title }}</div>
+    <div class="interactive-section">
+      <div class="results-section">
+        <hr class="title-bar" />
+        {% if question.totalVotes > 0 %}
+        <div id="pie" class="pie"></div>
         {% endif %}
-        </span>
-        <div class="votes-storyView">{{ answer.votes }}</div>
+        <div class="pie-results">
+          {% for answer in question.answers %}
+          <div class="dataPoint" id="dataPoint{{ loop.index }}">
+            <div class="rank">{% if loop.index == 1 %}A{% elif loop.index == 2 %}B{% elif loop.index == 3 %}C{% elif loop.index == 4 %}D{% else %}E{% endif %}</div>
+            <div class="answer">{{ answer.name }}</div>
+            <div class="data">
+              <div class="percent">{{ answer.percent }}%</div>
+              <div class="vote-count">{{ answer.votes }} votes</div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
       </div>
-      {% endfor %}
+      <div class="vote-section">
+        <hr class="title-bar" />
+        <div id="vote-form-wrapper">
+          {% for answer in question.answers %}
+          <form class="answer-options" action="/story/{{ story.storyId }}/vote/{{ loop.index - 1 }}" method="POST">
+              <button class="survey-button" type="submit">
+                <div class="circle">
+                  <span>
+                    {% if loop.index == 1 %}
+                    A
+                    {% elif loop.index == 2 %}
+                    B
+                    {% elif loop.index == 3 %}
+                    C
+                    {% elif loop.index == 4 %}
+                    D
+                    {% else %}
+                    E
+                    {% endif %}
+                  </span>
+                  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                </div>
+                <div class="answer-text">{{ answer.name }}</div>
+              </button>
+          </form>
+          {% endfor %}
+        </div>
+      </div>
     </div>
   </div>
 </div>
 {% endblock %}
 {% block script %}
+<!-- hyphenate text -->
+<script src="/lib/hyphenator.min.js"></script>
 <script>
+  Hyphenator.run();
+</script>
+<!-- declare global variables -->
+<script>
+  var userVote = '{{ question.userVote }}'
   {% for answer in question.answers %}
     window.answer{{ loop.index }} = {{ answer.votes }}
   {% endfor %}
 </script>
+<script>
+  var narrative = {{story.narrative | safe}};
+</script>
+<!-- drop cap + bbcode -->
+<script src="/lib/dropcap.min.js"></script>
+<script src="/lib/bbcode/xbbcode.js"></script>
+<script src="/js/bbcode-drop.js"></script>
+<!-- toggle survey and results -->
+<script src="/js/survey-results.js"></script>
+<!-- d3 pie -->
+<script src="/lib/d3.v3.min.js"></script>
 <script src="/lib/d3pie.min.js"></script>
 <script src="/js/pie.js"></script>
 {% endblock %}

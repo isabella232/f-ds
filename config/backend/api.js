@@ -131,7 +131,7 @@ module.exports =
     { create: makeReq('POST', '/question',
       ['title', 'answers'], ['question'])
     , get: makeReq('GET', '/question/:question',
-      ['question'], ['title', 'answers'])
+      ['question'], ['title', 'answers', 'userVote'])
     , vote: makeReq('POST', '/question/:question/vote',
       ['question', 'answer', 'story'], [])
     }

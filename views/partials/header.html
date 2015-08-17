@@ -1,35 +1,45 @@
 <!-- HEADER -->
-
-<nav class="navbar navbar-inverse">
-<div class="container-fluid">
-  <a class="navbar-left" href="/"><img class="navbar navbar-brand" src="/img/logo.png"/></a>
-  <div class="pull-right">
-    <ul class="nav navbar-nav">
+<div class="container header">
+  <h1><a href="/">dynamicstory</a></h1>
+  <i class="ion-drag"></i>
+  <div class="banner">
+    <div id="date"></div>
+    <span><!--
+   -->{% if username %}<!--
+     --><span><!--
+       --><a href="/story/create">Create</a>&nbsp;|&nbsp;<a href="/user/profile">Profile</a>&nbsp;|&nbsp;<a href="/about">About</a>&nbsp;|&nbsp;<!--
+       --><form action="/user/logout" method="POST"><button>Logout</button></form><!--
+    --></span><!--
+   -->{% else %}<!--
+     --><span><!--
+       --><a href="/user/login">Login</a>&nbsp;|&nbsp;<a href="/user/signup">Signup</a>&nbsp;|&nbsp;<a href="/about">About</a>&nbsp;&nbsp;<!--
+     --></span><!--
+   -->{% endif %}
+    </span>
+    <div id="menu">
       {% if username %}
-      <li {% if page == "create.html" %}class="active"{% endif %}>
-        <a href="/story/create"><span class="margin-right-space glyphicon glyphicon-edit"></span>Create</a>
-      </li>
-      <li {% if page == "profile.html" %}class="active"{% endif %}>
-        <a href="/user/profile"><span class="margin-right-space glyphicon glyphicon-user"></span>Profile</a>
-      </li>
-      <li>
-        <form action="/user/logout" method="POST">
-          <button class="transparent-btn" id="logout-btn-header"><span class="margin-right-space glyphicon glyphicon-log-out"></span>Logout</button>
-        </form>
-      </li>
+      <a href="/"><div>Home</div></a>
+      <div></div>
+      <a href="/story/create"><div>Create</div></a>
+      <div></div>
+      <a href="/user/profile"><div>Profile</div></a>
+      <div></div>
+      <a href="/about"><div>About</div></a>
+      <div></div>
+      <form action="/user/logout" method="POST"><button>Logout</button></form>
       {% else %}
-      <li {% if page == "login.html" %}class="active"{% endif %}>
-        <a href="/user/login"><span class="margin-right-space glyphicon glyphicon-log-in"></span>Login</a>
-      </li>
-      <li {% if page == "signup.html" %}class="active"{% endif %}>
-        <a href="/user/signup"><span class="margin-right-space glyphicon glyphicon-new-window"></span>Signup</a>
-      </li>
+      <a href="/"><div>Home</div></a>
+      <div></div>
+      <a href="/user/login"><div>Login</div></a>
+      <div></div>
+      <a href="/user/signup"><div>Signup</div></a>
+      <div></div>
+      <a href="/about"><div>About</div></a>
       {% endif %}
-      <li {% if page == "about.html" %}class="active"{% endif %}>
-        <a href="/about"><span class="glyphicon glyphicon-info-sign"></span></a>
-      </li>
-    </ul>
+    </div>
   </div>
 </div>
-    <!-- insert logic to see if user is logged in -->
-</nav>
+{% block script %}
+  <script src="/js/menu.js"></script>
+  <script src="/js/date.js"></script>
+{% endblock %}
