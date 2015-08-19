@@ -20,6 +20,7 @@ body{
 /* min width for containers to prevent maintain legibility */
 .container{
   min-width: 320px;
+  max-width: 720px;
 }/*----O_o-*/
 
 /* styling bootstrap alert class */
@@ -234,6 +235,20 @@ a:hover{
 }/*----O_o-*/
 
 /*Story title styling*/
+.author-tools{
+  overflow:hidden;
+  background-color: #f8f8f8;
+  padding:10px;
+  margin:20px auto;
+  border-radius: .3em;
+  height:56px;
+}
+.author-tools h4 {
+  font-family: 'georgia';
+  margin-left:20px;
+  color:#555;
+  font-weight: 300;
+}
 
 .delete{
   font-family: 'georgia';
@@ -241,16 +256,16 @@ a:hover{
   border-radius: 0;
   height: 36px;
   width: 75px;
-  margin: 0 auto;
   display: block;
+  margin-right:20px;
 }
 .title{
   text-align: center;
   font-family: 'Georgia';
-  color: #222;
-  font-size: 48px;
+  color: #555 !important;
+  font-size: 36px !important;
   font-weight: 700;
-  margin: 48px 0;
+  margin: 48px 10px;
 }
 
 @media(max-width: 560px) {
@@ -287,8 +302,12 @@ a:hover{
 }
 
 .title-bar{
-  width: 68px;
-  margin:48px auto;
+  width: 168px;
+  margin:30px auto;
+}
+
+.narrative-bar{
+  margin:40px auto;
 }
 
 #drop-cap{
@@ -297,17 +316,7 @@ a:hover{
 }
 /*----O_o-*/
 
-/* Narrative padding */
-@media screen and (min-width: 1100px){
-  .container .jumbotron{
-    padding: 120px;
-  }
-}
-@media screen and (min-width: 768px){
-  .container .jumbotron{
-    padding: 90px;
-  }
-}/*----O_o-*/
+
 
 /* Input styling */
 
@@ -448,10 +457,10 @@ input:-webkit-autofill {
   font-family: 'Georgia';
   text-align: center;
   font-weight: 600;
-  font-size: 36px;
+  font-size: 32px;
   width: 300px;
   margin: 0 auto;
-  margin-bottom: 48px;
+  margin-bottom: 15px;
   line-height: 40px;
 }
 
@@ -728,6 +737,8 @@ input:-webkit-autofill {
 .header{
   font-family: 'Georgia';
   text-align: center;
+  padding-right:0 !important;
+  padding-left:0 !important;
 /*  margin: 0 31px;*/
 }
 .header h1{
@@ -756,7 +767,7 @@ input:-webkit-autofill {
 .ion-drag{
   display: none;
 }
-@media (max-width: 750px){
+@media (max-width: 1750px){
   .banner span span{
     display: none;
   }
@@ -770,7 +781,7 @@ input:-webkit-autofill {
     top: 32px;
   }
 }
-@media (min-width: 751px){
+@media (min-width: 1751px){
   #menu{
     display: none !important;
   }
