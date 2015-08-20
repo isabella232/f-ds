@@ -17,12 +17,13 @@
   </div>
   {% endif %}
   <div class="jumbotron">
-    <h1 class="title hyphenate text">{{ story.title }}</h1>
-    <h4 class="author">{{ story.author }}</h4>
+    <h1 class="title">{{ story.title }}</h1>
+    <h4 class="author"><span>by</span>&nbsp;{{ story.author }}</h4>
     <h4 class="date">{{ story.creationDate.split('T')[0] }}</h4>
     <hr class="title-bar narrative-bar"/>
-
-    <span id="xbbcode" class="definition"></span>
+    <div class="narrative">
+      <span id="xbbcode" class="definition"></span>
+    </div>
   </div>
   <div class="jumbotron">
     <div class="active-section">

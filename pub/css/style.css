@@ -260,10 +260,10 @@ a:hover{
 .title{
   text-align: center;
   font-family: 'Georgia';
-  color: #555 !important;
+  color: #444 !important;
   font-size: 36px !important;
   font-weight: 700;
-  margin: 48px 10px;
+  margin: 48px 64px;
 }
 
 @media(max-width: 560px) {
@@ -280,11 +280,17 @@ a:hover{
   font-weight: 400;
   text-align: center;
   text-transform: uppercase;
-  letter-spacing: 12px;
-  font-size: 18px;
+  letter-spacing: 3px;
+  font-size: 16px;
   line-height: 26px;
-  margin: 14.5px 0;
+  margin: 0;
   font-family: 'Georgia';
+}
+
+.author span{
+  letter-spacing: 2px;
+  font-style: italic;
+  text-transform: lowercase;
 }
 
 .date{
@@ -293,10 +299,9 @@ a:hover{
   font-family: 'Georgia';
   font-weight: 400;
   color: #555;
-  font-style: italic;
-  font-size: 18px;
-  letter-spacing: 6px;
-  margin: 18px 0;
+  font-size: 16px;
+  letter-spacing: 1px;
+  margin: 0;
 }
 
 .title-bar{
@@ -455,11 +460,10 @@ input:-webkit-autofill {
   font-family: 'Georgia';
   text-align: center;
   font-weight: 600;
-  font-size: 32px;
+  font-size: 24px;
   width: 300px;
   margin: 0 auto;
-  margin-bottom: 15px;
-  line-height: 40px;
+  line-height: 1.25;
 }
 
 @media (max-width: 320px) {
@@ -766,15 +770,15 @@ input:-webkit-autofill {
   display: none;
 }
 
-/*
 
-// Hamburger menu controls
 
-@media (max-width: 1750px){
+/* Hamburger menu controls */
+
+/* Show hamburger menu icon for screens 640px or smaller */
+@media (max-width: 639px){
   .banner span span{
     display: none;
   }
-*/
 
   .ion-drag{
     display: inline-block;
@@ -786,7 +790,9 @@ input:-webkit-autofill {
     top: 32px;
   }
 }
-@media (min-width: 1751px){
+
+/* Hide hamburger menu if open for screens 640px or wider */
+@media (min-width: 640px){
   #menu{
     display: none !important;
   }
@@ -846,7 +852,7 @@ input:-webkit-autofill {
 
 .header span{
   position: absolute;
-  right: 0px;
+  right: 4px;
   color: #444;
   font-weight: 700;
   font-size: 12px;
