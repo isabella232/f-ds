@@ -19,16 +19,16 @@ app.use(cookieParser(CookieConfig.secret))
 var serverPort = process.env.DS_PORT || 9000
 
 var env = new nunjucks.Environment(
-  new nunjucks.FileSystemLoader('views'),
+  new nunjucks.FileSystemLoader('client/views'),
   { autoescape: true }
 )
 
 env.express(app)
 
-// Tell Express to serve static objects from the /pub/ directory
-app.use(express.static(path.join(__dirname, 'pub')))
-app.use('/css', express.static(path.join(__dirname, 'node_modules/css-modal/build')))
-app.use(express.static(path.join(__dirname, 'node_modules/bootstrap/dist')))
+// Tell Express to serve static objects from the pub/ directory
+app.use(express.static(path.join(__dirname, '../pub')))
+app.use('/css', express.static(path.join(__dirname, '../node_modules/css-modal/build')))
+app.use(express.static(path.join(__dirname, '../node_modules/bootstrap/dist')))
 
 app.use(require('./config/flash'))
 app.use(require('./config/nunjucks').globalVarsMiddleware(app, env))
