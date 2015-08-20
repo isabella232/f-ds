@@ -36,7 +36,6 @@ body{
 .jumbotron{
   background-color: #f8f8f8 !important;
 }
-<<<<<<< HEAD
 
 .container .jumbotron{
   padding: 40px 10px;
@@ -61,7 +60,6 @@ body{
 /* stlying bootstrap's pagination class */
 .pagination {
   width: auto;
-  margin-top: 40px;
 }
 
 .pagination>li>a, .pagination>li>a:hover {
@@ -767,10 +765,17 @@ input:-webkit-autofill {
 .ion-drag{
   display: none;
 }
+
+/*
+
+// Hamburger menu controls
+
 @media (max-width: 1750px){
   .banner span span{
     display: none;
   }
+*/
+
   .ion-drag{
     display: inline-block;
     padding-right: 8px;
