@@ -699,21 +699,13 @@ input:-webkit-autofill {
 
 
 /* CAPTCHA styling */
-.g-recaptcha{
-  transform-origin: 0 0;
-  -webkit-transform-origin: 0 0;
-  transform: scale(0.86);
-  -webkit-transform:scale(0.86);
-  margin-top: 24px;
+.g-recaptcha iframe{
+  margin: 0 auto;
+  display: block;
 }
-
-.g-recaptcha, .static{
-  transform-origin: 0 0;
-  -webkit-transform-origin: 0 0;
-  transform: scale(1.33);
-  -webkit-transform:scale(1.33);
-  margin-top: 24px;
-  margin-bottom: 36px;
+.g-recaptcha div div{
+  width: auto !important;
+  height: auto !important;
 }
 /* END CAPTCHA styling */
 
