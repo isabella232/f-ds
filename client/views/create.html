@@ -1,9 +1,5 @@
 {% extends "base.html" %}
 
-{% block style %}
-<link rel="stylesheet" href="/lib/bbcode/minified/themes/square.min.css" type="text/css" media="all" />
-{% endblock %}
-
 {% block page %}
 <div class="container">
   <form action="/story/create" method="POST">
@@ -51,10 +47,4 @@
     <button class="center-block blank-space btn btn-primary btn-lg" type="submit"><span class="glyphicon glyphicon-ok"></span>&nbsp;Finish Story!</button>
   </form>
 </div>
-{% endblock %}
-
-{% block script %}
-<script src="/lib/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="/lib/bbcode/minified/jquery.sceditor.bbcode.min.js"></script>
-<script src="/js/sceditor-plugin.js"></script>
 {% endblock %}

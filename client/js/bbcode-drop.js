@@ -1,3 +1,10 @@
+'use strict';
+
+var XBBCODE = require('../lib/bbcode/xbbcode')
+var narrative = $('#xbbcode').text()
+
+if (!narrative) { return }
+
 // render bbcode
 var result = XBBCODE.process({
   text: narrative

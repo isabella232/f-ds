@@ -169,7 +169,6 @@ function renderStory(req, res) {
             } else {
               // trim leading and trailing whitespace in narrative
               story.narrative = story.narrative.trim()
-              story.narrative = util.inspect(story.narrative)
               // prettify date
               story.creationDate = Moment(story.creationDate).format('LL')
               story.storyId = storyId

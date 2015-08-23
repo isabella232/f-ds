@@ -794,3 +794,5 @@ var XBBCODE = (function() {
 
     return me;
 })();
+
+module.exports = XBBCODE;

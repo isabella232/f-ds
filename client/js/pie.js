@@ -1,3 +1,4 @@
+var d3pie = require('../lib/d3pie.min')
 var pie = new d3pie("pie", {
   "footer": {
     "color": "#999999",

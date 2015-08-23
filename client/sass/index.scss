@@ -1,3 +1,11 @@
+// Import npm libraries
+@import 'bootstrap';
+
+// Import local libraries
+@import '../lib/ionicons.min.css';
+@import '../lib/bbcode/xbbcode.css';
+@import '../lib/bbcode/minified/themes/square.min.css';
+
 /*custom override changes to prexisting tags and classes*/
 
 /* Improve legibility for general text */
@@ -9,7 +17,7 @@ p {
 html{
   height: 100%;
   min-width: 320px;
-  font-family: 'Georgia'
+  font-family: 'Georgia';
 }
 body{
   height: 100%;
@@ -35,7 +43,6 @@ body{
 .jumbotron{
   background-color: #f8f8f8 !important;
 }
-<<<<<<< HEAD
 
 .container .jumbotron{
   padding: 40px 10px;
