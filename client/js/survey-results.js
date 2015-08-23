@@ -9,6 +9,8 @@ var results_btn  = document.getElementsByClassName('results-btn')[0]
 var container    = document.getElementsByClassName('interactive-section')[0]
 // display results section if userVote exists on question
 
+if (!vote) { return }
+
 function changeDisplay(el, val) {
   el.style.display = val
 }

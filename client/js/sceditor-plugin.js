@@ -3,7 +3,6 @@ $(function() {
     // with SCEditor
     $("textarea").sceditor({
         plugins: "bbcode",
-        toolbar:"image,youtube|source",
-        style: "minified/jquery.sceditor.square.min.css"
+        toolbar:"image,youtube|source"
     });
 });
