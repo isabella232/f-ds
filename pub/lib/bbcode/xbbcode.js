@@ -225,7 +225,7 @@ var XBBCODE = (function() {
                     myUrl = "";
                 }
 
-                return "<img style='max-width:100%; display:block; margin:38px auto;' src='" + myUrl + "' />";
+                return "<img style='max-width:100%; display:block;' src='" + myUrl + "' />";
             },
             closeTag: function(params,content) {
                 return '';
@@ -516,10 +516,10 @@ var XBBCODE = (function() {
         },
         "youtube": {
             openTag: function(params,content) {
-                return "<iframe width='100%' height='350px' style='margin-top:38px; margin-bottom:15px' src='https://www.youtube.com/embed/";
+                return "<div class='aspect-ratio'><iframe src='https://www.youtube.com/embed/";
             },
             closeTag: function(params,content) {
-                return "' frameborder='0' allowfullscreen></iframe>";
+                return "' frameborder='0' allowfullscreen></iframe></div>";
             }
         }
     };
