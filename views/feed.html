@@ -7,20 +7,19 @@
     <div class="cta">
       <i id="cta-close" class="ion-ios-close-empty"></i>
       <h3>Articles with surveys.</h3>
-      <p>Our mission is to create a more effective way to learn about the world around us. We believe pairing content with surveys will help generate more understanding for everyone.</p>
+      <div>
+        <i class="ion-ios-book-outline"></i>
+        <span class="plus">+</span>
+        <i class="ion-ios-pie-outline"></i>
+      </div>
       <a href="/user/signup"><button><span>signup</span><i class="ion-ios-arrow-thin-up"></i></button></a>
     </div>
   </div>
   {% endif %}
   <div class="container feed">
-  <div class="category">
-    <div></div>
-    <div>Latest</div>
-    <div></div>
-  </div>
+  <div><span class="category">Recent Stories</span></div>
   {% include "partials/pagination.html" %}
   {% for story in feed %}
-  <div>
     <a href="/story/{{ story.story }}"><div class="feed-item">
       <h4>{{ story.title }}</h4>
       <h6>{{ story.questionTitle }}<br/><span>Total Votes: {{ story.totalVotes }}</span></h6>
@@ -28,7 +27,6 @@
       <h5 class="feed-author"><span>by</span><span>{{ story.author }}</span></h5>
       <h5>{{ story.creationDate }}</h5>
     </div></a>
-  </div>
   {% endfor %}
   </div>
   {% block script %}

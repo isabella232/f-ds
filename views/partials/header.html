@@ -1,6 +1,6 @@
 <!-- HEADER -->
 <div class="container-fluid header">
-  <div><h1><a href="/">dynamicstory</a></h1></div>
+  <h1><a href="/">DynamicStory</a></h1>
   {% if username %}
   <a href="/story/create"><div class="header-btn-story">Write Story</div></a>
   <i class="ion-person"></i>
@@ -10,6 +10,13 @@
       <a href="/user/profile"><li>Profile</li></a>
       <a href="/user/change-pass"><li>Change Password</li></a>
       <form action="/user/logout" method="POST"><button><li>Logout</li></button></form>
+    </ul>
+  </div>
+  <div class="profile-menu-mobile">
+    <ul>
+      <a href="/user/profile"><li>Profile</li></a>
+      <a href="/user/change-pass"><li>Change Password</li></a>
+      <li><form action="/user/logout" method="POST"><button>Logout</button></form></li>
     </ul>
   </div>
   {% else %}
@@ -27,37 +34,5 @@
   </div>
 </div>
 {% block script %}
-  <!--<script src="/js/menu.js"></script>-->
-  <script src="/js/date.js"></script>
-  <script>
-    var menuBtn        = document.getElementsByClassName('ion-person')[0]
-    var desktopMenu    = document.getElementsByClassName('profile-menu-desktop')[0]
-    var mobileMenu     = document.getElementsByClassName('profile-menu-mobile')[0]
-    // handle menu open
-    menuBtn.onclick = function() {
-      if (desktopMenu.className === "profile-menu-desktop") {
-        desktopMenu.style.display = "block"
-        desktopMenu.className = "profile-menu-desktop open"
-        mobileMenu.style.display = "block"
-        mobileMenu.className = "profile-menu-mobile open"
-      } else {
-        desktopMenu.style.display = "none"
-        desktopMenu.className = "profile-menu-desktop"
-        mobileMenu.style.display = "none"
-        mobileMenu.className = "profile-menu-mobile"
-      }
-    }
-    // handle menu close
-    document.onclick = function(e) {
-      if (desktopMenu.className === "profile-menu-desktop open") {
-        if (e.target.tagName != "LI" && e.target.className != "ion-person") {
-          desktopMenu.style.display = "none"
-          desktopMenu.className = "profile-menu-desktop"
-          mobileMenu.style.display = "none"
-          mobileMenu.className = "profile-menu-mobile"
-        }
-      }
-    }
-
-  </script>
+  <script src="/js/menu.js"></script>
 {% endblock %}
