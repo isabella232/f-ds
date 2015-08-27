@@ -15,11 +15,11 @@
 {% block page %}
 
 <!-- LOGIN/SIGNUP MODAL -->
-<div class="overlay">
-  <div class="modal-custom login-signup" id="login-modal">
+<div class="overlay" id="login-signup-overlay">
+  <div class="modal-custom signup-login modal-signup-login" id="login-modal">
     {% include "partials/login.html" %}
   </div>
-  <div class="modal-custom login-signup" id="signup-modal">
+  <div class="modal-custom signup-login modal-signup-login" id="signup-modal">
     {% include "partials/signup.html" %}
   </div>
 </div>

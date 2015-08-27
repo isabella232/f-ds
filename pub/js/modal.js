@@ -2,10 +2,11 @@
 // and display modal when a user who is not logged in clicks on vote buttons
 var voteForm = document.getElementsByClassName('vote-section')[0]
 var numOfAnswers = voteForm.getElementsByTagName('form').length
-var overlay = document.getElementsByClassName('overlay')[0]
+var overlay = document.getElementById('login-signup-overlay')
+var loginClose = document.getElementById('login-close')
+var signupClose = document.getElementById('signup-close')
+var body = document.getElementsByTagName('body')[0]
 var buttons = []
-var signupClose = document.getElementsByClassName('modal-close')[1]
-var loginClose = document.getElementsByClassName('modal-close')[0]
 
 // handle modal open
 for (var i = 0; i < numOfAnswers ; i++) {
@@ -17,7 +18,7 @@ for (var i = 0; i < numOfAnswers ; i++) {
   if (!user) {
     buttons[i].onclick = function() {
       overlay.style.display = 'block';
-      document.getElementsByTagName('body')[0].style.overflow = "hidden"
+      body.style.overflow = "hidden"
     }
   }
 }
@@ -26,14 +27,14 @@ for (var i = 0; i < numOfAnswers ; i++) {
 overlay.onclick = function(e) {
   if (e.target.className === 'overlay') {
     overlay.style.display = 'none';
-    document.getElementsByTagName('body')[0].style.overflow = "auto"
+    body.style.overflow = "auto"
   }
 }
 signupClose.onclick = function() {
   overlay.style.display = 'none';
-  document.getElementsByTagName('body')[0].style.overflow = "auto"
+  body.style.overflow = "auto"
 }
 loginClose.onclick = function() {
   overlay.style.display = 'none';
-  document.getElementsByTagName('body')[0].style.overflow = "auto"
+  body.style.overflow = "auto"
 }

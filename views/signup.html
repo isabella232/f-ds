@@ -2,13 +2,13 @@
 
 {% block page %}
 
-<div class="container-fluid login-signup">
+<div class="container-fluid signup-login static-signup-login">
   {% include "partials/signup.html" %}
 </div>
 
 {% block script %}
 <script>
-document.getElementsByClassName('form')[0].getElementsByTagName('a')[0].setAttribute('href', '/user/login')
+document.getElementsByClassName('signup-login')[0].getElementsByTagName('a')[0].setAttribute('href', '/user/login')
 </script>
 {% endblock %}
 

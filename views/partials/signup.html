@@ -1,5 +1,6 @@
 <!-- SIGNUP FORM -->
-<h1>Signup<i class="ion-ios-close-empty modal-close"></i></h1>
+
+<h1>Signup<i class="ion-ios-close-empty modal-close" id="signup-close"></i></h1>
 <h5>Create a free account to vote on surveys and start writing your own articles. Or <a href="#login-modal">login.</a></h5>
 <form action="/user/signup" method="POST">
   <input name="username" type="text" pattern=".{3,}" title="This will be the username for your account; it must be at least 3 characters long" maxlength="20" required placeholder="Username">
@@ -7,11 +8,11 @@
   <input id="password" name="password" type="password" pattern=".{5,}" title="This will be the password for your account; it must be at least 5 characters" maxlength="512" required placeholder="Password">
   <input id="confirmPassword" name="confirmPassword" type="password" pattern=".{5,}" title="Please retype the password that you input above; this must be at least 5 characters" maxlength="512" required placeholder="Confirm Password">
   <!-- CAPTCHA GOES HERE -->
-  <!-- <div class="g-recaptcha static" data-sitekey="6LeTKgkTAAAAAHtRSES98qz4aa7FOBN0uOy532L1"></div> -->
+  <div class="g-recaptcha static" data-sitekey="6LeTKgkTAAAAAHtRSES98qz4aa7FOBN0uOy532L1"></div>
   <div class="legal">By signing up, I agree to Dynamic Story's <a href="/about/toupp">Terms of Use &amp; Privacy Policy</a></div>
   <button><span>FINISH</span><i class="ion-ios-arrow-thin-right"></i></button>
 </form>
 
 {% block script %}
-<!-- <script src='https://www.google.com/recaptcha/api.js'></script> -->
+<script src='https://www.google.com/recaptcha/api.js'></script>
 {% endblock %}

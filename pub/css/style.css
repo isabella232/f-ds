@@ -419,18 +419,7 @@ input:-webkit-autofill {
   padding-right:8px;
   font-size: 18px;
 }
-/*.results-header {
-  font-family: 'Georgia';
-  text-align: center;
-}
 
-.results-header div:nth-child(1){
-  font-size: 32px;
-}
-
-.results-header div:nth-child(2){
-  font-size: 14px;
-}*/
 .results-section .title-bar{
   margin-bottom: 0;
 }
@@ -709,19 +698,6 @@ input:-webkit-autofill {
 }
 /* *************** END survey button styling **************** */
 
-
-/* CAPTCHA styling */
-.g-recaptcha iframe{
-  margin: 0 auto;
-  margin-bottom:5px;
-  display: block;
-}
-.g-recaptcha div{
-  width: auto !important;
-  height: auto !important;
-}
-/* END CAPTCHA styling */
-
 /* TITLE BANNER */
 
 @media (max-width: 767px){
@@ -819,8 +795,9 @@ input:-webkit-autofill {
 
 .ion-ios-close-empty{
   position: absolute;
-  right: 20px;
-  top: 8px;
+  right: 0;
+  top: 0;
+  padding: 5px 18px;
   font-size: 36px;
   line-height: 36px;
   color: #bbb;
@@ -830,6 +807,7 @@ input:-webkit-autofill {
 .ion-ios-close-empty:hover{
   color: #222;
 }
+
 .cta h3{
   font-style: italic;
   font-size: 32px;
@@ -859,10 +837,10 @@ input:-webkit-autofill {
 .ion-ios-arrow-thin-up, .ion-ios-arrow-thin-right{
   display: none;
 }
-.cta button:hover span, .form button:hover span{
+.cta button:hover span, .signup-login button:hover span{
   display: none;
 }
-.cta button:hover .ion-ios-arrow-thin-up, .form button:hover .ion-ios-arrow-thin-right{
+.cta button:hover .ion-ios-arrow-thin-up, .signup-login button:hover .ion-ios-arrow-thin-right{
   display: block;
   font-size: 28px;
 }
@@ -984,62 +962,6 @@ input:-webkit-autofill {
 }
 
 /* END FEED */
-
-/* SIGNUP & LOGIN */
-.legal{
-  color: #777;
-  display: block;
-  text-align: center;
-  margin: 0 auto;
-  width: 250px;
-}
-
-.login-signup h1, #login-modal h1, #signup-modal h1{
-  position: relative;
-  text-align: center;
-  font-style: italic;
-  font-size: 52px;
-  letter-spacing: -1px;
-  margin-top: 0;
-  padding-top: 20px;
-}
-
-.login-signup h5, #login-modal h5, #signup-modal h5{
-  text-align: center;
-  width: 240px;
-  margin: 0 auto;
-  margin-bottom: 24px;
-  font-size: 18px;
-}
-
-.login-signup input, #login-modal input, #signup-modal input{
-  width: 270px;
-  margin: auto;
-  background-color: transparent;
-  border: 1px solid #777;
-  color: #333;
-  font-size: 16px;
-  height: 42px;
-  padding: 12px 12px;
-  display: block;
-  text-align: left;
-  margin-bottom: 8px;
-  border-radius: 0;
-  border-style:solid;
-  -webkit-appearance: none;
-}
-
-.login-signup button, #login-modal button, #signup-modal button{
-  background-color: #333;
-  display: block;
-  margin: 0 auto;
-  color: white;
-  height: 48px;
-  width: 270px;
-  border: 0;
-  margin-top: 28px;
-}
-/* END SIGNUP & LOGIN */
 
 /* Center boostrap's pagination class */
 .pagination-container{
@@ -1230,13 +1152,13 @@ input:-webkit-autofill {
 
 #signup-modal{
   width: 315px;
-  height: 500px;
+  height: 590px;
   background-color: #fff;
 }
 
 #login-modal{
   width: 315px;
-  height: 350px;
+  height: 340px;
   background-color: #fff;
 }
 
@@ -1244,14 +1166,14 @@ input:-webkit-autofill {
  *  than the modal height to allow for scrolling.
  */
 
-@media (max-height: 565px) {
+@media (max-height: 614px) {
   #signup-modal{
     position: static;
     -webkit-transform: none;
     -ms-transform: none;
     transform: none;
     display: block;
-    margin:30px auto;
+    margin:60px auto;
   }
 }
 
@@ -1304,4 +1226,90 @@ input:-webkit-autofill {
 /* END MODAL */
 
 
+
+/* SIGNUP & LOGIN */
+
+.legal {
+  color: #777;
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  width: 250px;
+}
+
+.signup-login h1 {
+  position: relative;
+  text-align: center;
+  font-style: italic;
+  font-size: 52px;
+  letter-spacing: -1px;
+  margin: 0;
+  padding: 20px 0 10px;
+}
+
+.signup-login h5 {
+  text-align: center;
+  width: 240px;
+  margin: 0 auto;
+  margin-bottom: 24px;
+  font-size: 18px;
+}
+
+.signup-login input {
+  width: 300px;
+  margin: auto;
+  background-color: transparent;
+  border: 1px solid #777;
+  color: #333;
+  font-size: 16px;
+  height: 42px;
+  padding: 12px 12px;
+  display: block;
+  text-align: left;
+  margin-bottom: 8px;
+  border-radius: 0;
+  border-style:solid;
+  -webkit-appearance: none;
+}
+
+.signup-login button {
+  background-color: #333;
+  display: block;
+  margin: 0 auto;
+  color: white;
+  height: 48px;
+  width: 300px;
+  border: 0;
+  margin-top: 28px;
+}
+
+.static-signup-login {
+  margin:30px auto 90px;
+}
+
+.modal-signup-login input, .modal-signup-login button {
+  width: 270px;
+}
+
+
+/* CAPTCHA styling */
+.g-recaptcha iframe {
+  margin: 0 auto;
+  margin-bottom:5px;
+  display: block;
+}
+
+.modal-signup-login .g-recaptcha iframe {
+  -webkit-transform: scale(.895);
+      -ms-transform: scale(.895);
+          transform: scale(.895);
+  -webkit-transform-origin: 154px 0;
+      -ms-transform-origin: 154px 0;
+          transform-origin: 154px 0;
+}
+
+.g-recaptcha div {
+  width: auto !important;
+  height: auto !important;
+}
 
