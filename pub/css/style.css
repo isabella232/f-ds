@@ -21,7 +21,6 @@ body{
 /* min width for containers to prevent maintain legibility */
 .container{
   min-width: 320px;
-  margin-top: 30px;
 }/*----O_o-*/
 
 /* styling bootstrap alert class */
@@ -939,7 +938,6 @@ input:-webkit-autofill {
 
 .feed{
   text-align: center;
-  margin-top: 0;
 }
 
 .feed a:hover .feed-item h4{
@@ -996,7 +994,7 @@ input:-webkit-autofill {
   width: 250px;
 }
 
-#login-modal h1, #signup-modal h1{
+.login-signup h1, #login-modal h1, #signup-modal h1{
   position: relative;
   text-align: center;
   font-style: italic;
@@ -1006,7 +1004,7 @@ input:-webkit-autofill {
   padding-top: 20px;
 }
 
-#login-modal h5, #signup-modal h5{
+.login-signup h5, #login-modal h5, #signup-modal h5{
   text-align: center;
   width: 240px;
   margin: 0 auto;
@@ -1014,7 +1012,7 @@ input:-webkit-autofill {
   font-size: 18px;
 }
 
-#login-modal input, #signup-modal input{
+.login-signup input, #login-modal input, #signup-modal input{
   width: 270px;
   margin: auto;
   background-color: transparent;
@@ -1031,7 +1029,7 @@ input:-webkit-autofill {
   -webkit-appearance: none;
 }
 
-#login-modal button, #signup-modal button{
+.login-signup button, #login-modal button, #signup-modal button{
   background-color: #333;
   display: block;
   margin: 0 auto;
