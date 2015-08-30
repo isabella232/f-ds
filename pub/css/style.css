@@ -1151,13 +1151,13 @@ input:-webkit-autofill {
 }
 
 #signup-modal{
-  width: 315px;
+  width: 340px;
   height: 590px;
   background-color: #fff;
 }
 
 #login-modal{
-  width: 315px;
+  width: 340px;
   height: 340px;
   background-color: #fff;
 }
@@ -1284,28 +1284,52 @@ input:-webkit-autofill {
 }
 
 .static-signup-login {
-  margin:30px auto 90px;
+  margin:30px auto 0;
 }
 
-.modal-signup-login input, .modal-signup-login button {
-  width: 270px;
+.static-signup-login button {
+  margin-bottom: 90px;
 }
 
+.modal-signup-login .g-recaptcha iframe {
+  -webkit-transform: scale(1);
+      -ms-transform: scale(1);
+          transform: scale(1);
+}
+
+@media (max-width: 413px) {
+  .signup-login input, .signup-login button {
+    width: 260px;
+  }
+  #signup-modal{
+    width: 300px;
+  }
+  #login-modal{
+    width: 300px;
+  }
+  .static-signup-login .g-recaptcha iframe {
+    -webkit-transform: scale(.864);
+        -ms-transform: scale(.864);
+            transform: scale(.864);
+    -webkit-transform-origin: 108px 0px;
+        -ms-transform-origin: 108px 0px;
+            transform-origin: 108px 0px;
+  }
+  .modal-signup-login .g-recaptcha iframe {
+    -webkit-transform: scale(.868);
+        -ms-transform: scale(.868);
+            transform: scale(.868);
+    -webkit-transform-origin: 154px 0;
+        -ms-transform-origin: 154px 0;
+            transform-origin: 154px 0;
+  }
+}
 
 /* CAPTCHA styling */
 .g-recaptcha iframe {
   margin: 0 auto;
   margin-bottom:5px;
   display: block;
-}
-
-.modal-signup-login .g-recaptcha iframe {
-  -webkit-transform: scale(.895);
-      -ms-transform: scale(.895);
-          transform: scale(.895);
-  -webkit-transform-origin: 154px 0;
-      -ms-transform-origin: 154px 0;
-          transform-origin: 154px 0;
 }
 
 .g-recaptcha div {
