@@ -69,3 +69,7 @@ gulp.task('server', ['compile'], function () {
     tasks: ['compile']
   })
 })
+
+gulp.task('watch', function() {
+  gulp.watch('./client/sass/**/*.scss', ['compile-sass']);
+})
