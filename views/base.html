@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/Article">
 <head>
   <meta charset="utf-8">
   <title>{% if story.title %}{{ story.title }} | {% endif %}DynamicStory</title>
@@ -12,8 +12,13 @@
   <link rel="stylesheet" type="text/css" href="/css/style.css">
   <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+  {% block OGmeta %}
+  {% endblock %}
 </head>
 <body>
+
+{% block SDK %}
+{% endblock %}
 
 {% include "partials/header.html" %}
 
@@ -21,6 +26,9 @@
 {% include "partials/flasherror.html" %}
 
 {% block page %}
+{% endblock %}
+
+{% block share %}
 {% endblock %}
 
 {% block script %}
