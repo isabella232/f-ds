@@ -6,21 +6,24 @@
 
 {% block page %}
 <div class="container">
-  <div class="jumbotron">
-    <h1 class="title hyphenate text">{{ story.title }}</h1>
-    <h3 class="author">{{ story.author }}</h3>
-    <h3 class="date">{{ story.creationDate.split('T')[0] }}</h3>
-    <hr class="title-bar"/>
+  {% if story.author == username %}
+  <div class=" author-tools">
+  <h4 class="pull-left">Author Tools:</h4>
     <form action="/story/{{ story.storyId }}/delete" method="POST">
-      {% if story.author == username %}
-      <button class="btn btn-default btn-xs delete">
-        Delete
-      </button>
-      {% endif %}
+        <button class="btn btn-default btn-xs delete pull-right">
+          Delete
+        </button>
     </form>
   </div>
-  <div class="jumbotron narrative">
-    <span id="xbbcode" class="definition"></span>
+  {% endif %}
+  <div class="jumbotron">
+    <h1 class="title">{{ story.title }}</h1>
+    <h4 class="author"><span>by</span>&nbsp;{{ story.author }}</h4>
+    <h4 class="date">{{ story.creationDate.split('T')[0] }}</h4>
+    <hr class="title-bar narrative-bar"/>
+    <div class="narrative">
+      <span id="xbbcode" class="definition"></span>
+    </div>
   </div>
   <div class="jumbotron">
     <div class="active-section">
@@ -30,7 +33,6 @@
     <div class="question-title">{{ question.title }}</div>
     <div class="interactive-section">
       <div class="results-section">
-        <hr class="title-bar" />
         {% if question.totalVotes > 0 %}
         <div id="pie" class="pie"></div>
         {% endif %}
@@ -80,11 +82,6 @@
 </div>
 {% endblock %}
 {% block script %}
-<!-- hyphenate text -->
-<script src="/lib/hyphenator.min.js"></script>
-<script>
-  Hyphenator.run();
-</script>
 <!-- declare global variables -->
 <script>
   var userVote = '{{ question.userVote }}'

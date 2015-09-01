@@ -9,9 +9,6 @@
       <h3>Articles with surveys.</h3>
       <p>Our mission is to create a more effective way to learn about the world around us. We believe pairing content with surveys will help generate more understanding for everyone.</p>
       <a href="/user/signup"><button><span>signup</span><i class="ion-ios-arrow-thin-up"></i></button></a>
-
-  {% include "partials/pagination.html" %}
-
     </div>
   </div>
   {% endif %}
@@ -21,6 +18,7 @@
     <div>Latest</div>
     <div></div>
   </div>
+  {% include "partials/pagination.html" %}
   {% for story in feed %}
   <div>
     <a href="/story/{{ story.story }}"><div class="feed-item">

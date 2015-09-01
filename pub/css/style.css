@@ -20,6 +20,7 @@ body{
 /* min width for containers to prevent maintain legibility */
 .container{
   min-width: 320px;
+  max-width: 720px;
 }/*----O_o-*/
 
 /* styling bootstrap alert class */
@@ -35,7 +36,6 @@ body{
 .jumbotron{
   background-color: #f8f8f8 !important;
 }
-<<<<<<< HEAD
 
 .container .jumbotron{
   padding: 40px 10px;
@@ -60,7 +60,6 @@ body{
 /* stlying bootstrap's pagination class */
 .pagination {
   width: auto;
-  margin-top: 40px;
 }
 
 .pagination>li>a, .pagination>li>a:hover {
@@ -234,6 +233,20 @@ a:hover{
 }/*----O_o-*/
 
 /*Story title styling*/
+.author-tools{
+  overflow:hidden;
+  background-color: #f8f8f8;
+  padding:10px;
+  margin:20px auto;
+  border-radius: .3em;
+  height:56px;
+}
+.author-tools h4 {
+  font-family: 'georgia';
+  margin-left:20px;
+  color:#555;
+  font-weight: 300;
+}
 
 .delete{
   font-family: 'georgia';
@@ -241,16 +254,16 @@ a:hover{
   border-radius: 0;
   height: 36px;
   width: 75px;
-  margin: 0 auto;
   display: block;
+  margin-right:20px;
 }
 .title{
   text-align: center;
   font-family: 'Georgia';
-  color: #222;
-  font-size: 48px;
+  color: #444 !important;
+  font-size: 36px !important;
   font-weight: 700;
-  margin: 48px 0;
+  margin: 48px 64px;
 }
 
 @media(max-width: 560px) {
@@ -267,11 +280,17 @@ a:hover{
   font-weight: 400;
   text-align: center;
   text-transform: uppercase;
-  letter-spacing: 12px;
-  font-size: 18px;
+  letter-spacing: 3px;
+  font-size: 16px;
   line-height: 26px;
-  margin: 14.5px 0;
+  margin: 0;
   font-family: 'Georgia';
+}
+
+.author span{
+  letter-spacing: 2px;
+  font-style: italic;
+  text-transform: lowercase;
 }
 
 .date{
@@ -280,15 +299,19 @@ a:hover{
   font-family: 'Georgia';
   font-weight: 400;
   color: #555;
-  font-style: italic;
-  font-size: 18px;
-  letter-spacing: 6px;
-  margin: 18px 0;
+  font-size: 16px;
+  letter-spacing: 1px;
+  margin: 0;
 }
 
 .title-bar{
-  width: 68px;
-  margin:48px auto;
+  width: 168px;
+  margin:30px auto;
+}
+
+.narrative-bar{
+  margin:40px auto;
+  margin-bottom: 0;
 }
 
 #drop-cap{
@@ -297,17 +320,7 @@ a:hover{
 }
 /*----O_o-*/
 
-/* Narrative padding */
-@media screen and (min-width: 1100px){
-  .container .jumbotron{
-    padding: 120px;
-  }
-}
-@media screen and (min-width: 768px){
-  .container .jumbotron{
-    padding: 90px;
-  }
-}/*----O_o-*/
+
 
 /* Input styling */
 
@@ -448,11 +461,10 @@ input:-webkit-autofill {
   font-family: 'Georgia';
   text-align: center;
   font-weight: 600;
-  font-size: 36px;
+  font-size: 24px;
   width: 300px;
   margin: 0 auto;
-  margin-bottom: 48px;
-  line-height: 40px;
+  line-height: 1.25;
 }
 
 @media (max-width: 320px) {
@@ -721,6 +733,8 @@ input:-webkit-autofill {
 .header{
   font-family: 'Georgia';
   text-align: center;
+  padding-right:0 !important;
+  padding-left:0 !important;
 /*  margin: 0 31px;*/
 }
 .header h1{
@@ -749,10 +763,17 @@ input:-webkit-autofill {
 .ion-drag{
   display: none;
 }
-@media (max-width: 750px){
+
+
+
+/* Hamburger menu controls */
+
+/* Show hamburger menu icon for screens 640px or smaller */
+@media (max-width: 639px){
   .banner span span{
     display: none;
   }
+
   .ion-drag{
     display: inline-block;
     padding-right: 8px;
@@ -763,7 +784,9 @@ input:-webkit-autofill {
     top: 32px;
   }
 }
-@media (min-width: 751px){
+
+/* Hide hamburger menu if open for screens 640px or wider */
+@media (min-width: 640px){
   #menu{
     display: none !important;
   }
@@ -823,7 +846,7 @@ input:-webkit-autofill {
 
 .header span{
   position: absolute;
-  right: 0px;
+  right: 4px;
   color: #444;
   font-weight: 700;
   font-size: 12px;
