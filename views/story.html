@@ -1,5 +1,13 @@
 {% extends "base.html" %}
 
+{% block OGmeta %}
+  {% include "partials/OGmeta.html" %}
+{% endblock %}
+
+{% block SDK %}
+<script src="/js/mediaSDK.js"></script>
+{% endblock %}
+
 {% block style %}
 <link rel="stylesheet" href="/lib/bbcode/xbbcode.css" type="text/css"/>
 {% endblock %}
@@ -81,6 +89,23 @@
   </div>
 </div>
 {% endblock %}
+
+{% block share %}
+<div class="container">
+  <div class="jumbotron share-jumbotron center">
+    <div>
+      <h4>Share this article:</h4>
+      <a class="share-icon" href="https://www.facebook.com/sharer/sharer.php?u=/story/{{ story.storyId }}&title={{ story.title }}" target="_blank">
+        <img src="/img/facebook.png" alt="share to facebook" title="Share to Facebook">
+      </a>
+      <a class="share-icon" href="https://twitter.com/share" class="twitter-share-button" data-via="DynamicStoryOrg" data-dnt="true" target="_blank">
+        <img src="/img/twitter.png" alt="share to twitter" title="Share to Twitter">
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
 {% block script %}
 <!-- declare global variables -->
 <script>

@@ -1143,3 +1143,30 @@ input:-webkit-autofill {
   text-align: center;
 }
 /*----O_o-*/
+
+/* SHARE BUTTONS */
+.share-jumbotron{
+  font-family: 'georgia';
+  margin-top:5em;
+  margin-bottom:5em;
+  padding: 16px 0;
+  display:block;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  text-align: center;
+}
+.share-jumbotron h4 {
+   display:inline-block;
+   margin-right:5px;
+}
+.share-icon {
+  margin-right: .17em;
+  margin-left: .17em;
+}
+.share-icon:hover{
+    opacity: 0.5;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+.share-icon img{
+  width:40px;
+}/*-----O_o--*/
