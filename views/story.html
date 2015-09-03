@@ -16,12 +16,19 @@
 
 <!-- LOGIN/SIGNUP MODAL -->
 <div class="overlay" id="login-signup-overlay">
-  <div class="modal-custom signup-login modal-signup-login" id="login-modal">
-    {% include "partials/login.html" %}
+  <div class="modal-custom modal-vote">
+    <div class="modal-vote-lead">
+      <p>To Vote<br>Please</p>
+      <i class="ion-ios-close-empty modal-close" id="modal-vote-close"></i>
+    </div>
+    <div class="modal-btn-container">
+      <a href="/user/signup"><div class="redirect-btn">Signup</div></a>
+      <a href="/user/login"><div class="redirect-btn">Login</div></a>
+    </div>
   </div>
-  <div class="modal-custom signup-login modal-signup-login" id="signup-modal">
-    {% include "partials/signup.html" %}
-  </div>
+<!--   <div class="modal-custom signup-login modal-signup-login" id="signup-modal">
+
+  </div> -->
 </div>
 
 <div class="container">

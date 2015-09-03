@@ -5,6 +5,7 @@ var numOfAnswers = voteForm.getElementsByTagName('form').length
 var overlay = document.getElementById('login-signup-overlay')
 var loginClose = document.getElementById('login-close')
 var signupClose = document.getElementById('signup-close')
+var modalVoteClose = document.getElementById('modal-vote-close')
 var body = document.getElementsByTagName('body')[0]
 var buttons = []
 
@@ -27,14 +28,19 @@ for (var i = 0; i < numOfAnswers ; i++) {
 overlay.onclick = function(e) {
   if (e.target.className === 'overlay') {
     overlay.style.display = 'none';
-    body.style.overflow = "auto"
+    body.style.overflow = "auto";
   }
 }
-signupClose.onclick = function() {
+// signupClose.onclick = function() {
+//   overlay.style.display = 'none';
+//   body.style.overflow = "auto";
+// }
+// loginClose.onclick = function() {
+//   overlay.style.display = 'none';
+//   body.style.overflow = "auto";
+// }
+
+modalVoteClose.onclick = function() {
   overlay.style.display = 'none';
-  body.style.overflow = "auto"
-}
-loginClose.onclick = function() {
-  overlay.style.display = 'none';
-  body.style.overflow = "auto"
+  body.style.overflow = "auto";
 }

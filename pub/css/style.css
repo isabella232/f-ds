@@ -1181,7 +1181,7 @@ input:-webkit-autofill {
  *  than the modal height to allow for scrolling.
  */
 
-@media (max-height: 415px) {
+@media (max-height: 215px) {
   #login-modal{
     position: static;
     -webkit-transform: none;
@@ -1189,6 +1189,10 @@ input:-webkit-autofill {
     transform: none;
     display: block;
     margin:30px auto;
+  }
+
+  .modal-vote {
+    margin: 30px auto;
   }
 }
 
@@ -1337,3 +1341,42 @@ input:-webkit-autofill {
   height: auto !important;
 }
 
+/* Vote Modal */
+.modal-vote {
+  background: white;
+  height: 180px;
+  width: 300px;
+}
+.modal-vote p {
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.modal-vote-lead {
+  margin: 40px auto 30px;
+}
+
+.modal-btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.redirect-btn {
+  display: inline-block;
+  background-color: #333;
+  width: 89px;
+  border-radius: 35px;
+  color: white;
+  text-align: center;
+  padding: 10px 5px;
+  font-style: italic;
+}
+
+.modal-btn-container a:first-child {
+  margin-right: 12px;
+}
+
+.redirect-btn:hover {
+  background: #000;
+}
