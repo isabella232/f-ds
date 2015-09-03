@@ -61,15 +61,16 @@ gulp.task('compile-sass', function() {
 
 gulp.task('compile', ['compile-js', 'compile-sass'])
 
-gulp.task('server', ['compile'], function () {
-  return nodemon({
-    script: 'server',
-    ext: 'js scss html',
-    env: { 'NODE_ENV': 'development' },
-    tasks: ['compile']
-  })
+gulp.task('server', ['watch'], function() {
+  return nodemon(
+    { script: 'server'
+    , env: { NODE_ENV: 'development'}
+    , watch: ['server/**/*.js']
+    }
+  )
 })
 
-gulp.task('watch', function() {
-  gulp.watch('./client/sass/**/*.scss', ['compile-sass']);
+gulp.task('watch', ['compile'], function() {
+  gulp.watch('./client/sass/*.scss', ['compile-sass']);
+  gulp.watch('./client/js/*.js', ['compile-js']);
 })
