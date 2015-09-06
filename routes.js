@@ -81,8 +81,9 @@ function renderFeed(req, res) {
       res.render('500.html')
     } else {
 
-      if (page > feed.lastPage) {
+      if (page > feed.lastPage && feed.lastPage !== 0) {
         res.redirect('/feed')
+        return
       }
 
       var questionIds = []
