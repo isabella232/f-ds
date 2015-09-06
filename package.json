@@ -4,7 +4,7 @@
   "description": "Web Application for DynamicStory.org",
   "main": "server.js",
   "scripts": {
-    "start": "gulp compile && node server",
+    "start": "node server",
     "test": "echo \"Error: no test specified\" && exit 1",
     "hint": "jshint $(find . -name \\*.js | egrep -v '(node_modules|pub/lib)')"
   },
