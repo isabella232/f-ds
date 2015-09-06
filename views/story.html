@@ -14,11 +14,14 @@
 
 {% block page %}
 
-<!-- LOGIN/SIGNUP MODAL -->
+<!-- VOTE MODAL -->
 <div class="overlay" id="login-signup-overlay">
   <div class="modal-custom modal-vote">
+    <i class="ion-alert-circled"></i>
     <div class="modal-vote-lead">
-      <p>To Vote<br>Please</p>
+      <p>
+        <span>To Vote</span><span>Please</span>
+      </p>
       <i class="ion-ios-close-empty modal-close" id="modal-vote-close"></i>
     </div>
     <div class="modal-btn-container">
@@ -26,15 +29,17 @@
       <a href="/user/login"><div class="redirect-btn">Login</div></a>
     </div>
   </div>
-<!--   <div class="modal-custom signup-login modal-signup-login" id="signup-modal">
-
-  </div> -->
 </div>
 
 <div class="container">
   {% if story.author == username %}
   <div class=" author-tools">
   <h4 class="pull-left">Author Tools:</h4>
+  <div class="jumbotron">
+    <h1 class="title text">{{ story.title }}</h1>
+    <h3 class="author">{{ story.author }}</h3>
+    <h3 class="date">{{ story.creationDate.split('T')[0] }}</h3>
+    <hr class="title-bar"/>
     <form action="/story/{{ story.storyId }}/delete" method="POST">
         <button class="btn btn-default btn-xs delete pull-right">
           Delete
@@ -134,13 +139,8 @@
     window.answer{{ loop.index }} = {{ answer.votes }}
   {% endfor %}
 </script>
-<!-- login/signup modal -->
+<!-- vote modal -->
 <script src="/js/modal.js"></script>
-<!-- hyphenate text -->
-<script src="/lib/hyphenator.min.js"></script>
-<script>
-  Hyphenator.run();
-</script>
 <!-- drop cap + bbcode -->
 <script src="/lib/dropcap.min.js"></script>
 <script src="/lib/bbcode/xbbcode.js"></script>

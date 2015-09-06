@@ -1344,22 +1344,48 @@ input:-webkit-autofill {
 /* Vote Modal */
 .modal-vote {
   background: white;
-  height: 180px;
-  width: 300px;
+  width: 270px;
+  text-align: center;
 }
 .modal-vote p {
   margin-bottom: 0;
-  text-align: center;
 }
 
 .modal-vote-lead {
-  margin: 40px auto 30px;
+  margin: 0 auto 30px;
+} 
+
+.modal-vote-lead p span {
+  display: block;
+}
+
+.modal-vote-lead p span:nth-child(1) {
+  font-size: 32px;
+}
+
+.modal-vote-lead p span:nth-child(2) {
+  font-size: 10px;
+  color: #777;
+  font-style: italic;
+  letter-spacing: 5px;
+  margin-left: 5px;
+  text-transform: uppercase;
 }
 
 .modal-btn-container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 35px;
 }
 
 .redirect-btn {
@@ -1379,4 +1405,12 @@ input:-webkit-autofill {
 
 .redirect-btn:hover {
   background: #000;
+}
+
+.ion-alert-circled {
+  font-size: 63px;
+  color: #444;
+  line-height: 63px;
+  display: block;
+  margin-top: 56px;
 }

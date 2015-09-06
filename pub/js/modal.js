@@ -3,8 +3,6 @@
 var voteForm = document.getElementsByClassName('vote-section')[0]
 var numOfAnswers = voteForm.getElementsByTagName('form').length
 var overlay = document.getElementById('login-signup-overlay')
-var loginClose = document.getElementById('login-close')
-var signupClose = document.getElementById('signup-close')
 var modalVoteClose = document.getElementById('modal-vote-close')
 var body = document.getElementsByTagName('body')[0]
 var buttons = []
@@ -31,14 +29,6 @@ overlay.onclick = function(e) {
     body.style.overflow = "auto";
   }
 }
-// signupClose.onclick = function() {
-//   overlay.style.display = 'none';
-//   body.style.overflow = "auto";
-// }
-// loginClose.onclick = function() {
-//   overlay.style.display = 'none';
-//   body.style.overflow = "auto";
-// }
 
 modalVoteClose.onclick = function() {
   overlay.style.display = 'none';

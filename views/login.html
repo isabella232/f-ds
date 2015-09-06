@@ -3,14 +3,14 @@
 {% block page %}
 
 <div class="container-fluid signup-login static-signup-login">
-  {% include "partials/login.html" %}
+  <h1>Login<i class="ion-ios-close-empty modal-close" id="login-close"></i></h1>
+  <h5>Welcome back. Dynamic stories await you. Or <a href="/user/signup">signup.</a></h5>
+  <form action="/user/login" method="POST">
+    <input name="usernameEmail" type="text" title="This is the username or email of your account" maxlength="254" required placeholder="Email or Username">
+    <input name="password" type="password" maxlength="512" required placeholder="Password">
+    <button><span>ENTER</span><i class="ion-ios-arrow-thin-right"></i></button>
+  </form>
 </div>
-
-{% block script %}
-<script>
-document.getElementsByClassName('signup-login')[0].getElementsByTagName('a')[0].setAttribute('href', '/user/signup')
-</script>
-{% endblock %}
 
 {% endblock %}
 
