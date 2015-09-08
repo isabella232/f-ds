@@ -34,12 +34,7 @@
 <div class="container">
   {% if story.author == username %}
   <div class=" author-tools">
-  <h4 class="pull-left">Author Tools:</h4>
-  <div class="jumbotron">
-    <h1 class="title text">{{ story.title }}</h1>
-    <h3 class="author">{{ story.author }}</h3>
-    <h3 class="date">{{ story.creationDate.split('T')[0] }}</h3>
-    <hr class="title-bar"/>
+    <h4 class="pull-left">Author Tools:</h4>
     <form action="/story/{{ story.storyId }}/delete" method="POST">
         <button class="btn btn-default btn-xs delete pull-right">
           Delete
