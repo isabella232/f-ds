@@ -2,25 +2,22 @@
 
 {% block page %}
 <div class="container">
-  <div class="jumbotron">
+  <div class="profile row jumbotron">
     <div class="col-sm-4">
-      <img src="/img/avatar.png" alt="avatar here" class=" profile-img center-block">
+      <img src="/img/avatar.png" alt="User avatar" class="profile-img center-block">
     </div>
     <div class="col-sm-8 menu">
       <h2 class="username">{{ username }}</h2>
-      <form action="/user/delete" method="POST">
-        <button class="btn btn-default btn-block">Delete Account</button>
+      <form class="profile-form" action="/user/logout" method="POST">
+        <button id="logout-btn" class="btn btn-default btn-block">Log Out</button>
       </form>
       <a class="change-pword" href="/user/change-pass">
         <button class="btn btn-default btn-block">Change Password</button>
       </a>
-      <form class="profile-form" action="/user/logout" method="POST">
-        <button id="logout-btn" class="btn btn-default btn-block">Log Out</button>
+      <form action="/user/delete" method="POST">
+        <button class="btn btn-danger btn-block">Delete Account</button>
       </form>
     </div>
-    &nbsp;
   </div>
 </div>
 {% endblock %}
-
-
