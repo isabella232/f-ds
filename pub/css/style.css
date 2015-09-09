@@ -149,7 +149,7 @@ hr{
 
 /*adjusting font-size according to the size of screen */
 .narrative p, #xbbcode{
-  font-size: 20px !important;
+  font-size: 18px !important;
   line-height: 32px !important;
 }
 
