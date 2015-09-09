@@ -310,8 +310,8 @@ a:hover{
 }
 
 .narrative-bar{
-  margin:40px auto;
-  margin-bottom: 0;
+  margin:50px auto;
+  margin-bottom: 30px;
 }
 
 #drop-cap{
@@ -958,6 +958,12 @@ input:-webkit-autofill {
   }
   .feed-item h6 {
     margin-top:22px;
+  }
+  .narrative-container{
+    width:700px;
+  }
+  .share-container{
+    width:700px;
   }
 }
 
