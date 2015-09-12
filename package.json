@@ -28,6 +28,7 @@
     "request": "2.54.0"
   },
   "devDependencies": {
+    "browser-sync": "^2.9.3",
     "browserify": "^11.0.1",
     "gulp": "^3.9.0",
     "gulp-if": "^1.2.5",

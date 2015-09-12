@@ -21,6 +21,8 @@ var browserSync = require('browser-sync').create()
  * be replaced with the contents of the file being imported. If you're importing a .css
  * file, the @import statement remains intact in the outputted .css file.
  */
+var browserSync = require('browser-sync').create()
+
 function npmModuleImporter(file, prev, done) {
 
   // Import module if possible
@@ -54,11 +56,11 @@ function npmModuleImporter(file, prev, done) {
 
 gulp.task('compile-js', function() {
   return browserify('./client/js/index.js')
-  .bundle()
-  .pipe(source('scripts.min.js'))
-  .pipe(buffer())
-  .pipe(gulpIf(process.env.NODE_ENV === 'production', uglify()))
-  .pipe(gulp.dest('pub'))
+    .bundle()
+    .pipe(source('scripts.min.js'))
+    .pipe(buffer())
+    .pipe(gulpIf(process.env.NODE_ENV === 'production', uglify()))
+    .pipe(gulp.dest('pub'))
 })
 
 gulp.task('compile-sass', function() {
@@ -70,10 +72,20 @@ gulp.task('compile-sass', function() {
 
 gulp.task('compile', ['compile-js', 'compile-sass'])
 
-gulp.task('server', ['compile'], function() {
+gulp.task('server', ['compile'], function(cb) {
+
+  browserSync.init(
+    { port  : 9001
+    , proxy : 'http://localhost:9000'
+    , files : ['client/views/**/*', 'pub/**/*']
+    , ui    : {port: 9002}
+    , open  : false
+    }
+  )
+
   gulp.watch('./client/sass/*.scss', ['compile-sass'])
   gulp.watch('./client/js/*.js', ['compile-js'])
-  return nodemon(
+  nodemon(
     { script: 'server'
     , env   : { NODE_ENV: 'development'}
     , watch : ['server/**/*']
