@@ -12,6 +12,18 @@ var browserify  = require('browserify')
   , source      = require('vinyl-source-stream')
   , uglify      = require('gulp-uglify')
 
+<<<<<<< HEAD
+=======
+var browserSync = require('browser-sync').create()
+
+/*
+ * In vanilla CSS, @import statements do another HTTP request to the server.
+ *
+ * In Sass, if you're importing a .sass or .scss file, the @import statement will
+ * be replaced with the contents of the file being imported. If you're importing a .css
+ * file, the @import statement remains intact in the outputted .css file.
+ */
+>>>>>>> c097083... Address PR comments
 function npmModuleImporter(file, prev, done) {
 
   // Import module if possible
@@ -66,8 +78,8 @@ gulp.task('server', ['compile'], function() {
   gulp.watch('./client/js/*.js', ['compile-js'])
   return nodemon(
     { script: 'server'
-    , env: { NODE_ENV: 'development'}
-    , watch: ['server/**/*.js']
+    , env   : { NODE_ENV: 'development'}
+    , watch : ['server/**/*']
     }
   )
 })

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "hint": "jshint $(find . -name \\*.js | egrep -v '(node_modules|pub/lib)')"
+    "hint": "jshint $(find . -name \\*.js | egrep -v '(node_modules|client/lib)')"
   },
   "repository": {
     "type": "git",
