@@ -522,10 +522,10 @@ input:-webkit-autofill {
 .survey-button:hover .circle{
   background-color: white;
 }
-.survey-button:hover .circle span:nth-child(1){
+.no-touch .survey-button:hover .circle span:nth-child(1){
   display: none;
 }
-.survey-button:hover .glyphicon-ok{
+.no-touch .survey-button:hover .glyphicon-ok{
   display: block;
 }
 
@@ -837,10 +837,10 @@ input:-webkit-autofill {
 .ion-ios-arrow-thin-up, .ion-ios-arrow-thin-right{
   display: none;
 }
-.cta button:hover span, .signup-login button:hover span{
+.no-touch .cta button:hover span, .no-touch .signup-login button:hover span{
   display: none;
 }
-.cta button:hover .ion-ios-arrow-thin-up, .signup-login button:hover .ion-ios-arrow-thin-right{
+.no-touch .cta button:hover .ion-ios-arrow-thin-up, .no-touch .signup-login button:hover .ion-ios-arrow-thin-right{
   display: block;
   font-size: 28px;
 }
@@ -1353,7 +1353,7 @@ input:-webkit-autofill {
 
 .modal-vote-lead {
   margin: 0 auto 30px;
-} 
+}
 
 .modal-vote-lead p span {
   display: block;
