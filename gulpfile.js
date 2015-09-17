@@ -12,8 +12,6 @@ var browserify  = require('browserify')
   , source      = require('vinyl-source-stream')
   , uglify      = require('gulp-uglify')
 
-var browserSync = require('browser-sync').create()
-
 /*
  * In vanilla CSS, @import statements do another HTTP request to the server.
  *
