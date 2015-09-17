@@ -3,3 +3,5 @@ npm-debug.log
 .DS_Store
 .idea
 data
+pub/styles.min.css
+pub/scripts.min.js

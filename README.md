@@ -1,13 +1,33 @@
-# DynamicStory Frontend - Chris
+# DynamicStory Frontend
 
-**Node Packages Used**
+**Node Packages Used Serverside**
 
-- Body-Parser
-- Browserify
-- Cookie-Parser
-- Express
-- Nunjucks
-- Request
+* Async
+* Body-Parser
+* Cookie-Parser
+* Express
+* Lodash
+* Moment
+* Nunjucks
+* Request
+
+**Node Packages Used Clientside**
+
+* Bootstrap
+* CSS-Modal
+* jQuery
+
+**Node Packages Used in Development**
+
+* Browserify
+* Gulp and Plugins
+  * Gulp-If
+  * Gulp-Nodemon
+  * Gulp-Rename
+  * Gulp-Sass
+  * Gulp-Uglify
+* Vinyl-Buffer
+* Vinyl-Source-Stream
 
 **Coding Style**
 

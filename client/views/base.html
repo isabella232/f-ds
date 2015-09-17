@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/Article">
+<head>
+  <meta charset="utf-8">
+  <title>{% if story.title %}{{ story.title }} | {% endif %}DynamicStory</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="DynamicStory is a publishing platform. Our mission is to create more avenues for engaging with internet content by pairing articles with surveys."/>
+  {% block style %}
+  {% endblock %}
+  <link rel="stylesheet" type="text/css" href="/styles.min.css">
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+  {% block OGmeta %}
+  {% endblock %}
+</head>
+<body>
+
+{% block SDK %}
+{% endblock %}
+
+<div class="overlay">
+  <div class="modal-custom form">
+    {% include "partials/signup.html" %}
+  </div>
+</div>
+
+{% include "partials/header.html" %}
+
+{% include "partials/flashmessage.html" %}
+{% include "partials/flasherror.html" %}
+
+{% block page %}
+{% endblock %}
+
+{% block share %}
+{% endblock %}
+
+{% block script %}
+{% endblock %}
+
+  <script src="/scripts.min.js"></script>
+</body>
