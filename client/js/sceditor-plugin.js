@@ -3,6 +3,6 @@ $(function() {
     // with SCEditor
     $("textarea").sceditor({
         plugins: "bbcode",
-        toolbar:"image,youtube|source"
+        toolbar:"bold,italic,underline|size|bulletlist,orderedlist|quote,horizontalrule|image,youtube|source",
     });
 });

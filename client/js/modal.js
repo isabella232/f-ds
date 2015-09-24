@@ -1,6 +1,8 @@
 // disable vote buttons if user is not logged in
 // and display modal when a user who is not logged in clicks on vote buttons
 var voteForm = document.getElementsByClassName('vote-section')[0]
+
+if (!voteForm) return
 var numOfAnswers = voteForm.getElementsByTagName('form').length
 var overlay = document.getElementById('login-signup-overlay')
 var modalVoteClose = document.getElementById('modal-vote-close')
