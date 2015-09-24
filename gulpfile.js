@@ -21,7 +21,6 @@ var browserSync = require('browser-sync').create()
  * be replaced with the contents of the file being imported. If you're importing a .css
  * file, the @import statement remains intact in the outputted .css file.
  */
-var browserSync = require('browser-sync').create()
 
 function npmModuleImporter(file, prev, done) {
 
@@ -72,7 +71,7 @@ gulp.task('compile-sass', function() {
 
 gulp.task('compile', ['compile-js', 'compile-sass'])
 
-gulp.task('server', ['compile'], function(cb) {
+gulp.task('server', ['compile'], function() {
 
   browserSync.init(
     { port  : 9001
