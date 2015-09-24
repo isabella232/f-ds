@@ -348,7 +348,7 @@ var XBBCODE = (function() {
                     mySize = 14;
                 }
 
-                return '<span class="xbbcode-size-' + mySize + '">';
+                return '<span class="xbbcode-size-' + mySize*5 + '">';
             },
             closeTag: function(params,content) {
                 return '</span>';
