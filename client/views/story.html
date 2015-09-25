@@ -19,7 +19,7 @@
   </div>
 </div>
 
-<div class="container narrative-container">
+<div class="container story-container">
   {% if story.author == username %}
   <div class=" author-tools">
     <h4 class="pull-left">Author Tools:</h4>
@@ -30,7 +30,7 @@
     </form>
   </div>
   {% endif %}
-  <div class="jumbotron">
+  <div class="jumbotron col-md-8">
     <h1 class="title">{{ story.title }}</h1>
     <h4 class="author"><span>by</span>&nbsp;{{ story.author }}</h4>
     <h4 class="date">{{ story.creationDate.split('T')[0] }}</h4>
@@ -39,12 +39,16 @@
       <span id="xbbcode" class="definition">{{story.narrative}}</span>
     </div>
   </div>
-  <div class="jumbotron">
+  <div class="col-md-4 pull-right">
+    <div class="question-header">
+      <h4>Survey Section:</h4>
+    </div>
+    <div class="jumbotron">
+    <div class="question-title">{{ question.title }}</div>
     <div class="active-section">
       <div class="vote-btn active">Vote<i class="ion-ios-checkmark-outline"></i></div>
       <div class="results-btn">Results<i class="ion-ios-pie-outline"></i></div>
     </div>
-    <div class="question-title">{{ question.title }}</div>
     <div class="interactive-section">
       <div class="results-section">
         {% if question.totalVotes > 0 %}
@@ -64,7 +68,6 @@
         </div>
       </div>
       <div class="vote-section">
-        <hr class="title-bar" />
         <div>
           {% for answer in question.answers %}
           <form class="answer-options" action="/story/{{ story.storyId }}/vote/{{ loop.index - 1 }}" method="POST">
@@ -94,11 +97,7 @@
     </div>
   </div>
 </div>
-{% endblock %}
-
-{% block share %}
-<div class="container share-container">
-  <div class="jumbotron share-jumbotron center">
+<div class="jumbotron share-jumbotron col-md-8 pull-left">
     <div>
       <h4>Share this article:</h4>
       <a class="share-icon" href="https://www.facebook.com/sharer/sharer.php?u=/story/{{ story.storyId }}&title={{ story.title }}" target="_blank">
@@ -110,6 +109,10 @@
     </div>
   </div>
 </div>
+{% endblock %}
+
+{% block share %}
+  
 {% endblock %}
 
 {% block script %}

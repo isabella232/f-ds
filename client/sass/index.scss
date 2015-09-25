@@ -374,11 +374,11 @@ input:-webkit-autofill {
   -webkit-justify-content:center;
   -ms-flex-pack:center;
   justify-content:center;
-  margin-bottom: 64px;
+  margin-top: 64px;
   border-bottom: 1px solid #ddd;
-  width: 390px;
+  width: 100%;
   margin: 0 auto;
-  margin-bottom: 64px;
+  margin-top: 32px;
 }
 
 .active-section div {
@@ -393,12 +393,6 @@ input:-webkit-autofill {
 }
 
 @media (max-width: 520px) {
-  .active-section div{
-    width: 140px;
-  }
-  .active-section{
-    width: 290px;
-  }
   .active-section .ion-ios-checkmark-outline, .active-section .ion-ios-pie-outline {
     font-size: 26px;
     padding-left: 10px;
@@ -406,7 +400,12 @@ input:-webkit-autofill {
 }
 
 .vote-btn{
+  width:50%;
   margin-right: 18px;
+}
+
+.vote-section{
+  margin-top:35px;
 }
 
 .active{
@@ -459,7 +458,7 @@ input:-webkit-autofill {
   text-align: center;
   font-weight: 600;
   font-size: 24px;
-  width: 300px;
+  width: 95%;
   margin: 0 auto;
   line-height: 1.25;
 }
@@ -467,9 +466,6 @@ input:-webkit-autofill {
 @media (max-width: 320px) {
   .dataPoint{
     width:100%;
-  }
-  .question-title{
-    width: 290px;
   }
 }
 
@@ -512,7 +508,7 @@ input:-webkit-autofill {
   padding: 10px;
   border: 1px solid #777;
   margin-bottom: 6px;
-  max-width: 480px;
+  max-width: 580px;
   background-color: transparent;
   display: block;
   width: 100%;
@@ -538,14 +534,18 @@ input:-webkit-autofill {
 }
 
 .answer-options{
-  width: 300px;
+  width: 100%;
+  max-width:530px;
   margin: 0 auto;
 }
 
-@media (min-width: 750px) {
-  .answer-options{
-    width: 478px;
-  }
+.question-header{
+  margin:20px 0px 15px;
+  height:38px;
+  background-color:#f8f8f8;
+  border-radius:.5em;
+  vertical-alignment:center;
+  padding:3px 10px;
 }
 
 .answer-options:nth-child(1) .circle{
@@ -635,7 +635,7 @@ input:-webkit-autofill {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
-  width: 300px;
+  width: 90%;
   text-align:center;
   color:#555;
   -webkit-box-align: center;
@@ -967,9 +967,6 @@ input:-webkit-autofill {
   .feed-item h6 {
     margin-top:22px;
   }
-  .narrative-container{
-    width:700px;
-  }
   .share-container{
     width:700px;
   }
@@ -986,12 +983,9 @@ input:-webkit-autofill {
 /* SHARE BUTTONS */
 .share-jumbotron{
   font-family: 'georgia';
-  margin-top:5em;
   margin-bottom:5em;
   padding: 16px 0;
   display:block;
-  margin-left:auto !important;
-  margin-right:auto !important;
   text-align: center;
 }
 .share-jumbotron h4 {
@@ -1433,3 +1427,4 @@ input:-webkit-autofill {
 .profile button {
   margin-bottom: 10px;
 }
+
