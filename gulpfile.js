@@ -76,7 +76,7 @@ gulp.task('server', ['compile'], function() {
   browserSync.init(
     { port  : 9001
     , proxy : 'http://localhost:9000'
-    , files : ['client/views/**/*', 'pub/**/*']
+    , files : ['client/views/**', 'pub/**']
     , ui    : {port: 9002}
     , open  : false
     }
