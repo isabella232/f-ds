@@ -543,7 +543,7 @@ input:-webkit-autofill {
   margin:20px 0px 15px;
   height:38px;
   background-color:#f8f8f8;
-  border-radius:.5em;
+  border-radius:6px;
   vertical-alignment:center;
   padding:3px 10px;
 }
@@ -1428,3 +1428,6 @@ input:-webkit-autofill {
   margin-bottom: 10px;
 }
 
+.shadow{
+  box-shadow: 1.5px 2.5px #cfcfcf !important;
+}

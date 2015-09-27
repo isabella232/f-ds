@@ -30,7 +30,7 @@
     </form>
   </div>
   {% endif %}
-  <div class="jumbotron col-md-8">
+  <div class="jumbotron col-md-8 shadow">
     <h1 class="title">{{ story.title }}</h1>
     <h4 class="author"><span>by</span>&nbsp;{{ story.author }}</h4>
     <h4 class="date">{{ story.creationDate.split('T')[0] }}</h4>
@@ -39,11 +39,11 @@
       <span id="xbbcode" class="definition">{{story.narrative}}</span>
     </div>
   </div>
-  <div class="col-md-4 pull-right">
-    <div class="question-header">
+  <div class="col-md-4">
+    <div class="question-header shadow">
       <h4>Survey Section:</h4>
     </div>
-    <div class="jumbotron">
+    <div class="jumbotron shadow">
     <div class="question-title">{{ question.title }}</div>
     <div class="active-section">
       <div class="vote-btn active">Vote<i class="ion-ios-checkmark-outline"></i></div>
@@ -96,8 +96,7 @@
       </div>
     </div>
   </div>
-</div>
-<div class="jumbotron share-jumbotron col-md-8 pull-left">
+<div class="jumbotron share-jumbotron shadow">
     <div>
       <h4>Share this article:</h4>
       <a class="share-icon" href="https://www.facebook.com/sharer/sharer.php?u=/story/{{ story.storyId }}&title={{ story.title }}" target="_blank">
@@ -108,6 +107,7 @@
       </a>
     </div>
   </div>
+</div>
 </div>
 {% endblock %}
 
