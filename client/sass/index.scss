@@ -43,6 +43,7 @@ body{
 
 .jumbotron{
   background-color: #f8f8f8 !important;
+  border-radius:0px !important;
 }
 
 .container .jumbotron{
@@ -357,7 +358,6 @@ input:-webkit-autofill {
 		padding-right: 0;
 	}
 	.jumbotron {
-		border-radius: 0 !important;
     background-color:#f3f3f3;
     padding:10px;
 	}
@@ -543,7 +543,6 @@ input:-webkit-autofill {
   margin:20px 0px 15px;
   height:38px;
   background-color:#f8f8f8;
-  border-radius:6px;
   vertical-alignment:center;
   padding:3px 10px;
 }
@@ -718,6 +717,7 @@ input:-webkit-autofill {
   text-align: left;
   background-color: #f3f3f3;
   border-bottom: 1px solid #ddd;
+  margin-bottom:10px;
 }
 
 .header h1{
@@ -1430,4 +1430,8 @@ input:-webkit-autofill {
 
 .shadow{
   box-shadow: 1.5px 2.5px #cfcfcf !important;
+}
+
+.jumbotron.jumbotron-question {
+  margin-bottom:15px;
 }

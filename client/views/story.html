@@ -43,34 +43,34 @@
     <div class="question-header shadow">
       <h4>Survey Section:</h4>
     </div>
-    <div class="jumbotron shadow">
-    <div class="question-title">{{ question.title }}</div>
-    <div class="active-section">
-      <div class="vote-btn active">Vote<i class="ion-ios-checkmark-outline"></i></div>
-      <div class="results-btn">Results<i class="ion-ios-pie-outline"></i></div>
-    </div>
-    <div class="interactive-section">
-      <div class="results-section">
-        {% if question.totalVotes > 0 %}
-        <div id="pie" class="pie"></div>
-        {% endif %}
-        <div class="pie-results">
-          {% for answer in question.answers %}
-          <div class="dataPoint" id="dataPoint{{ loop.index }}">
-            <div class="rank">{% if loop.index == 1 %}A{% elif loop.index == 2 %}B{% elif loop.index == 3 %}C{% elif loop.index == 4 %}D{% else %}E{% endif %}</div>
-            <div class="answer">{{ answer.name }}</div>
-            <div class="data">
-              <div class="percent">{{ answer.percent }}%</div>
-              <div class="vote-count">{{ answer.votes }} votes</div>
-            </div>
-          </div>
-          {% endfor %}
-        </div>
+    <div class="jumbotron jumbotron-question shadow">
+      <div class="question-title">{{ question.title }}</div>
+      <div class="active-section">
+        <div class="vote-btn active">Vote<i class="ion-ios-checkmark-outline"></i></div>
+        <div class="results-btn">Results<i class="ion-ios-pie-outline"></i></div>
       </div>
-      <div class="vote-section">
-        <div>
-          {% for answer in question.answers %}
-          <form class="answer-options" action="/story/{{ story.storyId }}/vote/{{ loop.index - 1 }}" method="POST">
+      <div class="interactive-section">
+        <div class="results-section">
+          {% if question.totalVotes > 0 %}
+          <div id="pie" class="pie"></div>
+          {% endif %}
+          <div class="pie-results">
+            {% for answer in question.answers %}
+            <div class="dataPoint" id="dataPoint{{ loop.index }}">
+              <div class="rank">{% if loop.index == 1 %}A{% elif loop.index == 2 %}B{% elif loop.index == 3 %}C{% elif loop.index == 4 %}D{% else %}E{% endif %}</div>
+              <div class="answer">{{ answer.name }}</div>
+              <div class="data">
+                <div class="percent">{{ answer.percent }}%</div>
+                <div class="vote-count">{{ answer.votes }} votes</div>
+              </div>
+            </div>
+          {% endfor %}
+          </div>
+        </div>
+        <div class="vote-section">
+          <div>
+            {% for answer in question.answers %}
+            <form class="answer-options" action="/story/{{ story.storyId }}/vote/{{ loop.index - 1 }}" method="POST">
               <button class="survey-button" type="button">
                 <div class="circle">
                   <span>
@@ -90,30 +90,27 @@
                 </div>
                 <div class="answer-text">{{ answer.name }}</div>
               </button>
-          </form>
-          {% endfor %}
+            </form>
+            {% endfor %}
+          </div>
         </div>
       </div>
     </div>
-  </div>
-<div class="jumbotron share-jumbotron shadow">
-    <div>
-      <h4>Share this article:</h4>
-      <a class="share-icon" href="https://www.facebook.com/sharer/sharer.php?u=/story/{{ story.storyId }}&title={{ story.title }}" target="_blank">
-        <img src="/img/facebook.png" alt="share to facebook" title="Share to Facebook">
-      </a>
-      <a class="share-icon" href="https://twitter.com/share" class="twitter-share-button" data-via="DynamicStoryOrg" data-dnt="true" target="_blank">
-        <img src="/img/twitter.png" alt="share to twitter" title="Share to Twitter">
-      </a>
+    <div class="jumbotron share-jumbotron shadow">
+      <div>
+        <h4>Share this article:</h4>
+        <a class="share-icon" href="https://www.facebook.com/sharer/sharer.php?u=/story/{{ story.storyId }}&title={{ story.title }}" target="_blank">
+          <img src="/img/facebook.png" alt="share to facebook" title="Share to Facebook">
+        </a>
+        <a class="share-icon" href="https://twitter.com/share" class="twitter-share-button" data-via="DynamicStoryOrg" data-dnt="true" target="_blank">
+          <img src="/img/twitter.png" alt="share to twitter" title="Share to Twitter">
+        </a>
+      </div>
     </div>
   </div>
 </div>
-</div>
 {% endblock %}
 
-{% block share %}
-  
-{% endblock %}
 
 {% block script %}
 <!-- declare global variables -->
