@@ -4,7 +4,7 @@
   {% if username %}
   {% else %}
   <div class="container-fluid">
-    <div class="cta">
+    <div class="cta styled-box">
       <i id="cta-close" class="ion-ios-close-empty"></i>
       <h3>Articles with surveys.</h3>
       <div>
@@ -17,10 +17,12 @@
   </div>
   {% endif %}
   <div class="container feed">
-  <div><span class="category">Recent Stories</span></div>
-  {% include "partials/pagination.html" %}
+  <div class='pagination-c'>
+    <span class="category">Recent Stories</span>
+    {% include "partials/pagination.html" %}
+  </div>
   {% for story in feed %}
-    <a href="/story/{{ story.story }}"><div class="feed-item">
+    <a href="/story/{{ story.story }}"><div class="feed-item styled-box">
       <h4>{{ story.title }}</h4>
       <h6>{{ story.questionTitle }}<br/><span>Total Votes: {{ story.totalVotes }}</span></h6>
       <div></div>

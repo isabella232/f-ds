@@ -22,7 +22,7 @@ html{
 body{
   font-family: 'Georgia';
   height: 100%;
-  background: url("/img/cloth_alike.png") repeat scroll 0% 0% transparent;
+  background-color: #fff;
 }
 /*----O_o-*/
 
@@ -30,6 +30,11 @@ body{
 .container{
   min-width: 320px;
 }/*----O_o-*/
+
+.landing-tile{
+  height:100px;
+  width:100%
+}
 
 /* styling bootstrap alert class */
 .alert{
@@ -715,16 +720,16 @@ input:-webkit-autofill {
 
 .header{
   text-align: left;
-  background-color: #f3f3f3;
-  border-bottom: 1px solid #ddd;
-  margin-bottom:10px;
+  background-color: #131313;
+  border-bottom: 1px solid #222;
+  margin-bottom:32px;
 }
 
 .header h1{
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: -1px;
-  color: #444;
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 3px;
+  color: #fff;
   cursor: pointer;
   display: inline-block;
   position: relative;
@@ -734,16 +739,16 @@ input:-webkit-autofill {
 
 .header a{
   text-align: center;
-  color: #444;
+  color: #fff;
   transition: all 100ms ease-in-out;
 }
 
 .header a:hover{
-  color: #000;
+  color: #fff;
 }
 
 .header h1 a:hover{
-  color: #777;
+  color: #ddd;
 }
 
 .header a:focus{
@@ -767,12 +772,17 @@ input:-webkit-autofill {
   display: inline;
 }
 
+.styled-box{
+  background-color: #fff;
+  border:1px solid #222;
+  box-shadow: 3px 3px 1px rgba(0,0,0,1);
+}
+
 .cta{
-  background: #f3f3f3;
+  background: #fff;
   position: relative;
   text-align: center;
   margin: 24px auto;
-  border: 1px solid #ddd;
   padding-bottom: 24px;
   max-width: 500px;
   padding: 48px 24px;
@@ -855,9 +865,13 @@ input:-webkit-autofill {
 /* END TITLE BANNER*/
 
 /* FEED */
+.pagination-c{
+  width: 100%;
+  height: 67px;
+  border-bottom: 2px solid black;
+}
 .category{
-  line-height: 55px;
-  border-bottom: 4px solid black;
+  line-height: 80px;
   color: #555;
   font-size: 13px;
   letter-spacing: 2px;
@@ -865,18 +879,21 @@ input:-webkit-autofill {
   height: 55px;
   display: inline-block;
   margin-bottom: 18px;
+  margin-left:12px;
+  float:left;
 }
 
 .feed-item{
-  background-color: #f3f3f3;
   word-wrap: break-word;
   font-family: 'Georgia';
   margin: 0 auto;
-  border: 1px solid #ddd;
   padding: 24px;
   text-align: center;
   margin-bottom: 18px;
   width: 280px;
+}
+.feed-item:first-child{
+margin-top: 20px;
 }
 
 .feed-item h4{
@@ -976,7 +993,8 @@ input:-webkit-autofill {
 
 /* Center boostrap's pagination class */
 .pagination-container{
-  text-align: center;
+  float:right;
+  margin-right: 25px;
 }
 /*----O_o-*/
 
@@ -1019,33 +1037,16 @@ input:-webkit-autofill {
   color: #555;
 }
 
-.header-btn-story{
-  top: 11px;
-  right: 80px;
+.header-btn{
+  float:right;
+  padding: 20px 4px 0px 4px;
+  margin-right: 7px;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+  
 }
-
-.header-btn-login{
-  top: 11px;
-  right: 16px;
-  width: 64px;
-}
-
-.header-btn-signup{
-  top: 11px;
-  right: 87px;
-  width: 64px;
-}
-
-.header-btn-story, .header-btn-login, .header-btn-signup{
-  padding: 5px 10px;
-  border: 1px solid #aaa;
-  border-radius: 10px;
-  color: #AAA;
-  position: absolute;
-}
-
-.header-btn-story:hover, .header-btn-login:hover, .header-btn-signup:hover, .ion-person:hover{
-  color: #444;
+.header-btn:hover{
+  color: #fff;
   border-color: #444;
 }
 
