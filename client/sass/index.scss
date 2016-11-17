@@ -12,19 +12,34 @@
 p {
   font-weight: 300 !important;
 }
-
+div{
+  z-index: 2;
+}
 /* Overwrite default height of body and html to 100% */
 html{
   height: 100%;
   min-width: 320px;
-  font-family: 'Georgia';
+  font-family: 'sans-serif';
 }
 body{
-  font-family: 'Georgia';
   height: 100%;
   background-color: #fff;
 }
+.real{
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+}
 /*----O_o-*/
+.flip-it {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -ms-transform: scaleX(-1);
+    transform: scaleX(-1);
+    -ms-filter: "FlipH";
+    filter: FlipH;
+}
 
 /* min width for containers to prevent maintain legibility */
 .container{
@@ -35,12 +50,66 @@ body{
   height:100px;
   width:100%
 }
+.textfun{
+  font-weight: 500;
+}
+.landing.header.container-fluid{
+  height:100vh;
+  width: 100%;
+  z-index: 101;
+  position: relative;
+  top:-100px;
+}
+.profile-menu-desktop ul, .profile-menu-mobile ul {
+  background-color:#111;
+}
+.landing .largeimage{
+  position: absolute;
+  margin: 20px;
+  width: 200px;
+  height:200px;
+  right: 0;
+  top:73%;
+  background: url(../img/plainwhiteplant.png);
+  background-size: 200px;
+  background-repeat: no-repeat;
+}
+.real .largeimage{
+  position: absolute;
+  margin: 20px;
+  width: 200px;
+  height:200px;
+  right: 0;
+  top:0;
+  background: url(../img/plainwhiteplant.png);
+  background-size: 70px;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+/*
+.largeimage{
+  z-index: 1;
+  margin: 20px;
+  position: fixed;
+  width: 200px;
+  height:200px;
+  right: 0;
+  top:70%;
+  background: url(../img/plainwhiteplant.png);
+  background-size: 200px;
+  background-repeat: no-repeat;
+  -webkit-transform:scaleX(-1);
+  -moz-transform:scaleX(-1);
+  -ms-transform:scaleX(-1);
+  -o-transform:scaleX(-1);
+  transform:scaleX(-1);
+}
+*/
 
 /* styling bootstrap alert class */
 .alert{
   margin-bottom: 0;
   position: relative;
-  font-family: 'Georgia';
   margin: 0;
   border-radius: 0;
   border: 0;
@@ -156,10 +225,6 @@ hr{
 
 /*^^^^^^^^^^^ end of general modifiers ^^^^^^^^^^^^^^^*/
 
-.narrative{
-  padding: 30px 20px;
-  font-family: 'Georgia';
-}
 
 /*adjusting font-size according to the size of screen */
 .narrative p, #xbbcode{
@@ -256,14 +321,12 @@ a:hover{
   height:56px;
 }
 .author-tools h4 {
-  font-family: 'georgia';
   margin-left:20px;
   color:#555;
   font-weight: 300;
 }
 
 .delete{
-  font-family: 'georgia';
   background-color: transparent;
   border-radius: 0;
   height: 36px;
@@ -273,7 +336,6 @@ a:hover{
 }
 .title{
   text-align: center;
-  font-family: 'Georgia';
   color: #444 !important;
   font-size: 36px !important;
   font-weight: 700;
@@ -298,7 +360,6 @@ a:hover{
   font-size: 16px;
   line-height: 26px;
   margin: 0;
-  font-family: 'Georgia';
 }
 
 .author span{
@@ -310,7 +371,6 @@ a:hover{
 .date{
   display: block;
   text-align: center;
-  font-family: 'Georgia';
   font-weight: 400;
   color: #555;
   font-size: 16px;
@@ -392,7 +452,6 @@ input:-webkit-autofill {
   height: 52px;
   line-height: 48px;
   text-align: center;
-  font-family: 'Georgia';
   letter-spacing: 4px;
   text-transform: uppercase;
 }
@@ -459,7 +518,6 @@ input:-webkit-autofill {
 }
 
 .question-title{
-  font-family: 'Georgia';
   text-align: center;
   font-weight: 600;
   font-size: 24px;
@@ -508,7 +566,6 @@ input:-webkit-autofill {
   display: none;
 }
 .survey-button{
-  font-family: 'Georgia';
   margin: auto;
   padding: 10px;
   border: 1px solid #777;
@@ -681,7 +738,6 @@ input:-webkit-autofill {
 
 .pie-results{
   margin-top: 6px;
-  font-family: 'Georgia';
 }
 
 #dataPoint1 .rank{
@@ -711,6 +767,25 @@ input:-webkit-autofill {
 /* *************** END survey button styling **************** */
 
 /* TITLE BANNER */
+.landing-container h1{
+  color:#111;
+  font-size: 19px;
+  text-decoration: underline;
+  color:#fff;
+}
+
+.landing-container .text{
+        margin: 20px;
+        max-width: 450px;
+        color:#fff;
+        height: 100vh;
+        padding: 0px 20px;
+        line-height: 24px;
+}
+
+.landing-container{
+  overflow-y: scroll;
+}
 
 @media (max-width: 767px){
   .header {
@@ -723,6 +798,14 @@ input:-webkit-autofill {
   background-color: #131313;
   border-bottom: 1px solid #222;
   margin-bottom:32px;
+  position: fixed;
+  top:0;
+}
+.header.landing{
+  text-align: left;
+  background-color: #131313;
+  border-bottom: 1px solid #222;
+  margin-bottom:6px;
 }
 
 .header h1{
@@ -885,7 +968,6 @@ input:-webkit-autofill {
 
 .feed-item{
   word-wrap: break-word;
-  font-family: 'Georgia';
   margin: 0 auto;
   padding: 24px;
   text-align: center;
@@ -1000,7 +1082,6 @@ margin-top: 20px;
 
 /* SHARE BUTTONS */
 .share-jumbotron{
-  font-family: 'georgia';
   margin-bottom:5em;
   padding: 16px 0;
   display:block;
@@ -1026,7 +1107,7 @@ margin-top: 20px;
 .ion-person{
   cursor: pointer;
   text-align: center;
-  border: 1px solid #aaa;
+  border: 1px solid #fff;
   position: absolute;
   top: 9px;
   right: 23px;
@@ -1034,7 +1115,7 @@ margin-top: 20px;
   border-radius: 50%;
   height: 33px;
   width: 33px;
-  color: #555;
+  color: #fff;
 }
 
 .header-btn{
@@ -1088,7 +1169,8 @@ margin-top: 20px;
 .profile-menu-desktop li, .profile-menu-mobile li{
   font-size: 16px;
   text-align: left;
-  color: rgba(0,0,0,.6);
+  color:#fcfcfc;
+  font-weight: 300;
 }
 
 .profile-menu-desktop li{
@@ -1100,10 +1182,10 @@ margin-top: 20px;
 }
 
 .profile-menu-desktop li:hover{
-  color: #222;
+  color: #eee;
 }
 .profile-menu-mobile li:hover{
-  color: #000;
+  color: #eee;
 }
 
 @media (max-width: 767px) {
@@ -1156,7 +1238,6 @@ margin-top: 20px;
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  font-family: 'georgia';
 }
 
 #signup-modal{

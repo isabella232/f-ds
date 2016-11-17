@@ -1,14 +1,16 @@
 <!-- HEADER -->
-<div class="container-fluid header">
-  <h1><a href="/">GraphWhy.org</a></h1>
+<div class="container-fluid header real">
+  <div class="largeimage"></div>
+  <h1><a href="/"><span class="textfun">Graph</span>Why.org</a></h1>
   {% if username %}
-  <a href="/story/create"><div class="header-btn-story">Write Story</div></a>
+  
   <i class="ion-person"></i>
   <div class="profile-menu-desktop">
     <div class="arrow-up"></div>
     <ul>
       <a href="/user/profile"><li>Profile</li></a>
       <a href="/user/change-pass"><li>Change Password</li></a>
+      <a href="/story/create"><li class="header-btn-story">Write Story</li></a>
       <form action="/user/logout" method="POST"><button><li>Logout</li></button></form>
     </ul>
   </div>
@@ -33,3 +35,4 @@
     </div>
   </div>
 </div>
+<div style="width: 100px;height: 100px"></div>
