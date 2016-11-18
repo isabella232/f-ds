@@ -46,9 +46,14 @@ body{
   min-width: 320px;
 }/*----O_o-*/
 .secondary-banner{
+  position: absolute;
+  bottom: 0;
+  height: 60px;
+  width: 100%;
   z-index:103;
   pointer-events: none;
-  background-color:black;
+  padding:0px 15px;
+  background-color:#131313;
 }
 .landing-tile{
   height:100px;
@@ -58,12 +63,12 @@ body{
   font-weight: 500;
 }
 .landing.header.container-fluid{
-  height:100vh;
+  height:101vh;
   width: 100%;
   z-index: 101;
   position: relative;
   top:-100px;
-  padding: none;
+  padding: 0px;
 }
 .profile-menu-desktop ul, .profile-menu-mobile ul {
   background-color:#111;
@@ -78,6 +83,7 @@ body{
   background: url(../img/plainwhiteplant.png);
   background-size: 200px;
   background-repeat: no-repeat;
+  z-index: 104;
 }
 .real .largeimage{
   position: absolute;
