@@ -45,7 +45,11 @@ body{
 .container{
   min-width: 320px;
 }/*----O_o-*/
-
+.secondary-banner{
+  z-index:103;
+  pointer-events: none;
+  background-color:black;
+}
 .landing-tile{
   height:100px;
   width:100%
@@ -59,6 +63,7 @@ body{
   z-index: 101;
   position: relative;
   top:-100px;
+  padding: none;
 }
 .profile-menu-desktop ul, .profile-menu-mobile ul {
   background-color:#111;
