@@ -1,3 +1,5 @@
+/*COMMENTING OUT THIS CODE FOR CHANGE IN SITE STYLING
+
 'use strict';
 
 var XBBCODE = require('../lib/bbcode/xbbcode')
@@ -54,3 +56,5 @@ function firstTextNode(node) {
     if (child) { return child }
   }
 }
+
+END OF MULTILINE COMMENT*/
