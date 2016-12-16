@@ -1000,7 +1000,7 @@ input:-webkit-autofill {
   word-wrap: break-word;
   margin: 0 auto;
   padding: 24px;
-  text-align: center;
+  text-align: left;
   margin-bottom: 18px;
   width: 280px;
 }
@@ -1035,7 +1035,7 @@ margin-top: 20px;
 }
 
 .feed-item div{
-  width: 60px;
+  width: 100%;
   border-bottom: 1px solid #666;
   margin: 16px auto;
 }
@@ -1048,7 +1048,6 @@ margin-top: 20px;
 }
 .feed a{
   color:#222;
-  display: inline-block;
 }
 
 .feed{
