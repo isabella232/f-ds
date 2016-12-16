@@ -1,4 +1,3 @@
-/*COMMENTING OUT THIS CODE FOR CHANGE IN SITE STYLING
 
 'use strict';
 
@@ -19,6 +18,7 @@ result.html = result.html.replace(/^/gm, '<p>').replace(/$/gm, '</p>')
 var xbbcode = document.getElementById("xbbcode")
 xbbcode.innerHTML =  result.html;
 
+/*COMMENTING OUT THIS CODE FOR CHANGE IN SITE STYLING
 // find the first text node in xbbcode
 var node = firstTextNode(xbbcode)
 
