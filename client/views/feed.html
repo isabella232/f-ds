@@ -33,34 +33,23 @@
     </div>
   </div>
 </div>
-<!--
-  <div class="container-fluid">
-    <div class="cta styled-box">
-      <i id="cta-close" class="ion-ios-close-empty"></i>
-      <h3>Articles with surveys.</h3>
-      <div>
-        <i class="ion-ios-book-outline"></i>
-        <span class="plus">+</span>
-        <i class="ion-ios-pie-outline"></i>
-      </div>
-      <a href="/user/signup"><button><span>signup</span><i class="ion-ios-arrow-thin-up"></i></button></a>
-    </div>
-  </div>
-  -->
   {% endif %}
+
   <div class="container feed">
   <div class='pagination-c'>
     <span class="category">Recent Stories</span>
     {% include "partials/pagination.html" %}
   </div>
   {% for story in feed %}
-    <a href="/story/{{ story.story }}"><div class="feed-item styled-box">
-      <h4>{{ story.title }}</h4>
-      <h6>{{ story.questionTitle }}<br/><span>Total Votes: {{ story.totalVotes }}</span></h6>
-      <div></div>
-      <h5 class="feed-author"><span>by</span><span>{{ story.author }}</span></h5>
-      <h5>{{ story.creationDate }}</h5>
-    </div></a>
+    <a href="/story/{{ story.story }}">
+      <div class="feed-item styled-box">
+	<h4>{{ story.title }}</h4>
+	<h6>{{ story.questionTitle }}<br/><span>Total Votes: {{ story.totalVotes }}</span></h6>
+	<div></div>
+	<h5 class="feed-author"><span>by</span><span>{{ story.author }}</span></h5>
+	<h5>{{ story.creationDate }}</h5>
+      </div>
+    </a>
   {% endfor %}
   </div>
   {% include "partials/pagination.html" %}
