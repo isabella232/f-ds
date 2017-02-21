@@ -55,7 +55,7 @@ app.use(function(req, res, next) {
   res.status(404).render('404.html')
 })
 
-var server = app.listen(serverPort, 'localhost', function () {
+var server = app.listen(serverPort, '45.55.24.80', function () {
 
   var host = server.address().address
     , port = server.address().port
