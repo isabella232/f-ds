@@ -15,6 +15,15 @@ p {
 div{
   z-index: 2;
 }
+auxColor{ 
+  color:#cca885 !important;
+  a{
+    color:#cca885 !important;
+  }
+  h1{
+    color:#cca885 !important;
+  }
+}
 /* Overwrite default height of body and html to 100% */
 html{
   height: 100%;
@@ -813,7 +822,7 @@ input:-webkit-autofill {
 
 .header{
   text-align: left;
-  background-color: #131313;
+  background-color: #2f2f2f;
   border-bottom: 1px solid #222;
   margin-bottom:32px;
   position: fixed;
